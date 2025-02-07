@@ -29,6 +29,12 @@ const Header = () => {
       description:
         "From surgical tools to diagnostic instruments, we provide the right solutions for every healthcare need.",
     },
+    {
+      image: "/images/slider04.jpg",
+      title: "Solutions for Every Need",
+      description:
+        "From surgical tools to diagnostic instruments, we provide the right solutions for every healthcare need.",
+    },
   ];
 
   useEffect(() => {
