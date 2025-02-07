@@ -4,7 +4,7 @@ import { FaCogs, FaAward, FaHeartbeat, FaUsers } from "react-icons/fa"; // Impor
 
 const WhyChooseUs = () => {
   return (
-    <section className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-20 px-5 md:px-10 lg:px-20">
+    <section className="bg-gradient-to-b from-blue-950 via-black to-blue-950 text-white py-20 px-5 md:px-10 lg:px-20">
       <motion.div
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}

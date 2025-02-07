@@ -46,7 +46,7 @@ export default async function Home() {
     <>
       <Header />
       <Brands />
-      <main className="my-[50px] sm:my-[72px]">
+      <main className="my-[50px] sm:my-[72px] ">
         <ProductListSec title="NEW ARRIVALS" data={newArrivals} viewAllLink="/shop/all" />
         <div className="max-w-frame mx-auto px-4 xl:px-0">
           <hr className="h-[1px] border-t-black/10 my-10 sm:my-16" />

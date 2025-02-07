@@ -12,19 +12,19 @@ const Header = () => {
   // Array of slider data for the full section, now with titles and descriptions
   const sliderContent = [
     {
-      image: "/images/wallpaper01.jpg",
+      image: "/images/slider01.jpg",
       title: "Precision Instruments",
       description:
         "Explore our wide selection of precision-engineered surgical instruments designed for healthcare professionals worldwide.",
     },
     {
-      image: "/images/wallpapere02.jpg",
+      image: "/images/slider02.jpg",
       title: "Crafted for Excellence",
       description:
         "Our instruments are crafted with precision to ensure the highest quality and reliability in every medical procedure.",
     },
     {
-      image: "/images/wallpaper03.jpg",
+      image: "/images/slider03.jpg",
       title: "Solutions for Every Need",
       description:
         "From surgical tools to diagnostic instruments, we provide the right solutions for every healthcare need.",

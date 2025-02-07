@@ -1,16 +1,16 @@
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
-import Image from "next/image";
+// import Image from "next/image";
 import React from "react";
 
 const NewsLetterSection = () => {
   return (
-    <div className="relative py-9 md:py-11 px-6 md:px-16 max-w-frame mx-auto bg-black rounded-[20px]">
+    <div className="bg-gradient-to-b from-blue-950 via-black to-blue-950 relative py-9 md:py-11 px-6 md:px-16 max-w-frame mx-auto  rounded-[20px]">
       <div className="flex flex-col justify-center">
         <p
           className={cn([
             integralCF.className,
-            "font-bold text-[32px] md:text-[40px] text-white mb-4 md:mb-6",
+            "font-bold text-[32px] md:text-[40px] text-white mb-4 md:mb-6 text-center",
           ])}
         >
           STAY UPDATED WITH THE LATEST IN SURGICAL INSTRUMENTS & 

@@ -278,41 +278,7 @@ const data: NavMenu = [
           </>
         ),
       },
-      {
-        id: 20,
-        label: "Gynecology Instruments",
-        url: "/shop/gynecology-instruments",
-        description: (
-          <>
-            <Link href="/shop/caesarean-forceps" className="text-gray-400 hover:underline">
-              Caesarean Forceps
-            </Link>
-            <br />
-            <Link href="/shop/catheters" className="text-gray-400 hover:underline">
-              Catheters
-            </Link>
-            <br />
-            <Link href="/shop/lamps" className="text-gray-400 hover:underline">
-              Lamps
-            </Link>
-            <br />
-            <Link href="/shop/depressors" className="text-gray-400 hover:underline">
-              Depressors
-            </Link>
-            <br />
-            <Link href="/shop/dilators" className="text-gray-400 hover:underline">
-              Dilators
-            </Link>
-            <br />
-            <Link
-              href="/shop/needle-holders"
-              className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
-            >
-              View All
-            </Link>
-          </>
-        ),
-      },
+
       {
         id: 21,
         label: "Cardioendthoracic Instruments",

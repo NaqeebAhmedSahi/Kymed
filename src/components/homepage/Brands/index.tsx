@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Brands = () => {
   return (
-    <div className="bg-black text-white py-16">
+    <div className="bg-gradient-to-b from-blue-950 via-black to-blue-950 text-white py-16">
       <div className="max-w-6xl mx-auto px-6 md:px-0 flex flex-col md:flex-row items-center justify-between">
         {/* Text Content */}
         <motion.div
