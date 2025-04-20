@@ -356,7 +356,7 @@ const TopNavbar = () => {
               alt="Logo"
               height={40}
               width={80}
-              className="w-[60px] h-[40px] sm:w-[80px] sm:h-[40px] md:w-[150px] md:h-[45px] lg:w-[150px] lg:h-[50px] xl:w-[250px] xl:h-[50px]"
+              className="w-[100px] h-[40px] sm:w-[150px] sm:h-[40px] md:w-[350px] md:h-[45px] lg:w-[350px] lg:h-[50px] xl:w-[400px] xl:h-[50px]"
             />
           </Link>
         </div>

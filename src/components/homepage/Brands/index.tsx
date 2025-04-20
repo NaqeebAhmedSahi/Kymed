@@ -15,15 +15,15 @@ const Brands = () => {
           className="text-center md:text-left md:w-1/2 px-10"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-green-400">
-            KYMED – Excellence in Surgical Precision
+            Fitmedix Industries – Excellence in Surgical Precision
           </h2>
-          <p className="text-sm md:text-lg text-gray-300 leading-relaxed mb-6">
-            At <span className="text-green-500 font-semibold">KYMED</span>, we specialize in crafting **high-quality surgical instruments** 
+          <p className="text-sm md:text-lg text-gray-300 leading-relaxed mb-6 mr-20">
+            At <span className="text-green-500 font-semibold">Fitmedix Industries</span>, we specialize in crafting **high-quality surgical instruments** 
             designed for **precision, durability, and reliability**. Our tools are trusted by **medical professionals worldwide** for their 
             superior craftsmanship and cutting-edge technology.
           </p>
-          <p className="text-sm md:text-lg text-gray-300 leading-relaxed">
-            Whether you need **advanced surgical tools** or **essential medical equipment**, KYMED ensures the **highest standards** 
+          <p className="text-sm md:text-lg text-gray-300 leading-relaxed mr-20">
+            Whether you need **advanced surgical tools** or **essential medical equipment**, Fitmedix Industries ensures the **highest standards** 
             to optimize patient outcomes and surgical efficiency.
           </p>
         </motion.div>
@@ -40,7 +40,7 @@ const Brands = () => {
           >
             <img
               src="/images/picture01.jpg" // Replace with actual image path
-              alt="KYMED Surgical Instruments"
+              alt="Fitmedix Industries Surgical Instruments"
               className="w-full h-[280px] md:h-[350px] rounded-lg shadow-2xl object-cover filter brightness-75"
             />
           </motion.div>
@@ -55,7 +55,7 @@ const Brands = () => {
           >
             <img
               src="/images/picture02.jpg" // Replace with actual image path
-              alt="KYMED Precision Instruments"
+              alt="Fitmedix Industries Precision Instruments"
               className="w-full h-[220px] md:h-[280px] rounded-lg shadow-lg object-cover"
             />
           </motion.div>
