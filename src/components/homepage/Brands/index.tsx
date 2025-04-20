@@ -17,12 +17,12 @@ const Brands = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-green-400">
             Fitmedix Industries – Excellence in Surgical Precision
           </h2>
-          <p className="text-sm md:text-lg text-gray-300 leading-relaxed mb-6 mr-20">
+          <p className="text-sm md:text-lg text-gray-300 leading-relaxed mb-6 md:mr-20">
             At <span className="text-green-500 font-semibold">Fitmedix Industries</span>, we specialize in crafting **high-quality surgical instruments** 
             designed for **precision, durability, and reliability**. Our tools are trusted by **medical professionals worldwide** for their 
             superior craftsmanship and cutting-edge technology.
           </p>
-          <p className="text-sm md:text-lg text-gray-300 leading-relaxed mr-20">
+          <p className="text-sm md:text-lg text-gray-300 leading-relaxed md:mr-20">
             Whether you need **advanced surgical tools** or **essential medical equipment**, Fitmedix Industries ensures the **highest standards** 
             to optimize patient outcomes and surgical efficiency.
           </p>
