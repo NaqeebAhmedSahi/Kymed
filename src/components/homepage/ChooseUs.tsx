@@ -1,6 +1,6 @@
 import React from "react";
 import * as motion from "framer-motion/client";
-import { FaCogs, FaAward, FaHeartbeat, FaUsers } from "react-icons/fa"; // Importing icons for the section
+import { FaMicroscope, FaAward, FaUserMd, FaGlobeAmericas } from "react-icons/fa";
 
 const WhyChooseUs = () => {
   return (
@@ -38,13 +38,12 @@ const WhyChooseUs = () => {
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-3xl md:text-4xl font-semibold mb-6">
-              A Legacy of Trust and Innovation
+              A Legacy of Trust and Quality
             </h3>
             <p className="text-gray-300 leading-relaxed mb-4">
-              With over two decades of experience, we take pride in delivering
-              industry-leading solutions that help healthcare professionals
-              achieve excellence in patient care. Our focus is on creating
-              innovative tools that elevate the standards of surgical practices.
+              With over two decades of experience, Saluvia Industries is dedicated to delivering *high-quality surgical, dental, and electrosurgical instruments* that support healthcare professionals in providing exceptional care.
+
+Our focus is on crafting tools that meet the *highest standards of accuracy, durability, and performance*—ensuring confidence in every procedure.
             </p>
             <a
               href="/contact"
@@ -86,7 +85,7 @@ const WhyChooseUs = () => {
           transition={{ duration: 0.8 }}
         >
           <h3 className="text-3xl md:text-4xl font-bold mb-6">
-            Key Reasons to Choose Us
+            What Makes Us the Right Choice?
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-gray-300">
             <motion.div
@@ -97,11 +96,10 @@ const WhyChooseUs = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <FaCogs className="text-4xl mb-4 text-green-500" />
-              <h4 className="text-2xl font-semibold mb-4">Cutting-Edge Technology</h4>
+              <FaMicroscope className="text-4xl mb-4 text-green-500" />
+              <h4 className="text-2xl font-semibold mb-4">State-of-the-Art Technology</h4>
               <p>
-                We integrate the latest advancements in surgical tools, ensuring
-                that every product meets the highest standards of precision.
+                We apply the latest advancements in medical manufacturing to ensure precision, safety, and consistency across all our instruments.
               </p>
             </motion.div>
             <motion.div
@@ -113,10 +111,9 @@ const WhyChooseUs = () => {
               transition={{ duration: 0.8 }}
             >
               <FaAward className="text-4xl mb-4 text-green-500" />
-              <h4 className="text-2xl font-semibold mb-4">Award-Winning Designs</h4>
+              <h4 className="text-2xl font-semibold mb-4">Recognized Excellence</h4>
               <p>
-                Our instruments have received numerous industry accolades, setting
-                new benchmarks in performance and quality.
+                Our products have earned industry recognition for their design, quality, and performance in clinical settings.
               </p>
             </motion.div>
             <motion.div
@@ -127,11 +124,10 @@ const WhyChooseUs = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <FaHeartbeat className="text-4xl mb-4 text-green-500" />
-              <h4 className="text-2xl font-semibold mb-4">Enhancing Patient Care</h4>
+              <FaUserMd className="text-4xl mb-4 text-green-500" />
+              <h4 className="text-2xl font-semibold mb-4">Better Patient Outcomes</h4>
               <p>
-                Designed for precision and comfort, our tools help improve surgical
-                outcomes and contribute to better patient care.
+                Designed with both the surgeon and the patient in mind, our tools support safer, more effective procedures.
               </p>
             </motion.div>
             <motion.div
@@ -142,37 +138,47 @@ const WhyChooseUs = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <FaUsers className="text-4xl mb-4 text-green-500" />
-              <h4 className="text-2xl font-semibold mb-4">Trusted by Professionals</h4>
+              <FaGlobeAmericas className="text-4xl mb-4 text-green-500" />
+              <h4 className="text-2xl font-semibold mb-4">Global Trust</h4>
               <p>
-                Surgeons and healthcare institutions across the globe rely on our
-                instruments for their unmatched precision and reliability.
+                Hospitals, clinics, and surgical teams across more than 50 countries rely on Saluvia for dependable instruments.
               </p>
             </motion.div>
           </div>
         </motion.div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 text-center">
-          {["20+", "50+", "10,000+"].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-            >
-              <h3 className="text-5xl font-bold text-green-500">{stat}</h3>
-              <p className="text-gray-300">
-                {index === 0
-                  ? "Years of Excellence"
-                  : index === 1
-                  ? "Countries Served"
-                  : "Global Clients"}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          className="mt-20 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h3 className="text-3xl md:text-4xl font-bold mb-6">
+            Our Impact in Numbers
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {["20+", "50+", "10,000+"].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2, duration: 0.6 }}
+              >
+                <h3 className="text-5xl font-bold text-green-500">{stat}</h3>
+                <p className="text-gray-300">
+                  {index === 0
+                    ? "Years of Manufacturing Expertise"
+                    : index === 1
+                    ? "Countries Supplied"
+                    : "Healthcare Clients Served Globally"}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* CTA Section */}
         <motion.div
@@ -183,11 +189,11 @@ const WhyChooseUs = () => {
           transition={{ duration: 0.8 }}
         >
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            Join the Future of Surgical Precision
+            Step Into Surgical Excellence
           </h3>
           <p className="text-lg mb-6">
-            Ready to take your surgical practice to the next level? Reach out to
-            us and discover the future of medical instruments.
+            Looking for instruments that deliver accuracy, reliability, and long-term value?
+            Contact Saluvia Industries today—trusted worldwide for quality medical tools.
           </p>
           <a
             href="/contact"

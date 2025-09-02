@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { FaCertificate, FaRegLightbulb, FaHandshake } from "react-icons/fa";
+import { FaCertificate, FaChartLine, FaHandshake } from "react-icons/fa";
 import * as motion from "framer-motion/client";
 
 const OurValue = () => {
@@ -47,8 +47,12 @@ const OurValue = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">Our Core Values</h2>
           <p className="mt-4 text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
-            We believe in delivering excellence, pushing boundaries, and fostering trust.
+            Excellence. Commitment. Trust.
           </p>
+          <p className="mt-4 text-gray-300 text-md max-w-4xl mx-auto">
+            At Saluvia Industries, our values are the foundation of everything we do—from product development to customer service. We're driven by a passion for precision and a promise to deliver dependable quality.
+          </p>
+          <hr className="mt-6 border-t-2 border-gray-700 mx-auto w-20" />
         </motion.div>
 
         {/* Values Section */}
@@ -69,11 +73,11 @@ const OurValue = () => {
             <FaCertificate className="text-4xl text-green-500 mx-auto mb-6" />
             <h3 className="text-2xl font-semibold mb-4">Quality</h3>
             <p className="text-gray-300">
-              We ensure that every product we create meets the highest standards of excellence, delivering outstanding results every time.
+              We are committed to manufacturing instruments that meet the highest standards of performance and reliability, ensuring consistent results in every procedure.
             </p>
           </motion.div>
 
-          {/* Innovation */}
+          {/* Progress */}
           <motion.div
             className="bg-gray-800 p-8 rounded-lg text-center hover:bg-gray-700 transition-all duration-300"
             whileHover={{ scale: 1.05 }}
@@ -81,10 +85,10 @@ const OurValue = () => {
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ duration: 0.8 }}
           >
-            <FaRegLightbulb className="text-4xl text-yellow-400 mx-auto mb-6" />
-            <h3 className="text-2xl font-semibold mb-4">Innovation</h3>
+            <FaChartLine className="text-4xl text-blue-400 mx-auto mb-6" />
+            <h3 className="text-2xl font-semibold mb-4">Progress</h3>
             <p className="text-gray-300">
-              We embrace cutting-edge technology to constantly evolve, improve, and meet the challenges of tomorrow with creative solutions.
+              We continually refine our processes, adopt advanced methods, and stay ahead of industry needs—striving to improve and adapt without compromising on quality or tradition.
             </p>
           </motion.div>
 
@@ -96,17 +100,17 @@ const OurValue = () => {
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ duration: 0.8 }}
           >
-            <FaHandshake className="text-4xl text-blue-500 mx-auto mb-6" />
+            <FaHandshake className="text-4xl text-yellow-400 mx-auto mb-6" />
             <h3 className="text-2xl font-semibold mb-4">Integrity</h3>
             <p className="text-gray-300">
-              We believe in transparency, honesty, and maintaining the highest ethical standards in everything we do.
+              We operate with honesty, accountability, and ethical responsibility, building lasting relationships based on transparency and respect.
             </p>
           </motion.div>
         </motion.div>
 
         {/* Call to Action */}
         <motion.div
-          className="text-center mt-20"
+          className="text-center mt-20 bg-gray-800 py-10 px-5 md:px-10 lg:px-20 rounded-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: isInView ? 1 : 0 }}
           transition={{ duration: 0.8 }}
@@ -115,7 +119,8 @@ const OurValue = () => {
             Ready to Experience Our Core Values?
           </h3>
           <p className="text-lg mb-6 text-gray-300">
-            Discover how these values drive our products and services to exceed expectations.
+            See how our commitment to quality, progress, and integrity shapes everything we do.
+            Let's build better outcomes—together.
           </p>
           <a
             href="/contact"

@@ -123,9 +123,9 @@ const ContactPage: React.FC = () => {
               <p className="text-gray-300 mb-6">
                 Have any questions or need further assistance? We're here to help! Reach out to us and we'll respond as soon as possible.
               </p>
-              <p className="text-gray-300"><strong>Address:</strong> 123 Medical Avenue, City, Country</p>
-              <p className="text-gray-300"><strong>Phone:</strong> +1 (123) 456-7890</p>
-              <p className="text-gray-300"><strong>Email:</strong> contact@medicaltools.com</p>
+              <p className="text-gray-300"><strong>Address:</strong> Shakky, Daska, Sialkot, Pakistan</p>
+              <p className="text-gray-300"><strong>Phone:</strong> +92 316 7827137</p>
+              <p className="text-gray-300"><strong>Email:</strong> saluviaindustries@gmail.com</p>
             </motion.div>
           </div>
 

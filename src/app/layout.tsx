@@ -8,8 +8,8 @@ import HolyLoader from "holy-loader";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "Fitmedix Industries ",
-  description: "Fitmedix Industries - Medical Instrument Company",
+  title: "Saluvia Industries ",
+  description: "Saluvia Industries - Medical Instrument Company",
 };
 
 export const viewport: Viewport = {
