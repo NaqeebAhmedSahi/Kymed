@@ -3,14 +3,29 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaDownload, FaSearch, FaTimes } from "react-icons/fa";
 
+// Define types for our data
+interface Brochure {
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+  downloadUrl: string;
+  description: string;
+}
+
+interface Category {
+  id: string;
+  name: string;
+}
+
 const BrochuresGallery = () => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedBrochure, setSelectedBrochure] = useState(null);
-  const [showSearch, setShowSearch] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [selectedBrochure, setSelectedBrochure] = useState<Brochure | null>(null);
+  const [showSearch, setShowSearch] = useState<boolean>(false);
 
   // Sample brochure data
-  const brochures = [
+  const brochures: Brochure[] = [
     {
       id: 1,
       title: "Dental Surgery Instruments",
@@ -51,10 +66,9 @@ const BrochuresGallery = () => {
       downloadUrl: "/brochures/General Surgical Instruments.pdf",
       description: "Comprehensive overview of our dental implant systems and accessories."
     },
-
   ];
 
-  const categories = [
+  const categories: Category[] = [
     { id: "all", name: "All Brochures" },
     { id: "surgical", name: "Surgical Instruments" },
     { id: "dental", name: "Dental Equipment" },
@@ -71,7 +85,7 @@ const BrochuresGallery = () => {
   });
 
   // Handle download
-  const handleDownload = (brochure:any) => {
+  const handleDownload = (brochure: Brochure) => {
     // In a real application, this would trigger the actual download
     console.log(`Downloading ${brochure.title}`);
     // Create a temporary link to trigger download
@@ -84,13 +98,13 @@ const BrochuresGallery = () => {
   };
 
   // Handle brochure click
-  const handleBrochureClick = (brochure) => {
+  const handleBrochureClick = (brochure: Brochure) => {
     setSelectedBrochure(brochure);
   };
 
   // PDF Icon component
-  const PdfIcon = () => (
-    <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+  const PdfIcon = ({ className = "" }: { className?: string }) => (
+    <svg className={`w-12 h-12 ${className}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd"></path>
     </svg>
   );
@@ -186,18 +200,17 @@ const BrochuresGallery = () => {
                   onClick={() => handleBrochureClick(brochure)}
                 >
                   {/* Brochure Image */}
-                  <div className="h-48 overflow-hidden">
-                    <img 
-                      src={brochure.image} 
-                      alt={brochure.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                  <div className="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
+                    <div className="text-gray-400 text-center p-4">
+                      <PdfIcon className="text-gray-400 mx-auto mb-2" />
+                      <span className="text-sm">Brochure Preview</span>
+                    </div>
                   </div>
                   
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <PdfIcon />
+                      <PdfIcon className="text-white" />
                     </div>
                   </div>
                 </div>
@@ -228,7 +241,7 @@ const BrochuresGallery = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <PdfIcon className="text-gray-400 text-5xl mx-auto mb-4" />
+            <PdfIcon className="text-gray-400 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-700 mb-2">No brochures found</h3>
             <p className="text-gray-500">Try adjusting your search or filter criteria</p>
           </motion.div>
@@ -263,12 +276,8 @@ const BrochuresGallery = () => {
 
                 <div className="p-6 flex-1 overflow-y-auto">
                   <div className="flex flex-col md:flex-row gap-6">
-                    <div className="md:w-1/3">
-                      <img 
-                        src={selectedBrochure.image} 
-                        alt={selectedBrochure.title}
-                        className="w-full h-auto rounded-lg shadow-md"
-                      />
+                    <div className="md:w-1/3 bg-gray-100 rounded-lg flex items-center justify-center h-64">
+                      <PdfIcon className="text-gray-400 text-6xl" />
                     </div>
                     <div className="md:w-2/3">
                       <p className="text-gray-700 mb-6">{selectedBrochure.description}</p>
@@ -277,7 +286,7 @@ const BrochuresGallery = () => {
                         <ul className="text-sm text-gray-600 space-y-1">
                           <li><span className="font-medium">Category:</span> {categories.find(c => c.id === selectedBrochure.category)?.name}</li>
                           <li><span className="font-medium">File Type:</span> PDF</li>
-                          {/* <li><span className="font-medium">File Size:</span> Approximately 5.2 MB</li> */}
+                          <li><span className="font-medium">File Size:</span> Approximately 3.5 MB</li>
                         </ul>
                       </div>
                     </div>
