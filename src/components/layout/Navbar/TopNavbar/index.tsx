@@ -321,7 +321,7 @@ const data: NavMenu = [
     id: 2,
     type: "MenuItem",
     label: "Brochure",
-    url: "/shop/on-sale",
+    url: "/brochures",
     children: [],
   },
   {
