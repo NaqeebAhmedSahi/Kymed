@@ -71,7 +71,7 @@ const BrochuresGallery = () => {
   });
 
   // Handle download
-  const handleDownload = (brochure) => {
+  const handleDownload = (brochure:any) => {
     // In a real application, this would trigger the actual download
     console.log(`Downloading ${brochure.title}`);
     // Create a temporary link to trigger download
