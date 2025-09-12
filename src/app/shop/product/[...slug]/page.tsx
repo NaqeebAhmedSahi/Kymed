@@ -22,19 +22,54 @@ async function fetchProductById(id: number): Promise<Product | null> {
   }
 }
 
+// Function to fix image URLs for downloaded_images directory
+function fixImagePaths(product: Product): Product {
+  const fixUrl = (url: string | undefined): string => {
+    if (!url) return '/images/placeholder.jpg';
+    
+    // If it's already a valid URL or starts with /, return as is
+    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/')) {
+      return url;
+    }
+    
+    // If it's a filename without path, add the downloaded_images path
+    if (!url.includes('/') && !url.includes('\\')) {
+      return `/downloaded_images(1)/downloaded_images/${url}.webp`;
+    }
+    
+    // If it has a partial path but not the full one, fix it
+    if (url.includes('downloaded_images') && !url.startsWith('/downloaded_images(1)/downloaded_images/')) {
+      return url.replace(/.*downloaded_images[^/]*/, '/downloaded_images(1)/downloaded_images');
+    }
+    
+    // Default case - assume it's a filename that needs the full path
+    return `/downloaded_images(1)/downloaded_images/${url}.webp`;
+  };
+
+  return {
+    ...product,
+    srcUrl: fixUrl(product.srcUrl),
+    gallery: product.gallery?.map(fixUrl) || [],
+  };
+}
+
 export default async function ProductPage({
   params,
 }: {
   params: { slug: string[] };
 }) {
   const productId = Number(params.slug[0]);
-  const productData = await fetchProductById(productId);
+  let productData = await fetchProductById(productId);
 
-  console.log("Product Data", productData);
+  console.log("Raw Product Data", productData);
 
   if (!productData) {
     notFound();
   }
+
+  // Fix the image paths before passing to components
+  productData = fixImagePaths(productData);
+  console.log("Fixed Product Data", productData);
 
   return (
     <main>

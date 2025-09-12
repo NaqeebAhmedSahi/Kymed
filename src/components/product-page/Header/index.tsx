@@ -26,7 +26,7 @@ const Header = ({ data }: { data: Product }) => {
           >
             {data.title}
           </h1>
-          <div className="flex items-center mb-3 sm:mb-3.5">
+          {/* <div className="flex items-center mb-3 sm:mb-3.5">
             <Rating
               initialValue={data.rating}
               allowFraction
@@ -39,7 +39,7 @@ const Header = ({ data }: { data: Product }) => {
               {data.rating.toFixed(1)}
               <span className="text-black/60">/5</span>
             </span>
-          </div>
+          </div> */}
           <p className="text-sm sm:text-base text-black/60 mb-5">
             {data.description}
           </p>

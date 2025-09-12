@@ -194,7 +194,7 @@ const ContactPage: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <p className="text-gray-300 text-sm">© 2025 Medical Tools. All Rights Reserved.</p>
+          <p className="text-gray-300 text-sm">© 2025 Salvia Industries. All Rights Reserved.</p>
         </motion.div>
       </motion.div>
 

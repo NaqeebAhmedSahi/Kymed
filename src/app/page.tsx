@@ -5,7 +5,7 @@ import DressStyle from '@/components/homepage/DressStyle';
 import Header from '@/components/homepage/Header';
 import Reviews from '@/components/homepage/Reviews';
 import WhyChooseUs from '@/components/homepage/ChooseUs'; 
-import OurValue from '@/components/homepage/OurValue'; // Import OurValue component
+import OurValue from '@/components/homepage/OurValue';
 
 import { Product } from '@/types/product.types';
 import { reviewsData } from '@/utils/data';
@@ -19,24 +19,52 @@ interface HomeProps {
 export default async function Home() {
   let newArrivals: Product[] = [];
   let topSelling: Product[] = [];
+  
+  console.log('🔄 Fetching products from backend...');
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
+    // For Server Components, we need to use an absolute URL
+    const baseUrl = process.env.NODE_ENV === 'production' 
+      ? process.env.NEXT_PUBLIC_APP_URL 
+      : 'http://localhost:3000';
+    
+    const apiUrl = `${baseUrl}/api/products?category=all`;
+    console.log('📡 Making request to:', apiUrl);
+    
+    const response = await fetch(apiUrl, {
       method: 'GET',
       headers: {
-        // 'Authorization': `Bearer ${yourAuthToken}`, // Add the token here if needed
         'Content-Type': 'application/json',
       },
+      // Add cache control to ensure fresh data
+      cache: 'no-store',
     });
 
-    const data = await response.json();
+    console.log('✅ Response status:', response.status);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-    // Filter top-rated products with a rating of 5
-    topSelling = data.products.filter((product: Product) => product.rating === 5);
-    newArrivals = data.products;
+    const data = await response.json();
+    console.log('📦 Received data:', data);
+    
+    // Check if we have products in the response
+    if (data.products && Array.isArray(data.products)) {
+      console.log(`📊 Total products received: ${data.products.length}`);
+      
+      // Filter top-rated products with a rating of 5
+      topSelling = data.products.filter((product: Product) => product.rating === 5);
+      newArrivals = data.products;
+      
+      console.log(`⭐ Top selling products (rating=5): ${topSelling.length}`);
+      console.log(`🆕 New arrivals: ${newArrivals.length}`);
+    } else {
+      console.warn('⚠️ No products array found in response:', data);
+    }
 
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('❌ Error fetching data:', error);
     // Optional: Provide fallback data in case of an error
     newArrivals = [];
     topSelling = [];
@@ -59,8 +87,6 @@ export default async function Home() {
           <WhyChooseUs />
         </div>
         
-       
-
         <div className="mb-[50px] sm:mb-20">
           <DressStyle />
         </div>
