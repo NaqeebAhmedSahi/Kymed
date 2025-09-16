@@ -12,13 +12,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     console.log("✅ MongoDB connected successfully");
 
     // Debug: List all collections
-    const collections = await mongoose.connection.db.listCollections().toArray();
-    console.log("📋 Available collections:", collections.map(c => c.name));
+    // const collections = await mongoose.connection.db.listCollections().toArray();
+    // console.log("📋 Available collections:", collections.map(c => c.name));
     
-    // Check if our target collection exists
-    const targetCollection = "products";
-    const collectionExists = collections.some(c => c.name === targetCollection);
-    console.log(`🔍 Collection '${targetCollection}' exists:`, collectionExists);
+    // // Check if our target collection exists
+    // const targetCollection = "products";
+    // const collectionExists = collections.some(c => c.name === targetCollection);
+    // console.log(`🔍 Collection '${targetCollection}' exists:`, collectionExists);
 
     if (req.method === "GET") {
       const { id, category } = req.query;
