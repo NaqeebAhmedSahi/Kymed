@@ -10,7 +10,7 @@ type Product = {
   category?: string;
   subcategory?: string;
   description?: string;
-  gallery?: string | null;
+  gallery?: string[]; 
 };
 
 type ProductCardProps = {
