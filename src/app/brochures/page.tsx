@@ -68,7 +68,7 @@ const BrochuresGallery = () => {
   const categories: Category[] = [
     { id: "all", name: "All Brochures" },
     { id: "surgical", name: "Surgical Instruments" },
-    { id: "dental", name: "Dental Equipment" },
+    { id: "dental", name: "Dental Instruments" },
     { id: "electrosurgical", name: "Electrosurgical" },
     { id: "accessories", name: "Accessories" }
   ];

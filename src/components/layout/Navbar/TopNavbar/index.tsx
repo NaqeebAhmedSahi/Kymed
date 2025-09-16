@@ -68,8 +68,8 @@ const data: NavMenu = [
       },
       {
         id: 14,
-        label: "Dental Equipment",
-        url: "/shop/dental-equipment",
+        label: "Dental Instruments",
+        url: "/shop/dental-instruments",
         description: (
           <>
             <Link href="/shop/extraction-forceps" className="text-gray-400 hover:underline">
