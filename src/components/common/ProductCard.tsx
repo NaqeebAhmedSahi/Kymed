@@ -20,7 +20,7 @@ type ProductCardProps = {
 const ProductCard = ({ data }: ProductCardProps) => {
   // Fallback image if gallery is null or undefined
   const imageUrl = data.gallery
-    ? `/downloaded_images(1)/downloaded_images/${data.gallery}.webp`
+    ? `/downloaded_images(1)/downloaded_images/${data.gallery}`
     : "/images/placeholder.png";
 
   const productSlug = data.title
