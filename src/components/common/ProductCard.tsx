@@ -21,7 +21,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
   // Use the first image in gallery or fallback
   const imageUrl =
     data.gallery && data.gallery.length > 0
-      ? data.gallery[0]
+      ? `/downloaded_images(1)/downloaded_images/${data.gallery}`
       : "/images/placeholder.png";
 
   const productSlug = data.title
