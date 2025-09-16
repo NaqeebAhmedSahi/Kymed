@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// Update Product type to match your data structure
 type Product = {
   _id?: { $oid: string };
   id: number;
@@ -10,7 +9,8 @@ type Product = {
   category?: string;
   subcategory?: string;
   description?: string;
-  gallery?: string[]; 
+  gallery?: string[];
+  srcUrl?: string | null;
 };
 
 type ProductCardProps = {
@@ -18,10 +18,11 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ data }: ProductCardProps) => {
-  // Fallback image if gallery is null or undefined
-  const imageUrl = data.gallery
-    ? `/downloaded_images(1)/downloaded_images/${data.gallery}`
-    : "/images/placeholder.png";
+  // Use the first image in gallery or fallback
+  const imageUrl =
+    data.gallery && data.gallery.length > 0
+      ? data.gallery[0]
+      : "/images/placeholder.png";
 
   const productSlug = data.title
     ? data.title.split(" ").join("-")

@@ -25,33 +25,36 @@ async function fetchProductById(id: number): Promise<Product | null> {
 // Function to fix image URLs for downloaded_images directory
 function fixImagePaths(product: Product): Product {
   const fixUrl = (url: string | undefined): string => {
-    if (!url) return '/images/placeholder1111111111111111.jpg';
-    
-    // If it's already a valid URL or starts with /, return as is
-    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/')) {
+    if (!url) return "/images/placeholder1111111111111111.jpg";
+
+    if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("/")) {
       return url;
     }
-    
-    // If it's a filename without path, add the downloaded_images path
-    if (!url.includes('/') && !url.includes('\\')) {
+
+    if (!url.includes("/") && !url.includes("\\")) {
       return `/downloaded_images(1)/downloaded_images/${url}`;
     }
-    
-    // If it has a partial path but not the full one, fix it
-    if (url.includes('downloaded_images') && !url.startsWith('/downloaded_images(1)/downloaded_images/')) {
-      return url.replace(/.*downloaded_images[^/]*/, '/downloaded_images(1)/downloaded_images');
+
+    if (
+      url.includes("downloaded_images") &&
+      !url.startsWith("/downloaded_images(1)/downloaded_images/")
+    ) {
+      return url.replace(
+        /.*downloaded_images[^/]*/,
+        "/downloaded_images(1)/downloaded_images"
+      );
     }
-    
-    // Default case - assume it's a filename that needs the full path
+
     return `/downloaded_images(1)/downloaded_images/${url}`;
   };
 
   return {
     ...product,
-    srcUrl: product.gallery?.[0] || [],
+   srcUrl: product.gallery?.[0] ? fixUrl(product.gallery[0]) : "/images/placeholder.png",
     gallery: product.gallery?.map(fixUrl) || [],
   };
 }
+
 
 export default async function ProductPage({
   params,
