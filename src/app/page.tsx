@@ -24,9 +24,8 @@ export default async function Home() {
 
   try {
     // For Server Components, we need to use an absolute URL
-    const baseUrl = process.env.NODE_ENV === 'production' 
-      ? process.env.NEXT_PUBLIC_APP_URL 
-      : 'http://localhost:3000';
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
+
     
     const apiUrl = `${baseUrl}/api/products?category=all`;
     console.log('📡 Making request to:', apiUrl);
