@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../lib/dbConnect";
 import Product from "../../app/models/Product";
-import mongoose from "mongoose";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   console.log("📩 Incoming request:", req.method, req.query);
@@ -11,18 +10,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await dbConnect();
     console.log("✅ MongoDB connected successfully");
 
-    // Debug: List all collections
-    // const collections = await mongoose.connection.db.listCollections().toArray();
-    // console.log("📋 Available collections:", collections.map(c => c.name));
-    
-    // // Check if our target collection exists
-    // const targetCollection = "products";
-    // const collectionExists = collections.some(c => c.name === targetCollection);
-    // console.log(`🔍 Collection '${targetCollection}' exists:`, collectionExists);
-
     if (req.method === "GET") {
-      const { id, category } = req.query;
-      console.log("📌 Query params -> id:", id, "category:", category);
+      const { id, category, subcategory } = req.query;
+      console.log("📌 Query params -> id:", id, "category:", category, "subcategory:", subcategory);
 
       if (id) {
         console.log("🔍 Searching for product with id:", id);
@@ -45,17 +35,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         console.log("📂 Searching for products in category:", formattedCategory);
 
-        if (formattedCategory === "all") {
-          const products = await Product.find();
-          console.log(`✅ Retrieved ${products.length} total products`);
-          return res.status(200).json({ message: "All products retrieved successfully", products });
-        } else {
-          const products = await Product.find({
-            category: { $regex: new RegExp(formattedCategory, "i") },
-          });
-          console.log(`✅ Retrieved ${products.length} products for category:`, formattedCategory);
-          return res.status(200).json({ message: "Products retrieved successfully", products });
+        // Build query object
+        const query: any = {
+          category: { $regex: new RegExp(formattedCategory, "i") },
+        };
+
+        // Add subcategory filter if provided
+        if (subcategory) {
+          const formattedSubcategory = Array.isArray(subcategory)
+            ? subcategory[0].replace(/-/g, " ").toLowerCase().trim()
+            : subcategory.replace(/-/g, " ").toLowerCase().trim();
+          
+          // Fix: Use $in operator to match any value in the subcategory array
+          query.subcategory = { $in: [new RegExp(formattedSubcategory, "i")] };
+          console.log("🔍 Filtering by subcategory:", formattedSubcategory);
         }
+
+        const products = await Product.find(query);
+        console.log(`✅ Retrieved ${products.length} products for category:`, formattedCategory);
+        return res.status(200).json({ message: "Products retrieved successfully", products });
       }
 
       console.log("📂 Fetching all products (no id/category provided)");

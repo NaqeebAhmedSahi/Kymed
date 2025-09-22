@@ -16,6 +16,7 @@ import ResTopNavbar from "./ResTopNavbar";
 import CartBtn from "./CartBtn";
 
 // Updated menu data with multiple clickable links inside descriptions
+// Updated menu data with proper links that include both category and subcategory
 const data: NavMenu = [
   {
     id: 0,
@@ -35,34 +36,32 @@ const data: NavMenu = [
         url: "/shop/general-surgery",
         description: (
           <>
-            <Link href="/shop/scalpels" className="text-gray-400 hover:underline">
+            <Link href="/shop/general-surgery?subcategory=scalpels" className="text-gray-400 hover:underline">
               Scalpels
             </Link>
             <br />
-            <Link href="/shop/forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/general-surgery?subcategory=forceps" className="text-gray-400 hover:underline">
               Forceps
             </Link>
             <br />
-            <Link href="/shop/surgical-scissors" className="text-gray-400 hover:underline">
+            <Link href="/shop/general-surgery?subcategory=surgical-scissors" className="text-gray-400 hover:underline">
               Surgical Scissors
             </Link>
             <br />
-            <Link href="/shop/retractors" className="text-gray-400 hover:underline">
+            <Link href="/shop/general-surgery?subcategory=retractors" className="text-gray-400 hover:underline">
               Retractors
             </Link>
             <br />
-            <Link href="/shop/scalpel-handles" className="text-gray-400 hover:underline">
+            <Link href="/shop/general-surgery?subcategory=scalpel-handles" className="text-gray-400 hover:underline">
               Scalpel Handles
             </Link>
             <br />
             <Link
-              href="/shop/needle-holders"
+              href="/shop/general-surgery"
               className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
             >
               View All
             </Link>
-
-
           </>
         ),
       },
@@ -72,28 +71,28 @@ const data: NavMenu = [
         url: "/shop/dental-instruments",
         description: (
           <>
-            <Link href="/shop/extraction-forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/dental-instruments?subcategory=extraction-forceps" className="text-gray-400 hover:underline">
               Extraction Forceps
             </Link>
             <br />
-            <Link href="/shop/dental-scissors" className="text-gray-400 hover:underline">
+            <Link href="/shop/dental-instruments?subcategory=dental-scissors" className="text-gray-400 hover:underline">
               Dental Scissors
             </Link>
             <br />
-            <Link href="/shop/dental-elevators" className="text-gray-400 hover:underline">
+            <Link href="/shop/dental-instruments?subcategory=dental-elevators" className="text-gray-400 hover:underline">
               Dental Elevators
             </Link>
             <br />
-            <Link href="/shop/orthodontic-cutters" className="text-gray-400 hover:underline">
+            <Link href="/shop/dental-instruments?subcategory=orthodontic-cutters" className="text-gray-400 hover:underline">
               Orthodontic Cutters and Pliers
             </Link>
             <br />
-            <Link href="/shop/dental-mirrors" className="text-gray-400 hover:underline">
+            <Link href="/shop/dental-instruments?subcategory=dental-mirrors" className="text-gray-400 hover:underline">
               Dental Mirrors
             </Link>
             <br />
             <Link
-              href="/shop/needle-holders"
+              href="/shop/dental-instruments"
               className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
             >
               View All
@@ -107,28 +106,28 @@ const data: NavMenu = [
         url: "/shop/electrosurgery",
         description: (
           <>
-            <Link href="/shop/bipolar-forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/electrosurgery?subcategory=bipolar-forceps" className="text-gray-400 hover:underline">
               Bipolar Forceps
             </Link>
             <br />
-            <Link href="/shop/bipolar-scissors" className="text-gray-400 hover:underline">
+            <Link href="/shop/electrosurgery?subcategory=bipolar-scissors" className="text-gray-400 hover:underline">
               Bipolar Scissors and Cables
             </Link>
             <br />
-            <Link href="/shop/diathermi-speculums" className="text-gray-400 hover:underline">
+            <Link href="/shop/electrosurgery?subcategory=diathermi-speculums" className="text-gray-400 hover:underline">
               Diathermi Speculums
             </Link>
             <br />
-            <Link href="/shop/diathermi-forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/electrosurgery?subcategory=diathermi-forceps" className="text-gray-400 hover:underline">
               Diathermi Forceps
             </Link>
             <br />
-            <Link href="/shop/diathermi-scissors" className="text-gray-400 hover:underline">
+            <Link href="/shop/electrosurgery?subcategory=diathermi-scissors" className="text-gray-400 hover:underline">
               Diathermi Scissors
             </Link>
             <br />
             <Link
-              href="/shop/needle-holders"
+              href="/shop/electrosurgery"
               className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
             >
               View All
@@ -142,28 +141,28 @@ const data: NavMenu = [
         url: "/shop/orthopedic-instruments",
         description: (
           <>
-            <Link href="/shop/bone-holding-forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/orthopedic-instruments?subcategory=bone-holding-forceps" className="text-gray-400 hover:underline">
               Bone Holding Forceps
             </Link>
             <br />
-            <Link href="/shop/bone-cutting-forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/orthopedic-instruments?subcategory=bone-cutting-forceps" className="text-gray-400 hover:underline">
               Bone Cutting Forceps
             </Link>
             <br />
-            <Link href="/shop/bone-rongeurs" className="text-gray-400 hover:underline">
+            <Link href="/shop/orthopedic-instruments?subcategory=bone-rongeurs" className="text-gray-400 hover:underline">
               Bone Rongeurs
             </Link>
             <br />
-            <Link href="/shop/chizzels" className="text-gray-400 hover:underline">
+            <Link href="/shop/orthopedic-instruments?subcategory=chizzels" className="text-gray-400 hover:underline">
               Chizzels
             </Link>
             <br />
-            <Link href="/shop/austiotomes" className="text-gray-400 hover:underline">
+            <Link href="/shop/orthopedic-instruments?subcategory=austiotomes" className="text-gray-400 hover:underline">
               Austiotomes
             </Link>
             <br />
             <Link
-              href="/shop/needle-holders"
+              href="/shop/orthopedic-instruments"
               className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
             >
               View All
@@ -177,33 +176,32 @@ const data: NavMenu = [
         url: "/shop/ophthalmic-instruments",
         description: (
           <>
-            <Link href="/shop/ophthalmic-scissors" className="text-gray-400 hover:underline">
+            <Link href="/shop/ophthalmic-instruments?subcategory=ophthalmic-scissors" className="text-gray-400 hover:underline">
               Ophthalmic Scissors
             </Link>
             <br />
-            <Link href="/shop/needle-holders" className="text-gray-400 hover:underline">
+            <Link href="/shop/ophthalmic-instruments?subcategory=needle-holders" className="text-gray-400 hover:underline">
               Needle Holders
             </Link>
             <br />
-            <Link href="/shop/picsation-forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/ophthalmic-instruments?subcategory=picsation-forceps" className="text-gray-400 hover:underline">
               Picsation Forceps
             </Link>
             <br />
-            <Link href="/shop/dissecting-forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/ophthalmic-instruments?subcategory=dissecting-forceps" className="text-gray-400 hover:underline">
               Dissecting Forceps
             </Link>
             <br />
-            <Link href="/shop/cilia-forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/ophthalmic-instruments?subcategory=cilia-forceps" className="text-gray-400 hover:underline">
               Cilia Forceps
             </Link>
             <br />
             <Link
-              href="/shop/needle-holders"
+              href="/shop/ophthalmic-instruments"
               className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
             >
               View All
             </Link>
-
           </>
         ),
       },
@@ -213,33 +211,32 @@ const data: NavMenu = [
         url: "/shop/ent-instruments",
         description: (
           <>
-            <Link href="/shop/laryngoscope" className="text-gray-400 hover:underline">
+            <Link href="/shop/ent-instruments?subcategory=laryngoscope" className="text-gray-400 hover:underline">
               Laryngoscope
             </Link>
             <br />
-            <Link href="/shop/mouth-gags" className="text-gray-400 hover:underline">
+            <Link href="/shop/ent-instruments?subcategory=mouth-gags" className="text-gray-400 hover:underline">
               Mouth Gags
             </Link>
             <br />
-            <Link href="/shop/nasal-forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/ent-instruments?subcategory=nasal-forceps" className="text-gray-400 hover:underline">
               Nasal Forceps
             </Link>
             <br />
-            <Link href="/shop/spaculum" className="text-gray-400 hover:underline">
+            <Link href="/shop/ent-instruments?subcategory=spaculum" className="text-gray-400 hover:underline">
               Spaculum
             </Link>
             <br />
-            <Link href="/shop/suction-tubes" className="text-gray-400 hover:underline">
+            <Link href="/shop/ent-instruments?subcategory=suction-tubes" className="text-gray-400 hover:underline">
               Suction Tubes
             </Link>
             <br />
             <Link
-              href="/shop/needle-holders"
+              href="/shop/ent-instruments"
               className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
             >
               View All
             </Link>
-
           </>
         ),
       },
@@ -249,28 +246,28 @@ const data: NavMenu = [
         url: "/shop/gynecology-instruments",
         description: (
           <>
-            <Link href="/shop/caesarean-forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/gynecology-instruments?subcategory=caesarean-forceps" className="text-gray-400 hover:underline">
               Caesarean Forceps
             </Link>
             <br />
-            <Link href="/shop/catheters" className="text-gray-400 hover:underline">
+            <Link href="/shop/gynecology-instruments?subcategory=catheters" className="text-gray-400 hover:underline">
               Catheters
             </Link>
             <br />
-            <Link href="/shop/lamps" className="text-gray-400 hover:underline">
+            <Link href="/shop/gynecology-instruments?subcategory=lamps" className="text-gray-400 hover:underline">
               Lamps
             </Link>
             <br />
-            <Link href="/shop/depressors" className="text-gray-400 hover:underline">
+            <Link href="/shop/gynecology-instruments?subcategory=depressors" className="text-gray-400 hover:underline">
               Depressors
             </Link>
             <br />
-            <Link href="/shop/dilators" className="text-gray-400 hover:underline">
+            <Link href="/shop/gynecology-instruments?subcategory=dilators" className="text-gray-400 hover:underline">
               Dilators
             </Link>
             <br />
             <Link
-              href="/shop/needle-holders"
+              href="/shop/gynecology-instruments"
               className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
             >
               View All
@@ -278,35 +275,34 @@ const data: NavMenu = [
           </>
         ),
       },
-
       {
         id: 21,
         label: "Cardioendthoracic Instruments",
         url: "/shop/cardioendthoracic-instruments",
         description: (
           <>
-            <Link href="/shop/atrial-clamps" className="text-gray-400 hover:underline">
+            <Link href="/shop/cardioendthoracic-instruments?subcategory=atrial-clamps" className="text-gray-400 hover:underline">
               Atrial Clamps
             </Link>
             <br />
-            <Link href="/shop/forceps" className="text-gray-400 hover:underline">
+            <Link href="/shop/cardioendthoracic-instruments?subcategory=forceps" className="text-gray-400 hover:underline">
               Forceps
             </Link>
             <br />
-            <Link href="/shop/needle-holders" className="text-gray-400 hover:underline">
+            <Link href="/shop/cardioendthoracic-instruments?subcategory=needle-holders" className="text-gray-400 hover:underline">
               Needle Holders
             </Link>
             <br />
-            <Link href="/shop/retractors" className="text-gray-400 hover:underline">
+            <Link href="/shop/cardioendthoracic-instruments?subcategory=retractors" className="text-gray-400 hover:underline">
               Retractors
             </Link>
             <br />
-            <Link href="/shop/rib-shears" className="text-gray-400 hover:underline">
+            <Link href="/shop/cardioendthoracic-instruments?subcategory=rib-shears" className="text-gray-400 hover:underline">
               Rib Shears
             </Link>
             <br />
             <Link
-              href="/shop/needle-holders"
+              href="/shop/cardioendthoracic-instruments"
               className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
             >
               View All
@@ -314,7 +310,6 @@ const data: NavMenu = [
           </>
         ),
       }
-
     ],
   },
   {
