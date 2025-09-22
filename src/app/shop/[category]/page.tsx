@@ -29,7 +29,7 @@ const productsPerPage = 9;
 
 export default function ShopPage({ params }: { params: { category: string } }) {
   const searchParams = useSearchParams();
-  const subcategory = searchParams.get("subcategory");
+  const subcategory = searchParams?.get("subcategory") || null;
   
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -65,8 +65,8 @@ export default function ShopPage({ params }: { params: { category: string } }) {
         const data = await response.json();
         setProducts(data.products);
         setActiveFilters({
-          category: data.filters.category || category,
-          subcategory: data.filters.subcategory || ""
+          category: data.filters?.category || category,
+          subcategory: data.filters?.subcategory || ""
         });
       } catch (error) {
         console.error("Error fetching products:", error);
