@@ -82,7 +82,7 @@ const data = [
     id: 2,
     type: "MenuItem",
     label: "Brochure",
-    url: "/brochure",
+    url: "/brochures",
     children: [],
   },
   {
