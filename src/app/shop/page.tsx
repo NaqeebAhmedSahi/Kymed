@@ -32,7 +32,7 @@ export default function ShopPage({ params }: { params: { category: string } }) {
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const subcategory = searchParams.get("subcategory"); // Get subcategory from query params
+  const subcategory = searchParams?.get("subcategory") || null;
 
   useEffect(() => {
     // Only proceed if category exists in the URL
@@ -110,7 +110,7 @@ export default function ShopPage({ params }: { params: { category: string } }) {
             <div className="flex flex-col lg:flex-row lg:justify-between">
               <h1 className="font-bold text-2xl md:text-[32px]">{getPageTitle()}</h1>
               <div className="flex items-center">
-                Srt by:
+                Sort by:
                 <Select defaultValue="most-popular">
                   <SelectTrigger className="font-medium text-sm px-1.5 sm:text-base w-fit">
                     <SelectValue />
