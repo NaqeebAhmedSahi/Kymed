@@ -78,9 +78,9 @@ export default async function Home() {
         <div className="max-w-frame mx-auto px-4 xl:px-0">
           <hr className="h-[1px] border-t-black/10 my-10 sm:my-16" />
         </div>
-        <div className="mb-[50px] sm:mb-20">
+        {/* <div className="mb-[50px] sm:mb-20">
           <ProductListSec title="TOP SELLING" data={topSelling} viewAllLink="/shop/all" />
-        </div>
+        </div> */}
         {/* Add the Why Choose Us section here */}
         <div className="mb-[50px] sm:mb-20">
           <WhyChooseUs />

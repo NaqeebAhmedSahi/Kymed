@@ -29,32 +29,42 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
 
       if (category) {
-        const formattedCategory = Array.isArray(category)
-          ? category[0].replace(/-/g, " ").toLowerCase().trim()
-          : category.replace(/-/g, " ").toLowerCase().trim();
+  const formattedCategory = Array.isArray(category)
+    ? category[0].replace(/-/g, " ").toLowerCase().trim()
+    : category.replace(/-/g, " ").toLowerCase().trim();
 
-        console.log("📂 Searching for products in category:", formattedCategory);
+  console.log("📂 Searching for products in category:", formattedCategory);
 
-        // Build query object
-        const query: any = {
-          category: { $regex: new RegExp(formattedCategory, "i") },
-        };
+  // Special case: category=all → return all products
+  if (formattedCategory === "all") {
+    const products = await Product.find();
+    console.log(`✅ Retrieved ${products.length} products (all categories)`);
+    return res.status(200).json({
+      message: "All products retrieved successfully",
+      products,
+    });
+  }
 
-        // Add subcategory filter if provided
-        if (subcategory) {
-          const formattedSubcategory = Array.isArray(subcategory)
-            ? subcategory[0].replace(/-/g, " ").toLowerCase().trim()
-            : subcategory.replace(/-/g, " ").toLowerCase().trim();
-          
-          // Fix: Use $in operator to match any value in the subcategory array
-          query.subcategory = { $in: [new RegExp(formattedSubcategory, "i")] };
-          console.log("🔍 Filtering by subcategory:", formattedSubcategory);
-        }
+  // Build query object for specific category
+  const query: any = {
+    category: { $regex: new RegExp(formattedCategory, "i") },
+  };
 
-        const products = await Product.find(query);
-        console.log(`✅ Retrieved ${products.length} products for category:`, formattedCategory);
-        return res.status(200).json({ message: "Products retrieved successfully", products });
-      }
+  // Add subcategory filter if provided
+  if (subcategory) {
+    const formattedSubcategory = Array.isArray(subcategory)
+      ? subcategory[0].replace(/-/g, " ").toLowerCase().trim()
+      : subcategory.replace(/-/g, " ").toLowerCase().trim();
+
+    query.subcategory = { $in: [new RegExp(formattedSubcategory, "i")] };
+    console.log("🔍 Filtering by subcategory:", formattedSubcategory);
+  }
+
+  const products = await Product.find(query);
+  console.log(`✅ Retrieved ${products.length} products for category:`, formattedCategory);
+  return res.status(200).json({ message: "Products retrieved successfully", products });
+}
+
 
       console.log("📂 Fetching all products (no id/category provided)");
       const products = await Product.find();
