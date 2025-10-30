@@ -1,64 +1,103 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { integralCF } from "@/styles/fonts";
 
 const Brands = () => {
   return (
-    <div className="bg-gradient-to-b from-blue-950 via-black to-blue-950 text-white py-16">
-      <div className="max-w-6xl mx-auto px-6 md:px-0 flex flex-col md:flex-row items-center justify-between">
-        {/* Text Content */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center md:text-left md:w-1/2 px-10"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-green-400">
-            Saluvia Industries – Precision You Can Trust
-          </h2>
-          <p className="text-sm md:text-lg text-gray-300 leading-relaxed mb-6 md:mr-20">
-            At <span className="text-green-500 font-semibold">Saluvia Industries</span>, we manufacture a *comprehensive range of surgical, dental, and electrosurgical instruments, engineered for **accuracy, durability, and performance*.
-          </p>
-          <p className="text-sm md:text-lg text-gray-300 leading-relaxed mb-6 md:mr-20">
-            With a commitment to *innovation and quality, our instruments are relied upon by **healthcare professionals globally* to deliver *exceptional results* in every procedure.
-          </p>
-           <p className="text-sm md:text-lg text-gray-300 leading-relaxed md:mr-20">
-            From *core surgical tools* to *specialized dental and electrosurgical devices, Saluvia Industries upholds the **highest manufacturing standards* to support *optimal patient care and clinical excellence*.
-          </p>
-        </motion.div>
+    <div className="relative min-h-screen bg-[#020817] text-white py-20 overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,0.8),rgba(0,0,0,0.9))]" />
+        <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-20" />
+      </div>
 
-        {/* Image Container */}
-        <div className="relative mt-10 md:mt-0 md:w-1/2">
-          {/* First Image (Slides from the right with shadow effect) */}
+      {/* Main Content */}
+      <div className="relative max-w-[1400px] mx-auto px-4 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
-            className="relative z-0"
+            className="text-center lg:text-left space-y-8"
           >
-            <img
-              src="/images/picture01.jpg" // Replace with actual image path
-              alt="Saluvia Industries Surgical Instruments"
-              className="w-full h-[280px] md:h-[350px] rounded-lg shadow-2xl object-cover filter brightness-75"
-            />
+            <div className="inline-block">
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+                className="h-1 bg-gradient-to-r from-green-400 to-blue-500 mb-6"
+              />
+              <h2 className={cn("text-5xl lg:text-7xl font-bold tracking-tighter bg-gradient-to-r from-green-300 via-green-400 to-blue-400 bg-clip-text text-transparent", integralCF.className)}>
+                Saluvia Industries
+              </h2>
+              <h3 className={cn("text-2xl lg:text-3xl mt-3 text-gray-400", integralCF.className)}>
+                Precision You Can Trust
+              </h3>
+            </div>
+            
+            <div className="space-y-6 text-gray-300">
+              <p className="text-lg lg:text-xl leading-relaxed">
+                At <span className="text-green-400 font-semibold">Saluvia Industries</span>, we manufacture a comprehensive range of surgical, dental, and electrosurgical instruments, engineered for accuracy, durability, and performance.
+              </p>
+              <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent my-8" />
+              <p className="text-lg lg:text-xl leading-relaxed">
+                With a commitment to innovation and quality, our instruments are relied upon by healthcare professionals globally to deliver exceptional results in every procedure.
+              </p>
+              <p className="text-lg lg:text-xl leading-relaxed">
+                From core surgical tools to specialized dental and electrosurgical devices, Saluvia Industries upholds the highest manufacturing standards to support optimal patient care and clinical excellence.
+              </p>
+            </div>
           </motion.div>
 
-          {/* Second Image (Slides from the left with staggered delay) */}
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: -10 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: "easeInOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="absolute z-10 -bottom-12 -left-12 w-3/4 md:w-2/3"
-          >
-            <img
-              src="/images/picture02.jpg" // Replace with actual image path
-              alt="Saluvia Industries Precision Instruments"
-              className="w-full h-[220px] md:h-[280px] rounded-lg shadow-lg object-cover"
-            />
-          </motion.div>
+          {/* Image Container */}
+          <div className="relative lg:ml-12">
+            {/* Floating Elements */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-green-500/10 via-blue-500/10 to-green-500/10 blur-3xl" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-green-500/5 to-blue-500/5 rounded-[2rem]" />
+            
+            {/* Main Image Group */}
+            <div className="relative grid grid-cols-12 gap-4">
+              {/* First Image */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="col-span-8 relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-[2rem] blur-xl transform -rotate-3" />
+                <div className="relative bg-gradient-to-br from-green-500/10 to-blue-500/10 p-1 rounded-[2rem] backdrop-blur-sm">
+                  <img
+                    src="/images/picture01.jpg"
+                    alt="Saluvia Industries Surgical Instruments"
+                    className="w-full h-[400px] lg:h-[500px] rounded-[1.8rem] object-cover shadow-2xl transform hover:scale-[1.02] hover:-rotate-2 transition-all duration-700"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Second Image */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="col-span-6 col-start-6 row-start-1 relative z-10 mt-32"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-green-500/20 rounded-[2rem] blur-xl transform rotate-3" />
+                <div className="relative bg-gradient-to-br from-blue-500/10 to-green-500/10 p-1 rounded-[2rem] backdrop-blur-sm">
+                  <img
+                    src="/images/picture02.jpg"
+                    alt="Saluvia Industries Precision Instruments"
+                    className="w-full h-[300px] lg:h-[400px] rounded-[1.8rem] object-cover shadow-2xl transform hover:scale-[1.02] hover:rotate-2 transition-all duration-700"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

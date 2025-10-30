@@ -33,34 +33,37 @@ const data: NavMenu = [
       {
         id: 11,
         label: "General Surgery",
-        url: "/shop/general-surgery",
+        url: "/categories/general-surgery",
         description: (
           <>
-            <Link href="/shop/general-surgery?subcategory=scalpels" className="text-gray-400 hover:underline">
-              Scalpels
+            <Link href="/categories/general-surgery" className="font-semibold text-black hover:text-gray-700 block mb-2">
+              General Surgery
             </Link>
-            <br />
-            <Link href="/shop/general-surgery?subcategory=forceps" className="text-gray-400 hover:underline">
-              Forceps
-            </Link>
-            <br />
-            <Link href="/shop/general-surgery?subcategory=surgical-scissors" className="text-gray-400 hover:underline">
-              Surgical Scissors
-            </Link>
-            <br />
-            <Link href="/shop/general-surgery?subcategory=retractors" className="text-gray-400 hover:underline">
-              Retractors
-            </Link>
-            <br />
-            <Link href="/shop/general-surgery?subcategory=scalpel-handles" className="text-gray-400 hover:underline">
-              Scalpel Handles
-            </Link>
-            <br />
+            <div className="space-y-1">
+              <Link href="/shop/general-surgery/scalpels" className="text-gray-500 hover:text-gray-700 block">
+                Scalpels
+              </Link>
+              <Link href="/shop/general-surgery/forceps" className="text-gray-500 hover:text-gray-700 block">
+                Forceps
+              </Link>
+              <Link href="/shop/general-surgery/surgical-scissors" className="text-gray-500 hover:text-gray-700 block">
+                Surgical Scissors
+              </Link>
+              <Link href="/shop/general-surgery/retractors" className="text-gray-500 hover:text-gray-700 block">
+                Retractors
+              </Link>
+              <Link href="/shop/general-surgery/scalpel-handles" className="text-gray-500 hover:text-gray-700 block">
+                Scalpel Handles
+              </Link>
+            </div>
             <Link
-              href="/shop/general-surgery"
-              className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
+              href="/categories/general-surgery"
+              className="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800 font-medium"
             >
-              View All
+              View All Products
+              <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+              </svg>
             </Link>
           </>
         ),
@@ -68,34 +71,37 @@ const data: NavMenu = [
       {
         id: 14,
         label: "Dental Instruments",
-        url: "/shop/dental-instruments",
+        url: "/categories/dental",
         description: (
           <>
-            <Link href="/shop/dental-instruments?subcategory=extraction-forceps" className="text-gray-400 hover:underline">
-              Extraction Forceps
+            <Link href="/categories/dental" className="font-semibold text-black hover:text-gray-700 block mb-2">
+              Dental Instruments
             </Link>
-            <br />
-            <Link href="/shop/dental-instruments?subcategory=dental-scissors" className="text-gray-400 hover:underline">
-              Dental Scissors
-            </Link>
-            <br />
-            <Link href="/shop/dental-instruments?subcategory=dental-elevators" className="text-gray-400 hover:underline">
-              Dental Elevators
-            </Link>
-            <br />
-            <Link href="/shop/dental-instruments?subcategory=orthodontic-cutters" className="text-gray-400 hover:underline">
-              Orthodontic Cutters and Pliers
-            </Link>
-            <br />
-            <Link href="/shop/dental-instruments?subcategory=dental-mirrors" className="text-gray-400 hover:underline">
-              Dental Mirrors
-            </Link>
-            <br />
+            <div className="space-y-1">
+              <Link href="/shop/dental/extraction-forceps" className="text-gray-500 hover:text-gray-700 block">
+                Extraction Forceps
+              </Link>
+              <Link href="/shop/dental/dental-scissors" className="text-gray-500 hover:text-gray-700 block">
+                Dental Scissors
+              </Link>
+              <Link href="/shop/dental/dental-elevators" className="text-gray-500 hover:text-gray-700 block">
+                Dental Elevators
+              </Link>
+              <Link href="/shop/dental/orthodontic-cutters" className="text-gray-500 hover:text-gray-700 block">
+                Orthodontic Cutters and Pliers
+              </Link>
+              <Link href="/shop/dental/dental-mirrors" className="text-gray-500 hover:text-gray-700 block">
+                Dental Mirrors
+              </Link>
+            </div>
             <Link
-              href="/shop/dental-instruments"
-              className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
+              href="/categories/dental"
+              className="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800 font-medium"
             >
-              View All
+              View All Products
+              <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+              </svg>
             </Link>
           </>
         ),
@@ -103,34 +109,37 @@ const data: NavMenu = [
       {
         id: 16,
         label: "Electrosurgery",
-        url: "/shop/electrosurgery",
+        url: "/categories/electrosurgery",
         description: (
           <>
-            <Link href="/shop/electrosurgery?subcategory=bipolar-forceps" className="text-gray-400 hover:underline">
-              Bipolar Forceps
+            <Link href="/categories/electrosurgery" className="font-semibold text-black hover:text-gray-700 block mb-2">
+              Electrosurgery
             </Link>
-            <br />
-            <Link href="/shop/electrosurgery?subcategory=bipolar-scissors" className="text-gray-400 hover:underline">
-              Bipolar Scissors and Cables
-            </Link>
-            <br />
-            <Link href="/shop/electrosurgery?subcategory=diathermi-speculums" className="text-gray-400 hover:underline">
-              Diathermi Speculums
-            </Link>
-            <br />
-            <Link href="/shop/electrosurgery?subcategory=diathermi-forceps" className="text-gray-400 hover:underline">
-              Diathermi Forceps
-            </Link>
-            <br />
-            <Link href="/shop/electrosurgery?subcategory=diathermi-scissors" className="text-gray-400 hover:underline">
-              Diathermi Scissors
-            </Link>
-            <br />
+            <div className="space-y-1">
+              <Link href="/shop/electrosurgery/bipolar-forceps" className="text-gray-500 hover:text-gray-700 block">
+                Bipolar Forceps
+              </Link>
+              <Link href="/shop/electrosurgery/bipolar-scissors" className="text-gray-500 hover:text-gray-700 block">
+                Bipolar Scissors and Cables
+              </Link>
+              <Link href="/shop/electrosurgery/diathermi-speculums" className="text-gray-500 hover:text-gray-700 block">
+                Diathermi Speculums
+              </Link>
+              <Link href="/shop/electrosurgery/diathermi-forceps" className="text-gray-500 hover:text-gray-700 block">
+                Diathermi Forceps
+              </Link>
+              <Link href="/shop/electrosurgery/diathermi-scissors" className="text-gray-500 hover:text-gray-700 block">
+                Diathermi Scissors
+              </Link>
+            </div>
             <Link
-              href="/shop/electrosurgery"
-              className="text-gray-700 hover:text-gray-900 hover:underline font-medium text-lg py-2 "
+              href="/categories/electrosurgery"
+              className="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800 font-medium"
             >
-              View All
+              View All Products
+              <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+              </svg>
             </Link>
           </>
         ),
@@ -315,12 +324,19 @@ const data: NavMenu = [
   {
     id: 2,
     type: "MenuItem",
+    label: "Categories",
+    url: "/categories",
+    children: [],
+  },
+  {
+    id: 3,
+    type: "MenuItem",
     label: "Brochure",
     url: "/brochures",
     children: [],
   },
   {
-    id: 3,
+    id: 4,
     type: "MenuItem",
     label: "About",
     url: "/about",

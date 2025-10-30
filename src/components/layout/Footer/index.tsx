@@ -81,12 +81,19 @@ const data = [
   {
     id: 2,
     type: "MenuItem",
+    label: "Categories",
+    url: "/categories",
+    children: [],
+  },
+  {
+    id: 3,
+    type: "MenuItem",
     label: "Brochure",
     url: "/brochures",
     children: [],
   },
   {
-    id: 3,
+    id: 4,
     type: "MenuItem",
     label: "About",
     url: "/about",

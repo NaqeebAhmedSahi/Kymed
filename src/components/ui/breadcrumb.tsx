@@ -11,7 +11,11 @@ const Breadcrumb = React.forwardRef<
   React.ComponentPropsWithoutRef<"nav"> & {
     separator?: React.ReactNode;
   }
->(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
+>(({ children, ...props }, ref) => (
+  <nav ref={ref} aria-label="breadcrumb" {...props}>
+    {children}
+  </nav>
+));
 Breadcrumb.displayName = "Breadcrumb";
 
 const BreadcrumbList = React.forwardRef<

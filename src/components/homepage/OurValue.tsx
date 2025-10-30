@@ -1,133 +1,134 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaCertificate, FaChartLine, FaHandshake } from "react-icons/fa";
 import * as motion from "framer-motion/client";
+import { cn } from "@/lib/utils";
+import { integralCF } from "@/styles/fonts";
 
 const OurValue = () => {
-  // State to check if the component is in view
-  const [isInView, setIsInView] = useState(false);
-
-  useEffect(() => {
-    // Handle scroll events to detect if the component is in view
-    const handleScroll = () => {
-      const component = document.getElementById("our-value-section");
-      if (component) {
-        const rect = component.getBoundingClientRect();
-        // If the element is at least 50% visible in the viewport
-        if (rect.top <= window.innerHeight * 0.5) {
-          setIsInView(true);
-        }
-      }
-    };
-
-    // Attach the scroll event listener
-    window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <section
-      id="our-value-section"
-      className="bg-gradient-to-b from-blue-950 via-black to-blue-950 text-white py-20 px-5 md:px-10 lg:px-20"
-    >
+    <section className="relative bg-[#020817] text-white py-24 overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,0.8),rgba(0,0,0,0.9))]" />
+        <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-20" />
+      </div>
+
       <motion.div
-        className="max-w-7xl mx-auto"
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         initial={{ opacity: 0 }}
-        animate={{ opacity: isInView ? 1 : 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
         transition={{ duration: 1 }}
       >
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: isInView ? 0 : -50, opacity: isInView ? 1 : 0 }}
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight">Our Core Values</h2>
-          <p className="mt-4 text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
-            Excellence. Commitment. Trust.
-          </p>
-          <p className="mt-4 text-gray-300 text-md max-w-4xl mx-auto">
-            At Saluvia Industries, our values are the foundation of everything we do—from product development to customer service. We're driven by a passion for precision and a promise to deliver dependable quality.
-          </p>
-          <hr className="mt-6 border-t-2 border-gray-700 mx-auto w-20" />
+          <div className="inline-block">
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              className="h-1 bg-gradient-to-r from-green-400 to-blue-500 mb-6"
+            />
+            <h2 className={cn("text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-br from-white via-green-200 to-green-400 bg-clip-text text-transparent mb-6", integralCF.className)}>
+              Our Core Values
+            </h2>
+            <div className="space-y-4">
+              <p className={cn("text-2xl md:text-3xl text-green-400", integralCF.className)}>
+                Excellence. Commitment. Trust.
+              </p>
+              <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                At Saluvia Industries, our values are the foundation of everything we do—from product development to customer service. We're driven by a passion for precision and a promise to deliver dependable quality.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* Values Section */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isInView ? 1 : 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-        >
-          {/* Quality */}
-          <motion.div
-            className="bg-gray-800 p-8 rounded-lg text-center hover:bg-gray-700 transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isInView ? 1 : 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <FaCertificate className="text-4xl text-green-500 mx-auto mb-6" />
-            <h3 className="text-2xl font-semibold mb-4">Quality</h3>
-            <p className="text-gray-300">
-              We are committed to manufacturing instruments that meet the highest standards of performance and reliability, ensuring consistent results in every procedure.
-            </p>
-          </motion.div>
-
-          {/* Progress */}
-          <motion.div
-            className="bg-gray-800 p-8 rounded-lg text-center hover:bg-gray-700 transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isInView ? 1 : 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <FaChartLine className="text-4xl text-blue-400 mx-auto mb-6" />
-            <h3 className="text-2xl font-semibold mb-4">Progress</h3>
-            <p className="text-gray-300">
-              We continually refine our processes, adopt advanced methods, and stay ahead of industry needs—striving to improve and adapt without compromising on quality or tradition.
-            </p>
-          </motion.div>
-
-          {/* Integrity */}
-          <motion.div
-            className="bg-gray-800 p-8 rounded-lg text-center hover:bg-gray-700 transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isInView ? 1 : 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <FaHandshake className="text-4xl text-yellow-400 mx-auto mb-6" />
-            <h3 className="text-2xl font-semibold mb-4">Integrity</h3>
-            <p className="text-gray-300">
-              We operate with honesty, accountability, and ethical responsibility, building lasting relationships based on transparency and respect.
-            </p>
-          </motion.div>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          {[
+            {
+              icon: <FaCertificate className="w-12 h-12" />,
+              title: "Quality",
+              color: "from-green-500 to-emerald-600",
+              description: "We are committed to manufacturing instruments that meet the highest standards of performance and reliability, ensuring consistent results in every procedure."
+            },
+            {
+              icon: <FaChartLine className="w-12 h-12" />,
+              title: "Progress",
+              color: "from-blue-500 to-cyan-600",
+              description: "We continually refine our processes, adopt advanced methods, and stay ahead of industry needs—striving to improve and adapt without compromising on quality or tradition."
+            },
+            {
+              icon: <FaHandshake className="w-12 h-12" />,
+              title: "Integrity",
+              color: "from-yellow-500 to-amber-600",
+              description: "We operate with honesty, accountability, and ethical responsibility, building lasting relationships based on transparency and respect."
+            }
+          ].map((value, index) => (
+            <motion.div
+              key={value.title}
+              className="relative group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+              <div className={cn("absolute -inset-4 bg-gradient-to-br opacity-0 group-hover:opacity-100 rounded-3xl blur-xl transition-all duration-500", value.color)} />
+              <div className="relative h-full p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm group-hover:border-green-500/50 transition-all duration-500">
+                <div className={cn("inline-flex p-4 rounded-xl bg-gradient-to-br opacity-80 group-hover:opacity-100 transition-opacity duration-500", value.color)}>
+                  <div className="text-white">
+                    {value.icon}
+                  </div>
+                </div>
+                <h3 className={cn("text-2xl font-bold mt-6 mb-4 text-white group-hover:text-green-400 transition-colors duration-300", integralCF.className)}>
+                  {value.title}
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Call to Action */}
         <motion.div
-          className="text-center mt-20 bg-gray-800 py-10 px-5 md:px-10 lg:px-20 rounded-lg"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isInView ? 1 : 0 }}
+          className="relative"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-green-500 mb-4">
-            Ready to Experience Our Core Values?
-          </h3>
-          <p className="text-lg mb-6 text-gray-300">
-            See how our commitment to quality, progress, and integrity shapes everything we do.
-            Let's build better outcomes—together.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block bg-green-600 text-white font-medium py-3 px-6 rounded-lg hover:bg-green-700 transition-all duration-300"
-          >
-            Get in Touch
-          </a>
+          <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-blue-500/20 to-green-500/20 blur-3xl opacity-50" />
+          <div className="relative rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-600/90 to-emerald-700/90" />
+            <div className="relative py-16 px-8 md:px-16 text-center">
+              <h3 className={cn("text-4xl md:text-5xl font-bold mb-6 text-white", integralCF.className)}>
+                Ready to Experience Our Core Values?
+              </h3>
+              <p className="text-xl text-gray-100 mb-10 max-w-3xl mx-auto">
+                See how our commitment to quality, progress, and integrity shapes everything we do.
+                Let's build better outcomes—together.
+              </p>
+              <a
+                href="/contact"
+                className="inline-flex items-center px-8 py-4 text-lg font-medium text-green-700 bg-white rounded-xl hover:bg-gray-50 transform hover:scale-[1.02] transition-all duration-300 shadow-xl hover:shadow-white/25"
+              >
+                Get in Touch
+                <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </section>
