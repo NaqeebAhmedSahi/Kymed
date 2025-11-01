@@ -27,7 +27,7 @@ export default async function Home() {
       category.subcategories?.forEach(subcat => {
         subcat.products?.forEach(product => {
           products.push({
-            id: product.id, // keep as string
+            id: typeof product.id === "string" ? parseInt(product.id.replace(/\D/g, "")) : product.id,
             title: product.name,
             srcUrl: product.image || "",
             gallery: product.galleryImages || [],
@@ -51,7 +51,8 @@ export default async function Home() {
     categories.forEach(category => {
       category.subcategories?.forEach(subcat => {
         subcat.products?.forEach(prod => {
-          if (prod.id === product.id && prod.newArrival === true) {
+          const prodIdNum = typeof prod.id === "string" ? parseInt(prod.id.replace(/\D/g, "")) : prod.id;
+          if (prodIdNum === product.id && prod.newArrival === true) {
             found = true;
           }
         });
@@ -64,7 +65,8 @@ export default async function Home() {
     categories.forEach(category => {
       category.subcategories?.forEach(subcat => {
         subcat.products?.forEach(prod => {
-          if (prod.id === product.id && prod.topSelling === true) {
+          const prodIdNum = typeof prod.id === "string" ? parseInt(prod.id.replace(/\D/g, "")) : prod.id;
+          if (prodIdNum === product.id && prod.topSelling === true) {
             found = true;
           }
         });
