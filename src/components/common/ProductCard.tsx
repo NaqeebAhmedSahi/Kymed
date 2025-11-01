@@ -18,19 +18,28 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ data }: ProductCardProps) => {
-  // Use the first image in gallery or fallback
-  const imageUrl =
-    data.gallery && data.gallery.length > 0
-      ? `/downloaded_images(1)/downloaded_images/${data.gallery}`
-      : "/images/placeholder.png";
+  // Use the first image in gallery, then srcUrl, then fallback
+  let imageUrl = "";
+  if (data.gallery && data.gallery.length > 0) {
+    imageUrl = data.gallery[0];
+  } else if (data.srcUrl) {
+    imageUrl = data.srcUrl;
+  } else {
+    imageUrl = "/images/no-image.png"; // Make sure this file exists in public/images
+  }
 
   const productSlug = data.title
     ? data.title.split(" ").join("-")
     : "product";
 
+  // Build URL: /shop/{category}/{subcategory}/{id}
+  const categorySlug = data.category ? data.category.split(" ").join("-").toLowerCase() : "";
+  const subcategorySlug = data.subcategory ? data.subcategory.split(" ").join("-").toLowerCase() : "";
+  const productUrl = `/shop/${categorySlug}/${subcategorySlug}/${data.id}`;
+
   return (
     <Link
-      href={`/shop/product/${data.id}/${productSlug}`}
+      href={productUrl}
       className="flex flex-col items-start aspect-auto"
     >
       <div className="bg-[#F0EEED] rounded-[13px] lg:rounded-[20px] w-full lg:max-w-[295px] aspect-square mb-2.5 xl:mb-4 overflow-hidden">
@@ -46,8 +55,16 @@ const ProductCard = ({ data }: ProductCardProps) => {
       <strong className="text-black xl:text-xl">
         {data.title || "Unnamed Product"}
       </strong>
-      {data.category && (
-        <span className="text-gray-600 text-sm mt-1">{data.category}</span>
+      <div className="flex gap-2 mt-2 flex-wrap">
+        {data.category && (
+          <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs">{data.category}</span>
+        )}
+        {data.subcategory && (
+          <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">{data.subcategory}</span>
+        )}
+      </div>
+      {data.description && (
+        <div className="mt-2 text-xs text-gray-500 line-clamp-2">{data.description}</div>
       )}
     </Link>
   );

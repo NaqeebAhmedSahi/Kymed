@@ -252,7 +252,7 @@ const ContactPage: React.FC = () => {
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-green-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl opacity-50" />
             <p className="relative text-gray-400 text-lg">
-              © 2025 Saluvia Industries. All Rights Reserved.
+              © 2025 Kymed. All Rights Reserved.
             </p>
           </div>
         </motion.div>

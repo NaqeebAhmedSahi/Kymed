@@ -14,7 +14,7 @@ const formatImageUrl = (url: string | undefined): string => {
   }
   
   // If it's just a filename, add the downloaded_images path
-  return `/downloaded_images(1)/downloaded_images/${url}`;
+  return `${url}`;
 };
 
 const PhotoSection = ({ data }: { data: Product }) => {

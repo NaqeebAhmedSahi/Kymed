@@ -197,8 +197,8 @@ const Footer = () => {
           <hr className="h-[1px] border-t-black/10 mb-6" />
           <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center mb-2">
             <p className="text-sm text-center sm:text-left text-black/60 mb-4 sm:mb-0 sm:mr-1">
-              SMF © Made by{" "}
-              <Link
+              Kymed © All Right Reserved
+              {/* <Link
                 href="/"
                 className="text-black font-medium"
               >
@@ -211,7 +211,7 @@ const Footer = () => {
                 className="text-black font-medium"
               >
                 Huma Mushtaq
-              </Link>
+              </Link> */}
             </p>
             <div className="flex items-center">
               {paymentBadgesData.map((badge, _, arr) => (

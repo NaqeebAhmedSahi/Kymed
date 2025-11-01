@@ -58,7 +58,7 @@ const WhyChooseUs = () => {
             </h3>
             <div className="space-y-6">
               <p className="text-xl text-gray-300 leading-relaxed">
-                With over two decades of experience, Saluvia Industries is dedicated to delivering high-quality surgical, dental, and electrosurgical instruments that support healthcare professionals in providing exceptional care.
+                With over two decades of experience, Kymed is dedicated to delivering high-quality surgical, dental, and electrosurgical instruments that support healthcare professionals in providing exceptional care.
               </p>
               <p className="text-xl text-gray-300 leading-relaxed">
                 Our focus is on crafting tools that meet the highest standards of accuracy, durability, and performance—ensuring confidence in every procedure.
@@ -224,7 +224,7 @@ const WhyChooseUs = () => {
               </h3>
               <p className="text-xl text-gray-100 mb-10 max-w-3xl mx-auto">
                 Looking for instruments that deliver accuracy, reliability, and long-term value?
-                Contact Saluvia Industries today—trusted worldwide for quality medical tools.
+                Contact Kymed today—trusted worldwide for quality medical tools.
               </p>
               <a
                 href="/contact"

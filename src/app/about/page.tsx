@@ -8,6 +8,34 @@ import { useEffect, useRef } from "react";
 import { FaCheckCircle, FaMedal, FaUsers, FaGlobeAmericas, FaStethoscope, FaCertificate } from "react-icons/fa";
 
 const AboutUs = () => {
+  // CountingNumber component with proper TypeScript handling
+  const CountingNumber = ({ endValue }: { endValue: number }) => {
+    const count = useMotionValue(0);
+    const rounded = useTransform(count, (latest) => Math.round(latest));
+    const [displayValue, setDisplayValue] = React.useState(0);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
+    useEffect(() => {
+      if (isInView) {
+        const controls = animate(count, endValue, {
+          duration: 2,
+          ease: "easeOut",
+        });
+        return controls.stop;
+      }
+    }, [isInView, count, endValue]);
+
+    useEffect(() => {
+      const unsubscribe = rounded.on("change", (latest) => {
+        setDisplayValue(latest);
+      });
+      return unsubscribe;
+    }, [rounded]);
+
+    return <motion.span ref={ref}>{displayValue}</motion.span>;
+  };
+
   return (
     <section className="relative bg-[#020817] text-white py-24 overflow-hidden">
       {/* Animated Background */}
@@ -200,70 +228,45 @@ const AboutUs = () => {
               { end: 50, label: "Countries Served", icon: <FaGlobeAmericas className="w-8 h-8" /> },
               { end: 1000, label: "Products", icon: <FaMedal className="w-8 h-8" /> },
               { end: 10000, label: "Happy Clients", icon: <FaUsers className="w-8 h-8" /> }
-            ].map((stat, index) => {
-              const CountingNumber = () => {
-                const count = useMotionValue(0);
-                const rounded = useTransform(count, (latest) => Math.round(latest));
-                const ref = useRef(null);
-                const isInView = useInView(ref);
-              
-                useEffect(() => {
-                  if (isInView) {
-                    const animation = animate(count, stat.end, {
-                      duration: 2,
-                      ease: "easeOut",
-                    });
-                    return animation.stop;
-                  }
-                }, [isInView]);
-              
-                return (
-                  <motion.span ref={ref}>
-                    {rounded.get()}
-                  </motion.span>
-                );
-              };
-
-              return (
-                <motion.div
-                  key={index}
-                  className="text-center relative group"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center relative group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <motion.div 
+                  className="text-green-400 mb-4 mx-auto"
+                  initial={{ scale: 1 }}
+                  whileInView={{ scale: [1, 1.2, 1] }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 1, delay: index * 0.1 }}
                 >
-                  <motion.div 
-                    className="text-green-400 mb-4 mx-auto"
-                    initial={{ scale: 1 }}
-                    whileInView={{ scale: [1, 1.2, 1] }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                  >
-                    {stat.icon}
-                  </motion.div>
-                  <motion.h4 
-                    className={cn("text-5xl font-bold bg-gradient-to-r from-white to-green-300 bg-clip-text text-transparent mb-2", integralCF.className)}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  >
-                    <CountingNumber />
-                    {stat.end >= 1000 ? 'k+' : '+'}
-                  </motion.h4>
-                  <motion.p 
-                    className="text-gray-400 text-lg"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                  >
-                    {stat.label}
-                  </motion.p>
+                  {stat.icon}
                 </motion.div>
-              );
-            })}
+                <motion.h4 
+                  className={cn("text-5xl font-bold bg-gradient-to-r from-white to-green-300 bg-clip-text text-transparent mb-2", integralCF.className)}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                >
+                  <CountingNumber endValue={stat.end} />
+                  {stat.end >= 1000 ? 'k+' : '+'}
+                </motion.h4>
+                <motion.p 
+                  className="text-gray-400 text-lg"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+                >
+                  {stat.label}
+                </motion.p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 

@@ -30,6 +30,8 @@ export const categories = [
               "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
               "https://images.unsplash.com/photo-1579684453403-f84349ef60b0?q=80&w=1000&auto=format&fit=crop"
             ],
+            newArrival: true,
+            topSelling: false,
             features: [
               {
                 title: "Stainless Steel Construction",
@@ -68,15 +70,6 @@ export const categories = [
                 comment: "Exceptional quality and perfect balance. Makes precise incisions effortless.",
                 pros: ["Perfect weight balance", "Comfortable grip", "High-quality finish"],
                 cons: ["Premium price point"]
-              },
-              {
-                id: 2,
-                user: "Dr. Michael Chen",
-                rating: 4.5,
-                date: "2025-10-10",
-                comment: "Very comfortable during long procedures. Excellent grip even with gloves.",
-                pros: ["Ergonomic design", "Durable construction"],
-                cons: ["Could be slightly longer"]
               }
             ],
             stockStatus: "In Stock",
@@ -94,31 +87,158 @@ export const categories = [
             id: "s2",
             name: "Disposable Surgical Scalpel",
             description: "Single-use sterile scalpels for precise incisions",
+            longDescription: "High-quality disposable scalpels designed for single-use applications. Pre-sterilized and individually packaged for maximum safety and convenience.",
             price: 49.99,
+            originalPrice: 59.99,
             image: "https://images.unsplash.com/photo-1579684453403-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
-            features: ["Pre-sterilized", "Single-use", "Safety lock mechanism"],
+            galleryImages: [
+              "https://images.unsplash.com/photo-1579684453403-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop"
+            ],
+            features: [
+              {
+                title: "Pre-sterilized",
+                description: "Individually packaged and ready for immediate use"
+              },
+              {
+                title: "Single-use",
+                description: "Eliminates cross-contamination risks"
+              },
+              {
+                title: "Safety Lock Mechanism",
+                description: "Secure blade locking for user safety"
+              }
+            ],
+            specifications: {
+              "Material": "Medical Grade Plastic & Stainless Steel",
+              "Sterility": "Sterile EO",
+              "Packaging": "Individual Peel Pouch",
+              "Blade Type": "#10, #11, #15, #20, #22",
+              "Country of Origin": "USA",
+              "Shelf Life": "5 years"
+            },
             rating: 4.6,
-            reviews: 89
+            reviews: [
+              {
+                id: 1,
+                user: "Dr. Michael Chen",
+                rating: 4,
+                date: "2025-09-20",
+                comment: "Reliable and consistent quality. Great for outpatient procedures.",
+                pros: ["Consistent sharpness", "Easy to use", "Good value"],
+                cons: ["Environmental concerns with disposables"]
+              }
+            ],
+            stockStatus: "In Stock",
+            sku: "DSS-50PK",
+            certifications: ["CE Marked", "FDA Approved"],
+            warranty: "1 Year Warranty",
+            newArrival: true,
+            topSelling: true
           },
           {
             id: "s3",
             name: "Precision Microsurgery Scalpel",
             description: "Ultra-fine blade for delicate procedures",
+            longDescription: "Specialized microsurgery scalpel designed for ophthalmic, plastic, and neurosurgical procedures requiring extreme precision and control.",
             price: 199.99,
+            originalPrice: 229.99,
             image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
-            features: ["Ultra-sharp blade", "Balanced weight", "Precision tip"],
+            galleryImages: [
+              "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop"
+            ],
+            features: [
+              {
+                title: "Ultra-sharp Blade",
+                description: "Surgical-grade steel with micro-fine edge"
+              },
+              {
+                title: "Balanced Weight",
+                description: "Precision engineering for optimal control"
+              },
+              {
+                title: "Precision Tip",
+                description: "Fine tip for delicate tissue manipulation"
+              }
+            ],
+            specifications: {
+              "Material": "High-Carbon Stainless Steel",
+              "Blade Size": "Micro #67, #69, #70",
+              "Handle Length": "120mm",
+              "Weight": "15g",
+              "Sterilization": "Autoclave Compatible",
+              "Country of Origin": "Switzerland"
+            },
             rating: 4.9,
-            reviews: 67
+            reviews: [
+              {
+                id: 1,
+                user: "Dr. Emily Rodriguez",
+                rating: 5,
+                date: "2025-08-15",
+                comment: "Perfect for delicate ophthalmic surgeries. Exceptional precision.",
+                pros: ["Extremely precise", "Comfortable grip", "Durable blades"],
+                cons: ["Requires careful handling"]
+              }
+            ],
+            stockStatus: "In Stock",
+            sku: "PMS-100",
+            certifications: ["CE Marked", "FDA Approved", "ISO 13485"],
+            warranty: "3 Year Warranty",
+            newArrival: true,
+            topSelling: true
           },
           {
             id: "s4",
             name: "Carbon Steel Scalpel Set",
             description: "Professional-grade surgical scalpel set",
+            longDescription: "Comprehensive scalpel set featuring carbon steel blades known for superior sharpness and edge retention. Ideal for surgical training and professional use.",
             price: 299.99,
+            originalPrice: 349.99,
             image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
-            features: ["Carbon steel blades", "Complete set", "Sterilization case included"],
+            galleryImages: [
+              "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop"
+            ],
+            features: [
+              {
+                title: "Carbon Steel Blades",
+                description: "Superior sharpness and edge retention"
+              },
+              {
+                title: "Complete Set",
+                description: "Multiple handle and blade combinations"
+              },
+              {
+                title: "Sterilization Case Included",
+                description: "Durable case for storage and sterilization"
+              }
+            ],
+            specifications: {
+              "Material": "Carbon Steel & Stainless Steel",
+              "Set Includes": "3 Handles, 24 Blades (Various Sizes)",
+              "Case Material": "Autoclavable Plastic",
+              "Blade Types": "#3, #4, #7 Handles with #10, #11, #12, #15 Blades",
+              "Country of Origin": "Germany",
+              "Warranty": "Lifetime on Handles"
+            },
             rating: 4.7,
-            reviews: 156
+            reviews: [
+              {
+                id: 1,
+                user: "Dr. Robert Kim",
+                rating: 5,
+                date: "2025-07-22",
+                comment: "Excellent set for surgical training. Blades maintain sharpness well.",
+                pros: ["Comprehensive set", "Sharp blades", "Good storage case"],
+                cons: ["Carbon steel requires careful maintenance"]
+              }
+            ],
+            stockStatus: "In Stock",
+            sku: "CSS-PRO",
+            certifications: ["CE Marked", "FDA Approved", "ISO 13485"],
+            warranty: "Lifetime Warranty",
+            newArrival: true,
+            topSelling: true
           }
         ]
       },
@@ -127,21 +247,16 @@ export const categories = [
         name: "Forceps",
         description: "Various types of surgical forceps for different procedures",
         image: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
-        url: "/shop/general-surgery/forceps"
+        url: "/shop/general-surgery/forceps",
+        products: []
       },
       {
         id: 103,
-        name: "Surgical Scissors",
-        description: "Sharp and precise surgical scissors for clean cuts",
-        image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?q=80&w=1000&auto=format&fit=crop",
-        url: "/shop/general-surgery/surgical-scissors"
-      },
-      {
-        id: 104,
         name: "Retractors",
         description: "Essential retractors for improved surgical access",
         image: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&w=1000&auto=format&fit=crop",
-        url: "/shop/general-surgery/retractors"
+        url: "/shop/general-surgery/retractors",
+        products: []
       }
     ]
   },
@@ -222,7 +337,9 @@ export const categories = [
               estimated: "3-5 business days",
               free: true,
               threshold: 500
-            }
+            },
+            newArrival: true,
+            topSelling: true
           }
         ]
       },
@@ -231,14 +348,16 @@ export const categories = [
         name: "Video Laryngoscopes",
         description: "High-definition video laryngoscopes with digital display",
         image: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
-        url: "/shop/laryngoscopes/video-laryngoscopes"
+        url: "/shop/laryngoscopes/video-laryngoscopes",
+        products: []
       },
       {
         id: 203,
         name: "Standard Laryngoscopes",
         description: "Traditional laryngoscopes for routine examinations",
         image: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
-        url: "/shop/laryngoscopes/standard"
+        url: "/shop/laryngoscopes/standard",
+        products: []
       }
     ]
   },
@@ -248,20 +367,23 @@ export const categories = [
     description: "Professional dental equipment and instruments",
     image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?q=80&w=1000&auto=format&fit=crop",
     url: "/shop/dental",
+    subcategories: []
   },
   {
     id: 4,
-    name: "Micro Surgery",
-    description: "Precision instruments for microsurgical procedures",
-    image: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?q=80&w=1000&auto=format&fit=crop",
-    url: "/shop/micro-surgery",
+    name: "Veterinary",
+    description: "Specialized instruments for veterinary medicine",
+    image: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=1000&auto=format&fit=crop",
+    url: "/shop/veterinary",
+    subcategories: []
   },
   {
     id: 5,
-    name: "Beauty",
+    name: "Beauty & Cosmetics",
     description: "Professional beauty and cosmetic equipment",
     image: "https://images.unsplash.com/photo-1487412912498-0447578fcca8?q=80&w=1000&auto=format&fit=crop",
     url: "/shop/beauty",
+    subcategories: []
   },
   {
     id: 6,
@@ -269,5 +391,6 @@ export const categories = [
     description: "Specialized tools for eye care and surgery",
     image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
     url: "/shop/ophthalmology",
+    subcategories: []
   }
 ];

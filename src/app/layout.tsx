@@ -8,8 +8,8 @@ import HolyLoader from "holy-loader";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "Saluvia Industries ",
-  description: "Saluvia Industries - Medical Instrument Company",
+  title: "Kymed",
+  description: "Kymed - Medical Instrument Company",
 };
 
 export const viewport: Viewport = {
