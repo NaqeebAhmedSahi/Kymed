@@ -43,7 +43,7 @@ const Header = () => {
   };
 
   return (
-    <div className="relative w-full h-[600px] overflow-hidden">
+    <div className="relative w-full h-[550px] overflow-hidden">
       <AnimatePresence mode="wait" custom={1} initial={false}>
         <motion.div
           key={currentImageIndex}
