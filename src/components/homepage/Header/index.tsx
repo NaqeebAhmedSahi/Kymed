@@ -43,7 +43,9 @@ const Header = () => {
   };
 
   return (
-    <div className="relative w-full h-[550px] overflow-hidden">
+    <div className="relative w-full h-[550px] overflow-hidden bg-gradient-to-br from-[#e0f7fa] via-[#f5f5f5] to-[#e0e0e0]">
+      {/* Stainless steel texture overlay */}
+      <div className="absolute inset-0 pointer-events-none" style={{background: "url('/images/stainless-texture.png')", opacity: 0.08}} />
       <AnimatePresence mode="wait" custom={1} initial={false}>
         <motion.div
           key={currentImageIndex}
@@ -55,31 +57,62 @@ const Header = () => {
           transition={{ duration: 0.7, ease: "easeInOut" }}
           className="w-full h-full"
         >
-          <Image
-            src={sliderContent[currentImageIndex].image}
-            alt="Slider Image"
-            fill
-            className="object-cover"
-          />
+          {/* Parallax effect on image */}
+          <motion.div
+            initial={{ scale: 1.08, y: 30 }}
+            animate={{ scale: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <Image
+              src={sliderContent[currentImageIndex].image}
+              alt="Slider Image"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-white/5" />
+          </motion.div>
 
-          {/* Optional: Slight light overlay for readability (remove if not needed) */}
-          <div className="absolute inset-0 bg-white/5 flex flex-col justify-center items-center text-center text-white p-8">
+          {/* Hero Content */}
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-8">
             <motion.h1
-              initial={{ y: -50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className={cn("text-5xl font-bold mb-4", integralCF.className)}
+              initial={{ opacity: 0, y: -40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.7 }}
+              className={cn("text-5xl font-bold mb-4 drop-shadow-lg", integralCF.className)}
             >
-              {/* {sliderContent[currentImageIndex].title} */}
+              {/* {sliderContent[currentImageIndex].title || "Precision Medical Equipment"} */}
+              Precision Medical Equipment
             </motion.h1>
             <motion.p
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-              className="text-xl max-w-2xl"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.7 }}
+              className="text-xl max-w-2xl mb-8 drop-shadow"
             >
-              {/* {sliderContent[currentImageIndex].description} */}
+              {/* {sliderContent[currentImageIndex].description || "Engineered for reliability, trusted by professionals."} */}
+              Engineered for reliability, trusted by professionals.
             </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4, duration: 0.7 }}
+              className="flex gap-4 justify-center"
+            >
+              <a
+                href="/shop/all"
+                className="px-8 py-4 rounded-full font-semibold text-lg bg-teal-500 text-white shadow-lg transition-colors duration-300 hover:bg-teal-700 focus:bg-teal-700"
+              >
+                Shop Now
+              </a>
+              <a
+                href="/contact"
+                className="px-8 py-4 rounded-full font-semibold text-lg bg-white text-teal-600 shadow-lg border border-teal-500 transition-colors duration-300 hover:bg-teal-50 hover:text-teal-800 focus:bg-teal-50"
+              >
+                Contact Us
+              </a>
+            </motion.div>
           </div>
         </motion.div>
       </AnimatePresence>
@@ -91,7 +124,7 @@ const Header = () => {
             key={index}
             onClick={() => setCurrentImageIndex(index)}
             className={`w-3 h-3 rounded-full transition-colors ${
-              currentImageIndex === index ? "bg-white" : "bg-gray-400"
+              currentImageIndex === index ? "bg-teal-500" : "bg-gray-400"
             }`}
           />
         ))}
@@ -105,7 +138,7 @@ const Header = () => {
               (prevIndex - 1 + sliderContent.length) % sliderContent.length
           )
         }
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/50 p-2 rounded-full hover:bg-white/80 transition-opacity"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/60 p-2 rounded-full shadow-lg transition-colors duration-300 hover:bg-teal-500 hover:text-white"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +163,7 @@ const Header = () => {
             (prevIndex) => (prevIndex + 1) % sliderContent.length
           )
         }
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/50 p-2 rounded-full hover:bg-white/80 transition-opacity"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/60 p-2 rounded-full shadow-lg transition-colors duration-300 hover:bg-teal-500 hover:text-white"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

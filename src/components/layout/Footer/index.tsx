@@ -1,240 +1,164 @@
 import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
+import { Montserrat, Open_Sans } from "next/font/google";
 import React from "react";
-import { PaymentBadge, SocialNetworks } from "./footer.types";
-import { FaFacebookF, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaGithub,
+  FaInstagram,
+  FaTwitter,
+  FaLinkedinIn,
+} from "react-icons/fa";
 import Link from "next/link";
-import LinksSection from "./LinksSection";
 import Image from "next/image";
-import NewsLetterSection from "./NewsLetterSection";
 import LayoutSpacing from "./LayoutSpacing";
+import CallToAction from "./NewsLetterSection"; // replaces NewsLetterSection
+
+// Google Fonts
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["600", "700"] });
+const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
 
 // Socials Data
-const socialsData: SocialNetworks[] = [
+const socialsData = [
   { id: 1, icon: <FaTwitter />, url: "https://twitter.com" },
   { id: 2, icon: <FaFacebookF />, url: "https://facebook.com" },
   { id: 3, icon: <FaInstagram />, url: "https://instagram.com" },
-  { id: 4, icon: <FaGithub />, url: "https://github.com/mohammadoftadeh" },
+  { id: 4, icon: <FaLinkedinIn />, url: "https://linkedin.com" },
+  { id: 5, icon: <FaGithub />, url: "https://github.com/mohammadoftadeh" },
 ];
 
-// Payment Badges Data
-const paymentBadgesData: PaymentBadge[] = [
-  { id: 1, srcUrl: "/icons/Visa.svg" },
-  { id: 2, srcUrl: "/icons/mastercard.svg" },
-  { id: 3, srcUrl: "/icons/paypal.svg" },
-  { id: 4, srcUrl: "/icons/applePay.svg" },
-  { id: 5, srcUrl: "/icons/googlePay.svg" },
-];
-
-// Menu Structure Data (Following the Provided Format)
-const data = [
+// Menu Data
+const footerLinks = [
   {
-    id: 0,
-    type: "MenuItem",
-    label: "Home",
-    url: "/",
-    children: [],
-  },
-  {
-    id: 1,
-    label: "Products",
-    type: "MenuList",
-    children: [
-      {
-        id: 11,
-        label: "General Surgery",
-        url: "/shop/general-surgery",
-        description: "Tools and equipment for surgery procedures.",
-      },
-      {
-        id: 12,
-        label: "Laryngoscopes",
-        url: "/shop/laryngoscopes",
-        description: "Laryngoscopes for medical examination.",
-      },
-      {
-        id: 13,
-        label: "Dental",
-        url: "/shop/dental",
-        description: "Dental care tools and equipment.",
-      },
-      {
-        id: 14,
-        label: "Micro Surgery",
-        url: "/shop/micro-surgery",
-        description: "Precision tools for micro surgery procedures.",
-      },
-      {
-        id: 15,
-        label: "Beauty",
-        url: "/shop/beauty",
-        description: "Beauty products and equipment.",
-      },
-      {
-        id: 16,
-        label: "Ophthalmology",
-        url: "/shop/ophthalmology",
-        description: "Ophthalmology tools and equipment.",
-      },
+    title: "Company",
+    links: [
+      { label: "About", url: "/about" },
+      // { label: "Brochure", url: "/brochures" },
+      { label: "Contact Us", url: "/contact" },
     ],
   },
   {
-    id: 2,
-    type: "MenuItem",
-    label: "Categories",
-    url: "/categories",
-    children: [],
+    title: "Product Categories",
+    links: [
+      { label: "General Surgery", url: "/shop/general-surgery" },
+      { label: "Dental", url: "/shop/dental" },
+      { label: "Micro Surgery", url: "/shop/micro-surgery" },
+      { label: "Ophthalmology", url: "/shop/ophthalmology" },
+      { label: "Beauty", url: "/shop/beauty" },
+    ],
   },
   {
-    id: 3,
-    type: "MenuItem",
-    label: "Brochure",
-    url: "/brochures",
-    children: [],
-  },
-  {
-    id: 4,
-    type: "MenuItem",
-    label: "About",
-    url: "/about",
-    children: [],
-  },
-  {
-    id: 4,
-    type: "MenuItem",
-    label: "Contact Us",
-    url: "/contact",
-    children: [],
+    title: "Resources",
+    links: [
+      { label: "Materials & Quality", url: "/materials" },
+      { label: "Certifications", url: "/certifications" },
+      { label: "Request a Quote", url: "/quote" },
+    ],
   },
 ];
 
 const Footer = () => {
   return (
-    <footer className="mt-10">
-      <div className="relative">
-        <div className="absolute bottom-0 w-full h-1/2 bg-[#F0F0F0]"></div>
-        <div className="px-4">
-          <NewsLetterSection />
-        </div>
+    <footer className="mt-20">
+      {/* CTA Section */}
+      <div className="px-4 mb-20">
+        <CallToAction />
       </div>
-      <div className="pt-8 md:pt-[50px] bg-[#F0F0F0] px-4 pb-4">
-        <div className="max-w-frame mx-auto">
-          <nav className="lg:grid lg:grid-cols-12 mb-8">
-            {/* Left Column */}
-            <div className="flex flex-col lg:col-span-3 lg:max-w-[248px]">
-              <Link href="/" className="mr-3 lg:mr-10">
-                <Image
-                  src="/images/logo.png"
-                  alt="Logo"
-                  height={40}
-                  width={150}
-                />
-              </Link>
-              <p className="text-black/60 text-sm mb-9">
-              We provide medical equipment and tools designed for professionals and patients alike.
-              </p>
-              <div className="flex items-center">
-                {socialsData.map((social) => (
-                  <Link
-                    href={social.url}
-                    key={social.id}
-                    className="bg-white hover:bg-black hover:text-white transition-all mr-3 w-7 h-7 rounded-full border border-black/20 flex items-center justify-center p-1.5"
-                  >
-                    {social.icon}
-                  </Link>
-                ))}
-              </div>
-            </div>
 
-            {/* Pages and Categories Section */}
-            <div className="lg:col-span-9 lg:grid lg:grid-cols-2 lg:pl-10">
-              {/* Pages Section */}
-              <div className="mb-8">
-                <h3 className="text-xl font-semibold mb-4">Pages</h3>
-                <ul>
-                  {data
-                    .filter(item => item.type === "MenuItem")
-                    .map((page) => (
-                      <li key={page.id} className="mb-4">
-                        <Link
-                          href={page.url || '/'}
-                          className="text-black/60 hover:text-black transition-colors"
-                        >
-                          {page.label}
-                        </Link>
-                      </li>
-                    ))}
-                </ul>
-              </div>
-
-              {/* Product Categories Section */}
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Product Categories</h3>
-                <ul className="grid grid-cols-2 gap-4">
-                  {data
-                    .filter(item => item.type === "MenuList")
-                    .map((category) => (
-                      <div key={category.id}>
-                        {category.children.map((child, index) => (
-                          <li key={child.id} className="mb-4">
-                            <Link
-                              href={child.url || '/'} // Fallback URL in case the URL is undefined
-                              className="text-black/60 hover:text-black transition-colors"
-                            >
-                              {child.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </div>
-                    ))}
-                </ul>
-              </div>
-
-
-            </div>
-          </nav>
-
-          <hr className="h-[1px] border-t-black/10 mb-6" />
-          <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center mb-2">
-            <p className="text-sm text-center sm:text-left text-black/60 mb-4 sm:mb-0 sm:mr-1">
-              Kymed © All Right Reserved
-              {/* <Link
-                href="/"
-                className="text-black font-medium"
-              >
-                Naqeeb Ahmed
-              </Link>
-              {", "}
-              Designed by{" "}
-              <Link
-                href="/"
-                className="text-black font-medium"
-              >
-                Huma Mushtaq
-              </Link> */}
+      {/* Main Footer */}
+      <div className="bg-[#2F323A] text-[#F8F9FA] pt-14 pb-8 px-6 md:px-16 rounded-t-2xl">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+          {/* Brand Section */}
+          <div>
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/images/logo.png"
+                alt="KyMed Logo"
+                width={150}
+                height={40}
+                className="brightness-200"
+              />
+            </Link>
+            <p
+              className={cn(
+                openSans.className,
+                "text-[#C4C7CA] text-sm leading-relaxed mb-6"
+              )}
+            >
+              KyMed — crafting precision surgical and dental instruments from
+              Sialkot, Pakistan for the world’s healthcare professionals.
             </p>
-            <div className="flex items-center">
-              {paymentBadgesData.map((badge, _, arr) => (
-                <span
-                  key={badge.id}
-                  className={cn([
-                    arr.length !== badge.id && "mr-3",
-                    "w-[46px] h-[30px] rounded-[5px] border-[#D6DCE5] bg-white flex items-center justify-center",
-                  ])}
+
+            <div className="flex gap-3">
+              {socialsData.map((social) => (
+                <Link
+                  key={social.id}
+                  href={social.url}
+                  className="w-9 h-9 bg-[#F8F9FA] text-[#008C99] rounded-full flex items-center justify-center hover:bg-[#008C99] hover:text-white transition-all duration-300"
                 >
-                  <Image
-                    priority
-                    src={badge.srcUrl}
-                    width={33}
-                    height={100}
-                    alt="payment badge"
-                    className="max-h-[15px]"
-                  />
-                </span>
+                  {social.icon}
+                </Link>
               ))}
             </div>
           </div>
+
+          {/* Dynamic Links Section */}
+          {footerLinks.map((section, index) => (
+            <div key={index}>
+              <h3
+                className={cn(
+                  montserrat.className,
+                  "text-white text-lg font-semibold mb-5"
+                )}
+              >
+                {section.title}
+              </h3>
+              <ul className="space-y-3">
+                {section.links.map((link, i) => (
+                  <li key={i}>
+                    <Link
+                      href={link.url}
+                      className="text-[#C4C7CA] hover:text-[#E5F5F7] text-sm transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
+
+        {/* Divider */}
+        <hr className="border-t border-[#C4C7CA]/20 mt-10 mb-6" />
+
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p
+            className={cn(
+              openSans.className,
+              "text-[#C4C7CA] text-xs md:text-sm text-center"
+            )}
+          >
+            © {new Date().getFullYear()} KyMed. All rights reserved.  
+            Engineered in Sialkot, Pakistan.
+          </p>
+
+          <div className="flex items-center gap-3">
+            {["/icons/Visa.svg", "/icons/mastercard.svg", "/icons/paypal.svg"].map(
+              (src, idx) => (
+                <Image
+                  key={idx}
+                  src={src}
+                  width={36}
+                  height={22}
+                  alt="Payment"
+                  className="opacity-80"
+                />
+              )
+            )}
+          </div>
+        </div>
+
         <LayoutSpacing />
       </div>
     </footer>

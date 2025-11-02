@@ -4,6 +4,7 @@ import { FaCertificate, FaChartLine, FaHandshake } from "react-icons/fa";
 import * as motion from "framer-motion/client";
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
+import { montserrat, openSans } from "@/styles/fonts";
 
 const OurValue = () => {
   const faqs = [
@@ -52,12 +53,9 @@ const OurValue = () => {
     "https://images.unsplash.com/photo-1465101046530-73398c7f28ca"
   ];
   return (
-    <section className="relative bg-[#020817] text-white py-24 overflow-hidden">
+    <section className="relative bg-[#F8F9FA] text-[#2F323A] py-24 overflow-hidden font-sans">
       {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,0.8),rgba(0,0,0,0.9))]" />
-        <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-20" />
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#E5F5F7] via-[#F8F9FA] to-[#C4C7CA]" />
 
       <motion.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -66,11 +64,11 @@ const OurValue = () => {
         viewport={{ once: true }}
         transition={{ duration: 1 }}
       >
-        <div className="flex flex-col md:flex-row gap-12 items-center">
+  <div className="flex flex-col md:flex-row gap-12 items-center">
           {/* Carousel Images Left */}
           <div className="w-full md:w-1/2 flex justify-center">
             <motion.div
-              className="relative w-[400px] h-[400px] md:w-[520px] md:h-[520px] rounded-3xl overflow-hidden shadow-2xl"
+              className="relative w-[400px] h-[400px] md:w-[520px] md:h-[520px] rounded-3xl overflow-hidden shadow-[0_8px_32px_0_rgba(47,50,58,0.10)] border border-[#C4C7CA] bg-white"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -89,12 +87,8 @@ const OurValue = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className={cn("text-5xl md:text-6xl font-bold tracking-tighter bg-gradient-to-br from-white via-green-200 to-green-400 bg-clip-text text-transparent mb-6", integralCF.className)}>
-                Frequently Asked Questions
-              </h2>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
-                Find answers to common questions about our products, ordering process, and compliance.
-              </p>
+              <h2 className={cn("text-5xl md:text-6xl font-bold tracking-tighter text-[#008C99] mb-6 font-montserrat")}>Frequently Asked Questions</h2>
+              <p className={cn("text-lg md:text-xl text-[#2F323A] max-w-2xl leading-relaxed font-openSans")}>Find answers to common questions about our products, ordering process, and compliance.</p>
             </motion.div>
             <div className="space-y-6">
               {faqs.map((faq, idx) => (
@@ -104,18 +98,15 @@ const OurValue = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-lg overflow-hidden"
+                  className="rounded-2xl bg-white border border-[#C4C7CA] shadow-[0_4px_16px_0_rgba(47,50,58,0.08)] overflow-hidden"
                 >
                   <details className="group">
-                    <summary className={cn("flex items-center justify-between cursor-pointer px-6 py-6 text-xl font-semibold text-white group-open:text-green-400 transition-colors duration-300", integralCF.className)}>
-                      <span>{faq.question}</span>
+                    <summary className={cn("flex items-center justify-between cursor-pointer px-6 py-6 text-xl font-semibold text-[#2F323A] group-open:text-[#008C99] transition-colors duration-300 font-montserrat")}> <span>{faq.question}</span>
                       <svg className="w-6 h-6 ml-4 transition-transform duration-300 group-open:rotate-90" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
                     </summary>
-                    <div className="px-6 pb-6 pt-2 text-lg text-gray-200">
-                      {faq.answer}
-                    </div>
+                    <div className={cn("px-6 pb-6 pt-2 text-lg text-[#2F323A] font-openSans")}>{faq.answer}</div>
                   </details>
                 </motion.div>
               ))}
@@ -149,7 +140,7 @@ const OurValue = () => {
             <img
               src={img}
               alt={`FAQ Image ${idx + 1}`}
-              className="object-cover w-full h-full rounded-3xl"
+              className="object-cover w-full h-full rounded-3xl border border-[#C4C7CA] shadow-[0_4px_16px_0_rgba(47,50,58,0.08)]"
             />
           </motion.div>
         ))}

@@ -14,15 +14,16 @@ const DressStyleCard = ({ title, url, className, style }: DressStyleCardProps) =
     <Link
       href={url}
       className={cn([
-        "relative w-full md:h-full rounded-[20px] bg-white bg-top text-2xl md:text-4xl font-bold text-left py-4 md:py-[25px] px-6 md:px-9 bg-no-repeat bg-cover transition-transform transform hover:scale-105 hover:brightness-75 overflow-hidden",
+        "relative w-full md:h-full rounded-[20px] bg-white bg-top text-2xl md:text-4xl font-bold text-left py-4 md:py-[25px] px-6 md:px-9 bg-no-repeat bg-cover transition-all duration-300 transform hover:scale-[1.02] overflow-hidden group",
         className,
       ])}
       style={style}
     >
-      {/* Overlay effect for hover darkness */}
-      <div className="absolute inset-0 bg-black/30 rounded-[20px] opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+      {/* Greenish overlay effect for hover - matches website theme */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#008C99]/40 to-[#006670]/50 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      
       {/* Title with z-index to remain visible */}
-      <span className="relative z-10">{title}</span>
+      <span className="relative z-10 text-white group-hover:text-white/90 transition-colors duration-300">{title}</span>
     </Link>
   );
 };

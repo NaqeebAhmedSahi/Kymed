@@ -2,6 +2,7 @@ import React from "react";
 import * as motion from "framer-motion/client";
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
+import { montserrat, openSans } from "@/styles/fonts";
 import {
   Carousel,
   CarouselContent,
@@ -18,16 +19,23 @@ type ProductListSecProps = {
 };
 
 const ProductListSec = ({ title, data, viewAllLink }: ProductListSecProps) => {
+  // Brand color mapping
+  const colorMap: Record<string, string> = {
+    "NEW ARRIVALS": "text-[#008C99] bg-[#F8F9FA] border-b-4 border-[#C4C7CA]", // Deep Teal, White Smoke, Surgical Silver accent
+    "TOP SELLING": "text-[#2F323A] bg-[#F8F9FA] border-b-4 border-[#E5F5F7]", // Graphite Gray, White Smoke, Ice Blue accent
+  };
   return (
-    <section className="max-w-frame mx-auto text-center">
+    <section className={cn("max-w-frame mx-auto text-center rounded-3xl shadow-lg p-8 mb-12", colorMap[title.toUpperCase()]?.split(" ").filter(c => c.startsWith("bg"))[0] || "bg-white")}> 
       <motion.h2
         initial={{ y: "100px", opacity: 0 }}
         whileInView={{ y: "0", opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         className={cn([
-          integralCF.className,
-          "text-[32px] md:text-5xl mb-8 md:mb-14 capitalize",
+          montserrat.className,
+          "font-bold text-[32px] md:text-5xl mb-8 md:mb-14 capitalize",
+          colorMap[title.toUpperCase()]?.split(" ").filter(c => c.startsWith("text"))[0] || "text-black",
+          colorMap[title.toUpperCase()]?.split(" ").filter(c => c.startsWith("border"))[0] || ""
         ])}
       >
         {title}
@@ -37,6 +45,7 @@ const ProductListSec = ({ title, data, viewAllLink }: ProductListSecProps) => {
         whileInView={{ y: "0", opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.6, duration: 0.6 }}
+        className={openSans.className}
       >
         <Carousel
           opts={{
@@ -59,7 +68,7 @@ const ProductListSec = ({ title, data, viewAllLink }: ProductListSecProps) => {
           <div className="w-full px-4 sm:px-0 text-center">
             <Link
               href={viewAllLink}
-              className="w-full inline-block sm:w-[218px] px-[54px] py-4 border rounded-full hover:bg-black hover:text-white text-black transition-all font-medium text-sm sm:text-base border-black/10"
+              className={cn("w-full inline-block sm:w-[218px] px-[54px] py-4 border rounded-full font-semibold font-montserrat text-sm sm:text-base border-[#C4C7CA] bg-[#E5F5F7] text-[#008C99] transition-colors duration-300 hover:bg-[#008C99] hover:text-white")}
             >
               View All
             </Link>

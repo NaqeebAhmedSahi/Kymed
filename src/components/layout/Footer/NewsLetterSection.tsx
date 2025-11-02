@@ -1,28 +1,60 @@
 import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
-// import Image from "next/image";
+import { Montserrat, Open_Sans } from "next/font/google";
 import React from "react";
 
-const NewsLetterSection = () => {
+// Import Google Fonts (if not already in your global styles)
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["600", "700"] });
+const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
+
+const CallToAction = () => {
   return (
-    <div className="bg-gradient-to-b from-blue-950 via-black to-blue-950 relative py-9 md:py-11 px-6 md:px-16 max-w-frame mx-auto  rounded-[20px]">
-      <div className="flex flex-col justify-center">
-        <p
-          className={cn([
-            integralCF.className,
-            "font-bold text-[32px] md:text-[40px] text-white mb-4 md:mb-6 text-center",
-          ])}
+    <div className="relative bg-[#F8F9FA] py-14 px-6 md:px-16 rounded-2xl overflow-hidden max-w-frame mx-auto shadow-sm border border-[#E5F5F7]">
+      {/* Background Accent */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#E5F5F7] via-white to-[#E5F5F7] opacity-70 rounded-2xl" />
+
+      {/* Content */}
+      <div className="relative flex flex-col items-center text-center space-y-6">
+        <h2
+          className={cn(
+            montserrat.className,
+            "text-3xl md:text-4xl font-bold text-[#2F323A]"
+          )}
         >
-          STAY UPDATED WITH THE LATEST IN SURGICAL INSTRUMENTS & 
+          Partner with KyMed — Global Surgical Quality You Can Trust
+        </h2>
+
+        <p
+          className={cn(
+            openSans.className,
+            "text-[#2F323A]/80 max-w-2xl text-base md:text-lg"
+          )}
+        >
+          From German stainless steel to ISO-certified precision manufacturing,
+          KyMed delivers instruments you can rely on — wherever you operate.
         </p>
-        {/* <p className="text-white text-sm md:text-base mb-6">
-          Join our community of medical professionals and get first access to
-          new surgical products, offers, and innovations.
-        </p> */}
- 
+
+        <div className="flex flex-col sm:flex-row gap-4 mt-4">
+          <button
+            className={cn(
+              montserrat.className,
+              "bg-[#008C99] text-white text-sm md:text-base font-semibold py-3 px-8 rounded-full hover:bg-[#E5F5F7] hover:text-[#008C99] transition-all duration-300 shadow-md"
+            )}
+          >
+            Request a Quote
+          </button>
+
+          <button
+            className={cn(
+              montserrat.className,
+              "border-2 border-[#008C99] text-[#008C99] text-sm md:text-base font-semibold py-3 px-8 rounded-full hover:bg-[#008C99] hover:text-white transition-all duration-300"
+            )}
+          >
+            Explore Product Range
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default NewsLetterSection;
+export default CallToAction;

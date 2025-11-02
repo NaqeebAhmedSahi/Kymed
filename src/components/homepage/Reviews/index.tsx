@@ -4,6 +4,7 @@ import React from "react";
 import * as motion from "framer-motion/client";
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
+import { montserrat, openSans } from "@/styles/fonts";
 import {
   Carousel,
   CarouselContent,
@@ -46,7 +47,7 @@ const Reviews = ({ data }: ReviewsProps) => {
   if (!isClient) return null;
 
   return (
-    <section className="overflow-hidden">
+    <section className="overflow-hidden bg-[#F8F9FA] py-16">
       <motion.div
         initial={{ x: "100px", opacity: 0 }}
         whileInView={{ x: "0", opacity: 1 }}
@@ -68,17 +69,17 @@ const Reviews = ({ data }: ReviewsProps) => {
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.6 }}
               className={cn([
-                integralCF.className,
-                "text-[32px] leading-[36px] md:text-5xl capitalize mr-auto",
+                montserrat.className,
+                "text-[32px] leading-[36px] md:text-5xl capitalize mr-auto text-[#008C99] font-bold",
               ])}
             >
-              OUR HAPPY CUSTOMERS
+              Our Happy Customers
             </motion.h2>
             <div className="flex items-center space-x-1 ml-2">
-              <CarouselPrevious variant="ghost" className="text-2xl">
+              <CarouselPrevious variant="ghost" className="text-2xl text-[#008C99]">
                 <FaArrowLeft />
               </CarouselPrevious>
-              <CarouselNext variant="ghost" className="text-2xl">
+              <CarouselNext variant="ghost" className="text-2xl text-[#008C99]">
                 <FaArrowRight />
               </CarouselNext>
             </div>
@@ -90,7 +91,7 @@ const Reviews = ({ data }: ReviewsProps) => {
                 className="w-full max-w-[358px] sm:max-w-[400px] pl-5"
               >
                 <ReviewCard
-                  className="h-full"
+                  className="h-full bg-white border border-[#C4C7CA] shadow-[0_4px_16px_0_rgba(47,50,58,0.08)] font-openSans text-[#2F323A]"
                   data={review}
                   blurChild={
                     data.length >= 6 && (
@@ -100,7 +101,7 @@ const Reviews = ({ data }: ReviewsProps) => {
                             ? current !== index &&
                               "backdrop-blur-[2px]"  // Apply blur based on current index
                             : current === index && "backdrop-blur-[2px]",  // Apply blur only for the current item in mobile
-                          "absolute bg-white/10 right-0 top-0 h-full w-full z-10",
+                          "absolute bg-[#E5F5F7] right-0 top-0 h-full w-full z-10",
                         ])}
                       />
                     )
