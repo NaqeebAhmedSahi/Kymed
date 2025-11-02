@@ -151,7 +151,7 @@ const AboutUs = () => {
             </div>
           </motion.div>
 
-          {/* Image Section */}
+          {/* Image Section with Greenish Glow */}
           <motion.div
             className="relative group"
             initial={{ opacity: 0, x: 20 }}
@@ -159,19 +159,24 @@ const AboutUs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="absolute -inset-4 bg-gradient-to-r from-[#008C99]/20 via-[#006670]/20 to-[#008C99]/20 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#008C99]/10 to-[#006670]/10 p-1">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2F323A]/10 to-[#2F323A]/40 z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
-              <img
-                src="/images/about-surgical.jpg"
-                alt="KyMed Surgical Instruments"
-                className="rounded-xl w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute bottom-8 left-8 z-20 transform transition-all duration-500 group-hover:translate-y-[-8px]">
-                <h4 className={cn("text-2xl font-bold mb-2 text-white", montserrat.className)}>German-Grade Precision</h4>
-                <p className="text-gray-200 text-lg">
-                  Made in Pakistan, Trusted Worldwide
-                </p>
+            <div className="absolute -inset-4 bg-gradient-to-r from-[#008C99]/30 to-[#006670]/40 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#008C99]/20 to-[#006670]/30 p-1 border border-[#008C99]/30">
+              <div className="relative rounded-xl overflow-hidden">
+                <img
+                  src="/images/about.jpg"
+                  alt="KyMed Surgical Instruments"
+                  className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
+                {/* Greenish gradient overlay for better text visibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#008C99]/60 via-transparent to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-[#008C99]/80 to-transparent">
+                  <div className="transform transition-all duration-500 group-hover:translate-y-[-8px]">
+                    <h4 className={cn("text-2xl font-bold mb-2 text-white", montserrat.className)}>German-Grade Precision</h4>
+                    <p className="text-white/90 text-lg">
+                      Made in Pakistan, Trusted Worldwide
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

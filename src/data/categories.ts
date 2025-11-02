@@ -24,11 +24,11 @@ export const categories = [
             longDescription: "The Premium Surgical Scalpel Handle represents the pinnacle of surgical instrument design. Crafted from premium-grade stainless steel, this handle offers unparalleled precision and control during procedures. Its ergonomic design reduces hand fatigue during extended use, while the precision-balanced weight distribution ensures optimal handling.",
             price: 129.99,
             originalPrice: 159.99,
-            image: "https://images.unsplash.com/photo-1579684453377-8f8717ec3754?q=80&w=1000&auto=format&fit=crop",
+            image: "/images/product1.jpeg",
             galleryImages: [
-              "https://images.unsplash.com/photo-1579684453377-8f8717ec3754?q=80&w=1000&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1579684453403-f84349ef60b0?q=80&w=1000&auto=format&fit=crop"
+              "/images/product1.jpeg",
+              "/images/product1.jpeg",
+              "/images/product1.jpeg"
             ],
             newArrival: true,
             topSelling: false,
@@ -90,10 +90,10 @@ export const categories = [
             longDescription: "High-quality disposable scalpels designed for single-use applications. Pre-sterilized and individually packaged for maximum safety and convenience.",
             price: 49.99,
             originalPrice: 59.99,
-            image: "https://images.unsplash.com/photo-1579684453403-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
+            image: "/images/product1.jpeg",
             galleryImages: [
-              "https://images.unsplash.com/photo-1579684453403-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop"
+              "/images/product1.jpeg",
+              "/images/product1.jpeg"
             ],
             features: [
               {

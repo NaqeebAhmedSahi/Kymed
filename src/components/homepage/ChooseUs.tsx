@@ -38,7 +38,7 @@ const WhyChooseUs = () => {
         </motion.div>
 
         {/* Content Section */}
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Text Section */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -77,16 +77,22 @@ const WhyChooseUs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="absolute -inset-4 bg-[#C4C7CA] rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
-            <div className="relative rounded-2xl overflow-hidden bg-white p-1 border border-[#C4C7CA]">
-              <img
-                src="/images/surgical-instruments.jpg"
-                alt="Surgical Instruments"
-                className="rounded-xl shadow-2xl w-full h-[420px] object-cover transform group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute bottom-8 left-8 z-20 text-[#008C99] max-w-md transform transition-all duration-500 group-hover:translate-y-[-8px]">
-                <h4 className={cn("text-2xl font-bold mb-2 font-montserrat")}>Engineered for Precision</h4>
-                <p className="text-lg font-openSans text-[#2F323A]">Designed with the future of surgery in mind.</p>
+            <div className="absolute -inset-4 bg-gradient-to-r from-[#008C99]/30 to-[#006670]/40 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#008C99]/20 to-[#006670]/30 p-1 border border-[#008C99]/30">
+              <div className="relative rounded-xl overflow-hidden">
+                <img
+                  src="/images/about.jpg"
+                  alt="Surgical Instruments"
+                  className="w-full h-[420px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
+                {/* Greenish gradient overlay for better text visibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#008C99]/60 via-transparent to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-[#008C99]/80 to-transparent">
+                  <div className="transform transition-all duration-500 group-hover:translate-y-[-8px]">
+                    <h4 className={cn("text-2xl font-bold mb-2 text-white font-montserrat")}>Engineered for Precision</h4>
+                    <p className="text-lg font-openSans text-white/90">Designed with the future of surgery in mind.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

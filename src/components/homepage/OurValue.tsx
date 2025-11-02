@@ -46,11 +46,11 @@ const OurValue = () => {
   ];
 
   const images = [
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-    "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb",
-    "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
-    "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb",
-    "https://images.unsplash.com/photo-1465101046530-73398c7f28ca"
+    "/images/faq-image-1.jpg",
+    "/images/faq-image-2.jpg",
+    "/images/faq-image-3.jpg",
+    "/images/faq-image-4.jpg",
+    "/images/faq-image-5.jpg"
   ];
   return (
     <section className="relative bg-[#F8F9FA] text-[#2F323A] py-24 overflow-hidden font-sans">

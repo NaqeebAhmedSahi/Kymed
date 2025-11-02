@@ -13,9 +13,9 @@ const Header = () => {
     { image: "/images/slider01.jpg" },
     { image: "/images/slider02.jpg" },
     { image: "/images/slider03.jpg" },
-    { image: "/images/slider04.jpg" },
-    { image: "/images/slider05.jpg" },
-    { image: "/images/slider06.jpg" },
+    // { image: "/images/slider04.jpg" },
+    // { image: "/images/slider05.jpg" },
+    // { image: "/images/slider06.jpg" },
   ];
 
   useEffect(() => {
@@ -101,7 +101,7 @@ const Header = () => {
               className="flex gap-4 justify-center"
             >
               <a
-                href="/shop/all"
+                href="/categories"
                 className="px-8 py-4 rounded-full font-semibold text-lg bg-teal-500 text-white shadow-lg transition-colors duration-300 hover:bg-teal-700 focus:bg-teal-700"
               >
                 Shop Now

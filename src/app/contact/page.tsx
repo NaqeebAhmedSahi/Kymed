@@ -5,7 +5,7 @@ import * as motion from "framer-motion/client";
 import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { montserrat, openSans } from "@/styles/fonts";
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaPaperPlane } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaPaperPlane } from "react-icons/fa";
 
 interface FormData {
   name: string;
@@ -124,26 +124,26 @@ const ContactPage = () => {
           {[
             { 
               icon: <FaMapMarkerAlt className="w-8 h-8" />, 
-              title: "Address", 
-              text: "Shakky, Daska, Sialkot, Pakistan",
+              title: "Manufacturing Facility", 
+              text: "Sialkot, Pakistan",
+              color: "from-[#008C99] to-[#006670]"
+            },
+            { 
+              icon: <FaMapMarkerAlt className="w-8 h-8" />, 
+              title: "U.S. Office", 
+              text: "Milwaukee, Wisconsin (Launching 2026)",
               color: "from-[#008C99] to-[#006670]"
             },
             { 
               icon: <FaPhone className="w-8 h-8" />, 
               title: "Phone", 
-              text: "+92 316 7827137",
+              text: "+92 300 0915553",
               color: "from-[#008C99] to-[#006670]"
             },
             { 
               icon: <FaEnvelope className="w-8 h-8" />, 
               title: "Email", 
-              text: "saluviaindustries@gmail.com",
-              color: "from-[#008C99] to-[#006670]"
-            },
-            { 
-              icon: <FaClock className="w-8 h-8" />, 
-              title: "Working Hours", 
-              text: "Mon - Sat: 9AM - 6PM",
+              text: "info@kymed.co",
               color: "from-[#008C99] to-[#006670]"
             },
           ].map((item, index) => (
@@ -184,7 +184,7 @@ const ContactPage = () => {
             <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#008C99]/10 to-[#006670]/10 p-1">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2F323A]/10 to-[#2F323A]/40 z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
               <img
-                src="/images/contact-support.jpg"
+                src="/images/wallpaper03.jpg"
                 alt="Contact KyMed Support"
                 className="rounded-xl w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
@@ -328,7 +328,7 @@ const ContactPage = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <a
-              href="tel:+923167827137"
+              href="tel:+923000915553"
               className={cn(
                 "inline-block bg-white text-[#008C99] font-semibold py-4 px-8 rounded-xl hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg mx-2 mb-2",
                 montserrat.className
@@ -337,7 +337,7 @@ const ContactPage = () => {
               Call Us Now
             </a>
             <a
-              href="mailto:saluviaindustries@gmail.com"
+              href="mailto:info@kymed.co"
               className={cn(
                 "inline-block bg-transparent border-2 border-white text-white font-semibold py-4 px-8 rounded-xl hover:bg-white hover:text-[#008C99] transform hover:scale-105 transition-all duration-300 mx-2 mb-2",
                 montserrat.className

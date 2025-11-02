@@ -12,7 +12,7 @@ import {
 import { MenuItem } from "./MenuItem";
 import Image from "next/image";
 import ResTopNavbar from "./ResTopNavbar";
-import { FiMail, FiMapPin, FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiSearch, FiX } from "react-icons/fi";
+import { FiMail, FiMapPin, FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiSearch, FiX, FiPhone } from "react-icons/fi";
 
 // Updated menu data with proper links
 const data: NavMenu = [
@@ -227,13 +227,6 @@ const data: NavMenu = [
     url: "/categories",
     children: [],
   },
-  // {
-  //   id: 3,
-  //   type: "MenuItem",
-  //   label: "Brochure",
-  //   url: "/brochures",
-  //   children: [],
-  // },
   {
     id: 4,
     type: "MenuItem",
@@ -256,17 +249,17 @@ const TopNavbar = () => {
 
   return (
     <>
-      {/* Topbar (address/social) - not sticky, scrolls away */}
+      {/* Topbar (contact info/social) - not sticky, scrolls away */}
       <div className="bg-gradient-to-r from-[#008C99] to-[#006670] text-white text-sm w-full">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between py-3 px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2 hover:text-[#E5F5F7] transition-colors duration-200">
-              <FiMapPin className="w-4 h-4 text-[#E5F5F7]" />
-              Abdullah Street, Ugoki Road, Adalatgarh, Sialkot 51310 Pakistan
+              <FiPhone className="w-4 h-4 text-[#E5F5F7]" />
+              +92 300 0915553
             </span>
             <span className="flex items-center gap-2 hover:text-[#E5F5F7] transition-colors duration-200">
               <FiMail className="w-4 h-4 text-[#E5F5F7]" />
-              <a href="mailto:info@saluvia.com" className="hover:underline">info@saluvia.com</a>
+              <a href="mailto:info@kymed.co" className="hover:underline">info@kymed.co</a>
             </span>
           </div>
           <div className="flex items-center gap-4 mt-2 md:mt-0">
@@ -288,15 +281,15 @@ const TopNavbar = () => {
 
       {/* Main Navbar - sticky */}
       <nav className="sticky top-0 bg-white shadow-lg z-50 border-b border-[#C4C7CA]/30">
-        <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-4 sm:px-6 lg:px-8">
-          {/* Logo */}
+        <div className="max-w-7xl mx-auto flex items-center justify-between py-3 px-4 sm:px-6 lg:px-8">
+          {/* Logo - Fixed sizing */}
           <Link href="/" className="flex items-center">
             <Image
               src="/images/logo.png"
               alt="KyMed Logo"
-              height={45}
-              width={120}
-              className="w-auto h-8 md:h-10"
+              height={40}
+              width={100}
+              className="w-auto h-10 object-contain"
               priority
             />
           </Link>
@@ -323,7 +316,17 @@ const TopNavbar = () => {
                   )}
                   {item.type === "MenuList" && (
                     <div className="relative">
-                      <MenuList data={item.children} label={item.label} />
+                      <div className="group/nav-item">
+                        {/* Added font styling to make Products bold like others */}
+                        <div className={cn(
+                          "text-[#2F323A] font-semibold hover:text-[#008C99] transition-all duration-300",
+                          montserrat.className
+                        )}>
+                          <MenuList data={item.children} label={item.label} />
+                        </div>
+                        {/* Individual slide-in underline animation for Products */}
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#008C99] to-[#006670] transition-all duration-300 group-hover/nav-item:w-full"></span>
+                      </div>
                     </div>
                   )}
                 </React.Fragment>
@@ -376,7 +379,7 @@ const TopNavbar = () => {
               <Link 
                 href="/contact"
                 className={cn(
-                  "px-6 py-3 bg-gradient-to-r from-[#008C99] to-[#006670] text-white rounded-xl hover:shadow-lg transition-all duration-300 shadow-md font-semibold hover:scale-105",
+                  "px-6 py-2 bg-gradient-to-r from-[#008C99] to-[#006670] text-white rounded-xl hover:shadow-lg transition-all duration-300 shadow-md font-semibold hover:scale-105 text-sm",
                   montserrat.className
                 )}
               >

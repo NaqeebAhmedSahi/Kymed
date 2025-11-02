@@ -7,24 +7,24 @@ import { cn } from "@/lib/utils";
 // Example certification logos (replace with your own as needed)
 const certifications = [
   {
-    name: "CE Marked",
-    img: "https://upload.wikimedia.org/wikipedia/commons/6/6b/CE_mark.svg"
+    name: "ISO 13485",
+    img: "/images/cert1.png"
   },
   {
     name: "FDA Approved",
-    img: "https://upload.wikimedia.org/wikipedia/commons/6/6a/FDA_logo.svg"
+    img: "/images/cert2.png"
   },
   {
-    name: "ISO 13485",
-    img: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ISO_Logo.svg"
+    name: "ISO 9001",
+    img: "/images/cert3.png"
   },
   {
     name: "GMP Certified",
-    img: "https://upload.wikimedia.org/wikipedia/commons/2/2e/GMP_logo.svg"
+    img: "/images/cert1.png"
   },
   {
     name: "TUV Rheinland",
-    img: "https://upload.wikimedia.org/wikipedia/commons/7/7e/T%C3%9CV_Rheinland_logo.svg"
+    img: "/images/cert2.png"
   }
 ];
 
