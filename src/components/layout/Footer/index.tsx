@@ -19,11 +19,11 @@ const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
 
 // Socials Data
 const socialsData = [
-  { id: 1, icon: <FaTwitter />, url: "https://twitter.com" },
-  { id: 2, icon: <FaFacebookF />, url: "https://facebook.com" },
-  { id: 3, icon: <FaInstagram />, url: "https://instagram.com" },
+  // { id: 1, icon: <FaTwitter />, url: "https://twitter.com" },
+  // { id: 2, icon: <FaFacebookF />, url: "https://facebook.com" },
+  // { id: 3, icon: <FaInstagram />, url: "https://instagram.com" },
   { id: 4, icon: <FaLinkedinIn />, url: "https://linkedin.com" },
-  { id: 5, icon: <FaGithub />, url: "https://github.com/mohammadoftadeh" },
+  // { id: 5, icon: <FaGithub />, url: "https://github.com/mohammadoftadeh" },
 ];
 
 // Menu Data
@@ -34,6 +34,8 @@ const footerLinks = [
       { label: "About", url: "/about" },
       // { label: "Brochure", url: "/brochures" },
       { label: "Contact Us", url: "/contact" },
+      // { label: "Materials Technical Standards", url: "/MaterialsTechnicalStandards" },
+
     ],
   },
   {
@@ -49,7 +51,7 @@ const footerLinks = [
   {
     title: "Resources",
     links: [
-      { label: "Materials & Quality", url: "/materials" },
+      { label: "Materials & Quality", url: "/MaterialsTechnicalStandards" },
       { label: "Certifications", url: "/certifications" },
       { label: "Request a Quote", url: "/quote" },
     ],
@@ -143,7 +145,7 @@ const Footer = () => {
             Engineered in Sialkot, Pakistan.
           </p>
 
-          <div className="flex items-center gap-3">
+          {/* <div className="flex items-center gap-3">
             {["/icons/Visa.svg", "/icons/mastercard.svg", "/icons/paypal.svg"].map(
               (src, idx) => (
                 <Image
@@ -156,7 +158,7 @@ const Footer = () => {
                 />
               )
             )}
-          </div>
+          </div> */}
         </div>
 
         <LayoutSpacing />

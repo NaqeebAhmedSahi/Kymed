@@ -36,12 +36,20 @@ const ResTopNavbar = ({ data }: { data: NavMenu }) => {
         <SheetHeader className="mb-10">
           <SheetTitle asChild>
             <SheetClose asChild>
-              <Link href="/" className={cn([integralCF.className, "text-2xl"])}>
-                  Kymed
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/images/logo.png"
+                  alt="Kymed Logo"
+                  width={120}
+                  height={40}
+                  className="h-auto w-auto"
+                  priority
+                />
               </Link>
             </SheetClose>
           </SheetTitle>
         </SheetHeader>
+
         <div className="flex flex-col items-start">
           {data.map((item) => (
             <React.Fragment key={item.id}>

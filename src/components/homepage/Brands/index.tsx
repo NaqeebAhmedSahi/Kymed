@@ -19,16 +19,14 @@ const CallToAction = () => {
             "text-4xl md:text-6xl font-bold text-[#008C99] leading-tight"
           )}
         >
-          <span className="block text-left">
-            Precision in Every Cut
-          </span>
+          <span className="block text-left">Precision in Every Cut</span>
           <span className="block text-right text-[#2F323A]">
             Integrity in Every Instrument
           </span>
         </h1>
       </div>
 
-      {/* Split Layout for content */}
+      {/* Split Layout */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
         {/* Left Text Section */}
         <div>
@@ -46,9 +44,10 @@ const CallToAction = () => {
               "text-base md:text-lg mb-8 text-[#2F323A]/80"
             )}
           >
-            KyMed is a global medical device manufacturer specializing in
-            surgical and dental instruments crafted from German stainless steel.
-            Engineered at our manufacturing facility in Sialkot, Pakistan and
+            KyMed is a global <strong>medical device manufacturer</strong> specializing in
+            <strong> surgical and dental instruments</strong> crafted from
+            <strong> German stainless steel</strong>. Engineered at our
+            <strong> manufacturing facility in Sialkot</strong>, Pakistan and
             distributed worldwide, KyMed combines precision engineering, quality
             assurance, and on-time delivery to serve healthcare professionals
             across continents.
@@ -83,10 +82,10 @@ const CallToAction = () => {
           </div>
         </div>
 
-        {/* Right Image Section */}
+        {/* Right Image */}
         <div className="flex justify-center">
           <Image
-            src="/images/picture01.jpg" // Replace this with your actual image
+            src="/images/picture01.jpg"
             alt="KyMed Surgical Instruments"
             width={600}
             height={400}

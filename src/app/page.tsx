@@ -5,7 +5,7 @@ import DressStyle from '@/components/homepage/DressStyle';
 import Header from '@/components/homepage/Header';
 import Reviews from '@/components/homepage/Reviews';
 import WhyChooseUs from '@/components/homepage/ChooseUs'; 
-import OurValue from '@/components/homepage/OurValue';
+// import OurValue from '@/components/homepage/OurValue';
 import CertificationMarquee from '@/components/homepage/CertificationMarquee';
 
 import { Product } from '@/types/product.types';
@@ -95,11 +95,11 @@ export default async function Home() {
           <DressStyle />
         </div>
          {/* Add the Our Value section here */}
-         <div className="mb-[50px] sm:mb-20">
+         {/* <div className="mb-[50px] sm:mb-20">
           <OurValue />
-        </div>
+        </div> */}
         {/* Certification Marquee Section */}
-        <div className="mb-[50px] sm:mb-20">
+        <div>
           <CertificationMarquee />
         </div>
         <Reviews data={reviewsData} />

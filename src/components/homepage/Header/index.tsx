@@ -10,12 +10,24 @@ const Header = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const sliderContent = [
-    { image: "/images/slider01.jpg" },
-    { image: "/images/slider02.jpg" },
-    { image: "/images/slider03.jpg" },
-    // { image: "/images/slider04.jpg" },
-    // { image: "/images/slider05.jpg" },
-    // { image: "/images/slider06.jpg" },
+    {
+      image: "/images/slider01.jpg",
+      title: "General Surgical Instruments",
+      description:
+        "Precision-crafted general surgical instruments by KyMed — built for reliability, accuracy, and superior surgical performance.",
+    },
+    {
+      image: "/images/slider02.jpg",
+      title: "Dental Instruments",
+      description:
+        "Advanced dental instruments by KyMed — designed for precision, comfort, and lasting clinical confidence.",
+    },
+    {
+      image: "/images/slider03.jpg",
+      title: "TC (Tungsten Carbide) Instruments",
+      description:
+        "Durable tungsten carbide instruments by KyMed — unmatched sharpness and strength for demanding procedures.",
+    },
   ];
 
   useEffect(() => {
@@ -45,7 +57,14 @@ const Header = () => {
   return (
     <div className="relative w-full h-[550px] overflow-hidden bg-gradient-to-br from-[#e0f7fa] via-[#f5f5f5] to-[#e0e0e0]">
       {/* Stainless steel texture overlay */}
-      <div className="absolute inset-0 pointer-events-none" style={{background: "url('/images/stainless-texture.png')", opacity: 0.08}} />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "url('/images/stainless-texture.png')",
+          opacity: 0.08,
+        }}
+      />
+
       <AnimatePresence mode="wait" custom={1} initial={false}>
         <motion.div
           key={currentImageIndex}
@@ -57,7 +76,7 @@ const Header = () => {
           transition={{ duration: 0.7, ease: "easeInOut" }}
           className="w-full h-full"
         >
-          {/* Parallax effect on image */}
+          {/* Parallax Image */}
           <motion.div
             initial={{ scale: 1.08, y: 30 }}
             animate={{ scale: 1, y: 0 }}
@@ -71,29 +90,32 @@ const Header = () => {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-white/5" />
+            <div className="absolute inset-0 bg-black/40" />
           </motion.div>
 
           {/* Hero Content */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-8">
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-8">
             <motion.h1
               initial={{ opacity: 0, y: -40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.7 }}
-              className={cn("text-5xl font-bold mb-4 drop-shadow-lg", integralCF.className)}
+              className={cn(
+                "text-4xl md:text-5xl font-bold mb-4 drop-shadow-xl leading-tight",
+                integralCF.className
+              )}
             >
-              {/* {sliderContent[currentImageIndex].title || "Precision Medical Equipment"} */}
-              Precision Medical Equipment
+              {sliderContent[currentImageIndex].title}
             </motion.h1>
+
             <motion.p
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.7 }}
-              className="text-xl max-w-2xl mb-8 drop-shadow"
+              className="text-lg md:text-xl max-w-3xl mb-8 text-gray-200 drop-shadow-lg leading-relaxed"
             >
-              {/* {sliderContent[currentImageIndex].description || "Engineered for reliability, trusted by professionals."} */}
-              Engineered for reliability, trusted by professionals.
+              {sliderContent[currentImageIndex].description}
             </motion.p>
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -102,13 +124,13 @@ const Header = () => {
             >
               <a
                 href="/categories"
-                className="px-8 py-4 rounded-full font-semibold text-lg bg-teal-500 text-white shadow-lg transition-colors duration-300 hover:bg-teal-700 focus:bg-teal-700"
+                className="px-8 py-4 rounded-full font-semibold text-lg bg-teal-500 text-white shadow-xl transition-all duration-300 hover:bg-teal-600 hover:scale-105"
               >
                 Shop Now
               </a>
               <a
                 href="/contact"
-                className="px-8 py-4 rounded-full font-semibold text-lg bg-white text-teal-600 shadow-lg border border-teal-500 transition-colors duration-300 hover:bg-teal-50 hover:text-teal-800 focus:bg-teal-50"
+                className="px-8 py-4 rounded-full font-semibold text-lg bg-white text-teal-600 border border-teal-500 shadow-xl transition-all duration-300 hover:bg-teal-50 hover:scale-105"
               >
                 Contact Us
               </a>
@@ -123,8 +145,10 @@ const Header = () => {
           <button
             key={index}
             onClick={() => setCurrentImageIndex(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              currentImageIndex === index ? "bg-teal-500" : "bg-gray-400"
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              currentImageIndex === index
+                ? "bg-teal-500 scale-125"
+                : "bg-gray-400"
             }`}
           />
         ))}
@@ -147,12 +171,7 @@ const Header = () => {
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
@@ -172,12 +191,7 @@ const Header = () => {
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
     </div>

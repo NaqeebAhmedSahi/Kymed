@@ -263,18 +263,18 @@ const TopNavbar = () => {
             </span>
           </div>
           <div className="flex items-center gap-4 mt-2 md:mt-0">
-            <a href="#" className="text-white hover:text-[#E5F5F7] transition-colors duration-200">
+            {/* <a href="#" className="text-white hover:text-[#E5F5F7] transition-colors duration-200">
               <FiFacebook className="w-5 h-5" />
             </a>
             <a href="#" className="text-white hover:text-[#E5F5F7] transition-colors duration-200">
               <FiInstagram className="w-5 h-5" />
-            </a>
+            </a> */}
             <a href="#" className="text-white hover:text-[#E5F5F7] transition-colors duration-200">
               <FiLinkedin className="w-5 h-5" />
             </a>
-            <a href="#" className="text-white hover:text-[#E5F5F7] transition-colors duration-200">
+            {/* <a href="#" className="text-white hover:text-[#E5F5F7] transition-colors duration-200">
               <FiTwitter className="w-5 h-5" />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
