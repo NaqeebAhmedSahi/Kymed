@@ -63,17 +63,12 @@ const DressStyle = () => {
           whileInView={{ y: "0", opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="flex flex-col sm:flex-row md:h-[289px] space-y-4 sm:space-y-0 sm:space-x-5 mb-4 mt-4 sm:mb-5 sm:mt-5"
+          className="flex flex-col sm:flex-row md:h-[289px] mb-4 mt-4 sm:mb-5 sm:mt-5"
         >
-          <DressStyleCard
-            title="Beauty"
-            url="/categories/beauty"
-            className="md:max-w-[260px] lg:max-w-[360px] xl:max-w-[407px] h-[190px] bg-[url('/images/surgi-style-5.jpg')] bg-white border border-[#C4C7CA] shadow hover:shadow-[0_8px_40px_0_rgba(196,199,202,0.35)] hover:border-[#008C99] transition-all duration-300 hover:scale-[1.02]"
-          />
           <DressStyleCard
             title="Ophthalmology"
             url="/categories/ophthalmology"
-            className="md:max-w-[684px] h-[190px] bg-[url('/images/surgi-style-6.jpg')] bg-white border border-[#C4C7CA] shadow hover:shadow-[0_8px_40px_0_rgba(196,199,202,0.35)] hover:border-[#008C99] transition-all duration-300 hover:scale-[1.02]"
+            className="w-full h-[190px] bg-[url('/images/surgi-style-6.jpg')] bg-white border border-[#C4C7CA] shadow hover:shadow-[0_8px_40px_0_rgba(196,199,202,0.35)] hover:border-[#008C99] transition-all duration-300 hover:scale-[1.02]"
           />
         </motion.div>
       </section>

@@ -45,7 +45,7 @@ const footerLinks = [
       { label: "Dental", url: "/shop/dental" },
       { label: "Micro Surgery", url: "/shop/micro-surgery" },
       { label: "Ophthalmology", url: "/shop/ophthalmology" },
-      { label: "Beauty", url: "/shop/beauty" },
+      // { label: "Beauty", url: "/shop/beauty" },
     ],
   },
   {

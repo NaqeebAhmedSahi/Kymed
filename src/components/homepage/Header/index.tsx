@@ -10,24 +10,27 @@ const Header = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const sliderContent = [
+    
     {
-      image: "/images/slider01.jpg",
+      image: "/images/slider02.jpg",
       title: "General Surgical Instruments",
       description:
         "Precision-crafted general surgical instruments by KyMed — built for reliability, accuracy, and superior surgical performance.",
     },
     {
-      image: "/images/slider02.jpg",
+      image: "/images/slider03.jpg",
       title: "Dental Instruments",
       description:
-        "Advanced dental instruments by KyMed — designed for precision, comfort, and lasting clinical confidence.",
-    },
-    {
-      image: "/images/slider03.jpg",
-      title: "TC (Tungsten Carbide) Instruments",
+        "Advanced dental instruments by KyMed — designed for precision, comfort, and lasting clinical confidence.", 
+    }, 
+      {
+      image: "/images/slider01.jpg",
+      title: "Tungsten Carbide Instruments",
       description:
-        "Durable tungsten carbide instruments by KyMed — unmatched sharpness and strength for demanding procedures.",
+      "Durable tungsten carbide instruments by KyMed — unmatched sharpness and strength for demanding procedures.",
+
     },
+
   ];
 
   useEffect(() => {
