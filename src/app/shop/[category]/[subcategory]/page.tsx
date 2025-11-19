@@ -158,7 +158,7 @@ export default function SubcategoryPage({ params }: SubcategoryPageProps) {
   }, [subcategory.products]);
 
   // Filter and search logic for products
-  const filteredProducts = useMemo(() => {
+  const filteredProducts = useMemo<any[]>(() => {
     if (!subcategory.products) return [];
     
     return subcategory.products.filter((product: any) => {
@@ -182,13 +182,13 @@ export default function SubcategoryPage({ params }: SubcategoryPageProps) {
   }, [subcategory.products, searchTerm, selectedType, selectedRating]);
 
   // Sort products
-  const sortedProducts = useMemo(() => {
-    return [...filteredProducts].sort((a, b) => a.name.localeCompare(b.name));
+  const sortedProducts = useMemo<any[]>(() => {
+    return [...filteredProducts].sort((a: any, b: any) => a.name.localeCompare(b.name));
   }, [filteredProducts]);
 
   // Pagination logic
   const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
-  const paginatedProducts = useMemo(() => {
+  const paginatedProducts = useMemo<any[]>(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     return sortedProducts.slice(startIndex, startIndex + itemsPerPage);
   }, [sortedProducts, currentPage, itemsPerPage]);
