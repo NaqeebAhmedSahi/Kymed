@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { NavMenu } from "../navbar.types";
 import { MenuList } from "./MenuList";
+import { categories } from "@/data/categories";
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -14,233 +15,42 @@ import Image from "next/image";
 import ResTopNavbar from "./ResTopNavbar";
 import { FiMail, FiMapPin, FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiSearch, FiX, FiPhone } from "react-icons/fi";
 
-// Updated menu data with proper links
+// Build menu dynamically from `categories` data
+const productsChildren = categories.map((cat) => ({
+  id: cat.id,
+  label: cat.name,
+  url: cat.url,
+  description: (
+    <>
+      <Link href={cat.url} className="font-semibold text-[#2F323A] hover:text-[#008C99] transition-colors duration-200 block mb-3">
+        {cat.name}
+      </Link>
+      <div className="space-y-2">
+        {(cat.subcategories || []).slice(0, 6).map((sc) => (
+          <Link key={sc.id} href={sc.url} className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
+            {sc.name}
+          </Link>
+        ))}
+      </div>
+      <Link
+        href={cat.url}
+        className="inline-flex items-center mt-4 text-[#008C99] hover:text-[#006670] font-semibold transition-colors duration-200 group"
+      >
+        View All Products
+        <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+        </svg>
+      </Link>
+    </>
+  ),
+}));
+
 const data: NavMenu = [
-  {
-    id: 0,
-    type: "MenuItem",
-    label: "Home",
-    url: "/",
-    children: [],
-  },
-  {
-    id: 1,
-    label: "Products",
-    type: "MenuList",
-    children: [
-      {
-        id: 11,
-        label: "General Surgery",
-        url: "/categories/general-surgery",
-        description: (
-          <>
-            <Link href="/categories/general-surgery" className="font-semibold text-[#2F323A] hover:text-[#008C99] transition-colors duration-200 block mb-3">
-              General Surgery
-            </Link>
-            <div className="space-y-2">
-              <Link href="/shop/general-surgery/scalpels" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Scalpels
-              </Link>
-              <Link href="/shop/general-surgery/forceps" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Forceps
-              </Link>
-              <Link href="/shop/general-surgery/surgical-scissors" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Surgical Scissors
-              </Link>
-              <Link href="/shop/general-surgery/retractors" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Retractors
-              </Link>
-              <Link href="/shop/general-surgery/scalpel-handles" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Scalpel Handles
-              </Link>
-            </div>
-            <Link
-              href="/categories/general-surgery"
-              className="inline-flex items-center mt-4 text-[#008C99] hover:text-[#006670] font-semibold transition-colors duration-200 group"
-            >
-              View All Products
-              <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </>
-        ),
-      },
-      {
-        id: 14,
-        label: "Dental Instruments",
-        url: "/categories/dental",
-        description: (
-          <>
-            <Link href="/categories/dental" className="font-semibold text-[#2F323A] hover:text-[#008C99] transition-colors duration-200 block mb-3">
-              Dental Instruments
-            </Link>
-            <div className="space-y-2">
-              <Link href="/shop/dental/extraction-forceps" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Extraction Forceps
-              </Link>
-              <Link href="/shop/dental/dental-scissors" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Dental Scissors
-              </Link>
-              <Link href="/shop/dental/dental-elevators" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Dental Elevators
-              </Link>
-              <Link href="/shop/dental/orthodontic-cutters" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Orthodontic Cutters and Pliers
-              </Link>
-              <Link href="/shop/dental/dental-mirrors" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Dental Mirrors
-              </Link>
-            </div>
-            <Link
-              href="/categories/dental"
-              className="inline-flex items-center mt-4 text-[#008C99] hover:text-[#006670] font-semibold transition-colors duration-200 group"
-            >
-              View All Products
-              <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </>
-        ),
-      },
-      {
-        id: 16,
-        label: "Electrosurgery",
-        url: "/categories/electrosurgery",
-        description: (
-          <>
-            <Link href="/categories/electrosurgery" className="font-semibold text-[#2F323A] hover:text-[#008C99] transition-colors duration-200 block mb-3">
-              Electrosurgery
-            </Link>
-            <div className="space-y-2">
-              <Link href="/shop/electrosurgery/bipolar-forceps" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Bipolar Forceps
-              </Link>
-              <Link href="/shop/electrosurgery/bipolar-scissors" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Bipolar Scissors and Cables
-              </Link>
-              <Link href="/shop/electrosurgery/diathermi-speculums" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Diathermi Speculums
-              </Link>
-              <Link href="/shop/electrosurgery/diathermi-forceps" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Diathermi Forceps
-              </Link>
-              <Link href="/shop/electrosurgery/diathermi-scissors" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Diathermi Scissors
-              </Link>
-            </div>
-            <Link
-              href="/categories/electrosurgery"
-              className="inline-flex items-center mt-4 text-[#008C99] hover:text-[#006670] font-semibold transition-colors duration-200 group"
-            >
-              View All Products
-              <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </>
-        ),
-      },
-      {
-        id: 17,
-        label: "Orthopedic Instruments",
-        url: "/categories/orthopedic",
-        description: (
-          <>
-            <Link href="/categories/orthopedic" className="font-semibold text-[#2F323A] hover:text-[#008C99] transition-colors duration-200 block mb-3">
-              Orthopedic Instruments
-            </Link>
-            <div className="space-y-2">
-              <Link href="/shop/orthopedic/bone-holding-forceps" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Bone Holding Forceps
-              </Link>
-              <Link href="/shop/orthopedic/bone-cutting-forceps" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Bone Cutting Forceps
-              </Link>
-              <Link href="/shop/orthopedic/bone-rongeurs" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Bone Rongeurs
-              </Link>
-              <Link href="/shop/orthopedic/chizzels" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Chizzels
-              </Link>
-              <Link href="/shop/orthopedic/austiotomes" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Austiotomes
-              </Link>
-            </div>
-            <Link
-              href="/categories/orthopedic"
-              className="inline-flex items-center mt-4 text-[#008C99] hover:text-[#006670] font-semibold transition-colors duration-200 group"
-            >
-              View All Products
-              <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </>
-        ),
-      },
-      {
-        id: 18,
-        label: "Ophthalmic Instruments",
-        url: "/categories/ophthalmic",
-        description: (
-          <>
-            <Link href="/categories/ophthalmic" className="font-semibold text-[#2F323A] hover:text-[#008C99] transition-colors duration-200 block mb-3">
-              Ophthalmic Instruments
-            </Link>
-            <div className="space-y-2">
-              <Link href="/shop/ophthalmic/ophthalmic-scissors" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Ophthalmic Scissors
-              </Link>
-              <Link href="/shop/ophthalmic/needle-holders" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Needle Holders
-              </Link>
-              <Link href="/shop/ophthalmic/picsation-forceps" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Picsation Forceps
-              </Link>
-              <Link href="/shop/ophthalmic/dissecting-forceps" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Dissecting Forceps
-              </Link>
-              <Link href="/shop/ophthalmic/cilia-forceps" className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-                Cilia Forceps
-              </Link>
-            </div>
-            <Link
-              href="/categories/ophthalmic"
-              className="inline-flex items-center mt-4 text-[#008C99] hover:text-[#006670] font-semibold transition-colors duration-200 group"
-            >
-              View All Products
-              <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </>
-        ),
-      }
-    ],
-  },
-  {
-    id: 2,
-    type: "MenuItem",
-    label: "Categories",
-    url: "/categories",
-    children: [],
-  },
-  {
-    id: 4,
-    type: "MenuItem",
-    label: "About",
-    url: "/about",
-    children: [],
-  },
-  {
-    id: 5,
-    type: "MenuItem",
-    label: "Contact Us",
-    url: "/contact",
-    children: [],
-  },
+  { id: 0, type: "MenuItem", label: "Home", url: "/", children: [] },
+  { id: 1, type: "MenuList", label: "Products", children: productsChildren },
+  { id: 2, type: "MenuItem", label: "Categories", url: "/categories", children: [] },
+  { id: 4, type: "MenuItem", label: "About", url: "/about", children: [] },
+  { id: 5, type: "MenuItem", label: "Contact Us", url: "/contact", children: [] },
 ];
 
 const TopNavbar = () => {

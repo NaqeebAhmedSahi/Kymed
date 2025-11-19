@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Montserrat, Open_Sans } from "next/font/google";
 
@@ -55,30 +56,33 @@ const CallToAction = () => {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <button
+            <Link
+              href="/categories"
               className={cn(
                 montserrat.className,
-                "bg-[#008C99] text-white px-6 py-3 rounded-2xl font-semibold hover:bg-[#007885] transition-all duration-300 w-full sm:w-auto"
+                "bg-[#008C99] text-white px-6 py-3 rounded-2xl font-semibold hover:bg-[#007885] transition-all duration-300 w-full sm:w-auto text-center"
               )}
             >
               Explore Product Range
-            </button>
-            <button
+            </Link>
+            <Link
+              href="/contact"
               className={cn(
                 montserrat.className,
-                "bg-[#C4C7CA] text-[#2F323A] px-6 py-3 rounded-2xl font-semibold hover:bg-[#E5F5F7] transition-all duration-300 w-full sm:w-auto"
+                "bg-[#C4C7CA] text-[#2F323A] px-6 py-3 rounded-2xl font-semibold hover:bg-[#E5F5F7] transition-all duration-300 w-full sm:w-auto text-center"
               )}
             >
               Request a Quote
-            </button>
-            <button
+            </Link>
+            <Link
+              href="/MaterialsTechnicalStandards"
               className={cn(
                 montserrat.className,
-                "border border-[#008C99] text-[#008C99] px-6 py-3 rounded-2xl font-semibold hover:bg-[#E5F5F7] transition-all duration-300 w-full sm:w-auto"
+                "border border-[#008C99] text-[#008C99] px-6 py-3 rounded-2xl font-semibold hover:bg-[#E5F5F7] transition-all duration-300 w-full sm:w-auto text-center"
               )}
             >
               Materials & Quality
-            </button>
+            </Link>
           </div>
         </div>
 

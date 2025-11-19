@@ -10,13 +10,13 @@ const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
 
 const MaterialsTechnicalStandards = () => {
   return (
-    <section className="bg-[#F8F9FA] text-[#2F323A] py-16 md:py-24 px-6 md:px-16">
+    <section className="bg-[#F8F9FA] text-[#2F323A] py-10 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16">
       {/* Header */}
       <div className="max-w-6xl mx-auto text-center mb-16">
         <h1
           className={cn(
             montserrat.className,
-            "text-4xl md:text-6xl font-bold text-[#008C99] leading-tight mb-6"
+            "text-3xl sm:text-4xl md:text-6xl font-bold text-[#008C99] leading-tight mb-6"
           )}
         >
           Materials & Technical Standards
@@ -24,7 +24,7 @@ const MaterialsTechnicalStandards = () => {
         <p
           className={cn(
             openSans.className,
-            "text-lg md:text-xl text-[#2F323A]/90 max-w-3xl mx-auto"
+            "text-sm sm:text-base md:text-xl text-[#2F323A]/90 max-w-3xl mx-auto"
           )}
         >
           Comprehensive overview of materials, grades, testing, and compliance that ensure KyMed instruments meet international quality standards.
@@ -32,9 +32,9 @@ const MaterialsTechnicalStandards = () => {
       </div>
 
       {/* German Stainless Steel Section */}
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-24">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-24">
         {/* Left Card */}
-        <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col justify-center">
+        <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8 flex flex-col justify-center">
           <h2 className={cn(montserrat.className, "text-3xl md:text-4xl font-bold text-[#008C99] mb-6")}>
             German Stainless Steel — Verified and Certified
           </h2>
@@ -43,14 +43,14 @@ const MaterialsTechnicalStandards = () => {
           </p>
 
           {/* Core Martensitic Grades Table */}
-          <h3 className={cn(montserrat.className, "text-xl font-bold text-[#008C99] mb-3")}>Core Martensitic Grades (Cutting & Holding Edges)</h3>
+          <h3 className={cn(montserrat.className, "text-lg sm:text-xl font-bold text-[#008C99] mb-3")}>Core Martensitic Grades (Cutting & Holding Edges)</h3>
           <div className="overflow-x-auto mb-6">
-            <table className="min-w-full border border-[#C4C7CA] rounded-lg overflow-hidden text-left">
+            <table className="min-w-full border border-[#C4C7CA] rounded-lg overflow-hidden text-left text-sm sm:text-base">
               <thead className="bg-[#E5F5F7]">
                 <tr>
-                  <th className="px-4 py-2 border-b border-[#C4C7CA]">EN / DIN Grade</th>
-                  <th className="px-4 py-2 border-b border-[#C4C7CA]">AISI Equivalent</th>
-                  <th className="px-4 py-2 border-b border-[#C4C7CA]">Typical Application</th>
+                  <th className="px-3 py-2 border-b border-[#C4C7CA]">EN / DIN Grade</th>
+                  <th className="px-3 py-2 border-b border-[#C4C7CA]">AISI Equivalent</th>
+                  <th className="px-3 py-2 border-b border-[#C4C7CA]">Typical Application</th>
                 </tr>
               </thead>
               <tbody>
@@ -62,9 +62,9 @@ const MaterialsTechnicalStandards = () => {
                   { grade: "1.4122 (X39CrMo17-1)", aisi: "—", application: "Enhanced strength and durability applications" },
                 ].map((row, idx) => (
                   <tr key={idx} className="hover:bg-[#F0F0F0] transition-colors">
-                    <td className="px-4 py-2 border-b border-[#C4C7CA]">{row.grade}</td>
-                    <td className="px-4 py-2 border-b border-[#C4C7CA]">{row.aisi}</td>
-                    <td className="px-4 py-2 border-b border-[#C4C7CA]">{row.application}</td>
+                    <td className="px-3 py-2 border-b border-[#C4C7CA]">{row.grade}</td>
+                    <td className="px-3 py-2 border-b border-[#C4C7CA]">{row.aisi}</td>
+                    <td className="px-3 py-2 border-b border-[#C4C7CA]">{row.application}</td>
                   </tr>
                 ))}
               </tbody>
@@ -73,29 +73,30 @@ const MaterialsTechnicalStandards = () => {
         </div>
 
         {/* Right Image */}
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center w-full">
           <Image
             src="/images/steel-grade.jpg"
             alt="German Stainless Steel"
-            width={500}
+            width={800}
             height={600}
-            className="rounded-2xl shadow-lg border border-[#E5F5F7]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 500px"
+            className="rounded-2xl shadow-lg border border-[#E5F5F7] w-full h-auto object-cover"
           />
         </div>
       </div>
 
       {/* Austenitic Grades Card */}
-      <div className="max-w-7xl mx-auto bg-white shadow-lg rounded-2xl p-8 mb-16">
+      <div className="max-w-7xl mx-auto bg-white shadow-lg rounded-2xl p-6 sm:p-8 mb-16">
         <h2 className={cn(montserrat.className, "text-3xl md:text-4xl font-bold text-[#008C99] mb-6")}>
           Austenitic Grades (Non-Cutting & Corrosion-Critical)
         </h2>
-        <div className="overflow-x-auto mb-6">
-          <table className="min-w-full border border-[#C4C7CA] rounded-lg overflow-hidden text-left">
+          <div className="overflow-x-auto mb-6">
+          <table className="min-w-full border border-[#C4C7CA] rounded-lg overflow-hidden text-left text-sm sm:text-base">
             <thead className="bg-[#E5F5F7]">
               <tr>
-                <th className="px-4 py-2 border-b border-[#C4C7CA]">EN / DIN Grade</th>
-                <th className="px-4 py-2 border-b border-[#C4C7CA]">AISI Equivalent</th>
-                <th className="px-4 py-2 border-b border-[#C4C7CA]">Typical Application</th>
+                  <th className="px-3 py-2 border-b border-[#C4C7CA]">EN / DIN Grade</th>
+                  <th className="px-3 py-2 border-b border-[#C4C7CA]">AISI Equivalent</th>
+                  <th className="px-3 py-2 border-b border-[#C4C7CA]">Typical Application</th>
               </tr>
             </thead>
             <tbody>
@@ -104,11 +105,11 @@ const MaterialsTechnicalStandards = () => {
                 { grade: "1.4404 (X2CrNiMo17-12-2)", aisi: "316L", application: "High-corrosion areas, retractors, trays" },
                 { grade: "1.4310 (X10CrNi18-8)", aisi: "301", application: "Springs and flexible components" },
               ].map((row, idx) => (
-                <tr key={idx} className="hover:bg-[#F0F0F0] transition-colors">
-                  <td className="px-4 py-2 border-b border-[#C4C7CA]">{row.grade}</td>
-                  <td className="px-4 py-2 border-b border-[#C4C7CA]">{row.aisi}</td>
-                  <td className="px-4 py-2 border-b border-[#C4C7CA]">{row.application}</td>
-                </tr>
+                  <tr key={idx} className="hover:bg-[#F0F0F0] transition-colors">
+                    <td className="px-3 py-2 border-b border-[#C4C7CA]">{row.grade}</td>
+                    <td className="px-3 py-2 border-b border-[#C4C7CA]">{row.aisi}</td>
+                    <td className="px-3 py-2 border-b border-[#C4C7CA]">{row.application}</td>
+                  </tr>
               ))}
             </tbody>
           </table>
@@ -174,9 +175,9 @@ const MaterialsTechnicalStandards = () => {
         },
       ].map((section, idx) => (
         <div
-          key={idx}
-          className="max-w-7xl mx-auto bg-white shadow-lg rounded-2xl p-8 mb-16 flex flex-col justify-center"
-        >
+            key={idx}
+            className="max-w-7xl mx-auto bg-white shadow-lg rounded-2xl p-6 sm:p-8 mb-16 flex flex-col justify-center"
+          >
           <h2 className={cn(montserrat.className, "text-3xl md:text-4xl font-bold text-[#008C99] mb-6")}>
             {section.title}
           </h2>

@@ -545,15 +545,29 @@ export default function SubcategoryPage({ params }: SubcategoryPageProps) {
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#2F323A]/60 to-transparent group-hover:from-[#008C99]/20 transition-all duration-500" />
-                          
-                          {/* Product Type Badge */}
-                          {productType && productType !== "standard" && (
-                            <div className="absolute top-4 left-4">
-                              <Badge className="bg-white/90 backdrop-blur-sm text-[#2F323A] border-0 capitalize font-medium">
-                                {productType}
-                              </Badge>
-                            </div>
-                          )}
+
+                          {/* New Arrival / Top Selling Badges (clickable) */}
+                          <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
+                            {(product as any).newArrival && (
+                              <Link href={`/shop/${params.category}/${params.subcategory}/${product.id}`} className="inline-block" aria-label="New Arrival">
+                                <span className="uppercase text-[#008C99] bg-[#F8F9FA] border-b-4 border-[#C4C7CA] px-3 py-1 rounded-full text-xs font-semibold tracking-wide">New Arrival</span>
+                              </Link>
+                            )}
+                            {(product as any).topSelling && (
+                              <Link href={`/shop/${params.category}/${params.subcategory}/${product.id}`} className="inline-block" aria-label="Top Selling">
+                                <span className="uppercase text-[#2F323A] bg-[#F8F9FA] border-b-4 border-[#E5F5F7] px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Top Selling</span>
+                              </Link>
+                            )}
+
+                            {/* Product Type Badge (kept below flags) */}
+                            {productType && productType !== "standard" && (
+                              <div>
+                                <Badge className="bg-white/90 backdrop-blur-sm text-[#2F323A] border-0 capitalize font-medium">
+                                  {productType}
+                                </Badge>
+                              </div>
+                            )}
+                          </div>
 
                           {/* View Details Button */}
                           <div className="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">

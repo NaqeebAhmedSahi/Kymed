@@ -42,7 +42,21 @@ const ProductCard = ({ data }: ProductCardProps) => {
       href={productUrl}
       className="flex flex-col items-start aspect-auto"
     >
-      <div className="bg-[#F0EEED] rounded-[13px] lg:rounded-[20px] w-full lg:max-w-[295px] aspect-square mb-2.5 xl:mb-4 overflow-hidden">
+      <div className="bg-[#F0EEED] rounded-[13px] lg:rounded-[20px] w-full lg:max-w-[295px] aspect-square mb-2.5 xl:mb-4 overflow-hidden relative">
+        {/* Badges: New Arrival / Top Selling (clickable, link to product) */}
+        <div className="absolute top-3 left-3 z-20 flex flex-col gap-2">
+          {(data as any).newArrival && (
+            <Link href={productUrl} className="inline-block" aria-label="New Arrival">
+              <span className="uppercase text-[#008C99] bg-[#F8F9FA] border-b-4 border-[#C4C7CA] px-3 py-1 rounded-full text-xs font-semibold tracking-wide">New Arrival</span>
+            </Link>
+          )}
+          {(data as any).topSelling && (
+            <Link href={productUrl} className="inline-block" aria-label="Top Selling">
+              <span className="uppercase text-[#2F323A] bg-[#F8F9FA] border-b-4 border-[#E5F5F7] px-3 py-1 rounded-full text-xs font-semibold tracking-wide">Top Selling</span>
+            </Link>
+          )}
+        </div>
+
         <Image
           src={imageUrl}
           width={295}

@@ -1,390 +1,320 @@
 export const categories = [
   {
     id: 1,
-    name: "General Surgery",
-    description: "High-quality surgical instruments for general procedures",
-    image: "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1000&auto=format&fit=crop",
-    url: "/shop/general-surgery",
-    bannerImage: "https://images.unsplash.com/photo-1631815589072-dc13cd157786?q=80&w=2072&auto=format&fit=crop",
-    longDescription: "Our comprehensive range of general surgery instruments combines precision engineering with ergonomic design, ensuring optimal performance in the operating room. Each instrument is crafted to meet the exacting standards of modern surgical procedures.",
+    name: "General Surgical Instruments",
+    description: "Highest‑quality general surgical instruments for precision and performance.",
+    image: "/Categories banners/general-surgery.webp",
+    url: "/shop/general-surgical-instruments",
+    bannerImage: "/Categories banners/general-surgery.webp",
+    longDescription: "Our range of general surgical instruments includes scalpels, scissors, retractors, and forceps designed for accuracy and durability.",
     subcategories: [
       {
         id: 101,
-        name: "Scalpels",
-        description: "Precision-crafted surgical scalpels for accurate incisions",
-        image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
-        url: "/shop/general-surgery/scalpels",
-        bannerImage: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=2000&auto=format&fit=crop",
-        longDescription: "Our premium range of surgical scalpels combines precision engineering with superior ergonomics. Each scalpel is crafted from high-grade materials to ensure optimal performance and durability in critical surgical procedures.",
-        products: [
-          {
-            id: "s1",
-            name: "Premium Surgical Scalpel Handle",
-            description: "Ergonomic design with precision grip",
-            longDescription: "The Premium Surgical Scalpel Handle represents the pinnacle of surgical instrument design. Crafted from premium-grade stainless steel, this handle offers unparalleled precision and control during procedures. Its ergonomic design reduces hand fatigue during extended use, while the precision-balanced weight distribution ensures optimal handling.",
-            price: 129.99,
-            originalPrice: 159.99,
-            image: "/images/product1.jpeg",
-            galleryImages: [
-              "/images/product1.jpeg",
-              "/images/product1.jpeg",
-              "/images/product1.jpeg"
-            ],
-            newArrival: true,
-            topSelling: false,
-            features: [
-              {
-                title: "Stainless Steel Construction",
-                description: "Made from high-grade surgical stainless steel for durability and corrosion resistance"
-              },
-              {
-                title: "Ergonomic Grip",
-                description: "Carefully designed handle reduces fatigue during long procedures"
-              },
-              {
-                title: "Autoclavable",
-                description: "Withstands repeated sterilization cycles without degradation"
-              },
-              {
-                title: "Precision Balanced",
-                description: "Optimal weight distribution for enhanced control and accuracy"
-              }
-            ],
-            specifications: {
-              "Material": "Surgical Grade Stainless Steel",
-              "Length": "140mm",
-              "Weight": "22g",
-              "Compatibility": "Standard #3 Scalpel Blades",
-              "Sterilization": "Autoclave Compatible",
-              "Surface Finish": "Satin/Matte",
-              "Country of Origin": "Germany",
-              "Warranty": "Lifetime against manufacturing defects"
-            },
-            rating: 4.8,
-            reviews: [
-              {
-                id: 1,
-                user: "Dr. Sarah Johnson",
-                rating: 5,
-                date: "2025-10-15",
-                comment: "Exceptional quality and perfect balance. Makes precise incisions effortless.",
-                pros: ["Perfect weight balance", "Comfortable grip", "High-quality finish"],
-                cons: ["Premium price point"]
-              }
-            ],
-            stockStatus: "In Stock",
-            sku: "SSH-P100",
-            certifications: ["CE Marked", "FDA Approved", "ISO 13485"],
-            warranty: "Lifetime Warranty",
-            shipping: {
-              estimated: "2-3 business days",
-              free: true,
-              threshold: 100
-            },
-            relatedProducts: ["s2", "s3", "s4"]
-          },
-          {
-            id: "s2",
-            name: "Disposable Surgical Scalpel",
-            description: "Single-use sterile scalpels for precise incisions",
-            longDescription: "High-quality disposable scalpels designed for single-use applications. Pre-sterilized and individually packaged for maximum safety and convenience.",
-            price: 49.99,
-            originalPrice: 59.99,
-            image: "/images/product1.jpeg",
-            galleryImages: [
-              "/images/product1.jpeg",
-              "/images/product1.jpeg"
-            ],
-            features: [
-              {
-                title: "Pre-sterilized",
-                description: "Individually packaged and ready for immediate use"
-              },
-              {
-                title: "Single-use",
-                description: "Eliminates cross-contamination risks"
-              },
-              {
-                title: "Safety Lock Mechanism",
-                description: "Secure blade locking for user safety"
-              }
-            ],
-            specifications: {
-              "Material": "Medical Grade Plastic & Stainless Steel",
-              "Sterility": "Sterile EO",
-              "Packaging": "Individual Peel Pouch",
-              "Blade Type": "#10, #11, #15, #20, #22",
-              "Country of Origin": "USA",
-              "Shelf Life": "5 years"
-            },
-            rating: 4.6,
-            reviews: [
-              {
-                id: 1,
-                user: "Dr. Michael Chen",
-                rating: 4,
-                date: "2025-09-20",
-                comment: "Reliable and consistent quality. Great for outpatient procedures.",
-                pros: ["Consistent sharpness", "Easy to use", "Good value"],
-                cons: ["Environmental concerns with disposables"]
-              }
-            ],
-            stockStatus: "In Stock",
-            sku: "DSS-50PK",
-            certifications: ["CE Marked", "FDA Approved"],
-            warranty: "1 Year Warranty",
-            newArrival: true,
-            topSelling: true
-          },
-          {
-            id: "s3",
-            name: "Precision Microsurgery Scalpel",
-            description: "Ultra-fine blade for delicate procedures",
-            longDescription: "Specialized microsurgery scalpel designed for ophthalmic, plastic, and neurosurgical procedures requiring extreme precision and control.",
-            price: 199.99,
-            originalPrice: 229.99,
-            image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
-            galleryImages: [
-              "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop"
-            ],
-            features: [
-              {
-                title: "Ultra-sharp Blade",
-                description: "Surgical-grade steel with micro-fine edge"
-              },
-              {
-                title: "Balanced Weight",
-                description: "Precision engineering for optimal control"
-              },
-              {
-                title: "Precision Tip",
-                description: "Fine tip for delicate tissue manipulation"
-              }
-            ],
-            specifications: {
-              "Material": "High-Carbon Stainless Steel",
-              "Blade Size": "Micro #67, #69, #70",
-              "Handle Length": "120mm",
-              "Weight": "15g",
-              "Sterilization": "Autoclave Compatible",
-              "Country of Origin": "Switzerland"
-            },
-            rating: 4.9,
-            reviews: [
-              {
-                id: 1,
-                user: "Dr. Emily Rodriguez",
-                rating: 5,
-                date: "2025-08-15",
-                comment: "Perfect for delicate ophthalmic surgeries. Exceptional precision.",
-                pros: ["Extremely precise", "Comfortable grip", "Durable blades"],
-                cons: ["Requires careful handling"]
-              }
-            ],
-            stockStatus: "In Stock",
-            sku: "PMS-100",
-            certifications: ["CE Marked", "FDA Approved", "ISO 13485"],
-            warranty: "3 Year Warranty",
-            newArrival: true,
-            topSelling: true
-          },
-          {
-            id: "s4",
-            name: "Carbon Steel Scalpel Set",
-            description: "Professional-grade surgical scalpel set",
-            longDescription: "Comprehensive scalpel set featuring carbon steel blades known for superior sharpness and edge retention. Ideal for surgical training and professional use.",
-            price: 299.99,
-            originalPrice: 349.99,
-            image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop",
-            galleryImages: [
-              "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1000&auto=format&fit=crop"
-            ],
-            features: [
-              {
-                title: "Carbon Steel Blades",
-                description: "Superior sharpness and edge retention"
-              },
-              {
-                title: "Complete Set",
-                description: "Multiple handle and blade combinations"
-              },
-              {
-                title: "Sterilization Case Included",
-                description: "Durable case for storage and sterilization"
-              }
-            ],
-            specifications: {
-              "Material": "Carbon Steel & Stainless Steel",
-              "Set Includes": "3 Handles, 24 Blades (Various Sizes)",
-              "Case Material": "Autoclavable Plastic",
-              "Blade Types": "#3, #4, #7 Handles with #10, #11, #12, #15 Blades",
-              "Country of Origin": "Germany",
-              "Warranty": "Lifetime on Handles"
-            },
-            rating: 4.7,
-            reviews: [
-              {
-                id: 1,
-                user: "Dr. Robert Kim",
-                rating: 5,
-                date: "2025-07-22",
-                comment: "Excellent set for surgical training. Blades maintain sharpness well.",
-                pros: ["Comprehensive set", "Sharp blades", "Good storage case"],
-                cons: ["Carbon steel requires careful maintenance"]
-              }
-            ],
-            stockStatus: "In Stock",
-            sku: "CSS-PRO",
-            certifications: ["CE Marked", "FDA Approved", "ISO 13485"],
-            warranty: "Lifetime Warranty",
-            newArrival: true,
-            topSelling: true
-          }
-        ]
+        name: "Scissors",
+        description: "Scissors – Precise tissue cutting",
+        image: "/Sub Categories/Scissors.jpg",
+        url: "/shop/general-surgery/scissors",
+        bannerImage: "/Sub Categories/Scissors.jpg",
+        longDescription: "Surgical scissors used to cut tissues, stitches, and medical materials during procedures. Designed to give clean, smooth cuts for easy handling by the surgeon",
+        products: []
       },
       {
         id: 102,
         name: "Forceps",
-        description: "Various types of surgical forceps for different procedures",
-        image: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
+        description: "Forceps – Firmly grasping objects",
+        image: "/Sub Categories/Forceps.jpg",
         url: "/shop/general-surgery/forceps",
+        bannerImage: "/Sub Categories/Forceps.jpg",
+        longDescription: "Forceps are used to hold, pick up, or move tissues and small items during surgery. They help the surgeon grip things safely without slipping",
         products: []
       },
       {
         id: 103,
+        name: "Needle Holders",
+        description: "Needle Holders – Safe needle control",
+        image: "/Sub Categories/needle holders.webp",
+        url: "/shop/general-surgery/needle holders",
+        bannerImage: "/Sub Categories/needle holders.webp",
+        longDescription: "Needle holders are used to hold the needle firmly while doing stitches during an operation. They give better control so the needle doesn’t move or fall.",
+        products: []
+      },
+      {
+        id: 104,
         name: "Retractors",
-        description: "Essential retractors for improved surgical access",
-        image: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&w=1000&auto=format&fit=crop",
+        description: "Retractors – Clear surgical view",
+        image: "/Sub Categories/retractors.webp",
         url: "/shop/general-surgery/retractors",
+        bannerImage: "/Sub Categories/retractors.webp",
+        longDescription: "Retractors are used to gently pull tissues aside so the doctor can see the area being operated on. They help keep the surgical field open and clear.",
+        products: []
+      },
+      {
+        id: 105,
+        name: "Clamps",
+        description: "Clamps – Controlling blood flow",
+        image: "/Sub Categories/clamps.jpg",
+        url: "/shop/general-surgery/clamps",
+        bannerImage: "/Sub Categories/clamps.jpg",
+        longDescription: "Clamps are used to hold tissues or stop bleeding by closing off small vessels. They provide a firm hold without damaging the tissue.",
+        products: []
+      },
+      {
+        id: 106,
+        name: "Speculums",
+        description: "Speculums – Access internal areas",
+        image: "/Sub Categories/speculum.webp",
+        url: "/shop/general-surgery/speculums",
+        bannerImage: "/Sub Categories/speculum.webp",
+        longDescription: "Speculums are used to open a body cavity so the doctor can see inside for examination or minor procedures. They allow clear visibility and easy access.",
         products: []
       }
     ]
   },
   {
     id: 2,
-    name: "Laryngoscopes",
-    description: "Advanced laryngoscopes for precise examinations",
-    image: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
-    url: "/shop/laryngoscopes",
-    bannerImage: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=2000&auto=format&fit=crop",
-    longDescription: "Our comprehensive range of laryngoscopes combines cutting-edge technology with ergonomic design for optimal visualization of the larynx and surrounding structures. Each device is engineered for precision and patient comfort.",
+    name: "Dental Instruments",
+    description: "Professional dental instruments for clinical and surgical applications.",
+    image: "/Categories banners/dental.jpg",
+    url: "/shop/dental-instruments",
+    bannerImage: "/Categories banners/dental.jpg",
+    longDescription: "Our dental instruments include extraction forceps, elevators, orthodontic pliers, and diagnostic tools manufactured for maximum precision.",
     subcategories: [
       {
-        id: 201,
-        name: "Fiber Optic Laryngoscopes",
-        description: "Advanced fiber optic laryngoscopes for clear visualization",
-        image: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
-        url: "/shop/laryngoscopes/fiber-optic",
-        bannerImage: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=2000&auto=format&fit=crop",
-        longDescription: "Our fiber optic laryngoscopes deliver superior illumination and clarity for precise examination and procedures. Built with premium materials and advanced optical technology.",
-        products: [
-          {
-            id: "l1",
-            name: "Premium Fiber Optic Laryngoscope Set",
-            description: "Complete set with multiple blade sizes",
-            longDescription: "Professional-grade fiber optic laryngoscope set featuring interchangeable blades and LED illumination. Includes adult and pediatric sizes for comprehensive practice needs.",
-            price: 899.99,
-            originalPrice: 999.99,
-            image: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
-            galleryImages: [
-              "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop"
-            ],
-            features: [
-              {
-                title: "LED Illumination",
-                description: "Bright, cool LED light for optimal visualization"
-              },
-              {
-                title: "Multiple Blade Sizes",
-                description: "Complete set of adult and pediatric blades"
-              },
-              {
-                title: "Fiber Optic Technology",
-                description: "Advanced fiber optics for clear view"
-              },
-              {
-                title: "Ergonomic Handle",
-                description: "Comfortable grip for extended use"
-              }
-            ],
-            specifications: {
-              "Light Source": "LED",
-              "Power Source": "Rechargeable Li-ion Battery",
-              "Handle Material": "Medical Grade Stainless Steel",
-              "Blade Sizes": "2, 3, 4 (Adult), 0, 1 (Pediatric)",
-              "Battery Life": "4 hours continuous use",
-              "Warranty": "5 years"
-            },
-            rating: 4.9,
-            reviews: [
-              {
-                id: 1,
-                user: "Dr. James Wilson",
-                rating: 5,
-                date: "2025-09-15",
-                comment: "Excellent illumination and build quality. The fiber optic system provides crystal clear views.",
-                pros: ["Bright illumination", "Multiple blade sizes", "Long battery life"],
-                cons: ["Premium price point"]
-              }
-            ],
-            stockStatus: "In Stock",
-            sku: "LAR-F100",
-            certifications: ["CE Marked", "FDA Approved", "ISO 13485"],
-            warranty: "5 Year Limited Warranty",
-            shipping: {
-              estimated: "3-5 business days",
-              free: true,
-              threshold: 500
-            },
-            newArrival: true,
-            topSelling: true
-          }
-        ]
-      },
-      {
-        id: 202,
-        name: "Video Laryngoscopes",
-        description: "High-definition video laryngoscopes with digital display",
-        image: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
-        url: "/shop/laryngoscopes/video-laryngoscopes",
+        id: 107,
+        name: "Extraction Forceps",
+        description: "Extraction Forceps – For tooth removal",
+        image: "/Sub Categories/extraction forceps.png",
+        url: "/shop/dental instruments/Extraction Forceps",
+        bannerImage: "/Sub Categories/extraction forceps.png",
+        longDescription: "Used for removing teeth with controlled grip and stability. Designed to provide strong hold while minimizing damage to surrounding tissue.",
         products: []
       },
       {
-        id: 203,
-        name: "Standard Laryngoscopes",
-        description: "Traditional laryngoscopes for routine examinations",
-        image: "https://images.unsplash.com/photo-1583912267550-d776cba7c717?q=80&w=1000&auto=format&fit=crop",
-        url: "/shop/laryngoscopes/standard",
+        id: 108,
+        name: "Elevators, Luxators",
+        description: "Elevators, Luxators – Loosen teeth gently",
+        image: "/Sub Categories/elevators.webp",
+        url: "/shop/dental instruments/Elevators, Luxators",
+        bannerImage: "/Sub Categories/elevators.webp",
+        longDescription: "Used to loosen teeth before extraction by applying gentle pressure. Helps reduce force needed and protects supporting structures.",
+        products: []
+      },
+      {
+        id: 109,
+        name: "Scalers, Explorers, Curettes, Probes, Excavators",
+        description: "Scalers, Explorers, Curettes, Probes, Excavators – Clean and inspect teeth",
+        image: "/Sub Categories/scalers.jpg",
+        url: "/shop/dental instruments/Scalers, Explorers, Curettes, Probes, Excavators",
+        bannerImage: "/Sub Categories/scalers.jpg",
+        longDescription: "Used for cleaning plaque, checking decay, and exploring tooth surfaces. Essential for oral examinations and routine dental care",
+        products: []
+      },
+      {
+        id: 110,
+        name: "Orthodontic Pliers, Restorative Sets",
+        description: "Orthodontic Pliers, Restorative Sets – Adjust or shape teeth",
+        image: "/Sub Categories/pliers.webp",
+        url: "/shop/dental instruments/Orthodontic Pliers, Restorative Sets",
+        bannerImage: "/Sub Categories/pliers.webp",
+        longDescription: "Used to bend wires, place brackets, and perform tooth adjustments. Also assist in shaping and placing restorative materials.",
+        products: []
+      },
+      {
+        id: 111,
+        name: "Impression Trays",
+        description: "Impression Trays – Hold dental impressions",
+        image: "/Sub Categories/impression trays.jpeg",
+        url: "/shop/dental instruments/Impression Trays",
+        bannerImage: "/Sub Categories/impression trays.jpeg",
+        longDescription: "Used to hold impression material securely for dental molds. Helps capture accurate shape of teeth and gums.",
         products: []
       }
     ]
   },
   {
     id: 3,
-    name: "Dental",
-    description: "Professional dental equipment and instruments",
-    image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?q=80&w=1000&auto=format&fit=crop",
-    url: "/shop/dental",
-    subcategories: []
+    name: "Electrosurgery Instruments",
+    description: "Advanced electrosurgical instruments for cauterization and tissue control.",
+    image: "/Categories banners/electrosurgical.webp",
+    url: "/shop/electrosurgery-instruments",
+    bannerImage: "/Categories banners/electrosurgery.webp",
+    longDescription: "We provide bipolar forceps, diathermy units, electrosurgical scissors, and cables built for high performance in surgical settings.",
+    subcategories: [
+      {
+        id: 112,
+        name: "Bipolar Forceps",
+        description: "Bipolar Forceps – Precise coagulation control",
+        image: "/Sub Categories/bipolar forceps.jpg",
+        url: "/shop/Electrosurgical Instruments/Bipolar Forceps",
+        bannerImage: "/Sub Categories/bipolar forceps.jpg",
+        longDescription: "Used for precise coagulation without damaging nearby tissue. Ideal for delicate procedures requiring controlled energy.",
+        products: []
+      },
+      {
+        id: 113,
+        name: "Diathermy Instruments",
+        description: "Diathermy Instruments – Heat-based tissue work",
+        image: "/Sub Categories/diathermy.webp",
+        url: "/shop/Electrosurgical Instruments/Diathermy Instruments",
+        bannerImage: "/Sub Categories/diathermy.webp",
+        longDescription: "Used to cut or coagulate tissue using controlled heat. Reduces bleeding and ensures cleaner surgical fields.",
+        products: []
+      },
+      {
+        id: 114,
+        name: "ESU Pencils",
+        description: "ESU Pencils – Controlled electrosurgical cutting",
+        image: "/Sub Categories/pencil.jpg",
+        url: "/shop/Electrosurgical Instruments/ESU Pencils",
+        bannerImage: "/Sub Categories/pencil.jpg",
+        longDescription: "Used for cutting and coagulating tissue during surgery. Offers fingertip control and adjustable power settings.",
+        products: []
+      },
+      {
+        id: 115,
+        name: "Electrodes",
+        description: "Electrodes – Deliver electrical energy",
+        image: "/Sub Categories/electrodes.jpg",
+        url: "/shop/Electrosurgical Instruments/Electrodes",
+        bannerImage: "/Sub Categories/electrodes.jpg",
+        longDescription: "Used to deliver electrical energy for cutting or coagulation. Available in different shapes for multiple surgical needs.",
+        products: []
+      },
+      {
+        id: 116,
+        name: "Cables",
+        description: "Cables – Connect ESU devices",
+        image: "/Sub Categories/cables.png",
+        url: "/shop/Electrosurgical Instruments/Cables",
+        bannerImage: "/Sub Categories/cables.png",
+        longDescription: "Used to connect electrosurgical units with instruments. Provides stable power transfer for safe operation.",
+        products: []
+      },
+      {
+        id: 117,
+        name: "Gynecology Instruments",
+        description: "Gynecology Instruments – Examination and procedures",
+        image: "/Sub Categories/gynecology.jpg",
+        url: "/shop/Electrosurgical Instruments/Gynecology Instruments",
+        bannerImage: "/Sub Categories/gynecology.jpg",
+        longDescription: "Used for examinations, diagnosis, and gynecological procedures. Designed for patient comfort and clinical precision.",
+        products: []
+      }
+    ]
   },
   {
     id: 4,
-    name: "Veterinary",
-    description: "Specialized instruments for veterinary medicine",
-    image: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=1000&auto=format&fit=crop",
-    url: "/shop/veterinary",
-    subcategories: []
+    name: "Orthopedic Instruments",
+    description: "Durable orthopedic instruments designed for bone and joint procedures.",
+    image: "/Categories banners/orthopedic.jpg",
+    url: "/shop/orthopedic-instruments",
+    bannerImage: "/Categories banners/orthopedic.jpg",
+    longDescription: "Our orthopedic line includes bone holding forceps, bone cutters, rongeurs, chisels, and osteotomes engineered for surgical reliability.",
+    subcategories: [
+      {
+        id: 118,
+        name: "Osteotomes, Curettes",
+        description: "Osteotomes, Curettes – Shape or clean bone",
+        image: "/Sub Categories/osteotomes.webp",
+        url: "/shop/Orthopedic Instruments/Osteotomes, Curettes",
+        bannerImage: "/Sub Categories/osteotomes.webp",
+        longDescription: "Used for shaping, cutting, or cleaning bone in orthopedic surgery. Helps prepare bone surfaces for reconstruction.",
+        products: []
+      },
+      {
+        id: 119,
+        name: "Bone Elevators",
+        description: "Bone Elevators – Lift bone sections",
+        image: "/Sub Categories/bone elevator.webp",
+        url: "/shop/Orthopedic Instruments/Bone Elevators",
+        bannerImage: "/Sub Categories/bone elevator.webp",
+        longDescription: "Used to lift or separate bone fragments safely. Assists in exposing surgical sites during orthopedic procedures.",
+        products: []
+      },
+      {
+        id: 120,
+        name: "Bone Holding Forceps",
+        description: "Bone Holding Forceps – Stabilize bone firmly",
+        image: "/Sub Categories/bone holding forceps.webp",
+        url: "/shop/Orthopedic Instruments/Bone Holding Forceps",
+        bannerImage: "/Sub Categories/bone holding forceps.webp",
+        longDescription: "Used to stabilize bone firmly during cutting or fixation. Ensures proper positioning for accurate surgical work.",
+        products: []
+      },
+      {
+        id: 121,
+        name: "Bone Cutting Forceps",
+        description: "Bone Cutting Forceps – Cut bone precisely",
+        image: "/Sub Categories/bone cutting forceps.webp",
+        url: "/shop/Orthopedic Instruments/Bone Cutting Forceps",
+        bannerImage: "/Sub Categories/bone cutting forceps.webp",
+        longDescription: "Used to cut bone cleanly with controlled pressure. Ideal for reshaping or removing bone sections.",
+        products: []
+      }
+    ]
   },
   {
     id: 5,
-    name: "Beauty & Cosmetics",
-    description: "Professional beauty and cosmetic equipment",
-    image: "https://images.unsplash.com/photo-1487412912498-0447578fcca8?q=80&w=1000&auto=format&fit=crop",
-    url: "/shop/beauty",
-    subcategories: []
+    name: "Ophthalmic Instruments",
+    description: "Specialized ophthalmic instruments for delicate eye surgeries.",
+    image: "/Categories banners/ophthalmic.jpeg",
+    url: "/shop/ophthalmic-instruments",
+    bannerImage: "/Categories banners/ophthalmic.jpeg",
+    longDescription: "We offer ophthalmic scissors, needle holders, forceps, and specialized microsurgical tools crafted for delicate eye procedures.",
+    subcategories: [
+      {
+        id: 122,
+        name: "Ophthalmic Scissors",
+        description: "Ophthalmic Scissors – Fine tissue cutting",
+        image: "/Sub Categories/Ophthalmic Scissors.webp",
+        url: "/shop/Ophthalmic Instruments/Ophthalmic Scissors",
+        bannerImage: "/Sub Categories/Ophthalmic Scissors.webp",
+        longDescription: "Used for fine cutting of delicate eye tissues. Designed for precision in microsurgical procedures.",
+        products: []
+      },
+      {
+        id: 123,
+        name: "Ophthalmic Forceps",
+        description: "Ophthalmic Forceps – Delicate tissue holding",
+        image: "/Sub Categories/Ophthalmic Forceps.webp",
+        url: "/shop/Ophthalmic Instruments/Ophthalmic Forceps",
+        bannerImage: "/Sub Categories/Ophthalmic Forceps.webp",
+        longDescription: "Used to handle delicate tissues and sutures in eye surgery. Ensures accurate grip with minimal trauma.",
+        products: []
+      },
+      {
+        id: 124,
+        name: "Ophthalmic Retractors",
+        description: "Ophthalmic Retractors – Expose small areas",
+        image: "/Sub Categories/ophthalmic retractors.webp",
+        url: "/shop/Ophthalmic Instruments/Ophthalmic Retractors",
+        bannerImage: "/Sub Categories/ophthalmic retractors.webp",
+        longDescription: "Used to gently hold tissues aside for better visibility. Essential for creating a clear, stable surgical field.",
+        products: []
+      },
+      {
+        id: 125,
+        name: "Ophthalmic Curettes",
+        description: "Ophthalmic Curettes – Remove fine tissue",
+        image: "/Sub Categories/opthalmic curettes.webp",
+        url: "/shop/Ophthalmic Instruments/Ophthalmic Curettes",
+        bannerImage: "/Sub Categories/opthalmic curettes.webp",
+        longDescription: "Used to remove small tissues or debris from the eye area. Provides controlled, gentle scraping action.",
+        products: []
+      },
+      {
+        id: 126,
+        name: "Ophthalmic Speculums",
+        description: "Ophthalmic Speculums – Gently open eyelids",
+        image: "/Sub Categories/ophthalmic speculum.webp",
+        url: "/shop/Ophthalmic Instruments/Ophthalmic Speculums",
+        bannerImage: "/Sub Categories/ophthalmic speculum.webp",
+        longDescription: "Used to gently keep eyelids open during procedures. Allows stable and comfortable access to the eye.",
+        products: []
+      }
+    ]
   },
+  // preserve remaining categories (if any) -- keep old ones for backward compatibility
   {
     id: 6,
     name: "Ophthalmology",

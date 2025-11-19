@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Montserrat, Open_Sans } from "next/font/google";
 import React from "react";
+import Link from "next/link";
 
 // Import Google Fonts (if not already in your global styles)
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["600", "700"] });
@@ -33,24 +34,26 @@ const CallToAction = () => {
           KyMed delivers instruments you can rely on — wherever you operate.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 mt-4">
-          <button
+        <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full justify-center">
+          <Link
+            href="/contact"
             className={cn(
               montserrat.className,
-              "bg-[#008C99] text-white text-sm md:text-base font-semibold py-3 px-8 rounded-full hover:bg-[#E5F5F7] hover:text-[#008C99] transition-all duration-300 shadow-md"
+              "bg-[#008C99] text-white text-sm md:text-base font-semibold py-3 px-8 rounded-full hover:bg-[#E5F5F7] hover:text-[#008C99] transition-all duration-300 shadow-md w-full sm:w-auto text-center"
             )}
           >
             Request a Quote
-          </button>
+          </Link>
 
-          <button
+          <Link
+            href="/categories"
             className={cn(
               montserrat.className,
-              "border-2 border-[#008C99] text-[#008C99] text-sm md:text-base font-semibold py-3 px-8 rounded-full hover:bg-[#008C99] hover:text-white transition-all duration-300"
+              "border-2 border-[#008C99] text-[#008C99] text-sm md:text-base font-semibold py-3 px-8 rounded-full hover:bg-[#008C99] hover:text-white transition-all duration-300 w-full sm:w-auto text-center"
             )}
           >
             Explore Product Range
-          </button>
+          </Link>
         </div>
       </div>
     </div>

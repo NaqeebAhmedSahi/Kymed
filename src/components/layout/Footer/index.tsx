@@ -53,7 +53,7 @@ const footerLinks = [
     links: [
       { label: "Materials & Quality", url: "/MaterialsTechnicalStandards" },
       { label: "Certifications", url: "/certifications" },
-      { label: "Request a Quote", url: "/quote" },
+      { label: "Request a Quote", url: "/contact" },
     ],
   },
 ];
