@@ -25,7 +25,7 @@ export default async function Home() {
     const products: Product[] = [];
     categories.forEach(category => {
       category.subcategories?.forEach(subcat => {
-        subcat.products?.forEach(product => {
+        subcat.products?.forEach((product: any) => {
           products.push({
             id: typeof product.id === "string" ? parseInt(product.id.replace(/\D/g, "")) : product.id,
             title: product.name,
@@ -50,7 +50,7 @@ export default async function Home() {
     let found = false;
     categories.forEach(category => {
       category.subcategories?.forEach(subcat => {
-        subcat.products?.forEach(prod => {
+        subcat.products?.forEach((prod: any) => {
           const prodIdNum = typeof prod.id === "string" ? parseInt(prod.id.replace(/\D/g, "")) : prod.id;
           if (prodIdNum === product.id && prod.newArrival === true) {
             found = true;
@@ -64,7 +64,7 @@ export default async function Home() {
     let found = false;
     categories.forEach(category => {
       category.subcategories?.forEach(subcat => {
-        subcat.products?.forEach(prod => {
+        subcat.products?.forEach((prod: any) => {
           const prodIdNum = typeof prod.id === "string" ? parseInt(prod.id.replace(/\D/g, "")) : prod.id;
           if (prodIdNum === product.id && prod.topSelling === true) {
             found = true;

@@ -150,7 +150,7 @@ export default function SubcategoryPage({ params }: SubcategoryPageProps) {
   const productTypes = useMemo(() => {
     if (!subcategory.products) return ["all"];
     const types: string[] = [];
-    subcategory.products.forEach(product => {
+    subcategory.products.forEach((product: any) => {
       const productType = getProductType(product);
       types.push(productType);
     });
@@ -161,7 +161,7 @@ export default function SubcategoryPage({ params }: SubcategoryPageProps) {
   const filteredProducts = useMemo(() => {
     if (!subcategory.products) return [];
     
-    return subcategory.products.filter((product) => {
+    return subcategory.products.filter((product: any) => {
       // Search filter
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           product.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -523,7 +523,7 @@ export default function SubcategoryPage({ params }: SubcategoryPageProps) {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
               >
-                {paginatedProducts.map((product) => {
+                {paginatedProducts.map((product: any) => {
                   const productType = getProductType(product);
                   return (
                     <motion.div
@@ -590,7 +590,7 @@ export default function SubcategoryPage({ params }: SubcategoryPageProps) {
                           <div className="space-y-4">
                             {/* Features */}
                             <div className="flex flex-wrap gap-2">
-                              {product.features.slice(0, 3).map((feature, index) => (
+                              {product.features.slice(0, 3).map((feature: any, index: number) => (
                                 <Badge key={index} variant="secondary" className="bg-[#E5F5F7] text-[#008C99] border-[#008C99]/20">
                                   {typeof feature === 'string' ? feature : feature.title}
                                 </Badge>

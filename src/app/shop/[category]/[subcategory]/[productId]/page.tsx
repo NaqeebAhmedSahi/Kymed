@@ -73,7 +73,7 @@ const findProduct = (categorySlug: string, subcategorySlug: string, productId: s
   );
   if (!subcategory) return null;
 
-  return subcategory.products?.find(product => product.id === productId) || null;
+  return subcategory.products?.find((product: any) => String(product.id) === productId) || null;
 };
 
 export default function ProductPage({
@@ -81,7 +81,7 @@ export default function ProductPage({
 }: {
   params: { category: string; subcategory: string; productId: string };
 }) {
-  const product = findProduct(params.category, params.subcategory, params.productId);
+  const product: any = findProduct(params.category, params.subcategory, params.productId);
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const containerRef = useRef(null);
@@ -224,9 +224,9 @@ export default function ProductPage({
                     priority
                   />
                 </div>
-                {product.galleryImages && product.galleryImages.length > 1 && (
+                  {product.galleryImages && product.galleryImages.length > 1 && (
                   <div className="grid grid-cols-4 gap-4">
-                    {product.galleryImages.map((image, index) => (
+                    {product.galleryImages.map((image: string, index: number) => (
                       <motion.button
                         key={index}
                         onClick={() => setSelectedImage(index)}
@@ -351,7 +351,7 @@ export default function ProductPage({
                   <div className="border-t border-[#C4C7CA]/30 pt-8">
                     <h3 className={cn("text-2xl font-bold mb-6", montserrat.className)}>Key Features</h3>
                     <div className="grid gap-6">
-                      {product.features.map((feature, index) => (
+                      {product.features.map((feature: any, index: number) => (
                         <motion.div
                           key={index}
                           className="flex items-start p-4 rounded-xl bg-[#E5F5F7] border border-[#008C99]/20"
@@ -446,7 +446,7 @@ export default function ProductPage({
                   <>
                     <h4 className={cn("text-2xl font-bold mb-6", montserrat.className)}>Certifications</h4>
                     <div className="flex flex-wrap gap-3">
-                      {product.certifications.map((cert, index) => (
+                      {product.certifications.map((cert: string, index: number) => (
                         <Badge key={index} className="bg-[#E5F5F7] text-[#008C99] border-[#008C99]/30 px-4 py-2 text-base">
                           {cert}
                         </Badge>
@@ -465,7 +465,7 @@ export default function ProductPage({
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  {Object.entries(product.specifications).map(([key, value]) => (
+                  {Object.entries(product.specifications as Record<string, string>).map(([key, value]) => (
                     <div key={key} className="flex border-b border-[#C4C7CA]/30 pb-4">
                       <span className="font-semibold text-[#2F323A] w-1/2">{key}</span>
                       <span className="text-[#5D6169] w-1/2">{value}</span>
