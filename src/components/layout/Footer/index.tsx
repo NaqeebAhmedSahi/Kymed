@@ -12,6 +12,7 @@ import Link from "next/link";
 import Image from "next/image";
 import LayoutSpacing from "./LayoutSpacing";
 import CallToAction from "./NewsLetterSection"; // replaces NewsLetterSection
+import { categories } from "@/data/categories";
 
 // Google Fonts
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["600", "700"] });
@@ -40,13 +41,8 @@ const footerLinks = [
   },
   {
     title: "Product Categories",
-    links: [
-      { label: "General Surgery", url: "/shop/general-surgery" },
-      { label: "Dental", url: "/shop/dental" },
-      { label: "Micro Surgery", url: "/shop/micro-surgery" },
-      { label: "Ophthalmology", url: "/shop/ophthalmology" },
-      // { label: "Beauty", url: "/shop/beauty" },
-    ],
+    // Build category links from the canonical categories data so URLs stay in sync
+    links: categories.map((c) => ({ label: c.name, url: c.url ?? `/categiries/${c.name.toLowerCase().replace(/\s+/g, '-')}` })),
   },
   {
     title: "Resources",

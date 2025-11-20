@@ -75,7 +75,7 @@ const MaterialsTechnicalStandards = () => {
         {/* Right Image */}
         <div className="flex justify-center items-center w-full">
           <Image
-            src="/images/steel-grade.jpg"
+            src="/images/Clinical-risk-management.webp"
             alt="German Stainless Steel"
             width={800}
             height={600}

@@ -45,35 +45,21 @@ export default async function Home() {
   }
 
   const allProducts: Product[] = getAllProductsFromCategories();
-  // Fix: filter by newArrival and topSelling flags from categories.ts
-  const newArrivals: Product[] = allProducts.filter(product => {
-    let found = false;
-    categories.forEach(category => {
-      category.subcategories?.forEach(subcat => {
-        subcat.products?.forEach((prod: any) => {
-          const prodIdNum = typeof prod.id === "string" ? parseInt(prod.id.replace(/\D/g, "")) : prod.id;
-          if (prodIdNum === product.id && prod.newArrival === true) {
-            found = true;
-          }
-        });
-      });
-    });
-    return found;
-  });
-  const topSelling: Product[] = allProducts.filter(product => {
-    let found = false;
-    categories.forEach(category => {
-      category.subcategories?.forEach(subcat => {
-        subcat.products?.forEach((prod: any) => {
-          const prodIdNum = typeof prod.id === "string" ? parseInt(prod.id.replace(/\D/g, "")) : prod.id;
-          if (prodIdNum === product.id && prod.topSelling === true) {
-            found = true;
-          }
-        });
-      });
-    });
-    return found;
-  });
+
+  // Instead of showing individual products, show subcategories flagged as newArrival/topSelling.
+  const newArrivals = categories.flatMap((cat) =>
+    (cat.subcategories || [])
+      .filter((sc: any) => sc.newArrival === true)
+      .map((sc: any) => ({ ...sc, parentCategory: cat.name }))
+  );
+
+  const topSelling = categories.flatMap((cat) =>
+    (cat.subcategories || [])
+      .filter((sc: any) => sc.topSelling === true)
+      .map((sc: any) => ({ ...sc, parentCategory: cat.name }))
+  );
+
+  // Debug logging removed
 
   return (
     <>

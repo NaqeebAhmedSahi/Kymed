@@ -10,21 +10,21 @@ const certifications = [
     name: "ISO 13485",
     img: "/images/cert1.png"
   },
-  {
-    name: "FDA Approved",
-    img: "/images/cert2.png"
-  },
+  // {
+  //   name: "FDA Approved",
+  //   img: "/images/cert2.png"
+  // },
   {
     name: "ISO 9001",
     img: "/images/cert3.png"
   },
   {
-    name: "GMP Certified",
-    img: "/images/cert1.png"
+    name: "SCCI",
+    img: "/images/cert4.png"
   },
   {
-    name: "TUV Rheinland",
-    img: "/images/cert2.png"
+    name: "SIMAP",
+    img: "/images/cert5.png"
   }
 ];
 

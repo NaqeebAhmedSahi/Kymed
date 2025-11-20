@@ -13,11 +13,11 @@ const OurValue = () => {
       answer:
         "We offer a wide range of surgical, dental, veterinary, and beauty instruments. Each instrument is designed to meet the highest standards of precision and reliability.",
     },
-    {
-      question: "Are your surgical instruments FDA approved?",
-      answer:
-        "Yes, many of our surgical instruments are FDA approved. Please contact us for specific documentation regarding compliance and certifications.",
-    },
+    // {
+    //   question: "Are your surgical instruments FDA approved?",
+    //   answer:
+    //     "Yes, many of our surgical instruments are FDA approved. Please contact us for specific documentation regarding compliance and certifications.",
+    // },
     {
       question: "How can I place an order?",
       answer:

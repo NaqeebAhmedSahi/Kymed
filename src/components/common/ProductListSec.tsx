@@ -9,12 +9,13 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import ProductCard from "./ProductCard";
+import SubcategoryCard from "./SubcategoryCard";
 import { Product } from "@/types/product.types";
 import Link from "next/link";
 
 type ProductListSecProps = {
   title: string;
-  data: Product[];
+  data: any[]; // can be Product[] or Subcategory[]
   viewAllLink?: string;
 };
 
@@ -47,6 +48,8 @@ const ProductListSec = ({ title, data, viewAllLink }: ProductListSecProps) => {
         transition={{ delay: 0.6, duration: 0.6 }}
         className={openSans.className}
       >
+        {/* Removed development debug panel */}
+
         <Carousel
           opts={{
             align: "start",
@@ -54,14 +57,22 @@ const ProductListSec = ({ title, data, viewAllLink }: ProductListSecProps) => {
           className="w-full mb-6 md:mb-9"
         >
           <CarouselContent className="mx-4 xl:mx-0 space-x-4 sm:space-x-5">
-            {data.map((product) => (
-              <CarouselItem
-                key={product.id}
-                className="w-full max-w-[198px] sm:max-w-[295px] pl-0"
-              >
-                <ProductCard data={product} />
-              </CarouselItem>
-            ))}
+            {data.map((item) => {
+              // detect subcategory by presence of 'products' or 'url' and absence of 'title'
+              const isSubcategory = !!(item && (item.products || item.url) && !item.title);
+              return (
+                <CarouselItem
+                  key={item.id ?? item.title}
+                  className="w-full max-w-[198px] sm:max-w-[295px] pl-0"
+                >
+                  {isSubcategory ? (
+                    <SubcategoryCard data={item} />
+                  ) : (
+                    <ProductCard data={item} />
+                  )}
+                </CarouselItem>
+              );
+            })}
           </CarouselContent>
         </Carousel>
         {viewAllLink && (
