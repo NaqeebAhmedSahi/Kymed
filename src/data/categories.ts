@@ -332,7 +332,7 @@ export const categories = [
         id: 124,
         name: "Ophthalmic Retractors",
         description: "Ophthalmic Retractors – Expose small areas",
-        image: "/Sub Categories/ophthalmic retractors.webp",
+        image: "/Sub Categories/ophthalmic retractors.jpg",
         url: "/shop/Ophthalmic Instruments/Ophthalmic Retractors",
         bannerImage: "/Sub Categories/ophthalmic retractors.jpg",
         longDescription: "Used to gently hold tissues aside for better visibility. Essential for creating a clear, stable surgical field.",
