@@ -135,6 +135,20 @@ const ContactPage = () => {
               color: "from-[#008C99] to-[#006670]"
             },
             { 
+              icon: <FaMapMarkerAlt className="w-8 h-8" />, 
+              title: "UK Office", 
+              // provide address and phone as JSX so it renders on multiple lines
+              text: (
+                <>
+                  24 The New Broadway, Tarring Road<br />
+                  West Worthing, Sussex, England, UK<br />
+                  BN11 4HP<br />
+                  <strong>Phone:</strong> +44 7947 533392
+                </>
+              ),
+              color: "from-[#008C99] to-[#006670]"
+            },
+            { 
               icon: <FaPhone className="w-8 h-8" />, 
               title: "Phone", 
               text: "+92 300 0915553",

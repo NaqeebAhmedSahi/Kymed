@@ -300,7 +300,7 @@ export const categories = [
     name: "Ophthalmic Instruments",
     description: "Specialized ophthalmic instruments for delicate eye surgeries.",
     image: "/Categories banners/ophthalmic.jpeg",
-    url: "/shop/ophthalmic-instruments",
+    url: "/categories/ophthalmic-instruments",
     bannerImage: "/Categories banners/ophthalmic.jpeg",
     longDescription: "We offer ophthalmic scissors, needle holders, forceps, and specialized microsurgical tools crafted for delicate eye procedures.",
     subcategories: [

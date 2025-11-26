@@ -348,6 +348,19 @@ const AboutUs = () => {
                 color: "from-[#008C99] to-[#006670]"
               },
               {
+                icon: <FaMapMarkerAlt className="w-12 h-12" />,
+                title: "UK Office",
+                location: (
+                  <>
+                    24 The New Broadway, Tarring Road<br />
+                    West Worthing, Sussex, England, UK<br />
+                    BN11 4HP<br />
+                    <strong>Phone:</strong> +44 7947 533392
+                  </>
+                ),
+                color: "from-[#008C99] to-[#006670]"
+              },
+              {
                 icon: <FaGlobeAmericas className="w-12 h-12" />,
                 title: "Export Markets",
                 location: "Germany, USA, UK, Australia, South Korea, GCC, and emerging regions",
