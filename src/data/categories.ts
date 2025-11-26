@@ -111,7 +111,7 @@ export const categories = [
         url: "/shop/dental instruments/Elevators, Luxators",
         bannerImage: "/Sub Categories/elevators.webp",
         longDescription: "Used to loosen teeth before extraction by applying gentle pressure. Helps reduce force needed and protects supporting structures.",
-        newArrival: false,
+        newArrival: true,
         topSelling: false,
         products: []
       },
@@ -124,7 +124,7 @@ export const categories = [
         bannerImage: "/Sub Categories/scalers.jpg",
         longDescription: "Used for cleaning plaque, checking decay, and exploring tooth surfaces. Essential for oral examinations and routine dental care",
         newArrival: false,
-        topSelling: false,
+        topSelling: true,
         products: []
       },
       {
@@ -147,7 +147,7 @@ export const categories = [
         url: "/shop/dental instruments/Impression Trays",
         bannerImage: "/Sub Categories/impression trays.jpeg",
         longDescription: "Used to hold impression material securely for dental molds. Helps capture accurate shape of teeth and gums.",
-        newArrival: false,
+        newArrival: true,
         topSelling: false,
         products: []
       }
@@ -182,7 +182,7 @@ export const categories = [
         url: "/shop/Electrosurgical Instruments/Diathermy Instruments",
         bannerImage: "/Sub Categories/diathermy.webp",
         longDescription: "Used to cut or coagulate tissue using controlled heat. Reduces bleeding and ensures cleaner surgical fields.",
-        newArrival: false,
+        newArrival: true,
         topSelling: false,
         products: []
       },
@@ -207,7 +207,7 @@ export const categories = [
         bannerImage: "/Sub Categories/electrodes.jpg",
         longDescription: "Used to deliver electrical energy for cutting or coagulation. Available in different shapes for multiple surgical needs.",
         newArrival: false,
-        topSelling: false,
+        topSelling: true,
         products: []
       },
       {
@@ -219,7 +219,7 @@ export const categories = [
         bannerImage: "/Sub Categories/cables.png",
         longDescription: "Used to connect electrosurgical units with instruments. Provides stable power transfer for safe operation.",
         newArrival: false,
-        topSelling: false,
+        topSelling: true,
         products: []
       },
       {
@@ -254,7 +254,7 @@ export const categories = [
         bannerImage: "/Sub Categories/osteotomes.webp",
         longDescription: "Used for shaping, cutting, or cleaning bone in orthopedic surgery. Helps prepare bone surfaces for reconstruction.",
         newArrival: false,
-        topSelling: false,
+        topSelling: true,
         products: []
       },
       {
@@ -290,7 +290,7 @@ export const categories = [
         bannerImage: "/Sub Categories/bone cutting forceps.webp",
         longDescription: "Used to cut bone cleanly with controlled pressure. Ideal for reshaping or removing bone sections.",
         newArrival: false,
-        topSelling: false,
+        topSelling: true,
         products: []
       }
     ]
