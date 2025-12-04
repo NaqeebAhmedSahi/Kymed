@@ -36,7 +36,7 @@ const MaterialsTechnicalStandards = () => {
         {/* Left Card */}
         <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8 flex flex-col justify-center">
           <h2 className={cn(montserrat.className, "text-3xl md:text-4xl font-bold text-[#008C99] mb-6")}>
-            high quality stainless steel — Verified and Certified
+            High quality stainless steel — Verified and Certified
           </h2>
           <p className={cn(openSans.className, "text-base md:text-lg mb-6")}>
             KyMed utilizes European mill-certified stainless steels that comply with <strong>ISO 7153-1</strong> and <strong>ASTM F899</strong> standards. Grades are selected based on instrument function, hardness requirement, and corrosion resistance.
@@ -58,7 +58,7 @@ const MaterialsTechnicalStandards = () => {
                   { grade: "1.4021 (X20Cr13)", aisi: "420A", application: "General instruments, forceps" },
                   { grade: "1.4028 (X30Cr13)", aisi: "420B", application: "Scissors, needle holders" },
                   { grade: "1.4034 (X46Cr13)", aisi: "420C / 440A", application: "Cutting instruments requiring high hardness" },
-                  { grade: "1.4116 (X50CrMoV15)", aisi: "—", application: "Premium German grade for superior cutting and corrosion resistance" },
+                  { grade: "1.4116 (X50CrMoV15)", aisi: "—", application: "high quality stainless steel for superior cutting and corrosion resistance" },
                   { grade: "1.4122 (X39CrMo17-1)", aisi: "—", application: "Enhanced strength and durability applications" },
                 ].map((row, idx) => (
                   <tr key={idx} className="hover:bg-[#F0F0F0] transition-colors">
