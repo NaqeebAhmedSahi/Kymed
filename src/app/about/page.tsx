@@ -344,7 +344,7 @@ const AboutUs = () => {
               {
                 icon: <FaMapMarkerAlt className="w-12 h-12" />,
                 title: "North America Distribution Office",
-                location: "Wisconsin, USA",
+                location: "Wisconsin, USA, launching soon",
                 color: "from-[#008C99] to-[#006670]"
               },
               {
