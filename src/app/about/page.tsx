@@ -171,7 +171,7 @@ const AboutUs = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#008C99]/60 via-transparent to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-[#008C99]/80 to-transparent">
                   <div className="transform transition-all duration-500 group-hover:translate-y-[-8px]">
-                    <h4 className={cn("text-2xl font-bold mb-2 text-white", montserrat.className)}>German-Grade Precision</h4>
+                    <h4 className={cn("text-2xl font-bold mb-2 text-white", montserrat.className)}>high quality stainless steel</h4>
                     <p className="text-white/90 text-lg">
                       Made in Pakistan, Trusted Worldwide
                     </p>
@@ -203,7 +203,7 @@ const AboutUs = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p className="text-2xl md:text-3xl leading-relaxed text-[#2F323A] italic">
-              "To deliver <strong>German-grade surgical quality</strong> backed by transparent production, ethical practices, and global consistency—making <strong>Made in Pakistan</strong> synonymous with medical precision and trust."
+              "To deliver <strong>high quality stainless steel</strong> backed by transparent production, ethical practices, and global consistency—making <strong>Made in Pakistan</strong> synonymous with medical precision and trust."
             </p>
           </motion.div>
         </motion.div>
@@ -236,7 +236,7 @@ const AboutUs = () => {
             {[
               { icon: <FaCertificate className="w-16 h-16" />, label: "ISO 13485:2016" },
               { icon: <FaCertificate className="w-16 h-16" />, label: "ISO 9001:2015" },
-              { icon: <FaAward className="w-16 h-16" />, label: "CE Marking" },
+              // { icon: <FaAward className="w-16 h-16" />, label: "CE Marking" },
               { icon: <FaMedal className="w-16 h-16" />, label: "ASTM F899" },
             ].map((cert, index) => (
               <motion.div
@@ -459,7 +459,7 @@ const AboutUs = () => {
           transition={{ duration: 0.8 }}
         >
           <h3 className={cn("text-3xl md:text-4xl font-bold mb-6", montserrat.className)}>
-            Ready to Experience German-Grade Precision?
+            Ready to Experience high quality stainless steel?
           </h3>
           <p className="text-xl mb-8 text-[#E5F5F7] max-w-2xl mx-auto">
             Discover how KyMed's certified surgical instruments can enhance patient care in your practice with guaranteed quality and full traceability.

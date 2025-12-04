@@ -8,7 +8,7 @@ import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "KyMed - Precision Surgical Instruments",
-  description: "Global Excellence in Surgical & Dental Instruments. German stainless steel quality from KyMed.",
+  description: "Global Excellence in Surgical & Dental Instruments. high quality stainless steel from KyMed.",
   keywords: "surgical instruments, dental instruments, medical devices, KyMed",
   authors: [{ name: "KyMed" }],
   creator: "KyMed",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://kymed.co", // Replace with your actual domain
     title: "KyMed - Precision Surgical Instruments",
-    description: "Global Excellence in Surgical & Dental Instruments. German stainless steel quality.",
+    description: "Global Excellence in Surgical & Dental Instruments. high quality stainless steel.",
     siteName: "KyMed",
     images: [
       {
@@ -100,7 +100,7 @@ export default function RootLayout({
         
         {/* Open Graph for WhatsApp */}
         <meta property="og:title" content="KyMed - Precision Surgical Instruments" />
-        <meta property="og:description" content="Global Excellence in Surgical & Dental Instruments. German stainless steel quality." />
+        <meta property="og:description" content="Global Excellence in Surgical & Dental Instruments. high quality stainless steel." />
         <meta property="og:image" content="/android-chrome-512x512.png" />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />

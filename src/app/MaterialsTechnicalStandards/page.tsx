@@ -36,7 +36,7 @@ const MaterialsTechnicalStandards = () => {
         {/* Left Card */}
         <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8 flex flex-col justify-center">
           <h2 className={cn(montserrat.className, "text-3xl md:text-4xl font-bold text-[#008C99] mb-6")}>
-            German Stainless Steel — Verified and Certified
+            high quality stainless steel — Verified and Certified
           </h2>
           <p className={cn(openSans.className, "text-base md:text-lg mb-6")}>
             KyMed utilizes European mill-certified stainless steels that comply with <strong>ISO 7153-1</strong> and <strong>ASTM F899</strong> standards. Grades are selected based on instrument function, hardness requirement, and corrosion resistance.
@@ -76,7 +76,7 @@ const MaterialsTechnicalStandards = () => {
         <div className="flex justify-center items-center w-full">
           <Image
             src="/images/Clinical-risk-management.webp"
-            alt="German Stainless Steel"
+            alt="high quality stainless steel"
             width={800}
             height={600}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 500px"
@@ -158,7 +158,7 @@ const MaterialsTechnicalStandards = () => {
           items: [
             "ISO 13485:2016 — Medical Devices QMS",
             "ISO 9001:2015 — Quality Management Systems",
-            "CE Marking Directives for Surgical Instruments",
+            // "CE Marking Directives for Surgical Instruments",
             "Every batch undergoes documented inspection for dimensional accuracy, functional testing, and visual excellence before packing.",
             "All instruments ship with traceable Material Test Reports (MTRs) and Quality Conformance Certificates (QCCs).",
           ],

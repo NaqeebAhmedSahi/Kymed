@@ -138,7 +138,7 @@ const WhyChooseUs = () => {
                 icon: <FaAward className="w-12 h-12 text-[#008C99]" />,
                 title: "Certified Quality",
                 description:
-                  "KyMed instruments meet international standards ISO and CE for design, material integrity, and performance in surgical applications.",
+                  "KyMed instruments meet international standards ISO, material integrity, and performance in surgical applications.",
               },
               {
                 icon: <FaUserMd className="w-12 h-12 text-[#008C99]" />,
