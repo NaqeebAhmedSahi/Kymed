@@ -360,12 +360,12 @@ const AboutUs = () => {
                 ),
                 color: "from-[#008C99] to-[#006670]"
               },
-              {
-                icon: <FaGlobeAmericas className="w-12 h-12" />,
-                title: "Export Markets",
-                location: "Germany, USA, UK, Australia, South Korea, GCC, and emerging regions",
-                color: "from-[#008C99] to-[#006670]"
-              }
+              // {
+              //   icon: <FaGlobeAmericas className="w-12 h-12" />,
+              //   title: "Export Markets",
+              //   location: "Germany, USA, UK, Australia, South Korea, GCC, and emerging regions",
+              //   color: "from-[#008C99] to-[#006670]"
+              // }
             ].map((location, index) => (
               <motion.div
                 key={location.title}
