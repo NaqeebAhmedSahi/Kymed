@@ -49,6 +49,7 @@ const data: NavMenu = [
   { id: 0, type: "MenuItem", label: "Home", url: "/", children: [] },
   { id: 1, type: "MenuList", label: "Products", children: productsChildren },
   { id: 2, type: "MenuItem", label: "Categories", url: "/categories", children: [] },
+  { id: 3, type: "MenuItem", label: "Brochures", url: "/brochure-viewer", children: [] },
   { id: 4, type: "MenuItem", label: "About", url: "/about", children: [] },
   { id: 5, type: "MenuItem", label: "Contact Us", url: "/contact", children: [] },
 ];
@@ -65,7 +66,7 @@ const TopNavbar = () => {
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2 hover:text-[#E5F5F7] transition-colors duration-200">
               <FiPhone className="w-4 h-4 text-[#E5F5F7]" />
-              +92 300 0915553
+              +92 329 9958000
             </span>
             <span className="flex items-center gap-2 hover:text-[#E5F5F7] transition-colors duration-200">
               <FiMail className="w-4 h-4 text-[#E5F5F7]" />

@@ -151,7 +151,7 @@ const ContactPage = () => {
             { 
               icon: <FaPhone className="w-8 h-8" />, 
               title: "Phone", 
-              text: "+92 300 0915553",
+              text: "+92 329 9958000",
               color: "from-[#008C99] to-[#006670]"
             },
             { 
@@ -342,7 +342,7 @@ const ContactPage = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <a
-              href="tel:+923000915553"
+              href="tel:+923299958000"
               className={cn(
                 "inline-block bg-white text-[#008C99] font-semibold py-4 px-8 rounded-xl hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg mx-2 mb-2",
                 montserrat.className

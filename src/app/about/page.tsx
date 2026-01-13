@@ -76,8 +76,11 @@ const AboutUs = () => {
               className="h-1 bg-gradient-to-r from-[#008C99] to-[#006670] mb-6"
             />
             <h2 className={cn("text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-br from-[#2F323A] via-[#008C99] to-[#006670] bg-clip-text text-transparent mb-6", montserrat.className)}>
-              About KyMed
+              KyMed Marketing Brochure 2026 Edition
             </h2>
+            <h3 className={cn("text-3xl md:text-4xl font-bold tracking-tight text-[#2F323A] mb-6 mt-8", montserrat.className)}>
+              About KyMed
+            </h3>
             <p className="text-xl md:text-2xl text-[#5D6169] max-w-3xl mx-auto">
               Setting New Standards in Surgical Instrument Manufacturing
             </p>
@@ -95,11 +98,8 @@ const AboutUs = () => {
             className="space-y-8"
           >
             <h3 className={cn("text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-[#2F323A] to-[#5D6169] bg-clip-text text-transparent", montserrat.className)}>
-              Precision, Consistency, and Transparency
+              About KyMed
             </h3>
-            <p className="text-xl text-[#2F323A] leading-relaxed">
-              KyMed is a premium medical device company that designs, manufactures, and exports a complete range of surgical and dental instruments.
-            </p>
             <div className="space-y-6">
               <motion.p 
                 className="text-lg text-[#2F323A] leading-relaxed"
@@ -108,7 +108,7 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                Our commitment to <strong>precision, consistency, and transparency</strong> defines every product we make.
+                KyMed is a surgical and dental instruments manufacturer based in Pakistan, supplying OEM brands, private-label programs, and distributors globally.
               </motion.p>
               <motion.p 
                 className="text-lg text-[#2F323A] leading-relaxed"
@@ -117,7 +117,7 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Each instrument is produced under <strong>ISO 13485-certified systems</strong>, ensuring full traceability and adherence to global healthcare standards.
+                Manufacturing operations are located in Sialkot, Pakistan, covering forging, machining, finishing, quality inspection, and packaging. Production operates under an <strong>ISO 13485–compliant quality management system</strong>, ensuring consistent quality, traceability, and regulatory alignment for international markets.
               </motion.p>
               <motion.p 
                 className="text-lg text-[#2F323A] leading-relaxed"
@@ -126,7 +126,7 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                Every shipment includes a <strong>Material Test Report (MTR)</strong> issued by an accredited laboratory verifying the steel composition and confirming compliance with <strong>ISO 7153-1 and ASTM F899</strong>.
+                KyMed manufactures surgical and dental instruments across single-use and reusable ranges, offering multiple grades including kit-grade single-use, premium single-use, and reusable stainless-steel instruments.
               </motion.p>
               <motion.p 
                 className="text-lg text-[#2F323A] leading-relaxed"
@@ -135,7 +135,25 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                KyMed serves <strong>OEM partners, hospitals, distributors, and importers worldwide</strong>—delivering instruments engineered to perform reliably in the most demanding surgical environments.
+                Founded by an award-recognized industry leader with proven experience in international exports and industry governance, KyMed operates as a structured manufacturer, not a trading intermediary.
+              </motion.p>
+              <motion.p 
+                className="text-lg text-[#2F323A] leading-relaxed"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                KyMed maintains an international business presence across Pakistan, the United Kingdom, and the United States, with a planned Dubai office by 2027 to support global supply operations.
+              </motion.p>
+              <motion.p 
+                className="text-lg text-[#2F323A] leading-relaxed"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                KyMed specializes in OEM surgical and dental instruments manufacturing, private-label production, and long-term supply programs for partners seeking dependable, scalable manufacturing.
               </motion.p>
             </div>
             <div className="pt-4">
