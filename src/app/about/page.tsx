@@ -76,11 +76,8 @@ const AboutUs = () => {
               className="h-1 bg-gradient-to-r from-[#008C99] to-[#006670] mb-6"
             />
             <h2 className={cn("text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-br from-[#2F323A] via-[#008C99] to-[#006670] bg-clip-text text-transparent mb-6", montserrat.className)}>
-              KyMed Marketing Brochure 2026 Edition
-            </h2>
-            <h3 className={cn("text-3xl md:text-4xl font-bold tracking-tight text-[#2F323A] mb-6 mt-8", montserrat.className)}>
               About KyMed
-            </h3>
+            </h2>
             <p className="text-xl md:text-2xl text-[#5D6169] max-w-3xl mx-auto">
               Setting New Standards in Surgical Instrument Manufacturing
             </p>
