@@ -59,14 +59,8 @@ const Header = () => {
 
   return (
     <div className="relative w-full h-[550px] overflow-hidden bg-gradient-to-br from-[#e0f7fa] via-[#f5f5f5] to-[#e0e0e0]">
-      {/* Stainless steel texture overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "url('/images/stainless-texture.png')",
-          opacity: 0.08,
-        }}
-      />
+      {/* Subtle overlay for depth */}
+      <div className="absolute inset-0 pointer-events-none bg-black/[0.02]" />
 
       <AnimatePresence mode="wait" custom={1} initial={false}>
         <motion.div

@@ -20,10 +20,10 @@ const CallToAction = () => {
             "text-4xl md:text-6xl font-bold text-[#008C99] leading-tight"
           )}
         >
-          <span className="block text-left">Precision in Every Cut</span>
+          {/* <span className="block text-left">Precision in Every Cut</span>
           <span className="block text-right text-[#2F323A]">
             Integrity in Every Instrument
-          </span>
+          </span> */}
         </h1>
       </div>
 

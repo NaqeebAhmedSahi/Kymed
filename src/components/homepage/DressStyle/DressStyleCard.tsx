@@ -19,11 +19,16 @@ const DressStyleCard = ({ title, url, className, style }: DressStyleCardProps) =
       ])}
       style={style}
     >
-      {/* Greenish overlay effect for hover - matches website theme */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#008C99]/40 to-[#006670]/50 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      {/* Subtle permanent overlay for readability, intensifies on hover */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 bg-[#008C99]/10 group-hover:bg-[#008C99]/30 transition-all duration-300"></div>
       
-      {/* Title with z-index to remain visible */}
-      <span className="relative z-10 text-white group-hover:text-white/90 transition-colors duration-300">{title}</span>
+      {/* Title with z-index and black text shadow */}
+      <span 
+        className="relative z-10 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] group-hover:scale-105 transition-transform duration-300 inline-block"
+      >
+        {title}
+      </span>
     </Link>
   );
 };

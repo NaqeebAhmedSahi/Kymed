@@ -71,9 +71,10 @@ const Footer = () => {
               <Image
                 src="/images/logo.png"
                 alt="KyMed Logo"
-                width={150}
-                height={40}
+                width={160}
+                height={44}
                 className="brightness-200"
+                unoptimized
               />
             </Link>
             <p

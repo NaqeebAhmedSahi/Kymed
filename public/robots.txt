@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+# Allow everything else
+Allow: /
+
+Sitemap: https://kymed.co/sitemap.xml
+
+# Crawl-delay can be set if necessary
+# Crawl-delay: 10

@@ -10,7 +10,8 @@ import CertificationMarquee from '@/components/homepage/CertificationMarquee';
 
 import { Product } from '@/types/product.types';
 import { reviewsData } from '@/utils/data';
-import { categories } from '@/data/categories';
+import fs from 'fs';
+import path from 'path';
 
 // Component definition
 interface HomeProps {
@@ -19,47 +20,81 @@ interface HomeProps {
 }
 
 export default async function Home() {
-  // Backend fetch commented out. Using local categories.ts data for newArrivals.
-  // Helper to flatten all products from categories
-  function getAllProductsFromCategories(): Product[] {
-    const products: Product[] = [];
-    categories.forEach(category => {
-      category.subcategories?.forEach(subcat => {
-        subcat.products?.forEach((product: any) => {
-          products.push({
-            id: typeof product.id === "string" ? parseInt(product.id.replace(/\D/g, "")) : product.id,
-            title: product.name,
-            srcUrl: product.image || "",
-            gallery: product.galleryImages || [],
-            description: product.description || "",
-            price: product.price || 0,
-            discount: { amount: 0, percentage: 0 },
-            rating: product.rating || 0,
-            category: category.name,
-            subcategory: subcat.name,
+  const getProductsFromJson = (): Product[] => {
+    try {
+      const filePath = path.join(process.cwd(), 'public', 'products.json');
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const data = JSON.parse(fileContents);
+
+      const products: Product[] = [];
+      
+      const extractProducts = (node: any, currentCategory: string = "9", currentPath: string[] = []) => {
+        if (node.products && Array.isArray(node.products)) {
+          node.products.forEach((p: any) => {
+            products.push({
+              id: p.id ? parseInt(p.id, 10) : Math.floor(Math.random() * 100000),
+              title: p.name || p.title || 'Unknown Product',
+              srcUrl: p.image_local_path ? `/${p.image_local_path}` : (p.image_url || '/images/placeholder.jpg'),
+              gallery: p.image_urls || [],
+              description: p.short_description || p.description || '',
+              price: 0,
+              discount: { amount: 0, percentage: 0 },
+              rating: 5,
+              category: currentCategory,
+              subcategory: p.subcategory || '',
+              pathToNode: currentPath,
+            });
           });
+        }
+        if (node.subcategories && Array.isArray(node.subcategories)) {
+          node.subcategories.forEach((sc: any) => {
+            extractProducts(sc, currentCategory, [...currentPath, sc.id || slugify(sc.name)]);
+          });
+        }
+      }
+
+      const slugify = (str: string) => {
+        return str ? str.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-") : "";
+      };
+
+      if (data.categories && Array.isArray(data.categories)) {
+        // Specifically look for surgical instruments to prioritize them as requested
+        data.categories.forEach((cat: any) => {
+          extractProducts(cat, cat.id || "9", []);
         });
-      });
-    });
-    return products;
+      }
+
+      return products;
+    } catch (e) {
+      console.error("Failed to load products from products.json", e);
+      return [];
+    }
   }
 
-  const allProducts: Product[] = getAllProductsFromCategories();
+  const allProducts: Product[] = getProductsFromJson();
 
-  // Instead of showing individual products, show subcategories flagged as newArrival/topSelling.
-  const newArrivals = categories.flatMap((cat) =>
-    (cat.subcategories || [])
-      .filter((sc: any) => sc.newArrival === true)
-      .map((sc: any) => ({ ...sc, parentCategory: cat.name }))
-  );
+  // Extract surgical instrument subcategories for "Browse by Product Category" section
+  const getSubcategories = (): any[] => {
+    try {
+      const filePath = path.join(process.cwd(), 'public', 'products.json');
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const data = JSON.parse(fileContents);
+      const surgicalCategory = data.categories?.find((c: any) => c.id === "9" || c.name?.toLowerCase() === "surgical instruments");
+      if (surgicalCategory && Array.isArray(surgicalCategory.subcategories)) {
+        return surgicalCategory.subcategories.slice(0, 5).map((sc: any) => ({
+          title: sc.name,
+          url: `/shop/9/${sc.id}`,
+          image: sc.image_local_path ? `/${sc.image_local_path}` : (sc.image_url || '/images/no-image.png')
+        }));
+      }
+    } catch(e) {}
+    return [];
+  }
+  const browseCategories = getSubcategories();
 
-  const topSelling = categories.flatMap((cat) =>
-    (cat.subcategories || [])
-      .filter((sc: any) => sc.topSelling === true)
-      .map((sc: any) => ({ ...sc, parentCategory: cat.name }))
-  );
-
-  // Debug logging removed
+  // Show actual products for New Arrivals and Top Selling
+  const newArrivals = allProducts.slice(0, 4);
+  const topSelling = allProducts.slice(4, 8);
 
   return (
     <>
@@ -78,7 +113,7 @@ export default async function Home() {
           <WhyChooseUs />
         </div>
         <div className="mb-[50px] sm:mb-20">
-          <DressStyle />
+          <DressStyle subcategories={browseCategories} />
         </div>
          {/* Add the Our Value section here */}
          <div className="mb-[50px] sm:mb-20">

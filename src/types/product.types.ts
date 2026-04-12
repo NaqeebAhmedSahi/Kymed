@@ -14,4 +14,5 @@ export type Product = {
   rating: number;
   category?: string;
   subcategory?: string;
+  pathToNode?: string[];
 };

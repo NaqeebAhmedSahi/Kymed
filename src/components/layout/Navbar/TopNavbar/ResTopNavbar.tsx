@@ -18,8 +18,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { FiShoppingCart } from "react-icons/fi";
+import { useAppSelector } from "@/lib/hooks/redux";
+import { RootState } from "@/lib/store";
 
 const ResTopNavbar = ({ data }: { data: NavMenu }) => {
+  const { cart } = useAppSelector((state: RootState) => state.carts);
+  const totalQuantities = cart?.totalQuantities || 0;
+
   return (
     <Sheet>
       <SheetTrigger asChild className="cursor-pointer">
@@ -40,17 +46,33 @@ const ResTopNavbar = ({ data }: { data: NavMenu }) => {
                 <Image
                   src="/images/logo.png"
                   alt="Kymed Logo"
-                  width={120}
-                  height={40}
-                  className="h-auto w-auto"
+                  width={160}
+                  height={44}
+                  className="h-auto w-auto max-h-10 w-auto"
                   priority
+                  unoptimized
                 />
               </Link>
             </SheetClose>
           </SheetTitle>
         </SheetHeader>
 
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start w-full">
+          {/* Cart Link (Mobile) */}
+          <SheetClose asChild>
+            <Link href="/cart" className="flex items-center justify-between w-full mb-6 p-3 bg-[#E5F5F7] rounded-xl text-[#008C99] font-bold">
+              <div className="flex items-center gap-2">
+                <FiShoppingCart className="w-5 h-5" />
+                <span>My Cart</span>
+              </div>
+              {totalQuantities > 0 && (
+                <span className="bg-[#008C99] text-white px-2.5 py-0.5 rounded-full text-xs">
+                  {totalQuantities}
+                </span>
+              )}
+            </Link>
+          </SheetClose>
+
           {data.map((item) => (
             <React.Fragment key={item.id}>
               {item.type === "MenuItem" && (

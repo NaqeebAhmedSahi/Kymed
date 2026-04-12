@@ -24,7 +24,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
   return (
     <div className="flex items-start space-x-4">
       <Link
-        href={`/shop/product/${data.id}/${data.name.split(" ").join("-")}`}
+        href={data.url || "#"}
         className="bg-[#F0EEED] rounded-lg w-full min-w-[100px] max-w-[100px] sm:max-w-[124px] aspect-square overflow-hidden"
       >
         <Image
@@ -39,7 +39,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
       <div className="flex w-full self-stretch flex-col">
         <div className="flex items-center justify-between">
           <Link
-            href={`/shop/product/${data.id}/${data.name.split(" ").join("-")}`}
+            href={data.url || "#"}
             className="text-black font-bold text-base xl:text-xl"
           >
             {data.name}
@@ -62,14 +62,13 @@ const ProductCard = ({ data }: ProductCardProps) => {
           </Button>
         </div>
         <div className="-mt-1">
-          <span className="text-black text-xs md:text-sm mr-1">Size:</span>
+          <span className="text-black text-xs md:text-sm mr-1">Variant:</span>
           <span className="text-black/60 text-xs md:text-sm">
             {data.attributes[0]}
           </span>
         </div>
-        <div className="mb-auto -mt-1.5">
-          <span className="text-black text-xs md:text-sm mr-1">Color:</span>
-          <span className="text-black/60 text-xs md:text-sm">
+        <div className="mb-auto -mt-1.5 line-clamp-1">
+          <span className="text-black/60 text-xs md:text-sm italic">
             {data.attributes[1]}
           </span>
         </div>

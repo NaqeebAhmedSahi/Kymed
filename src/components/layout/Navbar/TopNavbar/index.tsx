@@ -2,60 +2,86 @@
 import { cn } from "@/lib/utils";
 import { montserrat, openSans } from "@/styles/fonts";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { NavMenu } from "../navbar.types";
 import { MenuList } from "./MenuList";
-import { categories } from "@/data/categories";
 import {
   NavigationMenu,
   NavigationMenuList,
+  NavigationMenuItem,
 } from "@/components/ui/navigation-menu";
 import { MenuItem } from "./MenuItem";
 import Image from "next/image";
 import ResTopNavbar from "./ResTopNavbar";
-import { FiMail, FiMapPin, FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiSearch, FiX, FiPhone } from "react-icons/fi";
-
-// Build menu dynamically from `categories` data
-const productsChildren = categories.map((cat) => ({
-  id: cat.id,
-  label: cat.name,
-  url: cat.url,
-  description: (
-    <>
-      <Link href={cat.url} className="font-semibold text-[#2F323A] hover:text-[#008C99] transition-colors duration-200 block mb-3">
-        {cat.name}
-      </Link>
-      <div className="space-y-2">
-        {(cat.subcategories || []).slice(0, 6).map((sc) => (
-          <Link key={sc.id} href={sc.url} className="text-[#5D6169] hover:text-[#008C99] block transition-colors duration-200">
-            {sc.name}
-          </Link>
-        ))}
-      </div>
-      <Link
-        href={cat.url}
-        className="inline-flex items-center mt-4 text-[#008C99] hover:text-[#006670] font-semibold transition-colors duration-200 group"
-      >
-        View All Products
-        <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-        </svg>
-      </Link>
-    </>
-  ),
-}));
-
-const data: NavMenu = [
-  { id: 0, type: "MenuItem", label: "Home", url: "/", children: [] },
-  { id: 1, type: "MenuList", label: "Products", children: productsChildren },
-  { id: 2, type: "MenuItem", label: "Categories", url: "/categories", children: [] },
-  { id: 4, type: "MenuItem", label: "About", url: "/about", children: [] },
-  { id: 5, type: "MenuItem", label: "Contact Us", url: "/contact", children: [] },
-];
+import { FiMail, FiMapPin, FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiSearch, FiX, FiPhone, FiShoppingCart } from "react-icons/fi";
+import { useAppSelector } from "@/lib/hooks/redux";
+import { RootState } from "@/lib/store";
 
 const TopNavbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showSearch, setShowSearch] = useState(false);
+  const [productsChildren, setProductsChildren] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Load products data from products.json
+    const loadProductsData = async () => {
+      try {
+        console.log("TopNavbar: Starting to fetch /products.json...");
+        const response = await fetch("/products.json");
+        console.log("TopNavbar: Response status:", response.status);
+        const productsData = await response.json();
+        console.log("TopNavbar: Received products data, categories count:", productsData.categories?.length);
+        const categories = productsData.categories || [];
+
+        // Extract Surgical instruments category (id: "9")
+        const surgicalCategory = categories.find((cat: any) => cat.id === "9");
+        console.log("TopNavbar: Found surgical category:", surgicalCategory?.name, "with", surgicalCategory?.subcategories?.length, "subcategories");
+        
+        if (surgicalCategory && surgicalCategory.subcategories) {
+          // Transform Surgical instruments subcategories to menu structure
+          // Include nested subcategories for display
+          const children = surgicalCategory.subcategories.map((subcat: any) => ({
+            id: subcat.id,
+            label: subcat.name,
+            url: `/shop/9/${subcat.id}`,
+            description: subcat.description,
+            subcategories: subcat.subcategories || [], // Include nested subcategories
+          }));
+
+          console.log("TopNavbar: Transformed children, count:", children.length);
+          setProductsChildren(children);
+          console.log("Loaded Surgical instruments subcategories:", children);
+        } else {
+          console.log("TopNavbar: No surgical category or subcategories found");
+        }
+      } catch (error) {
+        console.error("Error loading products data:", error);
+        setProductsChildren([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadProductsData();
+  }, []);
+
+  // Build menu items with useMemo to ensure it updates when productsChildren changes
+  const menuItems = useMemo(() => {
+    console.log("TopNavbar: Building menuItems, productsChildren length:", productsChildren.length);
+    const items = [
+      { id: 0, type: "MenuItem" as const, label: "Home", url: "/", children: [] },
+      { id: 1, type: "MenuList" as const, label: "Products", children: productsChildren },
+      { id: 2, type: "MenuItem" as const, label: "Categories", url: "/categories", children: [] },
+      { id: 4, type: "MenuItem" as const, label: "About", url: "/about", children: [] },
+      { id: 5, type: "MenuItem" as const, label: "Contact Us", url: "/contact", children: [] },
+    ];
+    console.log("TopNavbar: MenuItems built, Surgical Instruments item children:", items[1].children.length);
+    return items;
+  }, [productsChildren]);
+
+  const { cart } = useAppSelector((state: RootState) => state.carts);
+  const totalQuantities = cart?.totalQuantities || 0;
 
   return (
     <>
@@ -97,24 +123,25 @@ const TopNavbar = () => {
             <Image
               src="/images/logo.png"
               alt="KyMed Logo"
-              height={40}
-              width={100}
+              height={44}
+              width={160}
               className="w-auto h-10 object-contain"
               priority
+              unoptimized
             />
           </Link>
 
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList className="flex items-center space-x-1">
-              {data.map((item: any) => (
+              {menuItems.map((item: any) => (
                 <React.Fragment key={item.id}>
                   {item.type === "MenuItem" && (
-                    <div className="relative">
+                    <NavigationMenuItem className="relative">
                       <Link 
-                        href={item.url || "/"} 
+                         href={item.url || "/"} 
                         className={cn(
-                          "relative px-4 py-2 text-[#2F323A] font-semibold transition-all duration-300 hover:text-[#008C99] group/nav-item",
+                          "relative px-4 py-2 flex items-center text-[#2F323A] font-semibold transition-all duration-300 hover:text-[#008C99] group/nav-item",
                           montserrat.className
                         )}
                       >
@@ -122,22 +149,10 @@ const TopNavbar = () => {
                         {/* Individual slide-in underline animation */}
                         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#008C99] to-[#006670] transition-all duration-300 group-hover/nav-item:w-full"></span>
                       </Link>
-                    </div>
+                    </NavigationMenuItem>
                   )}
                   {item.type === "MenuList" && (
-                    <div className="relative">
-                      <div className="group/nav-item">
-                        {/* Added font styling to make Products bold like others */}
-                        <div className={cn(
-                          "text-[#2F323A] font-semibold hover:text-[#008C99] transition-all duration-300",
-                          montserrat.className
-                        )}>
-                          <MenuList data={item.children} label={item.label} />
-                        </div>
-                        {/* Individual slide-in underline animation for Products */}
-                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#008C99] to-[#006670] transition-all duration-300 group-hover/nav-item:w-full"></span>
-                      </div>
-                    </div>
+                     <MenuList data={item.children} label={item.label} />
                   )}
                 </React.Fragment>
               ))}
@@ -147,7 +162,7 @@ const TopNavbar = () => {
           {/* Search Bar and Actions */}
           <div className="flex items-center space-x-4">
             {/* Search Bar */}
-            <div className="relative">
+             <div className="relative">
               {showSearch ? (
                 <div className="flex items-center bg-white border border-[#C4C7CA] rounded-xl pl-4 pr-2 py-2 shadow-sm">
                   <FiSearch className="w-4 h-4 text-[#5D6169] mr-2" />
@@ -179,9 +194,19 @@ const TopNavbar = () => {
               )}
             </div>
 
+            {/* Cart Icon */}
+            <Link href="/cart" className="relative p-2 text-[#5D6169] hover:text-[#008C99] hover:bg-[#E5F5F7] rounded-xl transition-all duration-200 group">
+              <FiShoppingCart className="w-5 h-5" />
+              {totalQuantities > 0 && (
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#008C99] text-white text-[10px] font-bold ring-2 ring-white">
+                  {totalQuantities}
+                </span>
+              )}
+            </Link>
+
             {/* Mobile Menu Button */}
             <div className="flex items-center lg:hidden">
-              <ResTopNavbar data={data} />
+              <ResTopNavbar data={menuItems} />
             </div>
 
             {/* CTA Button - Desktop */}
