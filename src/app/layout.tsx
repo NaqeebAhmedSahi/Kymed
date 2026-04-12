@@ -317,6 +317,48 @@ export default function RootLayout({
             })
           }}
         />
+        {/* Structured Data - SiteNavigationElement (helps with Sitelinks/Categories) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "itemListElement": [
+                {
+                  "@type": "SiteNavigationElement",
+                  "position": 1,
+                  "name": "General Surgical Instruments",
+                  "url": "https://kymed.co/categories/general-surgical-instruments"
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "position": 2,
+                  "name": "Dental Instruments",
+                  "url": "https://kymed.co/categories/dental-instruments"
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "position": 3,
+                  "name": "Electrosurgery Instruments",
+                  "url": "https://kymed.co/categories/electrosurgery-instruments"
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "position": 4,
+                  "name": "Orthopedic Instruments",
+                  "url": "https://kymed.co/categories/orthopedic-instruments"
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "position": 5,
+                  "name": "Ophthalmic Instruments",
+                  "url": "https://kymed.co/categories/ophthalmic-instruments"
+                }
+              ]
+            })
+          }}
+        />
       </head>
       <body className={satoshi.className}>
         <OrganizationJsonLd />

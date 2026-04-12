@@ -6,16 +6,16 @@ const OrganizationJsonLd = () => {
     "url": "https://kymed.co",
     "logo": "https://kymed.co/images/logo.png",
     "sameAs": [
-      "https://www.facebook.com/yourpage",
-      "https://www.linkedin.com/company/yourcompany",
-      "https://twitter.com/yourhandle"
+      "https://www.linkedin.com/company/kymed"
     ],
     "contactPoint": [
       {
         "@type": "ContactPoint",
-        "telephone": "+92-000-0000000",
+        "telephone": "+92-329-9958000",
         "contactType": "customer service",
-        "areaServed": "PK"
+        "email": "info@kymed.co",
+        "areaServed": ["US", "GB", "AE", "PK"],
+        "availableLanguage": ["English", "Urdu"]
       }
     ]
   };

@@ -38,7 +38,7 @@ const TopNavbar = () => {
         // Extract Surgical instruments category (id: "9")
         const surgicalCategory = categories.find((cat: any) => cat.id === "9");
         console.log("TopNavbar: Found surgical category:", surgicalCategory?.name, "with", surgicalCategory?.subcategories?.length, "subcategories");
-        
+
         if (surgicalCategory && surgicalCategory.subcategories) {
           // Transform Surgical instruments subcategories to menu structure
           // Include nested subcategories for display
@@ -139,8 +139,8 @@ const TopNavbar = () => {
                 <React.Fragment key={item.id}>
                   {item.type === "MenuItem" && (
                     <NavigationMenuItem className="relative">
-                      <Link 
-                         href={item.url || "/"} 
+                      <Link
+                        href={item.url || "/"}
                         className={cn(
                           "relative px-4 py-2 flex items-center text-[#2F323A] font-semibold transition-all duration-300 hover:text-[#008C99] group/nav-item",
                           montserrat.className
@@ -153,7 +153,7 @@ const TopNavbar = () => {
                     </NavigationMenuItem>
                   )}
                   {item.type === "MenuList" && (
-                     <MenuList data={item.children} label={item.label} />
+                    <MenuList data={item.children} label={item.label} />
                   )}
                 </React.Fragment>
               ))}
@@ -163,7 +163,7 @@ const TopNavbar = () => {
           {/* Search Bar and Actions */}
           <div className="flex items-center space-x-4">
             {/* Search Bar */}
-             <div className="relative">
+            <div className="relative">
               {showSearch ? (
                 <div className="flex items-center bg-white border border-[#C4C7CA] rounded-xl pl-4 pr-2 py-2 shadow-sm">
                   <FiSearch className="w-4 h-4 text-[#5D6169] mr-2" />
@@ -212,7 +212,7 @@ const TopNavbar = () => {
 
             {/* CTA Button - Desktop */}
             <div className="hidden lg:block">
-              <Link 
+              <Link
                 href="/contact"
                 className={cn(
                   "px-6 py-2 bg-gradient-to-r from-[#008C99] to-[#006670] text-white rounded-xl hover:shadow-lg transition-all duration-300 shadow-md font-semibold hover:scale-105 text-sm",
