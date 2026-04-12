@@ -95,11 +95,8 @@ const AboutUs = () => {
             className="space-y-8"
           >
             <h3 className={cn("text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-[#2F323A] to-[#5D6169] bg-clip-text text-transparent", montserrat.className)}>
-              Precision, Consistency, and Transparency
+              About KyMed
             </h3>
-            <p className="text-xl text-[#2F323A] leading-relaxed">
-              KyMed is a premium medical device company that designs, manufactures, and exports a complete range of surgical and dental instruments.
-            </p>
             <div className="space-y-6">
               <motion.p 
                 className="text-lg text-[#2F323A] leading-relaxed"
@@ -108,7 +105,7 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                Our commitment to <strong>precision, consistency, and transparency</strong> defines every product we make.
+                KyMed is a surgical and dental instruments manufacturer based in Pakistan, supplying OEM brands, private-label programs, and distributors globally.
               </motion.p>
               <motion.p 
                 className="text-lg text-[#2F323A] leading-relaxed"
@@ -117,7 +114,7 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Each instrument is produced under <strong>ISO 13485-certified systems</strong>, ensuring full traceability and adherence to global healthcare standards.
+                Manufacturing operations are located in Sialkot, Pakistan, covering forging, machining, finishing, quality inspection, and packaging. Production operates under an <strong>ISO 13485–compliant quality management system</strong>, ensuring consistent quality, traceability, and regulatory alignment for international markets.
               </motion.p>
               <motion.p 
                 className="text-lg text-[#2F323A] leading-relaxed"
@@ -126,7 +123,7 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                Every shipment includes a <strong>Material Test Report (MTR)</strong> issued by an accredited laboratory verifying the steel composition and confirming compliance with <strong>ISO 7153-1 and ASTM F899</strong>.
+                KyMed manufactures surgical and dental instruments across single-use and reusable ranges, offering multiple grades including kit-grade single-use, premium single-use, and reusable stainless-steel instruments.
               </motion.p>
               <motion.p 
                 className="text-lg text-[#2F323A] leading-relaxed"
@@ -135,7 +132,25 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                KyMed serves <strong>OEM partners, hospitals, distributors, and importers worldwide</strong>—delivering instruments engineered to perform reliably in the most demanding surgical environments.
+                Founded by an award-recognized industry leader with proven experience in international exports and industry governance, KyMed operates as a structured manufacturer, not a trading intermediary.
+              </motion.p>
+              <motion.p 
+                className="text-lg text-[#2F323A] leading-relaxed"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                KyMed maintains an international business presence across Pakistan, the United Kingdom, and the United States, with a planned Dubai office by 2027 to support global supply operations.
+              </motion.p>
+              <motion.p 
+                className="text-lg text-[#2F323A] leading-relaxed"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                KyMed specializes in OEM surgical and dental instruments manufacturing, private-label production, and long-term supply programs for partners seeking dependable, scalable manufacturing.
               </motion.p>
             </div>
             <div className="pt-4">
@@ -171,7 +186,7 @@ const AboutUs = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#008C99]/60 via-transparent to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-[#008C99]/80 to-transparent">
                   <div className="transform transition-all duration-500 group-hover:translate-y-[-8px]">
-                    <h4 className={cn("text-2xl font-bold mb-2 text-white", montserrat.className)}>German-Grade Precision</h4>
+                    <h4 className={cn("text-2xl font-bold mb-2 text-white", montserrat.className)}>high quality stainless steel</h4>
                     <p className="text-white/90 text-lg">
                       Made in Pakistan, Trusted Worldwide
                     </p>
@@ -203,7 +218,7 @@ const AboutUs = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p className="text-2xl md:text-3xl leading-relaxed text-[#2F323A] italic">
-              "To deliver <strong>German-grade surgical quality</strong> backed by transparent production, ethical practices, and global consistency—making <strong>Made in Pakistan</strong> synonymous with medical precision and trust."
+              "To deliver <strong>high quality stainless steel</strong> backed by transparent production, ethical practices, and global consistency—making <strong>Made in Pakistan</strong> synonymous with medical precision and trust."
             </p>
           </motion.div>
         </motion.div>
@@ -236,7 +251,7 @@ const AboutUs = () => {
             {[
               { icon: <FaCertificate className="w-16 h-16" />, label: "ISO 13485:2016" },
               { icon: <FaCertificate className="w-16 h-16" />, label: "ISO 9001:2015" },
-              { icon: <FaAward className="w-16 h-16" />, label: "CE Marking" },
+              // { icon: <FaAward className="w-16 h-16" />, label: "CE Marking" },
               { icon: <FaMedal className="w-16 h-16" />, label: "ASTM F899" },
             ].map((cert, index) => (
               <motion.div
@@ -344,15 +359,28 @@ const AboutUs = () => {
               {
                 icon: <FaMapMarkerAlt className="w-12 h-12" />,
                 title: "North America Distribution Office",
-                location: "Wisconsin, USA",
+                location: "Wisconsin, USA, launching soon",
                 color: "from-[#008C99] to-[#006670]"
               },
               {
-                icon: <FaGlobeAmericas className="w-12 h-12" />,
-                title: "Export Markets",
-                location: "Germany, USA, UK, Australia, South Korea, GCC, and emerging regions",
+                icon: <FaMapMarkerAlt className="w-12 h-12" />,
+                title: "UK Office",
+                location: (
+                  <>
+                    24 The New Broadway, Tarring Road<br />
+                    West Worthing, Sussex, England, UK<br />
+                    BN11 4HP<br />
+                    <strong>Phone:</strong> +44 7947 533392
+                  </>
+                ),
                 color: "from-[#008C99] to-[#006670]"
-              }
+              },
+              // {
+              //   icon: <FaGlobeAmericas className="w-12 h-12" />,
+              //   title: "Export Markets",
+              //   location: "Germany, USA, UK, Australia, South Korea, GCC, and emerging regions",
+              //   color: "from-[#008C99] to-[#006670]"
+              // }
             ].map((location, index) => (
               <motion.div
                 key={location.title}
@@ -446,7 +474,7 @@ const AboutUs = () => {
           transition={{ duration: 0.8 }}
         >
           <h3 className={cn("text-3xl md:text-4xl font-bold mb-6", montserrat.className)}>
-            Ready to Experience German-Grade Precision?
+            Ready to Experience high quality stainless steel?
           </h3>
           <p className="text-xl mb-8 text-[#E5F5F7] max-w-2xl mx-auto">
             Discover how KyMed's certified surgical instruments can enhance patient care in your practice with guaranteed quality and full traceability.

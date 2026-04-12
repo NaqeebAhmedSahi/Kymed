@@ -17,6 +17,7 @@ import { FiMail, FiMapPin, FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiSea
 import { useAppSelector } from "@/lib/hooks/redux";
 import { RootState } from "@/lib/store";
 
+
 const TopNavbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showSearch, setShowSearch] = useState(false);
@@ -91,7 +92,7 @@ const TopNavbar = () => {
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2 hover:text-[#E5F5F7] transition-colors duration-200">
               <FiPhone className="w-4 h-4 text-[#E5F5F7]" />
-              +92 300 0915553
+              +92 329 9958000
             </span>
             <span className="flex items-center gap-2 hover:text-[#E5F5F7] transition-colors duration-200">
               <FiMail className="w-4 h-4 text-[#E5F5F7]" />

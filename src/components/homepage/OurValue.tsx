@@ -31,7 +31,7 @@ const OurValue = () => {
     {
       question: "What payment methods do you accept?",
       answer:
-        "We accept major credit cards, bank transfers, and other secure payment options.",
+        "We accept bank transfers.",
     },
     {
       question: "Can I get a sample before placing a bulk order?",

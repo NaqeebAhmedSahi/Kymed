@@ -139,7 +139,7 @@ const Footer = () => {
             )}
           >
             © {new Date().getFullYear()} KyMed. All rights reserved.  
-            Engineered in Sialkot, Pakistan.
+            {/* Engineered in Sialkot, Pakistan. */}
           </p>
 
           {/* <div className="flex items-center gap-3">

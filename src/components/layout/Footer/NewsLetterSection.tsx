@@ -30,7 +30,7 @@ const CallToAction = () => {
             "text-[#2F323A]/80 max-w-2xl text-base md:text-lg"
           )}
         >
-          From German stainless steel to ISO-certified precision manufacturing,
+          From high quality stainless steel to ISO-certified precision manufacturing,
           KyMed delivers instruments you can rely on — wherever you operate.
         </p>
 

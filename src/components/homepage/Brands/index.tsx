@@ -47,7 +47,7 @@ const CallToAction = () => {
           >
             KyMed is a global <strong>medical device manufacturer</strong> specializing in
             <strong> surgical and dental instruments</strong> crafted from
-            <strong> German stainless steel</strong>. Engineered at our
+            <strong> high quality stainless steel</strong>. Engineered at our
             <strong> manufacturing facility in Sialkot</strong>, Pakistan and
             distributed worldwide, KyMed combines precision engineering, quality
             assurance, and on-time delivery to serve healthcare professionals
