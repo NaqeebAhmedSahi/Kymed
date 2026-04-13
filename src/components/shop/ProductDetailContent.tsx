@@ -57,12 +57,15 @@ export default function ProductDetailContent({
   const [quantity, setQuantity] = useState(1);
   const dispatch = useAppDispatch();
 
-  const paths =
+  const allPaths =
     product.image_local_paths?.filter(Boolean) && product.image_local_paths.length > 0
       ? product.image_local_paths
       : product.image_local_path
         ? [product.image_local_path]
         : [];
+
+  // Strictly skip the first image (index 0) as requested: "dont show first image", "show second to onward"
+  const paths = allPaths.length > 1 ? allPaths.slice(1) : [];
 
   const safeImageIdx = Math.min(selectedImageIndex, Math.max(0, paths.length - 1));
   const mainImage = paths.length > 0 ? `/${paths[safeImageIdx]}` : null;

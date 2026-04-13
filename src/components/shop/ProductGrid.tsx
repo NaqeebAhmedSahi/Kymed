@@ -50,18 +50,32 @@ export default function ProductGrid({
           <Link key={item.id} href={href} className="group">
             <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white h-full">
               <div className="relative w-full h-64 p-4 bg-white">
-                {item.image_local_path ? (
-                  <Image
-                    src={`/${item.image_local_path}`}
-                    alt={item.name}
-                    fill
-                    className="object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-[#E5F5F7] to-[#C4C7CA] flex items-center justify-center">
-                    <span className="text-[#008C99]">No image</span>
-                  </div>
-                )}
+                {(() => {
+                  const node = isCatalogNode(item) ? item : null;
+                  const prod = !node ? (item as Product) : null;
+                  
+                  let displayImg = item.image_local_path;
+                  
+                  if (prod) {
+                    // Strictly follow "dont show first image" and "show second in product listing"
+                    displayImg = (prod.image_local_paths && prod.image_local_paths.length > 1)
+                      ? prod.image_local_paths[1]
+                      : ""; // Hide if no second image
+                  }
+
+                  return displayImg ? (
+                    <Image
+                      src={`/${displayImg}`}
+                      alt={item.name}
+                      fill
+                      className="object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#E5F5F7] to-[#C4C7CA] flex items-center justify-center">
+                      <span className="text-[#008C99]">No image available</span>
+                    </div>
+                  );
+                })()}
               </div>
               <div className="p-4 flex flex-col flex-grow">
                 <h3 className={cn("font-semibold text-lg text-[#2F323A]", montserrat.className)}>
