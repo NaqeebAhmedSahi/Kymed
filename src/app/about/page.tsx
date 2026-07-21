@@ -353,13 +353,24 @@ const AboutUs = () => {
               {
                 icon: <FaIndustry className="w-12 h-12" />,
                 title: "Manufacturing Facility & Pakistan Office",
-                location: "Sialkot, Pakistan",
+                location: (
+                  <>
+                    Capt. Sher Ali Khan Road, Nishat Park<br />
+                    Sialkot, Pakistan
+                  </>
+                ),
                 color: "from-[#008C99] to-[#006670]"
               },
               {
                 icon: <FaMapMarkerAlt className="w-12 h-12" />,
                 title: "North America Distribution Office",
-                location: "Wisconsin, USA, launching soon",
+                location: (
+                  <>
+                    11147 N. Port Washington Road<br />
+                    Mequon, Wisconsin 53097<br />
+                    USA
+                  </>
+                ),
                 color: "from-[#008C99] to-[#006670]"
               },
               {

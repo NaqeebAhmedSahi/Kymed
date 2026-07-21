@@ -136,13 +136,14 @@ export default function ProductDetailContent({
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div className="space-y-4">
-          <div className="relative w-full h-96 bg-[#F8F9FA] rounded-2xl overflow-hidden border border-[#C4C7CA]/30">
+          <div className="relative w-full aspect-square sm:aspect-auto sm:h-96 md:h-[500px] bg-white rounded-2xl overflow-hidden border border-[#C4C7CA]/30">
             {mainImage ? (
               <Image
                 src={mainImage}
                 alt={product.name}
                 fill
-                className="object-cover"
+                style={{ objectFit: "contain" }}
+                className="rounded-md"
                 priority
               />
             ) : (
@@ -160,7 +161,7 @@ export default function ProductDetailContent({
                   type="button"
                   onClick={() => setSelectedImageIndex(idx)}
                   className={cn(
-                    "relative w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200",
+                    "relative w-20 h-20 rounded-lg overflow-hidden bg-white border-2 transition-all duration-200",
                     selectedImageIndex === idx
                       ? "border-[#008C99] shadow-lg"
                       : "border-[#C4C7CA] hover:border-[#008C99]"
@@ -170,7 +171,8 @@ export default function ProductDetailContent({
                     src={`/${imgPath}`}
                     alt={`${product.name} - Image ${idx + 1}`}
                     fill
-                    className="object-cover"
+                    style={{ objectFit: "contain" }}
+                    className="p-1"
                   />
                 </button>
               ))}
@@ -269,16 +271,16 @@ export default function ProductDetailContent({
                 disabled={isAdded}
                 className={cn(
                   "w-full py-6 text-lg rounded-xl transition-all duration-300",
-                  isAdded 
-                    ? "bg-green-600 hover:bg-green-700 text-white" 
+                  isAdded
+                    ? "bg-green-600 hover:bg-green-700 text-white"
                     : "bg-gradient-to-r from-[#008C99] to-[#006670] text-white hover:shadow-lg"
                 )}
               >
                 {isAdded ? "✓ Added to Cart" : "Add to Cart"}
               </Button>
               {isAdded && (
-                <Link 
-                  href="/cart" 
+                <Link
+                  href="/cart"
                   className="text-center text-[#008C99] font-bold py-2 border-2 border-[#008C99] rounded-xl hover:bg-[#E5F5F7] transition-all"
                 >
                   View Cart ↗

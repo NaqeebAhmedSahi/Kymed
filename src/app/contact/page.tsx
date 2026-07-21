@@ -125,13 +125,24 @@ const ContactPage = () => {
             { 
               icon: <FaMapMarkerAlt className="w-8 h-8" />, 
               title: "Manufacturing Facility", 
-              text: "Sialkot, Pakistan",
+              text: (
+                <>
+                  Capt. Sher Ali Khan Road, Nishat Park<br />
+                  Sialkot, Pakistan
+                </>
+              ),
               color: "from-[#008C99] to-[#006670]"
             },
             { 
               icon: <FaMapMarkerAlt className="w-8 h-8" />, 
               title: "U.S. Office", 
-              text: "Milwaukee, Wisconsin (Launching 2026)",
+              text: (
+                <>
+                  11147 N. Port Washington Road<br />
+                  Mequon, Wisconsin 53097<br />
+                  USA
+                </>
+              ),
               color: "from-[#008C99] to-[#006670]"
             },
             { 

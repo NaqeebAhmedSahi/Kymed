@@ -165,7 +165,15 @@ const TopNavbar = () => {
             {/* Search Bar */}
             <div className="relative">
               {showSearch ? (
-                <div className="flex items-center bg-white border border-[#C4C7CA] rounded-xl pl-4 pr-2 py-2 shadow-sm">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (searchTerm.trim()) {
+                      window.location.href = `/search?q=${encodeURIComponent(searchTerm.trim())}`;
+                    }
+                  }}
+                  className="flex items-center bg-white border border-[#C4C7CA] rounded-xl pl-4 pr-2 py-2 shadow-sm"
+                >
                   <FiSearch className="w-4 h-4 text-[#5D6169] mr-2" />
                   <input
                     type="text"
@@ -176,6 +184,7 @@ const TopNavbar = () => {
                     autoFocus
                   />
                   <button
+                    type="button"
                     onClick={() => {
                       setShowSearch(false);
                       setSearchTerm("");
@@ -184,7 +193,7 @@ const TopNavbar = () => {
                   >
                     <FiX className="w-4 h-4 text-[#5D6169]" />
                   </button>
-                </div>
+                </form>
               ) : (
                 <button
                   onClick={() => setShowSearch(true)}

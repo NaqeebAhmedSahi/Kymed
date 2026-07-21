@@ -6,13 +6,13 @@ import React, { useState, useEffect } from "react";
 
 // Function to ensure image URLs are properly formatted
 const formatImageUrl = (url: string | undefined): string => {
-  if (!url) return '/images/placeholder.jpg';
-  
+  if (!url) return '/images/logo.png';
+
   // If it's already a valid URL or starts with /, return as is
   if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/')) {
     return url;
   }
-  
+
   // If it's just a filename, add the downloaded_images path
   return `${url}`;
 };
@@ -20,10 +20,10 @@ const formatImageUrl = (url: string | undefined): string => {
 const PhotoSection = ({ data }: { data: Product }) => {
   // Format the main image URL
   const mainImageUrl = formatImageUrl(data.srcUrl);
-  
+
   // Format gallery URLs
   const galleryUrls = data?.gallery?.map(formatImageUrl) || [];
-  
+
   // Initialize selected image - use main image if gallery is empty
   const [selected, setSelected] = useState<string>(mainImageUrl);
 
@@ -41,14 +41,15 @@ const PhotoSection = ({ data }: { data: Product }) => {
             <button
               key={index}
               type="button"
-              className="bg-[#F0EEED] rounded-[13px] xl:rounded-[20px] w-full max-w-[111px] xl:max-w-[152px] max-h-[106px] xl:max-h-[167px] xl:min-h-[167px] aspect-square overflow-hidden"
+              className={`relative bg-white rounded-[13px] xl:rounded-[20px] w-full max-w-[111px] xl:max-w-[152px] max-h-[106px] xl:max-h-[167px] xl:min-h-[167px] aspect-square overflow-hidden border ${selected === photo ? "border-[#008C99] border-2" : "border-black/10"
+                }`}
               onClick={() => setSelected(photo)}
             >
               <Image
                 src={photo}
-                width={152}
-                height={167}
-                className="rounded-md w-full h-full object-cover hover:scale-110 transition-all duration-500"
+                fill
+                style={{ objectFit: 'contain' }}
+                className="rounded-md hover:scale-110 transition-all duration-500"
                 alt={data.title}
                 priority
               />
@@ -57,12 +58,12 @@ const PhotoSection = ({ data }: { data: Product }) => {
         </div>
       )}
 
-      <div className="flex items-center justify-center bg-[#F0EEED] rounded-[13px] sm:rounded-[20px] w-full sm:w-96 md:w-full mx-auto h-full max-h-[530px] min-h-[330px] lg:min-h-[380px] xl:min-h-[530px] overflow-hidden mb-3 lg:mb-0">
+      <div className="relative bg-white border border-black/10 rounded-[13px] sm:rounded-[20px] w-full sm:w-96 md:w-full mx-auto aspect-square sm:aspect-auto sm:h-[400px] md:h-[530px] overflow-hidden mb-3 lg:mb-0">
         <Image
           src={selected}
-          width={444}
-          height={530}
-          className="rounded-md w-full h-full object-cover hover:scale-110 transition-all duration-500"
+          fill
+          style={{ objectFit: 'contain' }}
+          className="rounded-md hover:scale-110 transition-all duration-500"
           alt={data.title}
           priority
         />

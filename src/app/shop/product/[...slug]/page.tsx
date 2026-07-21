@@ -25,7 +25,7 @@ async function fetchProductById(id: number): Promise<Product | null> {
 // Function to fix image URLs for downloaded_images directory
 function fixImagePaths(product: Product): Product {
   const fixUrl = (url: string | undefined): string => {
-    if (!url) return "/images/placeholder1111111111111111.jpg";
+    if (!url) return "/images/logo.png";
 
     if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("/")) {
       return url;
@@ -50,7 +50,7 @@ function fixImagePaths(product: Product): Product {
 
   return {
     ...product,
-   srcUrl: product.gallery?.[0] ? fixUrl(product.gallery[0]) : "/images/placeholder.png",
+    srcUrl: product.gallery?.[0] ? fixUrl(product.gallery[0]) : "/images/placeholder.png",
     gallery: product.gallery?.map(fixUrl) || [],
   };
 }

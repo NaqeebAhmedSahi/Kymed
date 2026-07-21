@@ -225,6 +225,41 @@ export async function getBreadcrumbTrail(
   return trail;
 }
 
+export function searchAllProducts(data: ProductsData, searchTerm: string): { product: Product; pathToParent: string[]; categoryId: string }[] {
+  const results: { product: Product; pathToParent: string[]; categoryId: string }[] = [];
+  const term = searchTerm.toLowerCase().trim();
+  if (!term) return [];
+
+  function walk(node: CatalogNode, path: string[], categoryId: string) {
+    // Search in products of this node
+    if (node.products) {
+      for (const p of node.products) {
+        if (
+          p.name.toLowerCase().includes(term) ||
+          p.article_numbers?.some(num => num.toLowerCase().includes(term)) ||
+          p.short_description?.toLowerCase().includes(term) ||
+          p.full_details?.toLowerCase().includes(term)
+        ) {
+          results.push({ product: p, pathToParent: path, categoryId });
+        }
+      }
+    }
+
+    // Recurse into subcategories
+    if (node.subcategories) {
+      for (const sub of node.subcategories) {
+        walk(sub, [...path, sub.id], categoryId);
+      }
+    }
+  }
+
+  for (const cat of data.categories) {
+    walk(cat as unknown as CatalogNode, [], cat.id);
+  }
+
+  return results;
+}
+
 export function slugify(str: string): string {
   return str
     .toLowerCase()
