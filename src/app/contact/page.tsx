@@ -5,7 +5,7 @@ import * as motion from "framer-motion/client";
 import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { montserrat, openSans } from "@/styles/fonts";
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaPaperPlane } from "react-icons/fa";
+import { FaMapMarkerAlt, FaEnvelope, FaPaperPlane } from "react-icons/fa";
 
 interface FormData {
   name: string;
@@ -114,21 +114,19 @@ const ContactPage = () => {
         </motion.div>
 
         {/* Contact Info Cards */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 mb-20">
           {[
             { 
               icon: <FaMapMarkerAlt className="w-8 h-8" />, 
-              title: "Manufacturing Facility", 
+              title: "Pakistan Office", 
               text: (
                 <>
                   Capt. Sher Ali Khan Road, Nishat Park<br />
-                  Sialkot, Pakistan
+                  Sialkot, Pakistan<br />
+                  <strong>Phone:</strong>{" "}
+                  <a href="tel:+923299958000" className="hover:text-[#008C99] transition-colors">
+                    +92 329 9958000
+                  </a>
                 </>
               ),
               color: "from-[#008C99] to-[#006670]"
@@ -140,7 +138,11 @@ const ContactPage = () => {
                 <>
                   11147 N. Port Washington Road<br />
                   Mequon, Wisconsin 53097<br />
-                  USA
+                  USA<br />
+                  <strong>Phone:</strong>{" "}
+                  <a href="tel:+14147084400" className="hover:text-[#008C99] transition-colors">
+                    +1 (414) 708-4400
+                  </a>
                 </>
               ),
               color: "from-[#008C99] to-[#006670]"
@@ -148,34 +150,37 @@ const ContactPage = () => {
             { 
               icon: <FaMapMarkerAlt className="w-8 h-8" />, 
               title: "UK Office", 
-              // provide address and phone as JSX so it renders on multiple lines
               text: (
                 <>
                   24 The New Broadway, Tarring Road<br />
                   West Worthing, Sussex, England, UK<br />
                   BN11 4HP<br />
-                  <strong>Phone:</strong> +44 7947 533392
+                  <strong>Phone:</strong>{" "}
+                  <a href="tel:+447947533392" className="hover:text-[#008C99] transition-colors">
+                    +44 7947 533392
+                  </a>
                 </>
               ),
               color: "from-[#008C99] to-[#006670]"
             },
             { 
-              icon: <FaPhone className="w-8 h-8" />, 
-              title: "Phone", 
-              text: "+92 329 9958000",
-              color: "from-[#008C99] to-[#006670]"
-            },
-            { 
               icon: <FaEnvelope className="w-8 h-8" />, 
               title: "Email", 
-              text: "info@kymed.co",
+              text: (
+                <a href="mailto:info@kymed.co" className="hover:text-[#008C99] transition-colors">
+                  info@kymed.co
+                </a>
+              ),
               color: "from-[#008C99] to-[#006670]"
             },
           ].map((item, index) => (
             <motion.div
               key={item.title}
               className="relative group"
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
             >
               <div className={cn("absolute -inset-4 bg-gradient-to-br opacity-0 group-hover:opacity-100 rounded-3xl blur-xl transition-all duration-500", item.color)} />
               <div className="relative h-full p-8 rounded-2xl bg-white border border-[#C4C7CA]/30 backdrop-blur-sm group-hover:border-[#008C99]/50 transition-all duration-500 shadow-sm text-center">
@@ -193,7 +198,7 @@ const ContactPage = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Contact Form & Image Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
@@ -359,7 +364,16 @@ const ContactPage = () => {
                 montserrat.className
               )}
             >
-              Call Us Now
+              Call Pakistan
+            </a>
+            <a
+              href="tel:+14147084400"
+              className={cn(
+                "inline-block bg-white text-[#008C99] font-semibold py-4 px-8 rounded-xl hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg mx-2 mb-2",
+                montserrat.className
+              )}
+            >
+              Call USA
             </a>
             <a
               href="mailto:info@kymed.co"

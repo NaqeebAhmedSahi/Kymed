@@ -356,7 +356,11 @@ const AboutUs = () => {
                 location: (
                   <>
                     Capt. Sher Ali Khan Road, Nishat Park<br />
-                    Sialkot, Pakistan
+                    Sialkot, Pakistan<br />
+                    <strong>Phone:</strong>{" "}
+                    <a href="tel:+923299958000" className="hover:text-[#008C99] transition-colors">
+                      +92 329 9958000
+                    </a>
                   </>
                 ),
                 color: "from-[#008C99] to-[#006670]"
@@ -368,7 +372,11 @@ const AboutUs = () => {
                   <>
                     11147 N. Port Washington Road<br />
                     Mequon, Wisconsin 53097<br />
-                    USA
+                    USA<br />
+                    <strong>Phone:</strong>{" "}
+                    <a href="tel:+14147084400" className="hover:text-[#008C99] transition-colors">
+                      +1 (414) 708-4400
+                    </a>
                   </>
                 ),
                 color: "from-[#008C99] to-[#006670]"
@@ -381,7 +389,10 @@ const AboutUs = () => {
                     24 The New Broadway, Tarring Road<br />
                     West Worthing, Sussex, England, UK<br />
                     BN11 4HP<br />
-                    <strong>Phone:</strong> +44 7947 533392
+                    <strong>Phone:</strong>{" "}
+                    <a href="tel:+447947533392" className="hover:text-[#008C99] transition-colors">
+                      +44 7947 533392
+                    </a>
                   </>
                 ),
                 color: "from-[#008C99] to-[#006670]"
