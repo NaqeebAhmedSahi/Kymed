@@ -14,6 +14,9 @@ import path from 'path';
 
 type CatalogProduct = Product & { lineId: string; lineName: string };
 
+/** Homepage featured lines only */
+const FEATURED_LINE_IDS = new Set(["146", "147", "150"]); // Scissors, Forceps, Scalpels & Blades
+
 function slugify(str: string) {
   return str
     ? str
@@ -31,7 +34,24 @@ function hasUsableImage(srcUrl: string) {
   );
 }
 
-/** Pick up to `limit` products, spreading across different product lines for a realistic mix. */
+/** ToughCut scissors use black handles — exclude from homepage carousels. */
+const BLACK_SCISSOR_SUB_IDS = new Set(["874", "888", "2195"]); // ToughCut, ToughCut & TC, CeramaCut
+
+function isBlackHandleScissor(p: CatalogProduct) {
+  if (p.lineId !== "146") return false;
+  if ((p.pathToNode || []).some((seg) => BLACK_SCISSOR_SUB_IDS.has(String(seg)))) {
+    return true;
+  }
+  const hay = `${p.title} ${p.subcategory || ""}`.toLowerCase();
+  return (
+    hay.includes("toughcut") ||
+    hay.includes("tough cut") ||
+    hay.includes("ceramacut") ||
+    hay.includes("ceramic coated")
+  );
+}
+
+/** Pick up to `limit` products, spreading across featured product lines. */
 function pickDiverseProducts(
   products: CatalogProduct[],
   limit: number,
@@ -41,12 +61,15 @@ function pickDiverseProducts(
   for (const p of products) {
     if (excludeIds.has(p.id)) continue;
     if (!hasUsableImage(p.srcUrl)) continue;
+    if (isBlackHandleScissor(p)) continue;
     const list = byLine.get(p.lineId) || [];
     list.push(p);
     byLine.set(p.lineId, list);
   }
 
-  const lineIds = Array.from(byLine.keys());
+  // Prefer stable order: Scissors → Forceps → Scalpels
+  const preferredOrder = ["146", "147", "150"];
+  const lineIds = preferredOrder.filter((id) => byLine.has(id));
   const picked: Product[] = [];
   const usedIds = new Set<number>();
   let round = 0;
@@ -127,15 +150,17 @@ export default async function Home() {
       );
 
       if (surgical?.subcategories?.length) {
-        surgical.subcategories.forEach((line: any) => {
-          extractProducts(
-            line,
-            surgical.id || "9",
-            [line.id || slugify(line.name)],
-            line.id || slugify(line.name),
-            line.name || "Surgical"
-          );
-        });
+        surgical.subcategories
+          .filter((line: any) => FEATURED_LINE_IDS.has(String(line.id)))
+          .forEach((line: any) => {
+            extractProducts(
+              line,
+              surgical.id || "9",
+              [line.id || slugify(line.name)],
+              line.id || slugify(line.name),
+              line.name || "Surgical"
+            );
+          });
       } else if (data.categories && Array.isArray(data.categories)) {
         data.categories.forEach((cat: any) => {
           extractProducts(cat, cat.id || "9", [], cat.id || "9", cat.name || "Products");
@@ -175,11 +200,11 @@ export default async function Home() {
   };
   const browseCategories = getSubcategories();
 
-  // Realistic mix across product lines (not only Scissors)
-  const newArrivals = pickDiverseProducts(allProducts, 8);
+  // Same 3 categories for both sections, different products; no black-handle scissors
+  const newArrivals = pickDiverseProducts(allProducts, 6);
   const topSelling = pickDiverseProducts(
     allProducts,
-    8,
+    6,
     new Set(newArrivals.map((p) => p.id))
   );
 

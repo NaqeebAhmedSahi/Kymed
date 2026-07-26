@@ -19669,16 +19669,6 @@
               ]
             },
             {
-              "id": "2758",
-              "name": "Vascular Occluders",
-              "url": "https://agnthos.se/vascular-occluders/2758-vascular-occluders.html",
-              "description": "",
-              "image_url": "https://agnthos.se/img/c/1073-large_default.jpg?cb=1566303349",
-              "image_local_path": "images/Surgical_instruments/Vascular_Instruments/Vascular_Occluders.jpg",
-              "subcategories": [],
-              "products": []
-            },
-            {
               "id": "2766",
               "name": "Ligation Aid",
               "url": "https://agnthos.se/ligation-aid/2766-ligation-aid.html",
@@ -20169,90 +20159,6 @@
                 "images/Surgical_instruments/Vascular_Instruments/Double_Micro_Clamps/Double_Micro_Clamps_3.jpg",
                 "images/Surgical_instruments/Vascular_Instruments/Double_Micro_Clamps/Double_Micro_Clamps_4.jpg",
                 "images/Surgical_instruments/Vascular_Instruments/Double_Micro_Clamps/Double_Micro_Clamps_5.jpg"
-              ]
-            },
-            {
-              "id": "2758",
-              "name": "Vascular Occluders",
-              "url": "https://agnthos.se/vascular-occluders/2758-vascular-occluders.html",
-              "title": "Vascular Occluders",
-              "description": null,
-              "short_description": "Applications• Fast, dependable zero-flow baseline determination in blood flow studies.• Partial to full occlusion of vessels for circulation research studies.• Prolonged implantations, such as chronic blood flow studies.• Constriction of soft organs in acute or chronic applications.SelectionThe lumen diameter when deflated is usually the determining factor in the selection of the proper device. Select the occluder size that provides a slightly loose fit around the subject vessel. The cuff width and thickness will vary, depending on models and sizes.18080-01VO-1.5 NLumen diameter: 1.5 mmCuff width: <3.5 mmCuff thickness: 1.5 mm18080-02VO-2Lumen diameter: 2 mmCuff width: 5 mmCuff thickness: 1.5 mm18080-03VO-3Lumen diameter: 3 mmCuff width: 5 mmCuff thickness: 1.5 mm",
-              "buy_info": [
-                {
-                  "article_number": "18080-01",
-                  "description": "Vascular Occluder, VO-1,5N Silicone, 3,5x1,5mm",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "18080-02",
-                  "description": "Vascular Occluder, VO-2 Silicone, 5x2mm",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "18080-03",
-                  "description": "Vascular Occluder, VO-3 Silicone, 5x3mm",
-                  "price": "Sign in"
-                }
-              ],
-              "full_details": "Benefits• Occlusion is accomplished without traction on vessels or surrounding tissues.• The actuating tube may be exteriorized from the occlusion site for remote actuation.• Performance during implantations is reliable and consistent.• Autoclavable or cold sterilized, and easily maintained.• Made from soft, flexible 100% silicone rubber.• Fully operational with instant response using air, liquids, or inert gases.",
-              "subcategory": "Vascular Occluders",
-              "long_description": "Benefits• Occlusion is accomplished without traction on vessels or surrounding tissues.• The actuating tube may be exteriorized from the occlusion site for remote actuation.• Performance during implantations is reliable and consistent.• Autoclavable or cold sterilized, and easily maintained.• Made from soft, flexible 100% silicone rubber.• Fully operational with instant response using air, liquids, or inert gases.",
-              "article_numbers": [
-                "18080-01",
-                "18080-02",
-                "18080-03"
-              ],
-              "variants": [
-                {
-                  "article_number": "18080-01",
-                  "description": "Vascular Occluder, VO-1,5N Silicone, 3,5x1,5mm",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "18080-02",
-                  "description": "Vascular Occluder, VO-2 Silicone, 5x2mm",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "18080-03",
-                  "description": "Vascular Occluder, VO-3 Silicone, 5x3mm",
-                  "price": "Sign in"
-                }
-              ],
-              "specifications": [
-                {
-                  "article_number": "18080-01",
-                  "description": "Vascular Occluder, VO-1,5N Silicone, 3,5x1,5mm",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "18080-02",
-                  "description": "Vascular Occluder, VO-2 Silicone, 5x2mm",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "18080-03",
-                  "description": "Vascular Occluder, VO-3 Silicone, 5x3mm",
-                  "price": "Sign in"
-                }
-              ],
-              "image_url": "https://agnthos.se/img/c/1073-large_default.jpg?cb=1566303349",
-              "image_urls": [
-                "https://agnthos.se/img/c/1073-large_default.jpg?cb=1566303349",
-                "https://agnthos.se/4665-thickbox_default/vascular-occluders.jpg",
-                "https://agnthos.se/img/p/4/6/6/5/4665.jpg",
-                "https://agnthos.se/4666-thickbox_default/vascular-occluders.jpg",
-                "https://agnthos.se/img/p/4/6/6/6/4666.jpg",
-                "https://agnthos.se/4667-thickbox_default/vascular-occluders.jpg",
-                "https://agnthos.se/img/p/4/6/6/7/4667.jpg"
-              ],
-              "image_local_path": "images/Surgical_instruments/Vascular_Instruments/Vascular_Occluders/Vascular_Occluders_1.jpg",
-              "image_local_paths": [
-                "images/Surgical_instruments/Vascular_Instruments/Vascular_Occluders/Vascular_Occluders_1.jpg",
-                "images/Surgical_instruments/Vascular_Instruments/Vascular_Occluders/Vascular_Occluders_2.jpg",
-                "images/Surgical_instruments/Vascular_Instruments/Vascular_Occluders/Vascular_Occluders_3.jpg",
-                "images/Surgical_instruments/Vascular_Instruments/Vascular_Occluders/Vascular_Occluders_4.jpg"
               ]
             },
             {
@@ -21458,7 +21364,7 @@
               "url": "https://agnthos.se/1101-probes",
               "description": "",
               "image_url": "https://agnthos.se/img/c/1101-large_default.jpg?cb=1719406286",
-              "image_local_path": null,
+              "image_local_path": "images/Surgical_instruments/Hooks,_Pins_&_Probes/Probes/Bonn_Micro_Probes/Bonn_Micro_Probes_1.jpg",
               "subcategories": [
                 {
                   "id": "2882",
