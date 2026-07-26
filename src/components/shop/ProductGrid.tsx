@@ -87,9 +87,7 @@ export default function ProductGrid({
                     : product?.short_description || product?.title || ""}
                 </p>
                 <div className="mt-4 text-[#008C99] font-semibold text-sm">
-                  {variant === "subcategories"
-                    ? `${(node?.products?.length || 0) + (node?.subcategories?.length || 0)} items →`
-                    : "View details →"}
+                  {variant === "subcategories" ? "Explore →" : "View details →"}
                 </div>
               </div>
             </div>

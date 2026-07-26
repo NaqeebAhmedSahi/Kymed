@@ -618,35 +618,6 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
             </>
           )}
 
-          {/* Quick Stats */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            {[
-              { number: `${category.subcategories?.length || 0}+`, label: "Subcategories", color: "from-[#008C99] to-[#006670]" },
-              { number: "500+", label: "Products Available", color: "from-[#008C99] to-[#006670]" },
-              { number: "100%", label: "Quality Guaranteed", color: "from-[#008C99] to-[#006670]" },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="relative group"
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className={`absolute -inset-4 bg-gradient-to-br opacity-0 group-hover:opacity-100 rounded-3xl blur-xl transition-all duration-500 ${stat.color}`} />
-                <div className="relative h-full p-8 rounded-2xl bg-white border border-[#C4C7CA]/30 backdrop-blur-sm group-hover:border-[#008C99]/50 transition-all duration-500 shadow-sm text-center">
-                  <div className={cn("text-4xl font-bold mb-4 bg-gradient-to-br from-[#008C99] to-[#006670] bg-clip-text text-transparent", montserrat.className)}>
-                    {stat.number}
-                  </div>
-                  <div className="text-[#5D6169] text-lg">{stat.label}</div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>

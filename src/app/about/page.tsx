@@ -1,11 +1,9 @@
 "use client";
 import React from "react";
 import * as motion from "framer-motion/client";
-import { useMotionValue, useTransform, animate, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { montserrat, openSans } from "@/styles/fonts";
-import { useEffect, useRef } from "react";
-import { FaCheckCircle, FaMedal, FaUsers, FaGlobeAmericas, FaCertificate, FaAward, FaMapMarkerAlt, FaIndustry } from "react-icons/fa";
+import { FaCheckCircle, FaMedal, FaCertificate, FaMapMarkerAlt, FaIndustry, FaClock, FaUsers } from "react-icons/fa";
 
 const AboutUs = () => {
   // Color constants matching your theme
@@ -15,34 +13,6 @@ const AboutUs = () => {
     silver: "#C4C7CA", // Surgical Silver
     background: "#F8F9FA", // White Smoke
     iceBlue: "#E5F5F7", // Ice Blue
-  };
-
-  // CountingNumber component with proper TypeScript handling
-  const CountingNumber = ({ endValue }: { endValue: number }) => {
-    const count = useMotionValue(0);
-    const rounded = useTransform(count, (latest) => Math.round(latest));
-    const [displayValue, setDisplayValue] = React.useState(0);
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
-
-    useEffect(() => {
-      if (isInView) {
-        const controls = animate(count, endValue, {
-          duration: 2,
-          ease: "easeOut",
-        });
-        return controls.stop;
-      }
-    }, [isInView, count, endValue]);
-
-    useEffect(() => {
-      const unsubscribe = rounded.on("change", (latest) => {
-        setDisplayValue(latest);
-      });
-      return unsubscribe;
-    }, [rounded]);
-
-    return <motion.span ref={ref}>{displayValue}</motion.span>;
   };
 
   return (
@@ -439,12 +409,11 @@ const AboutUs = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
             {[
-              { end: 20, label: "Years Experience", icon: <FaAward className="w-8 h-8" /> },
-              { end: 50, label: "Countries Served", icon: <FaGlobeAmericas className="w-8 h-8" /> },
-              { end: 1000, label: "Products", icon: <FaMedal className="w-8 h-8" /> },
-              { end: 10000, label: "Happy Clients", icon: <FaUsers className="w-8 h-8" /> }
+              { value: "6 Weeks", label: "Average Lead Time", icon: <FaClock className="w-8 h-8" /> },
+              { value: "0.8M EA", label: "Monthly Capacity", icon: <FaIndustry className="w-8 h-8" /> },
+              { value: "150+", label: "Qualified Employees", icon: <FaUsers className="w-8 h-8" /> }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -455,7 +424,7 @@ const AboutUs = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <motion.div 
-                  className="text-white mb-4 mx-auto"
+                  className="text-white mb-4 mx-auto w-fit"
                   initial={{ scale: 1 }}
                   whileInView={{ scale: [1, 1.2, 1] }}
                   viewport={{ once: true }}
@@ -470,8 +439,7 @@ const AboutUs = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                 >
-                  <CountingNumber endValue={stat.end} />
-                  {stat.end >= 1000 ? 'k+' : '+'}
+                  {stat.value}
                 </motion.h4>
                 <motion.p 
                   className="text-[#E5F5F7] text-lg"

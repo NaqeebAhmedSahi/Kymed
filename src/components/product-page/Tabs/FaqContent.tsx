@@ -24,7 +24,6 @@ const generateFaqsFromProducts = (categories: ProductCategory[]): FaqItem[] => {
             <h4 className="font-semibold text-gray-800 mt-4">Subcategories:</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {category.subcategories.map((subcat: any, idx: number) => {
-                const itemCount = subcat.subcategories?.length || subcat.products?.length || 0;
                 return (
                   <div
                     key={idx}
@@ -37,11 +36,9 @@ const generateFaqsFromProducts = (categories: ProductCategory[]): FaqItem[] => {
                       {subcat.name}
                     </Link>
                     <p className="text-sm text-gray-600 line-clamp-2">{subcat.description}</p>
-                    {itemCount > 0 && (
-                      <span className="inline-block mt-3 text-sm font-bold text-white bg-gradient-to-r from-[#008C99] to-[#006670] px-3 py-1 rounded-full">
-                        {itemCount} Items →
-                      </span>
-                    )}
+                    <span className="inline-block mt-3 text-sm font-bold text-[#008C99]">
+                      Explore →
+                    </span>
                   </div>
                 );
               })}

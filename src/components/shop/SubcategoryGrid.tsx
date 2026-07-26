@@ -44,7 +44,7 @@ export default function SubcategoryGrid({ subcategories, categoryId }: Subcatego
                 {subcat.description}
               </p>
               <div className="mt-4 text-[#008C99] font-semibold text-sm">
-                {(subcat.subcategories?.length || 0) + (subcat.products?.length || 0)} Items →
+                Explore →
               </div>
             </div>
           </div>

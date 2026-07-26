@@ -6,26 +6,15 @@ import { cn } from "@/lib/utils";
 
 // Example certification logos (replace with your own as needed)
 const certifications = [
-  {
-    name: "ISO 13485",
-    img: "/images/cert1.png"
-  },
-  // {
-  //   name: "FDA Approved",
-  //   img: "/images/cert2.png"
-  // },
-  {
-    name: "ISO 9001",
-    img: "/images/cert3.png"
-  },
-  {
-    name: "SCCI",
-    img: "/images/cert4.png"
-  },
-  {
-    name: "SIMAP",
-    img: "/images/cert5.png"
-  }
+  { name: "ISO 13485", img: "/images/cert1.png" },
+  { name: "ISO 9001", img: "/images/cert3.png" },
+  { name: "cGMP", img: "/images/cert1.png" },
+  { name: "FDA", img: "/images/cert3.png" },
+  { name: "CE Class 1R", img: "/images/cert1.png" },
+  { name: "EU Rep", img: "/images/cert3.png" },
+  { name: "SFDA (In Process)", img: "/images/cert4.png" },
+  { name: "SCCI", img: "/images/cert4.png" },
+  { name: "SIMAP", img: "/images/cert5.png" },
 ];
 
 const CertificationMarquee = () => {

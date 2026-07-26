@@ -188,7 +188,25 @@ export async function getProductByCategoryPath(
 ): Promise<Product | null> {
   const resolved = await getCatalogNodeByPath(categorySlug, pathToProductParent);
   if (!resolved) return null;
-  return resolved.node.products?.find((p) => p.id === productId) ?? null;
+
+  const direct = resolved.node.products?.find((p) => p.id === productId);
+  if (direct) return direct;
+
+  // Borrowed leaf products are stored on the parent node.
+  if (pathToProductParent.length === 0) return null;
+
+  const parentPath = pathToProductParent.slice(0, -1);
+  let parentNode: CatalogNode | null = null;
+  if (parentPath.length === 0) {
+    const category = await getCategoryBySlug(categorySlug);
+    parentNode = (category as unknown as CatalogNode) ?? null;
+  } else {
+    const parentResolved = await getCatalogNodeByPath(categorySlug, parentPath);
+    parentNode = parentResolved?.node ?? null;
+  }
+  if (!parentNode?.products?.length) return null;
+
+  return parentNode.products.find((p) => p.id === productId) ?? null;
 }
 
 /** Products to show on a node: own products plus, for empty leaf children, parent-listed products tagged with that subcategory name. */

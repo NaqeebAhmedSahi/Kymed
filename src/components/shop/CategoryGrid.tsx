@@ -43,7 +43,7 @@ export default function CategoryGrid({ categories }: CategoryGridProps) {
                 {category.description}
               </p>
               <div className="mt-4 text-[#008C99] font-semibold text-sm">
-                {category.subcategories?.length || 0} Subcategories →
+                Explore →
               </div>
             </div>
           </div>

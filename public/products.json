@@ -14158,16 +14158,6 @@
           "image_local_path": "images/Surgical_instruments/Retractors.jpg",
           "subcategories": [
             {
-              "id": "1606",
-              "name": "Retractor Table",
-              "url": "https://agnthos.se/retractor-table/1606-surgery-table.html",
-              "description": "",
-              "image_url": "https://agnthos.se/img/c/736-large_default.jpg?cb=1565617233",
-              "image_local_path": "images/Surgical_instruments/Retractors/Retractor_Table.jpg",
-              "subcategories": [],
-              "products": []
-            },
-            {
               "id": "2627",
               "name": "Alm",
               "url": "https://agnthos.se/alm/2627-alm.html",
@@ -14279,77 +14269,6 @@
             }
           ],
           "products": [
-            {
-              "id": "1606",
-              "name": "Retractor Table",
-              "url": "https://agnthos.se/retractor-table/1606-surgery-table.html",
-              "title": "Surgery Table",
-              "description": null,
-              "short_description": "This Animal Surgery System simplifies set-up procedure and provides the examiner with an excellent overview of the operative site and sets a new standard in of procedural control.The system allows researchers to operate independently, eliminating the requirement for an assistant and removes the distraction of improvised set-ups and thereby allowing the researcher to focus full attention on the surgical procedure with high repeatability.",
-              "buy_info": [
-                {
-                  "article_number": "18200-20",
-                  "description": "Retraction Kit for Small Animals Up to 200g",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "18200-50",
-                  "description": "Retraction Kit for Small Animals 200g to 5kg",
-                  "price": "Sign in"
-                }
-              ],
-              "full_details": "The system allows researchers to operate independently, eliminating the requirement for an assistant and removes the distraction of improvised set-ups and thereby allowing the researcher to focus full attention on the surgical procedure with high repeatability.The system consists of three components:- Base Plate- Fixators- RetractorsThe Base PlateAre made of ferro-magnetic stainless steel and are available in two sizes. Both plates have a window in the center which allows the animal contact with body temperature control systems. The window sizes are 10 x 13cm for the small base plate and 15 x 25cm for the large.The FixatorsAre movable posts that contain rare earth magnets that attach anywhere on the animal table. A push-button top operates multi-level locking jaws that grip wires or elastomers firmly. Complete depression of the push-button allows for insertion of the wires or elastomer while partial depression of the push-button allows for adjustment. Fixators can also lock onto other lab components that require stabilization in the surgical setting, such as neurological or rectal probes or anesthesia delivery systems. The magnets do not interfere with lab electronics and can be used in close proximity (3cm) to ferro-magnetic items.Eliminates the need for an assistantReduces setup and procedure timeProvides superior controlImproves visualizationAll components are autoclavableAll items can be purchased seperatelyThe RetractorsThe retractors are interchangeable. Retractor Tips (No. 18200-08 through 18200-12) all which attach to either Retractor Wire (Nos. 18200-05 & 18200-06) for static retraction or to Elastomer (No. 18200-07) for dynamic retraction. The Retractor Tips are light and atraumatic to delicate tissue or membrane. 18200-50 Includes:1 Large Base Plate2 Short Fixators2 Tall Fixators1 Elastomer, 2m roll1 package of Blunt Retractors, 2.5mm wide1 package of Blunt Retractors, 5mm wide 18200-20 Includes:1 Small Base Plate2 Short Fixators1 Tall Fixator1 Elastomer, 2m roll1 package of Blunt Retractors, 1mm wide1 package of Blunt Retractors, 2.5mm wide",
-              "subcategory": "Retractor Table",
-              "long_description": "The system allows researchers to operate independently, eliminating the requirement for an assistant and removes the distraction of improvised set-ups and thereby allowing the researcher to focus full attention on the surgical procedure with high repeatability.The system consists of three components:- Base Plate- Fixators- RetractorsThe Base PlateAre made of ferro-magnetic stainless steel and are available in two sizes. Both plates have a window in the center which allows the animal contact with body temperature control systems. The window sizes are 10 x 13cm for the small base plate and 15 x 25cm for the large.The FixatorsAre movable posts that contain rare earth magnets that attach anywhere on the animal table. A push-button top operates multi-level locking jaws that grip wires or elastomers firmly. Complete depression of the push-button allows for insertion of the wires or elastomer while partial depression of the push-button allows for adjustment. Fixators can also lock onto other lab components that require stabilization in the surgical setting, such as neurological or rectal probes or anesthesia delivery systems. The magnets do not interfere with lab electronics and can be used in close proximity (3cm) to ferro-magnetic items.Eliminates the need for an assistantReduces setup and procedure timeProvides superior controlImproves visualizationAll components are autoclavableAll items can be purchased seperatelyThe RetractorsThe retractors are interchangeable. Retractor Tips (No. 18200-08 through 18200-12) all which attach to either Retractor Wire (Nos. 18200-05 & 18200-06) for static retraction or to Elastomer (No. 18200-07) for dynamic retraction. The Retractor Tips are light and atraumatic to delicate tissue or membrane. 18200-50 Includes:1 Large Base Plate2 Short Fixators2 Tall Fixators1 Elastomer, 2m roll1 package of Blunt Retractors, 2.5mm wide1 package of Blunt Retractors, 5mm wide 18200-20 Includes:1 Small Base Plate2 Short Fixators1 Tall Fixator1 Elastomer, 2m roll1 package of Blunt Retractors, 1mm wide1 package of Blunt Retractors, 2.5mm wide",
-              "article_numbers": [
-                "18200-20",
-                "18200-50"
-              ],
-              "variants": [
-                {
-                  "article_number": "18200-20",
-                  "description": "Retraction Kit for Small Animals Up to 200g",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "18200-50",
-                  "description": "Retraction Kit for Small Animals 200g to 5kg",
-                  "price": "Sign in"
-                }
-              ],
-              "specifications": [
-                {
-                  "article_number": "18200-20",
-                  "description": "Retraction Kit for Small Animals Up to 200g",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "18200-50",
-                  "description": "Retraction Kit for Small Animals 200g to 5kg",
-                  "price": "Sign in"
-                }
-              ],
-              "image_url": "https://agnthos.se/img/c/736-large_default.jpg?cb=1565617233",
-              "image_urls": [
-                "https://agnthos.se/img/c/736-large_default.jpg?cb=1565617233",
-                "https://agnthos.se/3734-thickbox_default/surgery-table.jpg",
-                "https://agnthos.se/img/p/3/7/3/4/3734.jpg",
-                "https://agnthos.se/3736-thickbox_default/surgery-table.jpg",
-                "https://agnthos.se/img/p/3/7/3/6/3736.jpg",
-                "https://agnthos.se/3737-thickbox_default/surgery-table.jpg",
-                "https://agnthos.se/img/p/3/7/3/7/3737.jpg",
-                "https://agnthos.se/3738-thickbox_default/surgery-table.jpg",
-                "https://agnthos.se/img/p/3/7/3/8/3738.jpg"
-              ],
-              "image_local_path": "images/Surgical_instruments/Retractors/Retractor_Table/Retractor_Table_1.jpg",
-              "image_local_paths": [
-                "images/Surgical_instruments/Retractors/Retractor_Table/Retractor_Table_1.jpg",
-                "images/Surgical_instruments/Retractors/Retractor_Table/Retractor_Table_2.jpg",
-                "images/Surgical_instruments/Retractors/Retractor_Table/Retractor_Table_3.jpg",
-                "images/Surgical_instruments/Retractors/Retractor_Table/Retractor_Table_4.jpg",
-                "images/Surgical_instruments/Retractors/Retractor_Table/Retractor_Table_5.jpg"
-              ]
-            },
             {
               "id": "2627",
               "name": "Alm",
@@ -17072,16 +16991,6 @@
               "image_local_path": "images/Surgical_instruments/Bone_Instruments/Anchor_&_Bone_Screws.jpg",
               "subcategories": [],
               "products": []
-            },
-            {
-              "id": "1125",
-              "name": "Bone Wax",
-              "url": "https://agnthos.se/bonewax/1125-bonewax.html",
-              "description": "",
-              "image_url": "https://agnthos.se/img/c/1033-large_default.jpg?cb=1580981622",
-              "image_local_path": "images/Surgical_instruments/Bone_Instruments/Bone_Wax.jpg",
-              "subcategories": [],
-              "products": []
             }
           ],
           "products": [
@@ -17351,52 +17260,6 @@
                 "images/Surgical_instruments/Bone_Instruments/Anchor_&_Bone_Screws/Anchor_&_Bone_Screws_2.jpg",
                 "images/Surgical_instruments/Bone_Instruments/Anchor_&_Bone_Screws/Anchor_&_Bone_Screws_3.jpg",
                 "images/Surgical_instruments/Bone_Instruments/Anchor_&_Bone_Screws/Anchor_&_Bone_Screws_4.jpg"
-              ]
-            },
-            {
-              "id": "1125",
-              "name": "Bone Wax",
-              "url": "https://agnthos.se/bonewax/1125-bonewax.html",
-              "title": "Bone wax",
-              "description": null,
-              "short_description": "Sterile wax for bone hemostasis. Bone wax is a sterile mixture of bees wax, almond oil and salicylic acid and is used to control bleeding on bone surface in thoracic, orthopedic and oral surgery as well as neurosurgery. The wax achieves local hemostasis of bone by acting as a mechanical barrier.Soft, kneadable and ready to use.",
-              "buy_info": [
-                {
-                  "article_number": "W31C",
-                  "description": "Bonewax 2,5 gr. pkg=12",
-                  "price": "Sign in"
-                }
-              ],
-              "full_details": "",
-              "subcategory": "Bone Wax",
-              "long_description": "",
-              "article_numbers": [
-                "W31C"
-              ],
-              "variants": [
-                {
-                  "article_number": "W31C",
-                  "description": "Bonewax 2,5 gr. pkg=12",
-                  "price": "Sign in"
-                }
-              ],
-              "specifications": [
-                {
-                  "article_number": "W31C",
-                  "description": "Bonewax 2,5 gr. pkg=12",
-                  "price": "Sign in"
-                }
-              ],
-              "image_url": "https://agnthos.se/img/c/1033-large_default.jpg?cb=1580981622",
-              "image_urls": [
-                "https://agnthos.se/img/c/1033-large_default.jpg?cb=1580981622",
-                "https://agnthos.se/4882-thickbox_default/bonewax.jpg",
-                "https://agnthos.se/img/p/4/8/8/2/4882.jpg"
-              ],
-              "image_local_path": "images/Surgical_instruments/Bone_Instruments/Bone_Wax/Bone_Wax_1.jpg",
-              "image_local_paths": [
-                "images/Surgical_instruments/Bone_Instruments/Bone_Wax/Bone_Wax_1.jpg",
-                "images/Surgical_instruments/Bone_Instruments/Bone_Wax/Bone_Wax_2.jpg"
               ]
             }
           ]
@@ -17843,26 +17706,6 @@
               "description": "Scalpel blades Fig. 10-15 are used with scalpel handle No 3, 7K & 7. Scalpel blades Fig. 20-25 are used with scalpel handle No 4 &.",
               "image_url": "https://agnthos.se/img/c/461-large_default.jpg?cb=1565873424",
               "image_local_path": "images/Surgical_instruments/Scalpels_&_Blades/Scalpel_Blades_&_Remover.jpg",
-              "subcategories": [],
-              "products": []
-            },
-            {
-              "id": "2693",
-              "name": "Disposable Safety Scalpels",
-              "url": "https://agnthos.se/disposable-safety-scalpels/2693-disposable-safety-scalpels.html",
-              "description": "",
-              "image_url": "https://agnthos.se/img/c/1063-large_default.jpg?cb=1565940108",
-              "image_local_path": "images/Surgical_instruments/Scalpels_&_Blades/Disposable_Safety_Scalpels.jpg",
-              "subcategories": [],
-              "products": []
-            },
-            {
-              "id": "462",
-              "name": "Sterile Disposable Scalpels",
-              "url": "https://agnthos.se/462-sterile-disposable-scalpels",
-              "description": "",
-              "image_url": "https://agnthos.se/img/c/462-large_default.jpg?cb=1573196805",
-              "image_local_path": "images/Surgical_instruments/Scalpels_&_Blades/Sterile_Disposable_Scalpels.jpg",
               "subcategories": [],
               "products": []
             },
@@ -18552,93 +18395,6 @@
                 "images/Surgical_instruments/Scalpels_&_Blades/Obsidian_Stone_Age_Scalpels/Obsidian_Stone_Age_Scalpels_1.jpg",
                 "images/Surgical_instruments/Scalpels_&_Blades/Obsidian_Stone_Age_Scalpels/Obsidian_Stone_Age_Scalpels_2.jpg",
                 "images/Surgical_instruments/Scalpels_&_Blades/Obsidian_Stone_Age_Scalpels/Obsidian_Stone_Age_Scalpels_3.jpg"
-              ]
-            },
-            {
-              "id": "2693",
-              "name": "Disposable Safety Scalpels",
-              "url": "https://agnthos.se/disposable-safety-scalpels/2693-disposable-safety-scalpels.html",
-              "title": "Disposable Safety Scalpels",
-              "description": null,
-              "short_description": "Plastic handle #3 with stainless steel blades. The protective cartridge completely covers the blade for safe, fast, and easy disposal. Single-use and non-sterile.",
-              "buy_info": [
-                {
-                  "article_number": "10000-10",
-                  "description": "Safety Scalpel #10 Disposable, pkg=10",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "10000-11",
-                  "description": "Safety Scalpel #11 Disposable, pkg=10",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "10000-15",
-                  "description": "Safety Scalpel #15 Disposable, pkg=10",
-                  "price": "Sign in"
-                }
-              ],
-              "full_details": "",
-              "subcategory": "Disposable Safety Scalpels",
-              "long_description": "",
-              "article_numbers": [
-                "10000-10",
-                "10000-11",
-                "10000-15"
-              ],
-              "variants": [
-                {
-                  "article_number": "10000-10",
-                  "description": "Safety Scalpel #10 Disposable, pkg=10",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "10000-11",
-                  "description": "Safety Scalpel #11 Disposable, pkg=10",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "10000-15",
-                  "description": "Safety Scalpel #15 Disposable, pkg=10",
-                  "price": "Sign in"
-                }
-              ],
-              "specifications": [
-                {
-                  "article_number": "10000-10",
-                  "description": "Safety Scalpel #10 Disposable, pkg=10",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "10000-11",
-                  "description": "Safety Scalpel #11 Disposable, pkg=10",
-                  "price": "Sign in"
-                },
-                {
-                  "article_number": "10000-15",
-                  "description": "Safety Scalpel #15 Disposable, pkg=10",
-                  "price": "Sign in"
-                }
-              ],
-              "image_url": "https://agnthos.se/img/c/1063-large_default.jpg?cb=1565940108",
-              "image_urls": [
-                "https://agnthos.se/img/c/1063-large_default.jpg?cb=1565940108",
-                "https://agnthos.se/4599-thickbox_default/disposable-safety-scalpels.jpg",
-                "https://agnthos.se/img/p/4/5/9/9/4599.jpg",
-                "https://agnthos.se/4600-thickbox_default/disposable-safety-scalpels.jpg",
-                "https://agnthos.se/img/p/4/6/0/0/4600.jpg",
-                "https://agnthos.se/4601-thickbox_default/disposable-safety-scalpels.jpg",
-                "https://agnthos.se/img/p/4/6/0/1/4601.jpg",
-                "https://agnthos.se/4603-thickbox_default/disposable-safety-scalpels.jpg",
-                "https://agnthos.se/img/p/4/6/0/3/4603.jpg"
-              ],
-              "image_local_path": "images/Surgical_instruments/Scalpels_&_Blades/Disposable_Safety_Scalpels/Disposable_Safety_Scalpels_1.jpg",
-              "image_local_paths": [
-                "images/Surgical_instruments/Scalpels_&_Blades/Disposable_Safety_Scalpels/Disposable_Safety_Scalpels_1.jpg",
-                "images/Surgical_instruments/Scalpels_&_Blades/Disposable_Safety_Scalpels/Disposable_Safety_Scalpels_2.jpg",
-                "images/Surgical_instruments/Scalpels_&_Blades/Disposable_Safety_Scalpels/Disposable_Safety_Scalpels_3.jpg",
-                "images/Surgical_instruments/Scalpels_&_Blades/Disposable_Safety_Scalpels/Disposable_Safety_Scalpels_4.jpg",
-                "images/Surgical_instruments/Scalpels_&_Blades/Disposable_Safety_Scalpels/Disposable_Safety_Scalpels_5.jpg"
               ]
             },
             {

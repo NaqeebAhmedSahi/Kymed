@@ -128,12 +128,24 @@ export default async function ShopCategorySlugPage({ params }: Props) {
   const subs = node.subcategories || [];
   const directProducts = node.products || [];
   const fallbackProducts = getDisplayProductsForNode(node, parent);
-  const productsToShow =
-    directProducts.length > 0 ? directProducts : fallbackProducts;
+  const usingFallbackProducts = directProducts.length === 0 && fallbackProducts.length > 0;
+  const productsToShow = usingFallbackProducts ? fallbackProducts : directProducts;
+  // Product detail links must point at the node that owns the product records.
+  const productPathToNode = usingFallbackProducts ? segments.slice(0, -1) : segments;
 
-  const hasSignificantSubs = subs.some(
-    (s) => (s.subcategories?.length ?? 0) > 0 || (s.products?.length ?? 0) > 0
-  );
+  // Keep subcategory cards that have their own children, or empty leaves that
+  // surface borrowed parent products (e.g. CeramaCut under Scissors).
+  const displaySubs = subs.filter((s) => {
+    const hasOwn =
+      (s.subcategories?.length ?? 0) > 0 || (s.products?.length ?? 0) > 0;
+    if (hasOwn) return true;
+    return getDisplayProductsForNode(s, node).length > 0;
+  });
+
+  // When subcategories are available, browse through those only — do not also
+  // show a duplicate Products row on the same page (e.g. CeramaCut under Scissors).
+  const showSubcategories = displaySubs.length > 0;
+  const showProducts = !showSubcategories && productsToShow.length > 0;
 
   const trail = await getBreadcrumbTrail(params.category, segments);
 
@@ -176,7 +188,7 @@ export default async function ShopCategorySlugPage({ params }: Props) {
         ) : null}
       </div>
 
-      {subs.length > 0 && (productsToShow.length === 0 || hasSignificantSubs) ? (
+      {showSubcategories ? (
         <section className="mb-14">
           <h2 className={cn("text-2xl font-semibold mb-6 text-[#2F323A]", montserrat.className)}>
             Subcategories
@@ -184,27 +196,27 @@ export default async function ShopCategorySlugPage({ params }: Props) {
           <ProductGrid
             categoryId={category.id}
             pathToNode={segments}
-            items={subs}
+            items={displaySubs}
             variant="subcategories"
           />
         </section>
       ) : null}
 
-      {productsToShow.length > 0 ? (
+      {showProducts ? (
         <section>
           <h2 className={cn("text-2xl font-semibold mb-6 text-[#2F323A]", montserrat.className)}>
             Products
           </h2>
           <ProductGrid
             categoryId={category.id}
-            pathToNode={segments}
+            pathToNode={productPathToNode}
             items={productsToShow}
             variant="products"
           />
         </section>
       ) : null}
 
-      {subs.length === 0 && productsToShow.length === 0 ? (
+      {!showSubcategories && !showProducts ? (
         <div className="text-center py-12 text-[#5D6169]">
           No subcategories or products in this section yet.
         </div>

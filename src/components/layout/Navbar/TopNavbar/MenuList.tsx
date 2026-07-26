@@ -85,7 +85,7 @@ export function MenuList({ data, label }: MenuListProps) {
                           {item.label}
                         </h3>
                         <p className="text-xs text-[#008C99] font-semibold mt-2 tracking-wide uppercase">
-                          {item.subcategories?.length || 0} Product Lines
+                          View collection
                         </p>
                       </div>
                       <ArrowRight className="w-5 h-5 text-[#008C99] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 mt-1 flex-shrink-0" />
@@ -118,7 +118,7 @@ export function MenuList({ data, label }: MenuListProps) {
                             montserrat.className
                           )}
                         >
-                          <span>View all {item.subcategories.length} items</span>
+                          <span>View all</span>
                           <ArrowRight className="w-4 h-4 group-hover/more:translate-x-1 transition-transform duration-200" />
                         </Link>
                       )}

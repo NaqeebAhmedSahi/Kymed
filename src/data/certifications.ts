@@ -1,24 +1,4 @@
 export const certifications = [
-  // {
-  //   id: 'c-ce',
-  //   title: 'CE Marking',
-  //   short: 'Conformité Européenne',
-  //   description:
-  //     'Products bearing the CE mark meet EU safety, health and environmental protection requirements. Our medical devices are CE certified to ensure compliance across European markets.',
-  //   issuedBy: 'European Union',
-  //   year: 2024,
-  //   // docLink: '/brochures/ce-cert.pdf',
-  // },
-  // {
-  //   id: 'c-fda',
-  //   title: 'FDA Cleared',
-  //   short: 'U.S. Food & Drug Administration',
-  //   description:
-  //     'Selected devices have been cleared by the U.S. FDA for marketing in the United States after demonstrating safety and effectiveness.',
-  //   issuedBy: 'FDA (USA)',
-  //   year: 2025,
-  //   // docLink: '/brochures/fda-clearance.pdf',
-  // },
   {
     id: 'c-iso13485',
     title: 'ISO 13485',
@@ -27,18 +7,7 @@ export const certifications = [
       'ISO 13485 specifies requirements for a quality management system where an organization needs to demonstrate its ability to provide medical devices and related services that consistently meet customer and regulatory requirements. It emphasizes risk management, design controls, process validation, and product traceability to ensure device safety and effectiveness throughout the product lifecycle.',
     issuedBy: 'ISO',
     year: 2023,
-    // docLink: '/brochures/iso13485.pdf',
   },
-  // {
-  //   id: 'c-rohs',
-  //   title: 'RoHS Compliant',
-  //   short: 'Restriction of Hazardous Substances',
-  //   description:
-  //     'Our electronic equipment complies with RoHS requirements limiting hazardous substances in electrical and electronic equipment.',
-  //   issuedBy: 'EU Directive',
-  //   year: 2022,
-  //   // docLink: '/brochures/rohs.pdf',
-  // },
   {
     id: 'c-iso9001',
     title: 'ISO 9001',
@@ -47,7 +16,51 @@ export const certifications = [
       'ISO 9001 sets out the criteria for a quality management system and is the only standard in the family that can be certified to. It focuses on customer satisfaction, continual improvement, and the consistent provision of products and services that meet customer and applicable statutory and regulatory requirements.',
     issuedBy: 'ISO',
     year: 2021,
-    // docLink: '/brochures/iso9001.pdf',
+  },
+  {
+    id: 'c-cgmp',
+    title: 'cGMP',
+    short: 'Current Good Manufacturing Practice',
+    description:
+      'Our manufacturing processes follow current Good Manufacturing Practice (cGMP) principles to ensure consistent product quality, controlled production environments, documented procedures, and full process accountability for medical device manufacturing.',
+    issuedBy: 'cGMP',
+    year: 2024,
+  },
+  {
+    id: 'c-fda',
+    title: 'FDA',
+    short: 'U.S. Food & Drug Administration',
+    description:
+      'KyMed aligns manufacturing and documentation practices with U.S. FDA requirements to support market access for surgical instruments intended for distribution in the United States, with emphasis on safety, quality, and regulatory compliance.',
+    issuedBy: 'FDA',
+    year: 2024,
+  },
+  {
+    id: 'c-ce-class-1r',
+    title: 'CE Class 1R',
+    short: 'European Conformity — Class I Reusable',
+    description:
+      'Our Class I reusable surgical instruments are designed and manufactured to meet applicable CE marking requirements for the European market, covering safety, performance, and regulatory conformity for reusable medical devices.',
+    issuedBy: 'CE',
+    year: 2024,
+  },
+  {
+    id: 'c-eu-rep',
+    title: 'EU Rep',
+    short: 'European Authorized Representative',
+    description:
+      'KyMed maintains an Authorized Representative (EU Rep) arrangement to support regulatory presence and communication within the European Union for devices placed on the EU market.',
+    issuedBy: 'EU',
+    year: 2024,
+  },
+  {
+    id: 'c-sfda',
+    title: 'SFDA',
+    short: 'Application filed — in process',
+    description:
+      'An application with the Saudi Food and Drug Authority (SFDA) has been filed and is currently in process to support regulatory approval and market access for KyMed instruments in the Kingdom of Saudi Arabia.',
+    issuedBy: 'SFDA',
+    year: 2025,
   },
   {
     id: 'c-scci',
@@ -57,7 +70,6 @@ export const certifications = [
       'Membership with the Sialkot Chamber of Commerce & Industry (SCCI) demonstrates corporate engagement with local industry leaders, adherence to regional trade practices, and access to trade advocacy and business support services. This certification reflects our active participation in the Sialkot industrial community.',
     issuedBy: 'SCCI',
     year: 2022,
-    // docLink: '',
   },
   {
     id: 'c-simap',
@@ -67,7 +79,6 @@ export const certifications = [
       'SIMAP membership indicates active involvement in the national surgical instruments manufacturing community. It affirms our commitment to industry collaboration, product quality, and adherence to the standards and guidance promoted by SIMAP for its members.',
     issuedBy: 'SIMAP',
     year: 2022,
-    // docLink: '',/
   },
 ];
 
