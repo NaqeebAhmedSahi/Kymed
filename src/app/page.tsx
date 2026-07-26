@@ -12,10 +12,20 @@ import { Product } from '@/types/product.types';
 import fs from 'fs';
 import path from 'path';
 
-type CatalogProduct = Product & { lineId: string; lineName: string };
+type CatalogProduct = Product & { lineId: string; lineName: string; groupKey: string };
 
-/** Homepage featured lines only */
-const FEATURED_LINE_IDS = new Set(["146", "147", "150"]); // Scissors, Forceps, Scalpels & Blades
+/**
+ * Featured homepage groups from client links:
+ * Standard Sharp/Sharp, Iris, Hemostatic Forceps, Kelly, Dressing/Standard Straight, Adson
+ */
+const FEATURED_LINE_IDS = new Set(["146", "147"]); // Scissors, Forceps & Hemostats
+const FEATURED_SUB_IDS = new Set([
+  "279", // Surgical scissors (Standard Sharp/Sharp, etc.)
+  "287", // Iris scissors
+  "964", // Hemostatic Forceps (Kelly, etc.)
+  "348", // Dressing (Standard Straight, etc.)
+  "916", // Adson
+]);
 
 function slugify(str: string) {
   return str
@@ -51,38 +61,71 @@ function isBlackHandleScissor(p: CatalogProduct) {
   );
 }
 
-/** Pick up to `limit` products, spreading across featured product lines. */
+function isInFeaturedGroup(p: CatalogProduct) {
+  return (p.pathToNode || []).some((seg) => FEATURED_SUB_IDS.has(String(seg)));
+}
+
+function featuredGroupKey(p: CatalogProduct) {
+  const hit = (p.pathToNode || []).find((seg) => FEATURED_SUB_IDS.has(String(seg)));
+  return hit ? String(hit) : p.lineId;
+}
+
+/** Prefer the exact products shared by the client when present. */
+const PRIORITY_PRODUCT_IDS = new Set([
+  2069, // Standard Sharp/Sharp
+  2451, // Kelly
+  2293, // Standard Straight
+  2283, // Adson
+]);
+
+/** Pick products from featured groups only, round-robin across groups. */
 function pickDiverseProducts(
   products: CatalogProduct[],
   limit: number,
   excludeIds: Set<number> = new Set()
 ): Product[] {
-  const byLine = new Map<string, CatalogProduct[]>();
+  const byGroup = new Map<string, CatalogProduct[]>();
   for (const p of products) {
     if (excludeIds.has(p.id)) continue;
     if (!hasUsableImage(p.srcUrl)) continue;
     if (isBlackHandleScissor(p)) continue;
-    const list = byLine.get(p.lineId) || [];
+    if (!isInFeaturedGroup(p)) continue;
+    const key = featuredGroupKey(p);
+    const list = byGroup.get(key) || [];
     list.push(p);
-    byLine.set(p.lineId, list);
+    byGroup.set(key, list);
   }
 
-  // Prefer stable order: Scissors → Forceps → Scalpels
-  const preferredOrder = ["146", "147", "150"];
-  const lineIds = preferredOrder.filter((id) => byLine.has(id));
+  // Put priority products first within each group
+  for (const [key, list] of byGroup) {
+    list.sort((a, b) => {
+      const ap = PRIORITY_PRODUCT_IDS.has(a.id) ? 0 : 1;
+      const bp = PRIORITY_PRODUCT_IDS.has(b.id) ? 0 : 1;
+      return ap - bp;
+    });
+    byGroup.set(key, list);
+  }
+
+  // Prefer order matching client links
+  const preferredOrder = ["279", "287", "964", "348", "916"];
+  const groupIds = [
+    ...preferredOrder.filter((id) => byGroup.has(id)),
+    ...Array.from(byGroup.keys()).filter((id) => !preferredOrder.includes(id)),
+  ];
+
   const picked: Product[] = [];
   const usedIds = new Set<number>();
   let round = 0;
 
-  while (picked.length < limit && lineIds.length > 0) {
+  while (picked.length < limit && groupIds.length > 0) {
     let addedThisRound = false;
-    for (const lineId of lineIds) {
+    for (const groupId of groupIds) {
       if (picked.length >= limit) break;
-      const pool = byLine.get(lineId) || [];
+      const pool = byGroup.get(groupId) || [];
       const candidate = pool[round];
       if (!candidate || usedIds.has(candidate.id)) continue;
       usedIds.add(candidate.id);
-      const { lineId: _l, lineName: _n, ...rest } = candidate;
+      const { lineId: _l, lineName: _n, groupKey: _g, ...rest } = candidate;
       picked.push(rest);
       addedThisRound = true;
     }
@@ -111,13 +154,22 @@ export default async function Home() {
       ) => {
         if (node.products && Array.isArray(node.products)) {
           node.products.forEach((p: any) => {
+            // Match product detail / listing: skip first image, use second when available
+            const paths: string[] = Array.isArray(p.image_local_paths)
+              ? p.image_local_paths.filter(Boolean)
+              : [];
+            const displayPath =
+              paths.length > 1
+                ? paths[1]
+                : p.image_local_path || paths[0] || "";
+
             products.push({
               id: p.id ? parseInt(p.id, 10) : Math.floor(Math.random() * 100000),
               title: p.name || p.title || "Unknown Product",
-              srcUrl: p.image_local_path
-                ? `/${p.image_local_path}`
+              srcUrl: displayPath
+                ? `/${displayPath}`
                 : p.image_url || "/images/placeholder.jpg",
-              gallery: p.image_urls || [],
+              gallery: paths.map((img) => `/${img}`),
               description: p.short_description || p.description || "",
               price: 0,
               discount: { amount: 0, percentage: 0 },
@@ -127,6 +179,7 @@ export default async function Home() {
               pathToNode: currentPath,
               lineId,
               lineName,
+              groupKey: lineId,
             });
           });
         }
@@ -200,7 +253,7 @@ export default async function Home() {
   };
   const browseCategories = getSubcategories();
 
-  // Same 3 categories for both sections, different products; no black-handle scissors
+  // Featured groups in both sections, different products each
   const newArrivals = pickDiverseProducts(allProducts, 6);
   const topSelling = pickDiverseProducts(
     allProducts,
