@@ -97,14 +97,14 @@ function pickDiverseProducts(
   }
 
   // Put priority products first within each group
-  for (const [key, list] of byGroup) {
+  byGroup.forEach((list, key) => {
     list.sort((a, b) => {
       const ap = PRIORITY_PRODUCT_IDS.has(a.id) ? 0 : 1;
       const bp = PRIORITY_PRODUCT_IDS.has(b.id) ? 0 : 1;
       return ap - bp;
     });
     byGroup.set(key, list);
-  }
+  });
 
   // Prefer order matching client links
   const preferredOrder = ["279", "287", "964", "348", "916"];
