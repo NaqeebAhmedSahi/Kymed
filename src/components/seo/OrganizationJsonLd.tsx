@@ -14,24 +14,8 @@ const OrganizationJsonLd = () => {
         "telephone": "+92-329-9958000",
         "contactType": "customer service",
         "email": "info@kymed.co",
-        "areaServed": "PK",
+        "areaServed": ["US", "GB", "AE", "PK"],
         "availableLanguage": ["English", "Urdu"]
-      },
-      {
-        "@type": "ContactPoint",
-        "telephone": "+1-414-708-4400",
-        "contactType": "customer service",
-        "email": "info@kymed.co",
-        "areaServed": "US",
-        "availableLanguage": "English"
-      },
-      {
-        "@type": "ContactPoint",
-        "telephone": "+44-7947-533392",
-        "contactType": "customer service",
-        "email": "info@kymed.co",
-        "areaServed": "GB",
-        "availableLanguage": "English"
       }
     ]
   };

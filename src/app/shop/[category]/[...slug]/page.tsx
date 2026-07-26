@@ -15,7 +15,6 @@ import {
 } from "@/lib/productsLoader";
 import ProductGrid from "@/components/shop/ProductGrid";
 import ProductDetailContent from "@/components/shop/ProductDetailContent";
-import ProductListingContainer from "@/components/shop/ProductListingContainer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
@@ -166,7 +165,7 @@ export default async function ShopCategorySlugPage({ params }: Props) {
         })}
       </nav>
 
-      <div className="mb-0">
+      <div className="mb-8">
         <h1 className={cn("text-4xl md:text-5xl font-bold mb-3", montserrat.className)}>
           {node.name}
         </h1>
@@ -177,13 +176,39 @@ export default async function ShopCategorySlugPage({ params }: Props) {
         ) : null}
       </div>
 
-      <ProductListingContainer
-        categoryId={category.id}
-        pathToNode={segments}
-        initialItems={productsToShow.length > 0 ? productsToShow : subs}
-        subcategories={subs}
-        nodeName={node.name}
-      />
+      {subs.length > 0 && (productsToShow.length === 0 || hasSignificantSubs) ? (
+        <section className="mb-14">
+          <h2 className={cn("text-2xl font-semibold mb-6 text-[#2F323A]", montserrat.className)}>
+            Subcategories
+          </h2>
+          <ProductGrid
+            categoryId={category.id}
+            pathToNode={segments}
+            items={subs}
+            variant="subcategories"
+          />
+        </section>
+      ) : null}
+
+      {productsToShow.length > 0 ? (
+        <section>
+          <h2 className={cn("text-2xl font-semibold mb-6 text-[#2F323A]", montserrat.className)}>
+            Products
+          </h2>
+          <ProductGrid
+            categoryId={category.id}
+            pathToNode={segments}
+            items={productsToShow}
+            variant="products"
+          />
+        </section>
+      ) : null}
+
+      {subs.length === 0 && productsToShow.length === 0 ? (
+        <div className="text-center py-12 text-[#5D6169]">
+          No subcategories or products in this section yet.
+        </div>
+      ) : null}
     </main>
   );
 }
