@@ -1,49 +1,105 @@
 "use client";
 import React from "react";
-import { integralCF } from "@/styles/fonts";
-import { montserrat, openSans } from "@/styles/fonts";
 import { cn } from "@/lib/utils";
+import { montserrat, openSans } from "@/styles/fonts";
 
-// Example certification logos (replace with your own as needed)
 const certifications = [
-  { name: "ISO 13485", img: "/images/cert1.png" },
-  { name: "ISO 9001", img: "/images/cert3.png" },
-  { name: "cGMP", img: "/images/cert1.png" },
-  { name: "FDA", img: "/images/cert3.png" },
-  { name: "CE Class 1R", img: "/images/cert1.png" },
-  { name: "EU Rep", img: "/images/cert3.png" },
-  { name: "SFDA (In Process)", img: "/images/cert4.png" },
-  { name: "SCCI", img: "/images/cert4.png" },
-  { name: "SIMAP", img: "/images/cert5.png" },
+  { name: "ISO 13485", short: "Quality Management" },
+  { name: "ISO 9001", short: "QMS Certified" },
+  { name: "cGMP", short: "Good Manufacturing" },
+  { name: "FDA", short: "U.S. Compliance" },
+  { name: "CE Class 1R", short: "European Conformity" },
+  { name: "EU Rep", short: "Authorized Representative" },
+  { name: "SFDA", short: "Application in Process" },
+  { name: "SCCI", short: "Sialkot Chamber" },
+  { name: "SIMAP", short: "Industry Association" },
 ];
 
 const CertificationMarquee = () => {
-  // Duplicate certifications for seamless loop
+  // Duplicate for seamless infinite loop
   const marqueeCerts = [...certifications, ...certifications];
+
   return (
-    <section className="relative py-12 bg-[#F8F9FA]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className={cn("text-3xl md:text-4xl font-bold text-center mb-8 text-[#008C99] font-montserrat")}>Our Certifications</h2>
-        <div className="overflow-hidden">
-          <div className="marquee-track flex items-center whitespace-nowrap gap-16">
-            {marqueeCerts.map((cert, idx) => (
-              <div key={cert.name + idx} className="flex flex-col items-center min-w-[160px]">
-                <div className="bg-[#E5F5F7] rounded-xl p-4 shadow-[0_4px_16px_0_rgba(47,50,58,0.08)] border border-[#C4C7CA] mb-2 flex items-center justify-center w-[100px] h-[100px]">
-                  <img src={cert.img} alt={cert.name} className="object-contain w-full h-full" />
-                </div>
-                <span className={cn("text-base font-medium text-[#2F323A] text-center font-openSans")}>{cert.name}</span>
-              </div>
-            ))}
-          </div>
+    <section className="relative py-14 md:py-16 overflow-hidden bg-gradient-to-b from-[#F8F9FA] via-[#E5F5F7]/40 to-[#F8F9FA]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+        <div className="text-center">
+          <p
+            className={cn(
+              openSans.className,
+              "text-xs md:text-sm uppercase tracking-[0.25em] text-[#008C99] mb-3"
+            )}
+          >
+            Quality & Compliance
+          </p>
+          <h2
+            className={cn(
+              montserrat.className,
+              "text-3xl md:text-4xl font-bold text-[#2F323A]"
+            )}
+          >
+            Our Certifications
+          </h2>
+          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#008C99] to-[#006670]" />
         </div>
       </div>
+
+      {/* Edge fades */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 md:w-28 bg-gradient-to-r from-[#F8F9FA] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 md:w-28 bg-gradient-to-l from-[#F8F9FA] to-transparent" />
+
+      <div className="overflow-hidden">
+        <div className="marquee-track flex items-center gap-5 md:gap-7 w-max">
+          {marqueeCerts.map((cert, idx) => (
+            <div
+              key={`${cert.name}-${idx}`}
+              className="group flex items-center gap-3 rounded-2xl border border-[#C4C7CA]/50 bg-white/90 px-5 py-3.5 shadow-[0_8px_24px_rgba(47,50,58,0.06)] backdrop-blur-sm transition-all duration-300 hover:border-[#008C99]/40 hover:shadow-[0_12px_28px_rgba(0,140,153,0.12)]"
+            >
+              {/* Logo images temporarily hidden — names/text only until matching assets are ready
+              <div className="bg-[#E5F5F7] rounded-xl p-4 shadow-[0_4px_16px_0_rgba(47,50,58,0.08)] border border-[#C4C7CA] flex items-center justify-center w-[100px] h-[100px]">
+                <img src={cert.img} alt={cert.name} className="object-contain w-full h-full" />
+              </div>
+              */}
+              <span
+                className="inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-gradient-to-br from-[#008C99] to-[#006670]"
+                aria-hidden
+              />
+              <div className="flex flex-col items-start min-w-0">
+                <span
+                  className={cn(
+                    montserrat.className,
+                    "text-sm md:text-base font-semibold text-[#2F323A] whitespace-nowrap tracking-wide"
+                  )}
+                >
+                  {cert.name}
+                </span>
+                <span
+                  className={cn(
+                    openSans.className,
+                    "text-xs text-[#5D6169] whitespace-nowrap"
+                  )}
+                >
+                  {cert.short}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <style jsx>{`
         .marquee-track {
-          animation: marquee-loop 22s linear infinite;
+          animation: marquee-loop 32s linear infinite;
+        }
+        .marquee-track:hover {
+          animation-play-state: paused;
         }
         @keyframes marquee-loop {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
       `}</style>
     </section>
