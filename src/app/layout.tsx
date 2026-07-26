@@ -161,11 +161,19 @@ export default function RootLayout({
               "address": [
                 {
                   "@type": "PostalAddress",
-                  "streetAddress": "Sialkot",
+                  "streetAddress": "Capt. Sher Ali Khan Road, Nishat Park",
                   "addressLocality": "Sialkot",
                   "addressRegion": "Punjab",
                   "postalCode": "51310",
                   "addressCountry": "PK"
+                },
+                {
+                  "@type": "PostalAddress",
+                  "streetAddress": "11147 N. Port Washington Road",
+                  "addressLocality": "Mequon",
+                  "addressRegion": "WI",
+                  "postalCode": "53097",
+                  "addressCountry": "US"
                 },
                 {
                   "@type": "PostalAddress",
@@ -232,7 +240,7 @@ export default function RootLayout({
               "email": "info@kymed.co",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Sialkot",
+                "streetAddress": "Capt. Sher Ali Khan Road, Nishat Park",
                 "addressLocality": "Sialkot",
                 "addressRegion": "Punjab",
                 "postalCode": "51310",
