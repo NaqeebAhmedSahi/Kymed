@@ -1,5 +1,4 @@
 "use client";
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { integralCF } from "@/styles/fonts";
 import Image from "next/image";
@@ -10,27 +9,36 @@ const Header = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const sliderContent = [
-    
     {
       image: "/images/slider02.jpg",
-      title: "General Surgical Instruments",
+      title: "Trusted Surgical & Dental Instruments Manufacturer",
       description:
-        "Precision-crafted general surgical instruments by KyMed — built for reliability, accuracy, and superior surgical performance.",
+        "30+ years of manufacturing excellence in Pakistan. Quality checked in Pakistan and the USA. Delivered directly to you in the USA.",
     },
     {
       image: "/images/slider03.jpg",
-      title: "Dental Instruments",
+      title: "Precision Scissors & Forceps",
       description:
-        "Advanced dental instruments by KyMed — designed for precision, comfort, and lasting clinical confidence.", 
-    }, 
-      {
-      image: "/images/slider01.jpg",
-      title: "Tungsten Carbide Instruments",
-      description:
-      "Durable tungsten carbide instruments by KyMed — unmatched sharpness and strength for demanding procedures.",
-
+        "Made for accuracy. Trusted in operating rooms worldwide.",
     },
-
+    {
+      image: "/images/slider01.jpg",
+      title: "Reliable Retractors",
+      description:
+        "Built for durability, comfort, and consistent performance.",
+    },
+    {
+      image: "/images/slider04.jpg",
+      title: "Orthopedic Instruments Built to Last",
+      description:
+        "Precision-engineered for bone and joint procedures.",
+    },
+    {
+      image: "/images/slider05.jpg",
+      title: "Sharp. Sterile. Dependable.",
+      description:
+        "Scalpels and blades manufactured to the highest safety standard.",
+    },
   ];
 
   useEffect(() => {
@@ -59,7 +67,6 @@ const Header = () => {
 
   return (
     <div className="relative w-full h-[550px] overflow-hidden bg-gradient-to-br from-[#e0f7fa] via-[#f5f5f5] to-[#e0e0e0]">
-      {/* Subtle overlay for depth */}
       <div className="absolute inset-0 pointer-events-none bg-black/[0.02]" />
 
       <AnimatePresence mode="wait" custom={1} initial={false}>
@@ -73,7 +80,6 @@ const Header = () => {
           transition={{ duration: 0.7, ease: "easeInOut" }}
           className="w-full h-full"
         >
-          {/* Parallax Image */}
           <motion.div
             initial={{ scale: 1.08, y: 30 }}
             animate={{ scale: 1, y: 0 }}
@@ -82,7 +88,7 @@ const Header = () => {
           >
             <Image
               src={sliderContent[currentImageIndex].image}
-              alt="Slider Image"
+              alt={sliderContent[currentImageIndex].title}
               fill
               className="object-cover"
               priority
@@ -90,14 +96,13 @@ const Header = () => {
             <div className="absolute inset-0 bg-black/40" />
           </motion.div>
 
-          {/* Hero Content */}
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-8">
             <motion.h1
               initial={{ opacity: 0, y: -40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.7 }}
               className={cn(
-                "text-4xl md:text-5xl font-bold mb-4 drop-shadow-xl leading-tight",
+                "text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-xl leading-tight max-w-4xl",
                 integralCF.className
               )}
             >
@@ -108,7 +113,7 @@ const Header = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.7 }}
-              className="text-lg md:text-xl max-w-3xl mb-8 text-gray-200 drop-shadow-lg leading-relaxed"
+              className="text-base md:text-xl max-w-3xl mb-8 text-gray-200 drop-shadow-lg leading-relaxed"
             >
               {sliderContent[currentImageIndex].description}
             </motion.p>
@@ -117,41 +122,40 @@ const Header = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4, duration: 0.7 }}
-              className="flex gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <a
-                href="/categories"
-                className="px-8 py-4 rounded-full font-semibold text-lg bg-teal-500 text-white shadow-xl transition-all duration-300 hover:bg-teal-600 hover:scale-105"
+                href="/contact"
+                className="px-8 py-4 rounded-full font-semibold text-lg bg-[#008C99] text-white shadow-xl transition-all duration-300 hover:bg-[#006670] hover:scale-105"
               >
-                Shop Now
+                Request a Quote
               </a>
               <a
-                href="/contact"
-                className="px-8 py-4 rounded-full font-semibold text-lg bg-white text-teal-600 border border-teal-500 shadow-xl transition-all duration-300 hover:bg-teal-50 hover:scale-105"
+                href="/shop"
+                className="px-8 py-4 rounded-full font-semibold text-lg bg-white text-[#008C99] border border-[#008C99] shadow-xl transition-all duration-300 hover:bg-[#E5F5F7] hover:scale-105"
               >
-                Contact Us
+                Explore Product Range
               </a>
             </motion.div>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
         {sliderContent.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentImageIndex(index)}
+            aria-label={`Go to slide ${index + 1}`}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               currentImageIndex === index
-                ? "bg-teal-500 scale-125"
+                ? "bg-[#008C99] scale-125"
                 : "bg-gray-400"
             }`}
           />
         ))}
       </div>
 
-      {/* Left Arrow */}
       <button
         onClick={() =>
           setCurrentImageIndex(
@@ -159,7 +163,8 @@ const Header = () => {
               (prevIndex - 1 + sliderContent.length) % sliderContent.length
           )
         }
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/60 p-2 rounded-full shadow-lg transition-colors duration-300 hover:bg-teal-500 hover:text-white"
+        aria-label="Previous slide"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/60 p-2 rounded-full shadow-lg transition-colors duration-300 hover:bg-[#008C99] hover:text-white"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -172,14 +177,14 @@ const Header = () => {
         </svg>
       </button>
 
-      {/* Right Arrow */}
       <button
         onClick={() =>
           setCurrentImageIndex(
             (prevIndex) => (prevIndex + 1) % sliderContent.length
           )
         }
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/60 p-2 rounded-full shadow-lg transition-colors duration-300 hover:bg-teal-500 hover:text-white"
+        aria-label="Next slide"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/60 p-2 rounded-full shadow-lg transition-colors duration-300 hover:bg-[#008C99] hover:text-white"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

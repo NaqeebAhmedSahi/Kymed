@@ -15,7 +15,7 @@ const montserrat = Montserrat({ subsets: ["latin"], weight: ["600", "700"] });
 const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
 
 const socialsData = [
-  { id: 4, icon: <FaLinkedinIn />, url: "https://linkedin.com" },
+  { id: 4, icon: <FaLinkedinIn />, url: "https://www.linkedin.com/company/kymed" },
 ];
 
 const Footer = async () => {

@@ -5,18 +5,14 @@ import { montserrat, openSans } from "@/styles/fonts";
 
 const certifications = [
   { name: "ISO 13485", short: "Quality Management" },
-  { name: "ISO 9001", short: "QMS Certified" },
+  { name: "ISO 9001", short: "QMS" },
   { name: "cGMP", short: "Good Manufacturing" },
-  { name: "FDA", short: "U.S. Compliance" },
   { name: "CE Class 1R", short: "European Conformity" },
-  { name: "EU Rep", short: "Authorized Representative" },
-  { name: "SFDA", short: "Application in Process" },
-  { name: "SCCI", short: "Sialkot Chamber" },
-  { name: "SIMAP", short: "Industry Association" },
+  { name: "CE MDR Compliant", short: "EU MDR Alignment" },
+  { name: "FDA Compliant", short: "U.S. Compliance" },
 ];
 
 const CertificationMarquee = () => {
-  // Duplicate for seamless infinite loop
   const marqueeCerts = [...certifications, ...certifications];
 
   return (
@@ -43,7 +39,6 @@ const CertificationMarquee = () => {
         </div>
       </div>
 
-      {/* Edge fades */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 md:w-28 bg-gradient-to-r from-[#F8F9FA] to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 md:w-28 bg-gradient-to-l from-[#F8F9FA] to-transparent" />
 
@@ -52,13 +47,8 @@ const CertificationMarquee = () => {
           {marqueeCerts.map((cert, idx) => (
             <div
               key={`${cert.name}-${idx}`}
-              className="group flex items-center gap-3 rounded-2xl border border-[#C4C7CA]/50 bg-white/90 px-5 py-3.5 shadow-[0_8px_24px_rgba(47,50,58,0.06)] backdrop-blur-sm transition-all duration-300 hover:border-[#008C99]/40 hover:shadow-[0_12px_28px_rgba(0,140,153,0.12)]"
+              className="group flex items-center gap-3 rounded-2xl border border-[#C4C7CA]/50 bg-white/90 px-5 py-3.5 shadow-[0_8px_24px_rgba(47,50,58,0.06)] backdrop-blur-sm transition-all duration-300 hover:border-[#008C99]/40"
             >
-              {/* Logo images temporarily hidden — names/text only until matching assets are ready
-              <div className="bg-[#E5F5F7] rounded-xl p-4 shadow-[0_4px_16px_0_rgba(47,50,58,0.08)] border border-[#C4C7CA] flex items-center justify-center w-[100px] h-[100px]">
-                <img src={cert.img} alt={cert.name} className="object-contain w-full h-full" />
-              </div>
-              */}
               <span
                 className="inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-gradient-to-br from-[#008C99] to-[#006670]"
                 aria-hidden

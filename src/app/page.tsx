@@ -3,6 +3,7 @@ import ProductListSec from '@/components/common/ProductListSec';
 import Brands from '@/components/homepage/Brands';
 import DressStyle from '@/components/homepage/DressStyle';
 import Header from '@/components/homepage/Header';
+import HowWeWork from '@/components/homepage/HowWeWork';
 // import Reviews from '@/components/homepage/Reviews';
 import WhyChooseUs from '@/components/homepage/ChooseUs'; 
 import OurValue from '@/components/homepage/OurValue';
@@ -264,6 +265,7 @@ export default async function Home() {
   return (
     <>
       <Header />
+      <HowWeWork />
       <Brands />
       <main className="my-[50px] sm:my-[72px] ">
         <ProductListSec title="NEW ARRIVALS" data={newArrivals} viewAllLink="/shop" />

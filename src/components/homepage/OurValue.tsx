@@ -14,9 +14,11 @@ const OurValue = () => {
         "We offer a wide range of surgical, dental, veterinary, and beauty instruments. Each instrument is designed to meet the highest standards of precision and reliability.",
     },
     // {
-    //   question: "Are your surgical instruments FDA approved?",
+    // Compliance note: use "FDA Compliant" / "CE MDR Compliant" only — never "approved" or "certified".
+    // {
+    //   question: "Are your surgical instruments FDA Compliant?",
     //   answer:
-    //     "Yes, many of our surgical instruments are FDA approved. Please contact us for specific documentation regarding compliance and certifications.",
+    //     "KyMed aligns manufacturing and documentation practices to be FDA Compliant. Please contact us for product-specific documentation.",
     // },
     {
       question: "How can I place an order?",

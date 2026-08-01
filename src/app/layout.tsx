@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     "general surgery instruments",
     "medical instruments wholesale",
     "hospital surgical equipment",
-    "CE certified instruments",
-    "FDA compliant surgical tools"
+    "CE MDR Compliant instruments",
+    "FDA Compliant surgical tools"
   ],
   authors: [{ name: "KyMed", url: "https://kymed.co" }],
   creator: "KyMed",

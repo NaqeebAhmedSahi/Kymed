@@ -19,7 +19,7 @@ const DressStyle = ({ subcategories = [] }: DressStyleProps) => {
     { title: "Scissors", url: "/shop/9/146", image: "/images/categories/Scissor2.jpeg" },
     { title: "Forceps & Hemostats", url: "/shop/9/147", image: "/images/categories/Forceps.jpeg" },
     { title: "Scalpels & Blades", url: "/shop/9/150", image: "/images/categories/Scalpel.jpeg" },
-    { title: "Bone Instruments", url: "/shop/9/149", image: "/images/categories/Bone.jpeg" }
+    { title: "Orthopedic Instruments", url: "/shop/9/149", image: "/images/categories/Bone.jpeg" }
   ];
 
   const cats = defaultCats;

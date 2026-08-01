@@ -10,21 +10,53 @@ import { FaMapMarkerAlt, FaEnvelope, FaPaperPlane } from "react-icons/fa";
 interface FormData {
   name: string;
   email: string;
+  companyName: string;
+  country: string;
+  productCategory: string;
+  estimatedQuantity: string;
+  orderType: string;
   message: string;
 }
 
+const productCategoryOptions = [
+  "Scissors",
+  "Forceps & Hemostats",
+  "Retractors",
+  "Orthopedic Instruments",
+  "Scalpels & Blades",
+  "Vascular Instruments",
+  "Punches, Spoons & Spatulas",
+  "Hooks, Pins & Probes",
+  "Student Instruments",
+  "Other",
+];
+
+const orderTypeOptions = ["OEM", "Private Label", "Standard Stock"];
+
+const emptyForm: FormData = {
+  name: "",
+  email: "",
+  companyName: "",
+  country: "",
+  productCategory: "",
+  estimatedQuantity: "",
+  orderType: "",
+  message: "",
+};
+
+const inputClassName =
+  "w-full p-4 border border-[#C4C7CA] rounded-xl text-[#2F323A] focus:outline-none focus:ring-2 focus:ring-[#008C99]/40 focus:border-transparent transition-all duration-300 bg-white/80 backdrop-blur-sm";
+
 const ContactPage = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormData>(emptyForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const formRef = useRef(null);
   const isInView = useInView(formRef, { once: true, margin: "-100px" });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -35,7 +67,7 @@ const ContactPage = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       alert("Message sent successfully!");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData(emptyForm);
     }, 1500);
   };
 
@@ -278,7 +310,7 @@ const ContactPage = () => {
                 className={cn("text-3xl font-bold bg-gradient-to-r from-[#2F323A] to-[#008C99] bg-clip-text text-transparent mb-2", montserrat.className)}
                 variants={itemVariants}
               >
-                Send Us a Message
+                Request a Quote
               </motion.h2>
               <motion.p
                 className="text-[#5D6169] mb-8"
@@ -287,29 +319,106 @@ const ContactPage = () => {
                 We'll get back to you within 24 hours
               </motion.p>
 
-              <div className="space-y-6">
-                <motion.div variants={inputVariants}>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Your Name"
-                    className="w-full p-4 border border-[#C4C7CA] rounded-xl text-[#2F323A] focus:outline-none focus:ring-2 focus:ring-[#008C99]/40 focus:border-transparent transition-all duration-300 bg-white/80 backdrop-blur-sm"
-                  />
-                </motion.div>
+              <div className="space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <motion.div variants={inputVariants}>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Your Name"
+                      className={inputClassName}
+                    />
+                  </motion.div>
+                  <motion.div variants={inputVariants}>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="Your Email"
+                      className={inputClassName}
+                    />
+                  </motion.div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <motion.div variants={inputVariants}>
+                    <input
+                      type="text"
+                      name="companyName"
+                      value={formData.companyName}
+                      onChange={handleChange}
+                      required
+                      placeholder="Company Name"
+                      className={inputClassName}
+                    />
+                  </motion.div>
+                  <motion.div variants={inputVariants}>
+                    <input
+                      type="text"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleChange}
+                      required
+                      placeholder="Country"
+                      className={inputClassName}
+                    />
+                  </motion.div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <motion.div variants={inputVariants}>
+                    <select
+                      name="productCategory"
+                      value={formData.productCategory}
+                      onChange={handleChange}
+                      required
+                      className={cn(inputClassName, !formData.productCategory && "text-[#5D6169]")}
+                    >
+                      <option value="" disabled>
+                        Product Category
+                      </option>
+                      {productCategoryOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </motion.div>
+                  <motion.div variants={inputVariants}>
+                    <input
+                      type="text"
+                      name="estimatedQuantity"
+                      value={formData.estimatedQuantity}
+                      onChange={handleChange}
+                      required
+                      placeholder="Estimated Order Quantity"
+                      className={inputClassName}
+                    />
+                  </motion.div>
+                </div>
 
                 <motion.div variants={inputVariants}>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
+                  <select
+                    name="orderType"
+                    value={formData.orderType}
                     onChange={handleChange}
                     required
-                    placeholder="Your Email"
-                    className="w-full p-4 border border-[#C4C7CA] rounded-xl text-[#2F323A] focus:outline-none focus:ring-2 focus:ring-[#008C99]/40 focus:border-transparent transition-all duration-300 bg-white/80 backdrop-blur-sm"
-                  />
+                    className={cn(inputClassName, !formData.orderType && "text-[#5D6169]")}
+                  >
+                    <option value="" disabled>
+                      Type of Order
+                    </option>
+                    {orderTypeOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
                 </motion.div>
 
                 <motion.div variants={inputVariants}>
@@ -318,9 +427,9 @@ const ContactPage = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    placeholder="Your Message"
+                    placeholder="Tell us about your requirements"
                     rows={5}
-                    className="w-full p-4 border border-[#C4C7CA] rounded-xl text-[#2F323A] focus:outline-none focus:ring-2 focus:ring-[#008C99]/40 focus:border-transparent transition-all duration-300 bg-white/80 backdrop-blur-sm resize-none"
+                    className={cn(inputClassName, "resize-none")}
                   ></textarea>
                 </motion.div>
 
