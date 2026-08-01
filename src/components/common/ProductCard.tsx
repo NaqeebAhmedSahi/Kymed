@@ -11,6 +11,9 @@ type Product = {
   description?: string;
   gallery?: string[];
   srcUrl?: string | null;
+  pathToNode?: string[];
+  newArrival?: boolean;
+  topSelling?: boolean;
 };
 
 type ProductCardProps = {
@@ -54,10 +57,10 @@ const ProductCard = ({ data }: ProductCardProps) => {
       <div className="bg-[#F0EEED] rounded-[13px] lg:rounded-[20px] w-full lg:max-w-[295px] aspect-square mb-2.5 xl:mb-4 overflow-hidden relative">
         {/* Badges: New Arrival / Top Selling (clickable, link to product) */}
         <div className="absolute top-3 left-3 z-20 flex flex-col gap-2">
-          {(data as any).newArrival && (
+          {data.newArrival && (
             <span className="uppercase text-[#008C99] bg-[#F8F9FA] border-b-4 border-[#C4C7CA] px-3 py-1 rounded-full text-xs font-semibold tracking-wide shadow-sm">New Arrival</span>
           )}
-          {(data as any).topSelling && (
+          {data.topSelling && (
             <span className="uppercase text-[#2F323A] bg-[#F8F9FA] border-b-4 border-[#E5F5F7] px-3 py-1 rounded-full text-xs font-semibold tracking-wide shadow-sm">Top Selling</span>
           )}
         </div>
