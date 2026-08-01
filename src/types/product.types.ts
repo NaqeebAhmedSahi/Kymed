@@ -14,5 +14,8 @@ export type Product = {
   rating: number;
   category?: string;
   subcategory?: string;
+  /** Slug path segments for shop URLs (category excluded). */
   pathToNode?: string[];
+  /** Numeric catalog ids along the path (for filtering). */
+  pathIds?: string[];
 };

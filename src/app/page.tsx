@@ -13,7 +13,12 @@ import { Product } from '@/types/product.types';
 import fs from 'fs';
 import path from 'path';
 
-type CatalogProduct = Product & { lineId: string; lineName: string; groupKey: string };
+type CatalogProduct = Product & {
+  lineId: string;
+  lineName: string;
+  groupKey: string;
+  pathIds: string[];
+};
 
 /**
  * Featured homepage groups from client links:
@@ -32,8 +37,11 @@ function slugify(str: string) {
   return str
     ? str
         .toLowerCase()
+        .trim()
+        .replace(/[&/]+/g, " ")
         .replace(/[^\w\s-]/g, "")
         .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
     : "";
 }
 
@@ -50,7 +58,7 @@ const BLACK_SCISSOR_SUB_IDS = new Set(["874", "888", "2195"]); // ToughCut, Toug
 
 function isBlackHandleScissor(p: CatalogProduct) {
   if (p.lineId !== "146") return false;
-  if ((p.pathToNode || []).some((seg) => BLACK_SCISSOR_SUB_IDS.has(String(seg)))) {
+  if ((p.pathIds || []).some((seg) => BLACK_SCISSOR_SUB_IDS.has(String(seg)))) {
     return true;
   }
   const hay = `${p.title} ${p.subcategory || ""}`.toLowerCase();
@@ -63,11 +71,11 @@ function isBlackHandleScissor(p: CatalogProduct) {
 }
 
 function isInFeaturedGroup(p: CatalogProduct) {
-  return (p.pathToNode || []).some((seg) => FEATURED_SUB_IDS.has(String(seg)));
+  return (p.pathIds || []).some((seg) => FEATURED_SUB_IDS.has(String(seg)));
 }
 
 function featuredGroupKey(p: CatalogProduct) {
-  const hit = (p.pathToNode || []).find((seg) => FEATURED_SUB_IDS.has(String(seg)));
+  const hit = (p.pathIds || []).find((seg) => FEATURED_SUB_IDS.has(String(seg)));
   return hit ? String(hit) : p.lineId;
 }
 
@@ -126,7 +134,7 @@ function pickDiverseProducts(
       const candidate = pool[round];
       if (!candidate || usedIds.has(candidate.id)) continue;
       usedIds.add(candidate.id);
-      const { lineId: _l, lineName: _n, groupKey: _g, ...rest } = candidate;
+      const { lineId: _l, lineName: _n, groupKey: _g, pathIds: _p, ...rest } = candidate;
       picked.push(rest);
       addedThisRound = true;
     }
@@ -149,7 +157,8 @@ export default async function Home() {
       const extractProducts = (
         node: any,
         currentCategory: string,
-        currentPath: string[],
+        currentPathSlugs: string[],
+        currentPathIds: string[],
         lineId: string,
         lineName: string
       ) => {
@@ -177,7 +186,8 @@ export default async function Home() {
               rating: 5,
               category: currentCategory,
               subcategory: p.subcategory || lineName || "",
-              pathToNode: currentPath,
+              pathToNode: currentPathSlugs,
+              pathIds: currentPathIds,
               lineId,
               lineName,
               groupKey: lineId,
@@ -186,10 +196,13 @@ export default async function Home() {
         }
         if (node.subcategories && Array.isArray(node.subcategories)) {
           node.subcategories.forEach((sc: any) => {
+            const segSlug = slugify(sc.name) || String(sc.id);
+            const segId = String(sc.id || segSlug);
             extractProducts(
               sc,
               currentCategory,
-              [...currentPath, sc.id || slugify(sc.name)],
+              [...currentPathSlugs, segSlug],
+              [...currentPathIds, segId],
               lineId,
               lineName
             );
@@ -204,20 +217,31 @@ export default async function Home() {
       );
 
       if (surgical?.subcategories?.length) {
+        const categorySlug = slugify(surgical.name) || "surgical-instruments";
         surgical.subcategories
           .filter((line: any) => FEATURED_LINE_IDS.has(String(line.id)))
           .forEach((line: any) => {
+            const lineSlug = slugify(line.name) || String(line.id);
             extractProducts(
               line,
-              surgical.id || "9",
-              [line.id || slugify(line.name)],
-              line.id || slugify(line.name),
+              categorySlug,
+              [lineSlug],
+              [String(line.id)],
+              line.id || lineSlug,
               line.name || "Surgical"
             );
           });
       } else if (data.categories && Array.isArray(data.categories)) {
         data.categories.forEach((cat: any) => {
-          extractProducts(cat, cat.id || "9", [], cat.id || "9", cat.name || "Products");
+          const catSlug = slugify(cat.name) || cat.id || "9";
+          extractProducts(
+            cat,
+            catSlug,
+            [],
+            [],
+            cat.id || catSlug,
+            cat.name || "Products"
+          );
         });
       }
 
@@ -241,9 +265,11 @@ export default async function Home() {
           c.id === "9" || c.name?.toLowerCase() === "surgical instruments"
       );
       if (surgicalCategory && Array.isArray(surgicalCategory.subcategories)) {
+        const categorySlug =
+          slugify(surgicalCategory.name) || "surgical-instruments";
         return surgicalCategory.subcategories.slice(0, 5).map((sc: any) => ({
           title: sc.name,
-          url: `/shop/9/${sc.id}`,
+          url: `/shop/${categorySlug}/${slugify(sc.name) || sc.id}`,
           image: sc.image_local_path
             ? `/${sc.image_local_path}`
             : sc.image_url || "/images/no-image.png",

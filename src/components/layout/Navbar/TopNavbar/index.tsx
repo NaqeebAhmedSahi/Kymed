@@ -40,13 +40,23 @@ const TopNavbar = () => {
         console.log("TopNavbar: Found surgical category:", surgicalCategory?.name, "with", surgicalCategory?.subcategories?.length, "subcategories");
 
         if (surgicalCategory && surgicalCategory.subcategories) {
+          const slugify = (str: string) =>
+            str
+              .toLowerCase()
+              .trim()
+              .replace(/[&/]+/g, " ")
+              .replace(/[^\w\s-]/g, "")
+              .replace(/\s+/g, "-")
+              .replace(/-+/g, "-");
+          const categorySlug = slugify(surgicalCategory.name || "surgical-instruments");
           // Transform Surgical instruments subcategories to menu structure
           // Include nested subcategories for display
           const children = surgicalCategory.subcategories.map((subcat: any) => ({
             id: subcat.id,
             label: subcat.name,
-            url: `/shop/9/${subcat.id}`,
+            url: `/shop/${categorySlug}/${slugify(subcat.name)}`,
             description: subcat.description,
+            categorySlug,
             subcategories: subcat.subcategories || [], // Include nested subcategories
           }));
 

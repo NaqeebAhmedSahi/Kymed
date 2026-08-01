@@ -5,7 +5,7 @@ import * as motion from "framer-motion/client";
 import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { montserrat, openSans } from "@/styles/fonts";
-import { FaMapMarkerAlt, FaEnvelope, FaPaperPlane } from "react-icons/fa";
+import { FaMapMarkerAlt, FaEnvelope, FaPaperPlane, FaChevronDown } from "react-icons/fa";
 
 interface FormData {
   name: string;
@@ -46,6 +46,50 @@ const emptyForm: FormData = {
 
 const inputClassName =
   "w-full p-4 border border-[#C4C7CA] rounded-xl text-[#2F323A] focus:outline-none focus:ring-2 focus:ring-[#008C99]/40 focus:border-transparent transition-all duration-300 bg-white/80 backdrop-blur-sm";
+
+const selectClassName = cn(
+  inputClassName,
+  "appearance-none pr-12 cursor-pointer"
+);
+
+const SelectField = ({
+  name,
+  value,
+  onChange,
+  required,
+  placeholder,
+  options,
+}: {
+  name: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  required?: boolean;
+  placeholder: string;
+  options: string[];
+}) => (
+  <div className="relative">
+    <select
+      name={name}
+      value={value}
+      onChange={onChange}
+      required={required}
+      className={cn(selectClassName, !value && "text-[#5D6169]")}
+    >
+      <option value="" disabled>
+        {placeholder}
+      </option>
+      {options.map((option) => (
+        <option key={option} value={option} className="text-[#2F323A]">
+          {option}
+        </option>
+      ))}
+    </select>
+    <FaChevronDown
+      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#5D6169]"
+      aria-hidden
+    />
+  </div>
+);
 
 const ContactPage = () => {
   const [formData, setFormData] = useState<FormData>(emptyForm);
@@ -372,22 +416,14 @@ const ContactPage = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <motion.div variants={inputVariants}>
-                    <select
+                    <SelectField
                       name="productCategory"
                       value={formData.productCategory}
                       onChange={handleChange}
                       required
-                      className={cn(inputClassName, !formData.productCategory && "text-[#5D6169]")}
-                    >
-                      <option value="" disabled>
-                        Product Category
-                      </option>
-                      {productCategoryOptions.map((option) => (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
+                      placeholder="Product Category"
+                      options={productCategoryOptions}
+                    />
                   </motion.div>
                   <motion.div variants={inputVariants}>
                     <input
@@ -403,22 +439,14 @@ const ContactPage = () => {
                 </div>
 
                 <motion.div variants={inputVariants}>
-                  <select
+                  <SelectField
                     name="orderType"
                     value={formData.orderType}
                     onChange={handleChange}
                     required
-                    className={cn(inputClassName, !formData.orderType && "text-[#5D6169]")}
-                  >
-                    <option value="" disabled>
-                      Type of Order
-                    </option>
-                    {orderTypeOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
+                    placeholder="Type of Order"
+                    options={orderTypeOptions}
+                  />
                 </motion.div>
 
                 <motion.div variants={inputVariants}>

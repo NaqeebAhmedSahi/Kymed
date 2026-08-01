@@ -10,6 +10,7 @@ import {
   getSurgicalInstrumentsCategory,
   loadProductsData,
 } from "@/lib/productsLoader";
+import { catalogSegment, shopCategoryHref } from "@/lib/shopPaths";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["600", "700"] });
 const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
@@ -21,9 +22,10 @@ const socialsData = [
 const Footer = async () => {
   const data = await loadProductsData();
   const surgical = getSurgicalInstrumentsCategory(data);
+  const categorySlug = surgical ? catalogSegment(surgical) : "surgical-instruments";
   const productCategoryLinks = (surgical?.subcategories || []).map((subcat) => ({
     label: subcat.name,
-    url: `/shop/${surgical!.id}/${subcat.id}`,
+    url: shopCategoryHref(categorySlug, [catalogSegment(subcat)]),
   }));
 
   const footerLinks = [

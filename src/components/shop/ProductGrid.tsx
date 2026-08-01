@@ -6,6 +6,11 @@ import Image from "next/image";
 import { montserrat, openSans } from "@/styles/fonts";
 import { cn } from "@/lib/utils";
 import { CatalogNode, Product } from "@/lib/productsLoader";
+import {
+  catalogSegment,
+  shopCategoryHref,
+  shopProductHref,
+} from "@/lib/shopPaths";
 
 export type ProductGridItem = CatalogNode | Product;
 
@@ -16,14 +21,6 @@ interface ProductGridProps {
   items: ProductGridItem[];
   variant: "subcategories" | "products";
 }
-
-function shopCategoryHref(categoryId: string, segments: string[]) {
-  if (segments.length === 0) return `/shop/${categoryId}`;
-  return `/shop/${categoryId}/${segments.join("/")}`;
-}
-
-/** Reserved segment before product id (see shop/[category]/[...slug]/page.tsx). */
-const PRODUCT_SEGMENT = "p";
 
 function isCatalogNode(item: ProductGridItem): item is CatalogNode {
   return "subcategories" in item && Array.isArray((item as CatalogNode).subcategories);
@@ -40,8 +37,8 @@ export default function ProductGrid({
       {items.map((item) => {
         const href =
           variant === "subcategories"
-            ? shopCategoryHref(categoryId, [...pathToNode, item.id])
-            : `${shopCategoryHref(categoryId, pathToNode)}/${PRODUCT_SEGMENT}/${item.id}`;
+            ? shopCategoryHref(categoryId, [...pathToNode, catalogSegment(item)])
+            : shopProductHref(categoryId, pathToNode, item);
 
         const node = isCatalogNode(item) ? item : null;
         const product = !node ? (item as Product) : null;

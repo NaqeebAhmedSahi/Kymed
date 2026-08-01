@@ -7,8 +7,9 @@ import {
   getBreadcrumbTrail,
   getCatalogNodeByPath,
   getCategoryBySlug,
-  getDisplayProductsForNode,
   getProductByCategoryPath,
+  getProductsForCatalogPage,
+  getRealSubcategories,
   getSurgicalInstrumentsCategory,
   isSurgicalShopCategoryParam,
   loadProductsData,
@@ -17,9 +18,7 @@ import ProductGrid from "@/components/shop/ProductGrid";
 import ProductDetailContent from "@/components/shop/ProductDetailContent";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-
-/** Reserved path segment before product id (catch-all must be last in Next.js). */
-const PRODUCT_SEGMENT = "p";
+import { catalogSegment, PRODUCT_SEGMENT, shopCategoryHref } from "@/lib/shopPaths";
 
 export const dynamicParams = true;
 
@@ -106,11 +105,15 @@ export default async function ShopCategorySlugPage({ params }: Props) {
       params.category,
       parsed.pathToParent
     );
+    const categorySlug = breadcrumb[0]
+      ? catalogSegment(breadcrumb[0])
+      : params.category;
+    const pathSlugs = breadcrumb.slice(1).map((c) => catalogSegment(c));
     return (
       <ProductDetailContent
         product={product}
-        categoryId={params.category}
-        pathToNode={parsed.pathToParent}
+        categoryId={categorySlug}
+        pathToNode={pathSlugs}
         breadcrumb={breadcrumb}
       />
     );
@@ -125,29 +128,21 @@ export default async function ShopCategorySlugPage({ params }: Props) {
   const { node, category } = resolved;
   const parent = await getParentCatalogNode(params.category, segments);
 
-  const subs = node.subcategories || [];
-  const directProducts = node.products || [];
-  const fallbackProducts = getDisplayProductsForNode(node, parent);
-  const usingFallbackProducts = directProducts.length === 0 && fallbackProducts.length > 0;
-  const productsToShow = usingFallbackProducts ? fallbackProducts : directProducts;
-  // Product detail links must point at the node that owns the product records.
-  const productPathToNode = usingFallbackProducts ? segments.slice(0, -1) : segments;
+  // Scraped JSON mirrors products as empty subcategory shells — treat those as products.
+  const displaySubs = getRealSubcategories(node);
+  const { products: productsToShow, usingFallback: usingFallbackProducts } =
+    getProductsForCatalogPage(node, parent, displaySubs);
 
-  // Keep subcategory cards that have their own children, or empty leaves that
-  // surface borrowed parent products (e.g. CeramaCut under Scissors).
-  const displaySubs = subs.filter((s) => {
-    const hasOwn =
-      (s.subcategories?.length ?? 0) > 0 || (s.products?.length ?? 0) > 0;
-    if (hasOwn) return true;
-    return getDisplayProductsForNode(s, node).length > 0;
-  });
-
-  // When subcategories are available, browse through those only — do not also
-  // show a duplicate Products row on the same page (e.g. CeramaCut under Scissors).
   const showSubcategories = displaySubs.length > 0;
-  const showProducts = !showSubcategories && productsToShow.length > 0;
+  const showProducts = productsToShow.length > 0;
 
   const trail = await getBreadcrumbTrail(params.category, segments);
+  const categorySlug = catalogSegment(category);
+  const pathSlugs = trail.slice(1).map((c) => catalogSegment(c));
+  // When showing borrowed parent products, drop the empty leaf from the product path.
+  const productPathSlugs = usingFallbackProducts
+    ? pathSlugs.slice(0, -1)
+    : pathSlugs;
 
   return (
     <main className="max-w-frame mx-auto px-4 xl:px-0 py-12">
@@ -156,11 +151,7 @@ export default async function ShopCategorySlugPage({ params }: Props) {
           Categories
         </Link>
         {trail.map((crumb, i) => {
-          const hrefSegments = segments.slice(0, i);
-          const href =
-            i === 0
-              ? `/shop/${params.category}`
-              : `/shop/${params.category}/${hrefSegments.join("/")}`;
+          const href = shopCategoryHref(categorySlug, pathSlugs.slice(0, i));
           const isLast = i === trail.length - 1;
           return (
             <React.Fragment key={`${crumb.id}-${i}`}>
@@ -194,8 +185,8 @@ export default async function ShopCategorySlugPage({ params }: Props) {
             Subcategories
           </h2>
           <ProductGrid
-            categoryId={category.id}
-            pathToNode={segments}
+            categoryId={categorySlug}
+            pathToNode={pathSlugs}
             items={displaySubs}
             variant="subcategories"
           />
@@ -208,8 +199,8 @@ export default async function ShopCategorySlugPage({ params }: Props) {
             Products
           </h2>
           <ProductGrid
-            categoryId={category.id}
-            pathToNode={productPathToNode}
+            categoryId={categorySlug}
+            pathToNode={productPathSlugs}
             items={productsToShow}
             variant="products"
           />

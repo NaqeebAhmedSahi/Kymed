@@ -19,6 +19,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { catalogSegment, shopCategoryHref } from "@/lib/shopPaths";
 
 interface ProductDetailContentProps {
   product: {
@@ -36,14 +37,9 @@ interface ProductDetailContentProps {
     specifications: Array<{ article_number: string; description: string; price: string }>;
   };
   categoryId: string;
-  /** Path segments to the catalog node that owns this product (e.g. ["145","271"]). */
+  /** Path segments to the catalog node that owns this product. */
   pathToNode: string[];
   breadcrumb: { id: string; name: string }[];
-}
-
-function shopListingHref(categoryId: string, pathSegments: string[]) {
-  if (pathSegments.length === 0) return `/shop/${categoryId}`;
-  return `/shop/${categoryId}/${pathSegments.join("/")}`;
 }
 
 export default function ProductDetailContent({
@@ -52,6 +48,13 @@ export default function ProductDetailContent({
   pathToNode,
   breadcrumb,
 }: ProductDetailContentProps) {
+  const categorySlug = breadcrumb[0]
+    ? catalogSegment(breadcrumb[0])
+    : categoryId;
+  const pathSlugs =
+    breadcrumb.length > 1
+      ? breadcrumb.slice(1).map((c) => catalogSegment(c))
+      : pathToNode;
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -111,7 +114,7 @@ export default function ProductDetailContent({
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           {breadcrumb.map((crumb, i) => {
-            const href = shopListingHref(categoryId, pathToNode.slice(0, i));
+            const href = shopCategoryHref(categorySlug, pathSlugs.slice(0, i));
             return (
               <React.Fragment key={`${crumb.id}-${i}`}>
                 <BreadcrumbItem>
@@ -341,7 +344,7 @@ export default function ProductDetailContent({
 
       <div className="mt-10">
         <Link
-          href={shopListingHref(categoryId, pathToNode)}
+          href={shopCategoryHref(categorySlug, pathSlugs)}
           className="text-[#008C99] font-semibold hover:underline"
         >
           ← Back to listing

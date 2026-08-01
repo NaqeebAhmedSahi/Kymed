@@ -6,6 +6,7 @@ import {
   getSurgicalInstrumentsCategory,
   loadProductsData,
 } from "@/lib/productsLoader";
+import { catalogSegment } from "@/lib/shopPaths";
 import SubcategoryGrid from "@/components/shop/SubcategoryGrid";
 
 export const metadata: Metadata = {
@@ -38,7 +39,10 @@ export default async function ShopPage() {
       </header>
 
       {surgical && subcategories.length > 0 ? (
-        <SubcategoryGrid subcategories={subcategories} categoryId={surgical.id} />
+        <SubcategoryGrid
+          subcategories={subcategories}
+          categoryId={catalogSegment(surgical)}
+        />
       ) : (
         <div className="text-center py-12">
           <p className="text-[#5D6169]">Surgical instruments catalog is not available.</p>

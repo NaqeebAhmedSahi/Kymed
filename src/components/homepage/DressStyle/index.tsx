@@ -15,11 +15,10 @@ interface DressStyleProps {
 
 const DressStyle = ({ subcategories = [] }: DressStyleProps) => {
   const defaultCats = [
-    // { title: "Stille Instruments", url: "/shop/9/145", image: "/images/categories/Scissor2.jpeg" },
-    { title: "Scissors", url: "/shop/9/146", image: "/images/categories/Scissor2.jpeg" },
-    { title: "Forceps & Hemostats", url: "/shop/9/147", image: "/images/categories/Forceps.jpeg" },
-    { title: "Scalpels & Blades", url: "/shop/9/150", image: "/images/categories/Scalpel.jpeg" },
-    { title: "Orthopedic Instruments", url: "/shop/9/149", image: "/images/categories/Bone.jpeg" }
+    { title: "Scissors", url: "/shop/surgical-instruments/scissors", image: "/images/categories/Scissor2.jpeg" },
+    { title: "Forceps & Hemostats", url: "/shop/surgical-instruments/forceps-hemostats", image: "/images/categories/Forceps.jpeg" },
+    { title: "Scalpels & Blades", url: "/shop/surgical-instruments/scalpels-blades", image: "/images/categories/Scalpel.jpeg" },
+    { title: "Orthopedic Instruments", url: "/shop/surgical-instruments/orthopedic-instruments", image: "/images/categories/Bone.jpeg" }
   ];
 
   const cats = defaultCats;

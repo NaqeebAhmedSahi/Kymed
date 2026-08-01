@@ -6,6 +6,7 @@ import Image from "next/image";
 import { montserrat, openSans } from "@/styles/fonts";
 import { cn } from "@/lib/utils";
 import { SubCategory } from "@/lib/productsLoader";
+import { catalogSegment, shopCategoryHref } from "@/lib/shopPaths";
 
 interface SubcategoryGridProps {
   subcategories: SubCategory[];
@@ -18,7 +19,7 @@ export default function SubcategoryGrid({ subcategories, categoryId }: Subcatego
       {subcategories.map((subcat) => (
         <Link
           key={subcat.id}
-          href={`/shop/${categoryId}/${subcat.id}`}
+          href={shopCategoryHref(categoryId, [catalogSegment(subcat)])}
           className="group"
         >
           <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white">

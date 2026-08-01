@@ -96,7 +96,7 @@ export default function CartPage() {
               Explore our precision-crafted surgical and dental instruments to get started.
             </p>
             <Button className="bg-[#008C99] hover:bg-[#006670] text-white rounded-xl px-10 py-6 font-semibold shadow-md transition-all" asChild>
-              <Link href="/shop/9">Browse Catalog</Link>
+              <Link href="/shop/surgical-instruments">Browse Catalog</Link>
             </Button>
           </div>
         )}

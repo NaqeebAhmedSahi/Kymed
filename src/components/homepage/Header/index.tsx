@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
+import { montserrat } from "@/styles/fonts";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,31 +10,31 @@ const Header = () => {
 
   const sliderContent = [
     {
-      image: "/images/slider02.jpg",
-      title: "Trusted Surgical & Dental Instruments Manufacturer",
+      image: "/images/sliders/slide-1.png",
+      title: "Trusted Surgical and Dental Instruments Manufacturer",
       description:
         "30+ years of manufacturing excellence in Pakistan. Quality checked in Pakistan and the USA. Delivered directly to you in the USA.",
     },
     {
-      image: "/images/slider03.jpg",
+      image: "/images/sliders/slide-2.jpg",
       title: "Precision Scissors & Forceps",
       description:
         "Made for accuracy. Trusted in operating rooms worldwide.",
     },
     {
-      image: "/images/slider01.jpg",
+      image: "/images/sliders/slide-3.png",
       title: "Reliable Retractors",
       description:
         "Built for durability, comfort, and consistent performance.",
     },
     {
-      image: "/images/slider04.jpg",
+      image: "/images/sliders/slide-4.png",
       title: "Orthopedic Instruments Built to Last",
       description:
         "Precision-engineered for bone and joint procedures.",
     },
     {
-      image: "/images/slider05.jpg",
+      image: "/images/sliders/slide-5.jpg",
       title: "Sharp. Sterile. Dependable.",
       description:
         "Scalpels and blades manufactured to the highest safety standard.",
@@ -103,7 +103,7 @@ const Header = () => {
               transition={{ delay: 1, duration: 0.7 }}
               className={cn(
                 "text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-xl leading-tight max-w-4xl",
-                integralCF.className
+                montserrat.className
               )}
             >
               {sliderContent[currentImageIndex].title}

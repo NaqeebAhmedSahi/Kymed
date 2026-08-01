@@ -6,6 +6,7 @@ import Image from "next/image";
 import { montserrat, openSans } from "@/styles/fonts";
 import { cn } from "@/lib/utils";
 import { Category } from "@/lib/productsLoader";
+import { catalogSegment, shopCategoryHref } from "@/lib/shopPaths";
 
 interface CategoryGridProps {
   categories: Category[];
@@ -17,7 +18,7 @@ export default function CategoryGrid({ categories }: CategoryGridProps) {
       {categories.map((category) => (
         <Link
           key={category.id}
-          href={`/shop/${category.id}`}
+          href={shopCategoryHref(catalogSegment(category))}
           className="group"
         >
           <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white">

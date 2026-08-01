@@ -1,5 +1,8 @@
 import fs from "fs";
 import path from "path";
+import { slugify } from "@/lib/shopPaths";
+
+export { slugify } from "@/lib/shopPaths";
 
 export interface ProductVariant {
   article_number: string;
@@ -189,7 +192,12 @@ export async function getProductByCategoryPath(
   const resolved = await getCatalogNodeByPath(categorySlug, pathToProductParent);
   if (!resolved) return null;
 
-  const direct = resolved.node.products?.find((p) => p.id === productId);
+  const matchProduct = (p: Product) =>
+    p.id === productId ||
+    slugify(p.name) === productId ||
+    slugify(p.title || "") === productId;
+
+  const direct = resolved.node.products?.find(matchProduct);
   if (direct) return direct;
 
   // Borrowed leaf products are stored on the parent node.
@@ -206,7 +214,7 @@ export async function getProductByCategoryPath(
   }
   if (!parentNode?.products?.length) return null;
 
-  return parentNode.products.find((p) => p.id === productId) ?? null;
+  return parentNode.products.find(matchProduct) ?? null;
 }
 
 /** Products to show on a node: own products plus, for empty leaf children, parent-listed products tagged with that subcategory name. */
@@ -220,6 +228,69 @@ export function getDisplayProductsForNode(
   return parent.products.filter(
     (p) => p.subcategory && p.subcategory === node.name
   );
+}
+
+/**
+ * Scraped catalog data often mirrors each product as an empty subcategory shell
+ * with the same id/name. Those are not real browse levels.
+ */
+export function isProductPhantomSubcategory(
+  sub: CatalogNode,
+  siblingProducts: Product[]
+): boolean {
+  const mirrorsProduct = siblingProducts.some(
+    (p) => p.id === sub.id || p.name === sub.name
+  );
+  if (!mirrorsProduct) return false;
+  const isEmpty =
+    !(sub.subcategories?.length) && !(sub.products?.length);
+  return isEmpty;
+}
+
+/** Real subcategory cards for a node (excludes product phantom shells). */
+export function getRealSubcategories(node: CatalogNode): CatalogNode[] {
+  const products = node.products || [];
+  const subs = node.subcategories || [];
+  return subs.filter((s) => {
+    if (isProductPhantomSubcategory(s, products)) return false;
+    const hasOwn =
+      (s.subcategories?.length ?? 0) > 0 || (s.products?.length ?? 0) > 0;
+    if (hasOwn) return true;
+    // Empty leaf that surfaces a borrowed parent product (e.g. rare edge cases)
+    return getDisplayProductsForNode(s, node).length > 0;
+  });
+}
+
+/**
+ * Products to list on a catalog page.
+ * - Leaf nodes (no real subs): all display products
+ * - Branch nodes: only products that were mirrored as phantom subs (e.g. CeramaCut
+ *   under Scissors), so they still appear alongside real subcategory cards
+ */
+export function getProductsForCatalogPage(
+  node: CatalogNode,
+  parent: CatalogNode | null,
+  realSubs: CatalogNode[]
+): { products: Product[]; usingFallback: boolean } {
+  const direct = node.products || [];
+  const fallback = getDisplayProductsForNode(node, parent);
+  const usingFallback = direct.length === 0 && fallback.length > 0;
+  const all = usingFallback ? fallback : direct;
+
+  if (realSubs.length === 0) {
+    return { products: all, usingFallback };
+  }
+
+  const subs = node.subcategories || [];
+  const phantomIds = new Set(
+    subs
+      .filter((s) => isProductPhantomSubcategory(s, direct))
+      .map((s) => s.id)
+  );
+  return {
+    products: direct.filter((p) => phantomIds.has(p.id)),
+    usingFallback: false,
+  };
 }
 
 export async function getBreadcrumbTrail(
@@ -241,15 +312,6 @@ export async function getBreadcrumbTrail(
     node = next;
   }
   return trail;
-}
-
-export function slugify(str: string): string {
-  return str
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
 }
 
 /** Only the top-level "Surgical instruments" tree is exposed in the shop UI. */

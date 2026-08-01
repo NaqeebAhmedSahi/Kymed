@@ -29,13 +29,22 @@ const ProductCard = ({ data }: ProductCardProps) => {
   }
 
   const productSlug = data.title
-    ? data.title.split(" ").join("-").toLowerCase()
+    ? data.title
+        .toLowerCase()
+        .trim()
+        .replace(/[&/]+/g, " ")
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
     : "product";
 
-  // Build canonical URL: /shop/{category}/{pathSegments}/p/{id}
-  const categoryId = data.category || "9"; // Default to surgical instruments
-  const pathSegments = (data as any).pathToNode && (data as any).pathToNode.length > 0 ? (data as any).pathToNode.join("/") + "/" : "";
-  const productUrl = `/shop/${categoryId}/${pathSegments}p/${data.id}`;
+  // Build canonical URL: /shop/{category}/{path-slugs}/p/{product-slug}
+  const categoryId = data.category || "surgical-instruments";
+  const pathSegments =
+    data.pathToNode && data.pathToNode.length > 0
+      ? `${data.pathToNode.join("/")}/`
+      : "";
+  const productUrl = `/shop/${categoryId}/${pathSegments}p/${productSlug}`;
 
   return (
     <Link

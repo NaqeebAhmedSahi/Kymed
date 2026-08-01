@@ -72,7 +72,10 @@ export default async function CategoryPage({ params }: Props) {
       </div>
 
       {subcategories.length > 0 ? (
-        <SubcategoryGrid subcategories={subcategories} categoryId={category.id} />
+        <SubcategoryGrid
+          subcategories={subcategories}
+          categoryId={slugify(category.name)}
+        />
       ) : (
         <div className="text-center py-12">
           <p className="text-[#5D6169]">No subcategories available</p>

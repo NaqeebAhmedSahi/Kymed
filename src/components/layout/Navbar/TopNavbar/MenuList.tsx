@@ -101,7 +101,13 @@ export function MenuList({ data, label }: MenuListProps) {
                       {item.subcategories.slice(0, 7).map((subitem: any, idx: number) => (
                         <Link
                           key={subitem.id}
-                          href={`/shop/9/${item.id}/${subitem.id}`}
+                          href={`${item.url}/${(subitem.name || "")
+                            .toLowerCase()
+                            .trim()
+                            .replace(/[&/]+/g, " ")
+                            .replace(/[^\w\s-]/g, "")
+                            .replace(/\s+/g, "-")
+                            .replace(/-+/g, "-")}`}
                           className="group/sub flex items-center justify-between px-2.5 py-1.5 rounded-lg text-sm text-gray-700 hover:bg-[#008C99]/12 hover:text-[#008C99] hover:font-semibold transition-all duration-200"
                         >
                           <span className="font-medium leading-tight">{subitem.name}</span>
