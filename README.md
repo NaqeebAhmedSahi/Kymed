@@ -15,6 +15,7 @@ Shopco is an open-source project that converts a Figma design of an e-commerce w
   - [Installation](#installation)
   - [Usage](#usage)
   - [Project Structure](#project-structure)
+  - [Domain & deployment (Vercel)](#domain--deployment-vercel)
   - [Contributing](#contributing)
   - [Issues](#issues)
   - [License](#license)
@@ -118,6 +119,93 @@ Shopco/
 ├── tailwind.config.js      # Tailwind CSS configuration
 ├── tsconfig.json           # TypeScript configuration
 ```
+
+## Domain & deployment (Vercel)
+
+Use these steps when moving **kymed.co** to a new Vercel project (or after removing it from an old/paused project). Doing this wrong can show “deployment paused”, block domain add, or cause `ERR_TOO_MANY_REDIRECTS`.
+
+### 1. Remove the domain from the old Vercel project
+
+1. Open [vercel.com/dashboard](https://vercel.com/dashboard).
+2. Open the **old / paused** project that still owns the domain.
+3. Go to **Settings → Domains**.
+4. Remove **`kymed.co`** and **`www.kymed.co`** (⋯ → **Remove**).
+5. Confirm removal on both.
+
+Until this is done, the new project cannot fully use the domain.
+
+### 2. Add the domain on the new Vercel project
+
+1. Open the **new / active** KyMed project.
+2. Go to **Settings → Domains → Add**.
+3. Add **`kymed.co`** and **`www.kymed.co`**.
+
+### 3. Verify ownership with a TXT record (if Vercel asks)
+
+If Vercel says the domain is linked to another account, it will ask for a TXT record:
+
+| Field | Value |
+| --- | --- |
+| Type | **TXT** (not A, not CNAME) |
+| Name / Host | `_vercel` |
+| Value | The exact string shown in Vercel (e.g. `vc-domain-verify=...`) |
+
+Add it in cPanel → **Zone Editor** for `kymed.co`:
+
+1. Open cPanel: [https://mail.kymed.co:2083](https://mail.kymed.co:2083)
+2. Open **Zone Editor** → select **kymed.co**
+3. **Add Record** → Type **TXT**, Name `_vercel`, paste Vercel’s value → **Save**
+4. Back in Vercel, click **Refresh / Verify**
+5. After verification succeeds, you can delete the TXT record if you want
+
+> Underscores are not allowed on **A** records. If you see *“An A record may not contain an underscore”*, change Type from **A** to **TXT**.
+
+### 4. Set primary domain vs www (avoid redirect loops)
+
+**Wrong setup (causes `ERR_TOO_MANY_REDIRECTS`):**
+- `kymed.co` redirects to `www.kymed.co`
+- `www.kymed.co` redirects back to `kymed.co`
+
+**Correct setup:**
+
+#### For `kymed.co` (primary)
+1. Domains → click **`kymed.co`**
+2. Select **Connect to an environment**
+3. Environment: **Production**
+4. **Save**
+
+#### For `www.kymed.co`
+1. Domains → click **`www.kymed.co`**
+2. Select **Redirect to Another Domain**
+3. Destination: **`kymed.co`**
+4. Redirect: **308 Permanent Redirect**
+5. **Save**
+
+Result:
+- `https://kymed.co` → serves the site  
+- `https://www.kymed.co` → redirects to `https://kymed.co`
+
+### 5. DNS tips
+
+- Keep apex / www pointed as Vercel instructs (usually A/CNAME to Vercel).
+- DNS for email/cPanel stays on Idea Servers (`mail.kymed.co`, MX, etc.).
+- After domain changes, wait a few minutes and test in a private/incognito window.
+
+### 6. cPanel access
+
+Because the website domain is on Vercel, `https://kymed.co/cpanel/` does not open hosting cPanel by itself.
+
+- Direct cPanel login: [https://mail.kymed.co:2083](https://mail.kymed.co:2083)
+- The app also redirects `/cpanel` → that login URL (see `next.config.mjs`) once the **active** Vercel project is serving the domain.
+
+### Quick checklist when the project changes
+
+1. Remove domain from old Vercel project  
+2. Add domain on new Vercel project  
+3. Add `_vercel` **TXT** if asked, then verify  
+4. `kymed.co` → Connect to Production  
+5. `www.kymed.co` → Redirect to `kymed.co`  
+6. Redeploy and test apex + www  
 
 ## Contributing
 
