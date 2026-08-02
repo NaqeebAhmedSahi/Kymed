@@ -18,4 +18,6 @@ export type Product = {
   pathToNode?: string[];
   /** Numeric catalog ids along the path (for filtering). */
   pathIds?: string[];
+  newArrival?: boolean;
+  topSelling?: boolean;
 };

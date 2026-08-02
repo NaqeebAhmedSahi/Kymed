@@ -6,7 +6,7 @@ const OrganizationJsonLd = () => {
     "url": "https://kymed.co",
     "logo": "https://kymed.co/images/logo.png",
     "sameAs": [
-      "https://www.linkedin.com/company/kymed"
+      "https://www.linkedin.com/company/kymedco/"
     ],
     "contactPoint": [
       {

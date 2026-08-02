@@ -116,7 +116,7 @@ const TopNavbar = () => {
             <a href="#" className="text-white hover:text-[#E5F5F7] transition-colors duration-200">
               <FiInstagram className="w-5 h-5" />
             </a> */}
-            <a href="https://www.linkedin.com/company/kymed" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#E5F5F7] transition-colors duration-200">
+            <a href="https://www.linkedin.com/company/kymedco/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#E5F5F7] transition-colors duration-200">
               <FiLinkedin className="w-5 h-5" />
             </a>
             {/* <a href="#" className="text-white hover:text-[#E5F5F7] transition-colors duration-200">

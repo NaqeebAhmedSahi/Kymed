@@ -221,7 +221,7 @@ export default function RootLayout({
                 }
               ],
               "sameAs": [
-                "https://www.linkedin.com/company/kymed"
+                "https://www.linkedin.com/company/kymedco/"
               ]
             })
           }}

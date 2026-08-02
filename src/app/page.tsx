@@ -21,17 +21,12 @@ type CatalogProduct = Product & {
 };
 
 /**
- * Featured homepage groups from client links:
- * Standard Sharp/Sharp, Iris, Hemostatic Forceps, Kelly, Dressing/Standard Straight, Adson
+ * Curated homepage lists from client product links.
+ * Top Selling: Standard Sharp/Sharp, Mayo, Lister, Standard Straight
+ * New Arrivals: Halsted-Mosquito, Kelly, Backhaus Towel Clamp, Metzenbaum
  */
-const FEATURED_LINE_IDS = new Set(["146", "147"]); // Scissors, Forceps & Hemostats
-const FEATURED_SUB_IDS = new Set([
-  "279", // Surgical scissors (Standard Sharp/Sharp, etc.)
-  "287", // Iris scissors
-  "964", // Hemostatic Forceps (Kelly, etc.)
-  "348", // Dressing (Standard Straight, etc.)
-  "916", // Adson
-]);
+const TOP_SELLING_IDS = [2069, 2102, 2129, 2293];
+const NEW_ARRIVAL_IDS = [2444, 2451, 2461, 2115];
 
 function slugify(str: string) {
   return str
@@ -45,103 +40,23 @@ function slugify(str: string) {
     : "";
 }
 
-function hasUsableImage(srcUrl: string) {
-  return Boolean(
-    srcUrl &&
-      !srcUrl.includes("placeholder") &&
-      !srcUrl.includes("no-image")
-  );
-}
-
-/** ToughCut scissors use black handles — exclude from homepage carousels. */
-const BLACK_SCISSOR_SUB_IDS = new Set(["874", "888", "2195"]); // ToughCut, ToughCut & TC, CeramaCut
-
-function isBlackHandleScissor(p: CatalogProduct) {
-  if (p.lineId !== "146") return false;
-  if ((p.pathIds || []).some((seg) => BLACK_SCISSOR_SUB_IDS.has(String(seg)))) {
-    return true;
-  }
-  const hay = `${p.title} ${p.subcategory || ""}`.toLowerCase();
-  return (
-    hay.includes("toughcut") ||
-    hay.includes("tough cut") ||
-    hay.includes("ceramacut") ||
-    hay.includes("ceramic coated")
-  );
-}
-
-function isInFeaturedGroup(p: CatalogProduct) {
-  return (p.pathIds || []).some((seg) => FEATURED_SUB_IDS.has(String(seg)));
-}
-
-function featuredGroupKey(p: CatalogProduct) {
-  const hit = (p.pathIds || []).find((seg) => FEATURED_SUB_IDS.has(String(seg)));
-  return hit ? String(hit) : p.lineId;
-}
-
-/** Prefer the exact products shared by the client when present. */
-const PRIORITY_PRODUCT_IDS = new Set([
-  2069, // Standard Sharp/Sharp
-  2451, // Kelly
-  2293, // Standard Straight
-  2283, // Adson
-]);
-
-/** Pick products from featured groups only, round-robin across groups. */
-function pickDiverseProducts(
+function pickProductsByIds(
   products: CatalogProduct[],
-  limit: number,
-  excludeIds: Set<number> = new Set()
+  ids: number[]
 ): Product[] {
-  const byGroup = new Map<string, CatalogProduct[]>();
+  const byId = new Map<number, CatalogProduct>();
   for (const p of products) {
-    if (excludeIds.has(p.id)) continue;
-    if (!hasUsableImage(p.srcUrl)) continue;
-    if (isBlackHandleScissor(p)) continue;
-    if (!isInFeaturedGroup(p)) continue;
-    const key = featuredGroupKey(p);
-    const list = byGroup.get(key) || [];
-    list.push(p);
-    byGroup.set(key, list);
+    if (!byId.has(p.id)) byId.set(p.id, p);
   }
-
-  // Put priority products first within each group
-  byGroup.forEach((list, key) => {
-    list.sort((a, b) => {
-      const ap = PRIORITY_PRODUCT_IDS.has(a.id) ? 0 : 1;
-      const bp = PRIORITY_PRODUCT_IDS.has(b.id) ? 0 : 1;
-      return ap - bp;
-    });
-    byGroup.set(key, list);
-  });
-
-  // Prefer order matching client links
-  const preferredOrder = ["279", "287", "964", "348", "916"];
-  const groupIds = [
-    ...preferredOrder.filter((id) => byGroup.has(id)),
-    ...Array.from(byGroup.keys()).filter((id) => !preferredOrder.includes(id)),
-  ];
 
   const picked: Product[] = [];
-  const usedIds = new Set<number>();
-  let round = 0;
-
-  while (picked.length < limit && groupIds.length > 0) {
-    let addedThisRound = false;
-    for (const groupId of groupIds) {
-      if (picked.length >= limit) break;
-      const pool = byGroup.get(groupId) || [];
-      const candidate = pool[round];
-      if (!candidate || usedIds.has(candidate.id)) continue;
-      usedIds.add(candidate.id);
-      const { lineId: _l, lineName: _n, groupKey: _g, pathIds: _p, ...rest } = candidate;
-      picked.push(rest);
-      addedThisRound = true;
-    }
-    if (!addedThisRound) break;
-    round += 1;
+  for (const id of ids) {
+    const candidate = byId.get(id);
+    if (!candidate) continue;
+    const { lineId: _l, lineName: _n, groupKey: _g, pathIds: _p, ...rest } =
+      candidate;
+    picked.push(rest);
   }
-
   return picked;
 }
 
@@ -218,19 +133,17 @@ export default async function Home() {
 
       if (surgical?.subcategories?.length) {
         const categorySlug = slugify(surgical.name) || "surgical-instruments";
-        surgical.subcategories
-          .filter((line: any) => FEATURED_LINE_IDS.has(String(line.id)))
-          .forEach((line: any) => {
-            const lineSlug = slugify(line.name) || String(line.id);
-            extractProducts(
-              line,
-              categorySlug,
-              [lineSlug],
-              [String(line.id)],
-              line.id || lineSlug,
-              line.name || "Surgical"
-            );
-          });
+        surgical.subcategories.forEach((line: any) => {
+          const lineSlug = slugify(line.name) || String(line.id);
+          extractProducts(
+            line,
+            categorySlug,
+            [lineSlug],
+            [String(line.id)],
+            line.id || lineSlug,
+            line.name || "Surgical"
+          );
+        });
       } else if (data.categories && Array.isArray(data.categories)) {
         data.categories.forEach((cat: any) => {
           const catSlug = slugify(cat.name) || cat.id || "9";
@@ -280,12 +193,11 @@ export default async function Home() {
   };
   const browseCategories = getSubcategories();
 
-  // Featured groups in both sections, different products each
-  const newArrivals = pickDiverseProducts(allProducts, 6);
-  const topSelling = pickDiverseProducts(
-    allProducts,
-    6,
-    new Set(newArrivals.map((p) => p.id))
+  const topSelling = pickProductsByIds(allProducts, TOP_SELLING_IDS).map(
+    (p) => ({ ...p, topSelling: true })
+  );
+  const newArrivals = pickProductsByIds(allProducts, NEW_ARRIVAL_IDS).map(
+    (p) => ({ ...p, newArrival: true })
   );
 
   return (
@@ -307,12 +219,11 @@ export default async function Home() {
         <div className="mb-[50px] sm:mb-20">
           <DressStyle subcategories={browseCategories} />
         </div>
-         <div className="mb-[50px] sm:mb-20">
+        <div className="mb-[50px] sm:mb-20">
           <OurValue />
         </div>
-        <div>
-          <CertificationMarquee />
-        </div>
+        <CertificationMarquee />
+        {/* <Reviews /> */}
       </main>
     </>
   );
