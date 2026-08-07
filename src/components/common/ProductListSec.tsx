@@ -1,7 +1,6 @@
 import React from "react";
 import * as motion from "framer-motion/client";
 import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
 import { montserrat, openSans } from "@/styles/fonts";
 import {
   Carousel,

@@ -344,9 +344,10 @@ const AboutUs = () => {
               },
               {
                 icon: <FaMapMarkerAlt className="w-12 h-12" />,
-                title: "UK Office",
+                title: "UK Partner Contact",
                 location: (
                   <>
+                    <span className="block text-sm text-[#5D6169] mb-2">For inquiries requiring local UK assistance, please reach our partner contact below.</span>
                     24 The New Broadway, Tarring Road<br />
                     West Worthing, Sussex, England, UK<br />
                     BN11 4HP<br />
@@ -431,30 +432,6 @@ const AboutUs = () => {
           </div>
         </motion.div>
 
-        {/* CTA */}
-        <motion.div
-          className="mt-20 bg-gradient-to-r from-[#008C99] to-[#006670] text-white py-16 px-8 rounded-3xl text-center shadow-xl"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h3 className={cn("text-3xl md:text-4xl font-bold mb-6", montserrat.className)}>
-            Ready to partner with KyMed?
-          </h3>
-          <p className="text-xl mb-8 text-[#E5F5F7] max-w-2xl mx-auto">
-            Request a quote for OEM, private-label, or standard stock surgical and dental instruments.
-          </p>
-          <a
-            href="/contact"
-            className={cn(
-              "inline-block bg-white text-[#008C99] font-semibold py-4 px-8 rounded-xl hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg",
-              montserrat.className
-            )}
-          >
-            Contact Us Today
-          </a>
-        </motion.div>
       </motion.div>
     </section>
   );

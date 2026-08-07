@@ -10,7 +10,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
+import { montserrat } from "@/styles/fonts";
 import { NavMenu } from "../navbar.types";
 import {
   Accordion,

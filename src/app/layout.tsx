@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
-import { satoshi } from "@/styles/fonts";
+import { openSans } from "@/styles/fonts";
 import TopNavbar from "@/components/layout/Navbar/TopNavbar";
 import Footer from "@/components/layout/Footer";
 import HolyLoader from "holy-loader";
@@ -368,7 +368,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={satoshi.className}>
+      <body className={openSans.className}>
         <OrganizationJsonLd />
         <HolyLoader color="#868686" />
         <Providers>

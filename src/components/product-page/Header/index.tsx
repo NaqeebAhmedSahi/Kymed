@@ -1,7 +1,7 @@
 import React from "react";
 import PhotoSection from "./PhotoSection";
 import { Product } from "@/types/product.types";
-import { integralCF } from "@/styles/fonts";
+import { montserrat } from "@/styles/fonts";
 import { cn } from "@/lib/utils";
 import Rating from "@/components/ui/Rating";
 import Link from "next/link"; // Import the Link component
@@ -20,7 +20,7 @@ const Header = ({ data }: { data: Product }) => {
         <div>
           <h1
             className={cn([
-              integralCF.className,
+              montserrat.className,
               "text-2xl md:text-[40px] md:leading-[40px] mb-3 md:mb-3.5 capitalize",
             ])}
           >

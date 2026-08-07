@@ -222,8 +222,9 @@ const ContactPage = () => {
             },
             {
               icon: <FaMapMarkerAlt className="w-8 h-8" />,
-              title: "UK Office",
+              title: "UK Partner Contact",
               lines: [
+                "For inquiries requiring local UK assistance, please reach our partner contact below.",
                 "24 The New Broadway",
                 "Tarring Road, West Worthing",
                 "Sussex, England, UK",

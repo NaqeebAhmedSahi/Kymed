@@ -5,7 +5,7 @@ import ProductCard from "@/components/cart-page/ProductCard";
 import { Button } from "@/components/ui/button";
 import InputGroup from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
-import { integralCF, montserrat } from "@/styles/fonts";
+import { montserrat } from "@/styles/fonts";
 import { FaArrowRight } from "react-icons/fa6";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { TbBasketExclamation } from "react-icons/tb";

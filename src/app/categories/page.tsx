@@ -32,9 +32,8 @@ export default async function CategoriesPage() {
           Surgical instruments
         </h1>
         <p className={cn("text-lg text-[#5D6169] max-w-3xl mx-auto", openSans.className)}>
-          Scissors and forceps can be seen as an extension of the researcher’s fingers—delicate
-          and precise. Here you will find a wide range of surgical instruments, with the Swedish
-          brand Stille as our highest-quality supplier.
+          Scissors and forceps can be seen as an extension of the researcher&apos;s fingers—delicate
+          and precise. Here you will find a wide range of surgical instruments.
         </p>
       </header>
 
