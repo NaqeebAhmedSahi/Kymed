@@ -193,7 +193,7 @@ export default async function ShopCategorySlugPage({ params }: Props) {
         </section>
       ) : null}
 
-      {showProducts ? (
+      {!showSubcategories && showProducts ? (
         <section>
           <h2 className={cn("text-2xl font-semibold mb-6 text-[#2F323A]", montserrat.className)}>
             Products
@@ -207,7 +207,7 @@ export default async function ShopCategorySlugPage({ params }: Props) {
         </section>
       ) : null}
 
-      {!showSubcategories && !showProducts ? (
+      {!showSubcategories && !productsToShow.length ? (
         <div className="text-center py-12 text-[#5D6169]">
           No subcategories or products in this section yet.
         </div>
