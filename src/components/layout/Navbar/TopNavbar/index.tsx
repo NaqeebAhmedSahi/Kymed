@@ -13,14 +13,12 @@ import {
 import { MenuItem } from "./MenuItem";
 import Image from "next/image";
 import ResTopNavbar from "./ResTopNavbar";
-import { FiMail, FiMapPin, FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiSearch, FiX, FiPhone, FiShoppingCart } from "react-icons/fi";
+import { FiMail, FiMapPin, FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiPhone, FiShoppingCart } from "react-icons/fi";
 import { useAppSelector } from "@/lib/hooks/redux";
 import { RootState } from "@/lib/store";
 
 
 const TopNavbar = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [showSearch, setShowSearch] = useState(false);
   const [productsChildren, setProductsChildren] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -170,41 +168,8 @@ const TopNavbar = () => {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* Search Bar and Actions */}
+          {/* Actions */}
           <div className="flex items-center space-x-4">
-            {/* Search Bar */}
-            <div className="relative">
-              {showSearch ? (
-                <div className="flex items-center bg-white border border-[#C4C7CA] rounded-xl pl-4 pr-2 py-2 shadow-sm">
-                  <FiSearch className="w-4 h-4 text-[#5D6169] mr-2" />
-                  <input
-                    type="text"
-                    placeholder="Search products..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-48 outline-none text-[#2F323A] placeholder-[#5D6169]"
-                    autoFocus
-                  />
-                  <button
-                    onClick={() => {
-                      setShowSearch(false);
-                      setSearchTerm("");
-                    }}
-                    className="ml-2 p-1 hover:bg-[#E5F5F7] rounded transition-colors duration-200"
-                  >
-                    <FiX className="w-4 h-4 text-[#5D6169]" />
-                  </button>
-                </div>
-              ) : (
-                <button
-                  onClick={() => setShowSearch(true)}
-                  className="p-2 text-[#5D6169] hover:text-[#008C99] hover:bg-[#E5F5F7] rounded-xl transition-all duration-200"
-                >
-                  <FiSearch className="w-5 h-5" />
-                </button>
-              )}
-            </div>
-
             {/* Cart Icon */}
             <Link href="/cart" className="relative p-2 text-[#5D6169] hover:text-[#008C99] hover:bg-[#E5F5F7] rounded-xl transition-all duration-200 group">
               <FiShoppingCart className="w-5 h-5" />
